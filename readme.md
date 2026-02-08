@@ -1,1 +1,0 @@
-### some education related pages
