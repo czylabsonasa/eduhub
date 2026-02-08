@@ -4,7 +4,49 @@
     "href": "index.html",
     "title": "eduhub",
     "section": "",
-    "text": "Numerical mathematics\n\n\nApplied mathematics"
+    "text": "numerical mathematics\n\n\napplied mathematics"
+  },
+  {
+    "objectID": "app-math/info/index.html",
+    "href": "app-math/info/index.html",
+    "title": "information",
+    "section": "",
+    "text": "contact\n\n\ngetting matlab\n\n\nsyllabus\n\n\nfinal exam topics"
+  },
+  {
+    "objectID": "topics/gettingmatlab.html",
+    "href": "topics/gettingmatlab.html",
+    "title": "getting matlab",
+    "section": "",
+    "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is possible or online usage (not recommended) after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
+  },
+  {
+    "objectID": "topics/contact.html",
+    "href": "topics/contact.html",
+    "title": "contact",
+    "section": "",
+    "text": "you may want to contact me/or your mates through discord\nhere is the invite\n\nyou’ll land in the welcome channel\nput your questions in the appropriate text channel\nyou can contact any member of this server through pm/dm\n\ndo not use offensive language, do not spread political/racial or other subjective views."
+  },
+  {
+    "objectID": "num-math/info/index.html",
+    "href": "num-math/info/index.html",
+    "title": "information",
+    "section": "",
+    "text": "contact\n\n\ngetting matlab\n\n\nsyllabus\n\n\nfinal exam topics"
+  },
+  {
+    "objectID": "num-math/index.html",
+    "href": "num-math/index.html",
+    "title": "numerical mathematics",
+    "section": "",
+    "text": "information\n\n\n\nmatlab introduction"
+  },
+  {
+    "objectID": "topics/matlab-basics/index.html",
+    "href": "topics/matlab-basics/index.html",
+    "title": "matlab-basics",
+    "section": "",
+    "text": "introduction\n\n\nexercises"
   },
   {
     "objectID": "about.html",
@@ -14,38 +56,10 @@
     "text": "Some education related pages."
   },
   {
-    "objectID": "topics/matlab-basics/index.html",
-    "href": "topics/matlab-basics/index.html",
-    "title": "pdf",
-    "section": "",
-    "text": "pdf\n\ntex/pdf based slides\n\n\n\nhtml\n\nhtml based, under construction"
-  },
-  {
-    "objectID": "num-math/index.html",
-    "href": "num-math/index.html",
-    "title": "num-math",
-    "section": "",
-    "text": "Matlab introduction"
-  },
-  {
-    "objectID": "topics/matlab-basics/pdf/index.html",
-    "href": "topics/matlab-basics/pdf/index.html",
-    "title": "introduction",
-    "section": "",
-    "text": "introduction\n\n\nexercises"
-  },
-  {
-    "objectID": "topics/matlab-basics/html/index.html",
-    "href": "topics/matlab-basics/html/index.html",
-    "title": "/dev/null nirvana nothing null nil",
-    "section": "",
-    "text": "/dev/null nirvana nothing null nil"
-  },
-  {
     "objectID": "app-math/index.html",
     "href": "app-math/index.html",
-    "title": "app-math",
+    "title": "applied mathematics",
     "section": "",
-    "text": "Matlab introduction/review"
+    "text": "information\n\n\n\nmatlab introduction/review"
   }
 ]
