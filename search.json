@@ -14,18 +14,25 @@
     "text": "contact\n\n\ngetting matlab\n\n\nsyllabus\n\n\nfinal exam topics"
   },
   {
-    "objectID": "topics/gettingmatlab.html",
-    "href": "topics/gettingmatlab.html",
-    "title": "getting matlab",
+    "objectID": "topics/float/index.html",
+    "href": "topics/float/index.html",
+    "title": "floating point numbers",
     "section": "",
-    "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is possible or online usage (not recommended) after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
+    "text": "topic\n\n\nmatlab\n\n\nexercises"
   },
   {
-    "objectID": "topics/contact.html",
-    "href": "topics/contact.html",
-    "title": "contact",
+    "objectID": "topics/matlab-basics/index.html",
+    "href": "topics/matlab-basics/index.html",
+    "title": "matlab-basics",
     "section": "",
-    "text": "you may want to contact me/or your mates through discord\nhere is the invite\n\nyou’ll land in the welcome channel\nput your questions in the appropriate text channel\nyou can contact any member of this server through pm/dm\n\ndo not use offensive language, do not spread political/racial or other subjective views."
+    "text": "topic\n\n\nexercises"
+  },
+  {
+    "objectID": "num-math/index.html",
+    "href": "num-math/index.html",
+    "title": "numerical mathematics",
+    "section": "",
+    "text": "information\n\n\n\nmatlab introduction\n\n\nfloating point numbers"
   },
   {
     "objectID": "num-math/info/index.html",
@@ -35,18 +42,18 @@
     "text": "contact\n\n\ngetting matlab\n\n\nsyllabus\n\n\nfinal exam topics"
   },
   {
-    "objectID": "num-math/index.html",
-    "href": "num-math/index.html",
-    "title": "numerical mathematics",
+    "objectID": "topics/contact.html",
+    "href": "topics/contact.html",
+    "title": "contact",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction"
+    "text": "you may want to contact me/or your mates through discord\nhere is the invite\n\nyou’ll land in the welcome channel\nput your questions in the appropriate text channel\nyou can contact any member of this server through pm/dm\n\ndo not use offensive language, do not spread political/racial or other subjective views."
   },
   {
-    "objectID": "topics/matlab-basics/index.html",
-    "href": "topics/matlab-basics/index.html",
-    "title": "matlab-basics",
+    "objectID": "topics/gettingmatlab.html",
+    "href": "topics/gettingmatlab.html",
+    "title": "getting matlab",
     "section": "",
-    "text": "introduction\n\n\nexercises"
+    "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is possible or online usage (not recommended) after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
   },
   {
     "objectID": "about.html",
@@ -60,6 +67,6 @@
     "href": "app-math/index.html",
     "title": "applied mathematics",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction/review"
+    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers"
   }
 ]
