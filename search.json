@@ -7,25 +7,46 @@
     "text": "numerical mathematics\n\n\napplied mathematics"
   },
   {
+    "objectID": "store/float/draft.html",
+    "href": "store/float/draft.html",
+    "title": "draft",
+    "section": "",
+    "text": "\\[\n\\begin{align*}\n0.3721&=10^{0}\\cdot \\left(\n   \\frac{3}{10}+\\frac{7}{10^2}+\\frac{2}{10^3}+\\frac{1}{10^4}\\right)\n\\\\\n21.65&=10^2 \\cdot 0.2165\n=10^2 \\cdot \\left( \\frac{2}{10}+\\frac{1}{10^2}+\\frac{6}{10^3}+\\frac{5}{10^4}\\right)\n\\end{align*}\n\\]\n\n\n\n\\[\n\\begin{align*}\n0.1101&=2^{0} \\cdot \\left( \\frac{1}{2}+\\frac{1}{2^2}+\\frac {0}{2^3}+\\frac{1}{2^4}\\right)\n\\\\\n0.001011&=2^{-2} \\cdot 0.1011\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "store/float/draft.html#decimal",
+    "href": "store/float/draft.html#decimal",
+    "title": "draft",
+    "section": "",
+    "text": "\\[\n\\begin{align*}\n0.3721&=10^{0}\\cdot \\left(\n   \\frac{3}{10}+\\frac{7}{10^2}+\\frac{2}{10^3}+\\frac{1}{10^4}\\right)\n\\\\\n21.65&=10^2 \\cdot 0.2165\n=10^2 \\cdot \\left( \\frac{2}{10}+\\frac{1}{10^2}+\\frac{6}{10^3}+\\frac{5}{10^4}\\right)\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "store/float/draft.html#binary",
+    "href": "store/float/draft.html#binary",
+    "title": "draft",
+    "section": "",
+    "text": "\\[\n\\begin{align*}\n0.1101&=2^{0} \\cdot \\left( \\frac{1}{2}+\\frac{1}{2^2}+\\frac {0}{2^3}+\\frac{1}{2^4}\\right)\n\\\\\n0.001011&=2^{-2} \\cdot 0.1011\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "store/matlab-basics/index.html",
+    "href": "store/matlab-basics/index.html",
+    "title": "matlab-basics",
+    "section": "",
+    "text": "concepts\n\n\nexercises"
+  },
+  {
+    "objectID": "app-math/index.html",
+    "href": "app-math/index.html",
+    "title": "applied mathematics",
+    "section": "",
+    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers"
+  },
+  {
     "objectID": "app-math/info/index.html",
     "href": "app-math/info/index.html",
     "title": "information",
     "section": "",
     "text": "contact\n\n\ngetting matlab\n\n\nsyllabus\n\n\nfinal exam topics"
-  },
-  {
-    "objectID": "topics/float/index.html",
-    "href": "topics/float/index.html",
-    "title": "floating point numbers",
-    "section": "",
-    "text": "topic\n\n\nmatlab\n\n\nexercises"
-  },
-  {
-    "objectID": "topics/matlab-basics/index.html",
-    "href": "topics/matlab-basics/index.html",
-    "title": "matlab-basics",
-    "section": "",
-    "text": "topic\n\n\nexercises"
   },
   {
     "objectID": "num-math/index.html",
@@ -42,18 +63,11 @@
     "text": "contact\n\n\ngetting matlab\n\n\nsyllabus\n\n\nfinal exam topics"
   },
   {
-    "objectID": "topics/contact.html",
-    "href": "topics/contact.html",
-    "title": "contact",
+    "objectID": "num-math/info/numsyll.html",
+    "href": "num-math/info/numsyll.html",
+    "title": "syllabus",
     "section": "",
-    "text": "you may want to contact me/or your mates through discord\nhere is the invite\n\nyou’ll land in the welcome channel\nput your questions in the appropriate text channel\nyou can contact any member of this server through pm/dm\n\ndo not use offensive language, do not spread political/racial or other subjective views."
-  },
-  {
-    "objectID": "topics/gettingmatlab.html",
-    "href": "topics/gettingmatlab.html",
-    "title": "getting matlab",
-    "section": "",
-    "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is possible or online usage (not recommended) after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
+    "text": "Topics\n\nFloating point systems (properties, rounding, errors)\nSystems of linear equation with error in the right-hand side, matrix norms, condition number.\nNumerical solution of linear systems (LU,PLU,Cholesky)\nLeast square approximation.\nPolynomial interpolation (Lagrange, Hermite, spline)\nNumerical integration.\nNumerical methods for solving of nonlinear equations and systems.\nOptimization\n\n\n\nRequirements for the practice grade\n\nAt most 3 absences from the labors.\nThere will a grading test at the end of the study period, and it will consist both numerical/multiple choice/matlab questions.\nThe grade will be determined by the following evaluation system:\n\n0% - 50% \\(\\longrightarrow\\) 1\n50% - 70% \\(\\longrightarrow\\) 2\n70% - 85% \\(\\longrightarrow\\) 3\n85% - 95% \\(\\longrightarrow\\) 4\n95% -100% \\(\\longrightarrow\\) 5\n\nThe exact date of the test will be announced on the e-learning site.\nThe retake will be held in the exam period.\nThe sample test collections on the e-learning site and the shared exercises on this site are serving as the basis for the grading test.\nIn the study period at the time of lectures there will be some extra tests. The points obtained by these tests can be used to increase your grading test’s result."
   },
   {
     "objectID": "about.html",
@@ -63,10 +77,31 @@
     "text": "Some education related pages."
   },
   {
-    "objectID": "app-math/index.html",
-    "href": "app-math/index.html",
-    "title": "applied mathematics",
+    "objectID": "app-math/info/appsyll.html",
+    "href": "app-math/info/appsyll.html",
+    "title": "syllabus",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers"
+    "text": "Topics\n\nFloating point systems (properties, rounding, errors)\nSystems of linear equation with error in the right-hand side, matrix norms, condition number.\nNumerical solution of linear systems (LU,PLU,Cholesky)\nLeast square approximation.\nPolynomial interpolation (Lagrange, Hermite, spline)\nNumerical integration.\nEigenvalue problems, sparse systems.\nNumerical solution of nonlinear equations and systems, minimization.\nLinear programming (graphical and 1,2-phase simplex method) Duality in linear programming, sensitivity analysis. Algorithms for solving transportation and assignment problems.\n\n\n\nRequirements for the practice grade\n\nAt most 3 absences from labors. At most 3 absences from practices. Note that the practice is mandatory.\nThere will a grading test at the end of the study period, and it will consist both numerical/multiple choice/matlab questions.\nThe grade will be determined by the following evaluation system:\n\n0% - 50% \\(\\longrightarrow\\) 1\n50% - 70% \\(\\longrightarrow\\) 2\n70% - 85% \\(\\longrightarrow\\) 3\n85% - 95% \\(\\longrightarrow\\) 4\n95% -100% \\(\\longrightarrow\\) 5\n\nThe exact date of the test will be announced on the e-learning site.\nThe retake will be held in the exam period.\nThe sample test collections on the e-learning site and the shared exercises on this site are serving as the basis for the grading test.\nIn the study period at the time of practices there will be some extra tests. The points obtained by these tests can be used to increase your grading test’s result."
+  },
+  {
+    "objectID": "store/contact.html",
+    "href": "store/contact.html",
+    "title": "contact",
+    "section": "",
+    "text": "you may want to contact me/or your mates through discord\nhere is the invite\n\nyou’ll land in the welcome channel\nput your questions in the appropriate text channel\nyou can contact any member of this server through pm/dm\n\ndo not use offensive language, do not spread political/racial or other subjective views."
+  },
+  {
+    "objectID": "store/gettingmatlab.html",
+    "href": "store/gettingmatlab.html",
+    "title": "getting matlab",
+    "section": "",
+    "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is or online usage is possible after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
+  },
+  {
+    "objectID": "store/float/index.html",
+    "href": "store/float/index.html",
+    "title": "floating point numbers",
+    "section": "",
+    "text": "concepts\n\n\nexercises\n\n\nmatlab\n\n\n\ndraft\n\nhtml version, wip."
   }
 ]
