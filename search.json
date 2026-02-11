@@ -7,43 +7,71 @@
     "text": "numerical mathematics\n\n\napplied mathematics"
   },
   {
-    "objectID": "store/float/draft.html",
-    "href": "store/float/draft.html",
-    "title": "draft",
+    "objectID": "store/float/exercises_draft.html",
+    "href": "store/float/exercises_draft.html",
+    "title": "exercises_draft",
     "section": "",
-    "text": "\\[\n\\begin{align*}\n0.3721&=10^{0}\\cdot \\left(\n   \\frac{3}{10}+\\frac{7}{10^2}+\\frac{2}{10^3}+\\frac{1}{10^4}\\right)\n\\\\\n21.65&=10^2 \\cdot 0.2165\n=10^2 \\cdot \\left( \\frac{2}{10}+\\frac{1}{10^2}+\\frac{6}{10^3}+\\frac{5}{10^4}\\right)\n\\end{align*}\n\\]\n\n\n\n\\[\n\\begin{align*}\n0.1101&=2^{0} \\cdot \\left( \\frac{1}{2}+\\frac{1}{2^2}+\\frac {0}{2^3}+\\frac{1}{2^4}\\right)\n\\\\\n0.001011&=2^{-2} \\cdot 0.1011\n\\end{align*}\n\\]"
+    "text": "tools\n\n:, ==,&lt;,&gt;,x(I),repmat\nmath functions\nrandi,rand for generate test vectors\n```matlab function y=f(x) … y=… end\n\nf=@(x) …\nfor i=… … end\nwhile … … end ```\n\n\ncreate vectors\n\nby vector here we mean row vector\n\\([1,2,...,21,22]\\)\nwrite a function that returns the vector \\([1,2,...,n-1,n]\\), given \\(n\\)\nwrite a function that returns the sum of the a vector \\([1,2,...,n-1,n]\\), given \\(n\\)\n\\([22,21..2,1]\\)\nwrite a function that returns \\([n,n-1,...,2,1]\\), given \\(n\\)\n\\([1,3,5,...,19,21]\\)\nwrite a function that returns the vector with odd numbers \\(\\le n\\), given \\(n\\)\nwrite a function that returns the sum of the odd numbers \\(\\le n\\), given \\(n\\)\n\\([2,4,6,...,20,22]\\)\nwrite a function that returns a vector with even numbers \\(\\le n\\), given \\(n\\)\nwrite a function that returns the sum of the even numbers \\(\\le n\\), given \\(n\\)\n\\([1^2,2^2,...,21^2,22^2]\\)\nwrite a function that returns \\([1^2,2^2,...,(n-1)^2,n^2]\\), given \\(n\\)\n\\([0,1,0,1,...,]\\) of length \\(22\\)\nwrite a function that returns the length \\(n\\) vector \\([0,1,0,1,...]\\), given \\(n\\)\n\\([1,2,3,2,1,2,3,2,1...,]\\) of length \\(22\\)\nwrite a function that returns the length \\(n\\) vector \\([1,2,3,2,1,2,3,2,1...,]\\), given \\(n\\)\n\\([-1,2,-3,...-21,22]\\)\nwrite a function that returns the length \\(n\\) vector \\([-1,2,-3,4,...]\\), given \\(n\\)\n\\([1,2,3,...,22,1,2,3,...,22]\\)\ngiven the vector \\(x=[222,221,...,2,1]\\)\n\nremove the odd elements from \\(x\\)\nremove the elements at odd indexed positions from \\(x\\)\nremove the prime numbers from \\(x\\)\nremove the elements at prime indexed positions from \\(x\\)\nremove the square numbers from \\(x\\)\nremove the elements at square number indexed positions from \\(x\\)\nremove the powers of \\(2\\) from \\(x\\)\nremove the elements at powers of \\(2\\) indexed positions from \\(x\\)\n\ngiven the vector \\(x\\) with integers\n\nremove the odd elements from \\(x\\)\nremove the prime numbers from \\(x\\)\nremove the squares from \\(x\\)\nremove the powers of \\(2\\) from \\(x\\)\n\n\n\n\nfloating point systems\n\nlet \\({\\cal F}=\\{a=2, k_{-}=-3, k_{+}=3, t=4\\}\\)\n\ncompute the (normalized) representations for \\(0.2,\\ 1.45,\\ \\pi\\) in \\(\\cal F\\) using regular rounding\nwhat is \\(\\varepsilon_{0},\\ varepsilon_{1},\\ M_{\\infty},\\ 1_{+},\\ 1_{-}\\) in \\(\\cal F\\)\nhow many positive numbers \\(\\cal F\\) has?\nwhat is the smallest positive integer that is not in \\(\\cal F\\)?\n\nthese are double system related exercises\n\nwrite a function that returns \\(\\varepsilon_{0}\\)!\nwrite a function that returns \\(\\varepsilon_{1}\\)!\nwrite a function that returns \\(x_{+}\\), given \\(x\\)!\nverify, that \\((x+y)+z \\neq x+(y+z)\\) for \\(x=0.4,\\ y=-0.5, z=0.1\\)\n\ndoes it occur frequently?\n\nlet \\(x=\\frac{1}{3}\\). iterate \\(n=10,50,100\\) times the assignment: \\(x=4x-1\\). what can be observed?"
   },
   {
-    "objectID": "store/float/draft.html#decimal",
-    "href": "store/float/draft.html#decimal",
-    "title": "draft",
+    "objectID": "store/float/concepts_draft.html",
+    "href": "store/float/concepts_draft.html",
+    "title": "concepts_draft",
     "section": "",
-    "text": "\\[\n\\begin{align*}\n0.3721&=10^{0}\\cdot \\left(\n   \\frac{3}{10}+\\frac{7}{10^2}+\\frac{2}{10^3}+\\frac{1}{10^4}\\right)\n\\\\\n21.65&=10^2 \\cdot 0.2165\n=10^2 \\cdot \\left( \\frac{2}{10}+\\frac{1}{10^2}+\\frac{6}{10^3}+\\frac{5}{10^4}\\right)\n\\end{align*}\n\\]"
+    "text": "\\[\n\\begin{align*}\n0.3721 &= 10^{0}\\cdot \\left(\n   \\frac{3}{10}+\\frac{7}{10^2}+\\frac{2}{10^3}+\\frac{1}{10^4}\\right)\n\\\\\n21.65 &= 10^2 \\cdot 0.2165\n=10^2 \\cdot \\left( \\frac{2}{10}+\\frac{1}{10^2}+\\frac{6}{10^3}+\\frac{5}{10^4}\\right)\n\\\\\n\\frac{1}{3} &= 0.3333333\\ldots = 10^{0}\\cdot 0.\\overline{3}\n\\\\\n\\pi &= 3.141592\\ldots=10^{1}\\cdot 0.3141592\\ldots\n\\\\\n\\end{align*}\n\\]\n\n\n\n\\[\n\\begin{align*}\n0.1101 &= 2^{0} \\cdot \\left( \\frac{1}{2}+\\frac{1}{2^2}+\\frac {0}{2^3}+\\frac{1}{2^4}\\right)\n\\\\\n0.001011 &= 2^{-2} \\cdot 0.1011\n\\\\\n\\frac{1}{3} &= 0.010101\\ldots = 2^{-1}\\cdot 0.\\overline{10}\n\\\\\n\\pi &= 11.0010010000\\ldots=2^{2}\\cdot 0.110010010000\\ldots\n\\\\\n\\end{align*}\n\\]"
   },
   {
-    "objectID": "store/float/draft.html#binary",
-    "href": "store/float/draft.html#binary",
-    "title": "draft",
+    "objectID": "store/float/concepts_draft.html#decimal",
+    "href": "store/float/concepts_draft.html#decimal",
+    "title": "concepts_draft",
     "section": "",
-    "text": "\\[\n\\begin{align*}\n0.1101&=2^{0} \\cdot \\left( \\frac{1}{2}+\\frac{1}{2^2}+\\frac {0}{2^3}+\\frac{1}{2^4}\\right)\n\\\\\n0.001011&=2^{-2} \\cdot 0.1011\n\\end{align*}\n\\]"
+    "text": "\\[\n\\begin{align*}\n0.3721 &= 10^{0}\\cdot \\left(\n   \\frac{3}{10}+\\frac{7}{10^2}+\\frac{2}{10^3}+\\frac{1}{10^4}\\right)\n\\\\\n21.65 &= 10^2 \\cdot 0.2165\n=10^2 \\cdot \\left( \\frac{2}{10}+\\frac{1}{10^2}+\\frac{6}{10^3}+\\frac{5}{10^4}\\right)\n\\\\\n\\frac{1}{3} &= 0.3333333\\ldots = 10^{0}\\cdot 0.\\overline{3}\n\\\\\n\\pi &= 3.141592\\ldots=10^{1}\\cdot 0.3141592\\ldots\n\\\\\n\\end{align*}\n\\]"
   },
   {
-    "objectID": "store/matlab-basics/index.html",
-    "href": "store/matlab-basics/index.html",
-    "title": "matlab-basics",
+    "objectID": "store/float/concepts_draft.html#binary",
+    "href": "store/float/concepts_draft.html#binary",
+    "title": "concepts_draft",
     "section": "",
-    "text": "concepts\n\n\nexercises"
+    "text": "\\[\n\\begin{align*}\n0.1101 &= 2^{0} \\cdot \\left( \\frac{1}{2}+\\frac{1}{2^2}+\\frac {0}{2^3}+\\frac{1}{2^4}\\right)\n\\\\\n0.001011 &= 2^{-2} \\cdot 0.1011\n\\\\\n\\frac{1}{3} &= 0.010101\\ldots = 2^{-1}\\cdot 0.\\overline{10}\n\\\\\n\\pi &= 11.0010010000\\ldots=2^{2}\\cdot 0.110010010000\\ldots\n\\\\\n\\end{align*}\n\\]"
   },
   {
-    "objectID": "app-math/index.html",
-    "href": "app-math/index.html",
-    "title": "applied mathematics",
+    "objectID": "store/gettingmatlab.html",
+    "href": "store/gettingmatlab.html",
+    "title": "getting matlab",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers"
+    "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is or online usage is possible after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
   },
   {
-    "objectID": "app-math/info/index.html",
-    "href": "app-math/info/index.html",
+    "objectID": "store/contact.html",
+    "href": "store/contact.html",
+    "title": "contact",
+    "section": "",
+    "text": "you may want to contact me/or your mates through discord\nhere is the invite\n\nyou’ll land in the welcome channel\nput your questions in the appropriate text channel\nyou can contact any member of this server through pm/dm\n\ndo not use offensive language, do not spread political/racial or other subjective views."
+  },
+  {
+    "objectID": "app-math/info/appsyll.html",
+    "href": "app-math/info/appsyll.html",
+    "title": "syllabus",
+    "section": "",
+    "text": "Topics\n\nFloating point systems (properties, rounding, errors)\nSystems of linear equation with error in the right-hand side, matrix norms, condition number.\nNumerical solution of linear systems (LU,PLU,Cholesky)\nLeast square approximation.\nPolynomial interpolation (Lagrange, Hermite, spline)\nNumerical integration.\nEigenvalue problems, sparse systems.\nNumerical solution of nonlinear equations and systems, minimization.\nLinear programming (graphical and 1,2-phase simplex method) Duality in linear programming, sensitivity analysis. Algorithms for solving transportation and assignment problems.\n\n\n\nRequirements for the practice grade\n\nAt most 3 absences from labors. At most 3 absences from practices. Note that the practice is mandatory.\nThere will a grading test at the end of the study period, and it will consist both numerical/multiple choice/matlab questions.\nThe grade will be determined by the following evaluation system:\n\n0% - 50% \\(\\longrightarrow\\) 1\n50% - 70% \\(\\longrightarrow\\) 2\n70% - 85% \\(\\longrightarrow\\) 3\n85% - 95% \\(\\longrightarrow\\) 4\n95% -100% \\(\\longrightarrow\\) 5\n\nThe exact date of the test will be announced on the e-learning site.\nThe retake will be held in the exam period.\nThe sample test collections on the e-learning site and the shared exercises on this site are serving as the basis for the grading test.\nIn the study period at the time of practices there will be some extra tests. The points obtained by these tests can be used to increase your grading test’s result."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Some education related pages."
+  },
+  {
+    "objectID": "num-math/info/numsyll.html",
+    "href": "num-math/info/numsyll.html",
+    "title": "syllabus",
+    "section": "",
+    "text": "Topics\n\nFloating point systems (properties, rounding, errors)\nSystems of linear equation with error in the right-hand side, matrix norms, condition number.\nNumerical solution of linear systems (LU,PLU,Cholesky)\nLeast square approximation.\nPolynomial interpolation (Lagrange, Hermite, spline)\nNumerical integration.\nNumerical methods for solving of nonlinear equations and systems.\nOptimization\n\n\n\nRequirements for the practice grade\n\nAt most 3 absences from the labors.\nThere will a grading test at the end of the study period, and it will consist both numerical/multiple choice/matlab questions.\nThe grade will be determined by the following evaluation system:\n\n0% - 50% \\(\\longrightarrow\\) 1\n50% - 70% \\(\\longrightarrow\\) 2\n70% - 85% \\(\\longrightarrow\\) 3\n85% - 95% \\(\\longrightarrow\\) 4\n95% -100% \\(\\longrightarrow\\) 5\n\nThe exact date of the test will be announced on the e-learning site.\nThe retake will be held in the exam period.\nThe sample test collections on the e-learning site and the shared exercises on this site are serving as the basis for the grading test.\nIn the study period at the time of lectures there will be some extra tests. The points obtained by these tests can be used to increase your grading test’s result."
+  },
+  {
+    "objectID": "num-math/info/index.html",
+    "href": "num-math/info/index.html",
     "title": "information",
     "section": "",
     "text": "contact\n\n\ngetting matlab\n\n\nsyllabus\n\n\nfinal exam topics"
@@ -56,52 +84,52 @@
     "text": "information\n\n\n\nmatlab introduction\n\n\nfloating point numbers"
   },
   {
-    "objectID": "num-math/info/index.html",
-    "href": "num-math/info/index.html",
+    "objectID": "app-math/info/index.html",
+    "href": "app-math/info/index.html",
     "title": "information",
     "section": "",
     "text": "contact\n\n\ngetting matlab\n\n\nsyllabus\n\n\nfinal exam topics"
   },
   {
-    "objectID": "num-math/info/numsyll.html",
-    "href": "num-math/info/numsyll.html",
-    "title": "syllabus",
+    "objectID": "app-math/index.html",
+    "href": "app-math/index.html",
+    "title": "applied mathematics",
     "section": "",
-    "text": "Topics\n\nFloating point systems (properties, rounding, errors)\nSystems of linear equation with error in the right-hand side, matrix norms, condition number.\nNumerical solution of linear systems (LU,PLU,Cholesky)\nLeast square approximation.\nPolynomial interpolation (Lagrange, Hermite, spline)\nNumerical integration.\nNumerical methods for solving of nonlinear equations and systems.\nOptimization\n\n\n\nRequirements for the practice grade\n\nAt most 3 absences from the labors.\nThere will a grading test at the end of the study period, and it will consist both numerical/multiple choice/matlab questions.\nThe grade will be determined by the following evaluation system:\n\n0% - 50% \\(\\longrightarrow\\) 1\n50% - 70% \\(\\longrightarrow\\) 2\n70% - 85% \\(\\longrightarrow\\) 3\n85% - 95% \\(\\longrightarrow\\) 4\n95% -100% \\(\\longrightarrow\\) 5\n\nThe exact date of the test will be announced on the e-learning site.\nThe retake will be held in the exam period.\nThe sample test collections on the e-learning site and the shared exercises on this site are serving as the basis for the grading test.\nIn the study period at the time of lectures there will be some extra tests. The points obtained by these tests can be used to increase your grading test’s result."
+    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "store/matlab-basics/index.html",
+    "href": "store/matlab-basics/index.html",
+    "title": "matlab-basics",
     "section": "",
-    "text": "Some education related pages."
+    "text": "concepts\n\n\nexercises"
   },
   {
-    "objectID": "app-math/info/appsyll.html",
-    "href": "app-math/info/appsyll.html",
-    "title": "syllabus",
+    "objectID": "store/float/bin_exp_frac.html",
+    "href": "store/float/bin_exp_frac.html",
+    "title": "binary expansion of fractions",
     "section": "",
-    "text": "Topics\n\nFloating point systems (properties, rounding, errors)\nSystems of linear equation with error in the right-hand side, matrix norms, condition number.\nNumerical solution of linear systems (LU,PLU,Cholesky)\nLeast square approximation.\nPolynomial interpolation (Lagrange, Hermite, spline)\nNumerical integration.\nEigenvalue problems, sparse systems.\nNumerical solution of nonlinear equations and systems, minimization.\nLinear programming (graphical and 1,2-phase simplex method) Duality in linear programming, sensitivity analysis. Algorithms for solving transportation and assignment problems.\n\n\n\nRequirements for the practice grade\n\nAt most 3 absences from labors. At most 3 absences from practices. Note that the practice is mandatory.\nThere will a grading test at the end of the study period, and it will consist both numerical/multiple choice/matlab questions.\nThe grade will be determined by the following evaluation system:\n\n0% - 50% \\(\\longrightarrow\\) 1\n50% - 70% \\(\\longrightarrow\\) 2\n70% - 85% \\(\\longrightarrow\\) 3\n85% - 95% \\(\\longrightarrow\\) 4\n95% -100% \\(\\longrightarrow\\) 5\n\nThe exact date of the test will be announced on the e-learning site.\nThe retake will be held in the exam period.\nThe sample test collections on the e-learning site and the shared exercises on this site are serving as the basis for the grading test.\nIn the study period at the time of practices there will be some extra tests. The points obtained by these tests can be used to increase your grading test’s result."
+    "text": "\\(x \\in [0,1)\\)\nthe first expansion exists and unique, assuming that the tail of \\(x_{n}\\) is not a constant 1 sequence.\n\\(2x - x_{1}\\) will be the “new” \\(x\\)\n\n\\[\\begin{align}\nx &= 2^{-1}x_{1}+2^{-2}x_{2}+\\ldots+2^{-n}x_{n}+\\ldots \\\\\n2x &= x_{1}+ 2^{-1}x_{2}+\\ldots+2^{n+1}x_{n}+\\ldots \\\\\n2x - x_{1} &= 2^{-1}x_{2}+\\ldots+2^{n+1}x_{n}+\\ldots\n\\end{align}\\]"
   },
   {
-    "objectID": "store/contact.html",
-    "href": "store/contact.html",
-    "title": "contact",
+    "objectID": "store/float/bin_exp_int.html",
+    "href": "store/float/bin_exp_int.html",
+    "title": "binary expansion of integers",
     "section": "",
-    "text": "you may want to contact me/or your mates through discord\nhere is the invite\n\nyou’ll land in the welcome channel\nput your questions in the appropriate text channel\nyou can contact any member of this server through pm/dm\n\ndo not use offensive language, do not spread political/racial or other subjective views."
+    "text": "\\(x\\) is a positive integer\nthe first expansion exists and unique\n\n\\[\\begin{align}\nx &= 2^{n}x_{n}+2^{n-1}x_{n-1}+\\ldots+2^{1}x_{1}+2^{0}x_{0} \\ \\ x_{i}\\in \\{0,1\\} \\\\  \nx &= 2q+r \\\\\nx &= 2(2^{n-1}x_{n}+2^{n-2}x_{n-1}+\\ldots+x_{1})+x_{0}\n\\end{align}\\]"
   },
   {
-    "objectID": "store/gettingmatlab.html",
-    "href": "store/gettingmatlab.html",
-    "title": "getting matlab",
-    "section": "",
-    "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is or online usage is possible after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
-  },
-  {
-    "objectID": "store/float/index.html",
-    "href": "store/float/index.html",
+    "objectID": "store/float/index.html#concepts-draft",
+    "href": "store/float/index.html#concepts-draft",
     "title": "floating point numbers",
-    "section": "",
-    "text": "concepts\n\n\nexercises\n\n\nmatlab\n\n\n\ndraft\n\nhtml version, wip."
+    "section": "concepts (draft)",
+    "text": "concepts (draft)"
+  },
+  {
+    "objectID": "store/float/index.html#exercises-draft",
+    "href": "store/float/index.html#exercises-draft",
+    "title": "floating point numbers",
+    "section": "exercises (draft)",
+    "text": "exercises (draft)"
   }
 ]

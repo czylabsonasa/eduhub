@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-02-11">
 
-<title>matlab-basics – eduhub</title>
+<title>concepts_draft – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -84,7 +114,6 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">eduhub</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -110,8 +139,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#topic" id="toc-topic" class="nav-link active" data-scroll-target="#topic">topic</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">exercises</a></li>
+  <li><a href="#example-intro" id="toc-example-intro" class="nav-link active" data-scroll-target="#example-intro">example (intro)</a>
+  <ul class="collapse">
+  <li><a href="#decimal" id="toc-decimal" class="nav-link" data-scroll-target="#decimal">decimal</a></li>
+  <li><a href="#binary" id="toc-binary" class="nav-link" data-scroll-target="#binary">binary</a></li>
+  </ul></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions">definitions</a></li>
+  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties">properties</a></li>
+  <li><a href="#example-figure" id="toc-example-figure" class="nav-link" data-scroll-target="#example-figure">example (figure)</a></li>
+  <li><a href="#example-table" id="toc-example-table" class="nav-link" data-scroll-target="#example-table">example (table)</a></li>
+  <li><a href="#rounding" id="toc-rounding" class="nav-link" data-scroll-target="#rounding">rounding</a></li>
+  <li><a href="#example-binary-expansion-of-integers" id="toc-example-binary-expansion-of-integers" class="nav-link" data-scroll-target="#example-binary-expansion-of-integers">example (binary expansion of integers)</a></li>
+  <li><a href="#example-binary-expansion-of-fractional-numbers" id="toc-example-binary-expansion-of-fractional-numbers" class="nav-link" data-scroll-target="#example-binary-expansion-of-fractional-numbers">example (binary expansion of fractional numbers)</a></li>
+  <li><a href="#example-rounding" id="toc-example-rounding" class="nav-link" data-scroll-target="#example-rounding">example (rounding)</a></li>
+  <li><a href="#bounds-for-rounding" id="toc-bounds-for-rounding" class="nav-link" data-scroll-target="#bounds-for-rounding">bounds for rounding</a></li>
   </ul>
 </nav>
     </div>
@@ -120,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">matlab-basics</h1>
+<h1 class="title">concepts_draft</h1>
 </div>
 
 
@@ -128,6 +169,12 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 11, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -137,11 +184,224 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="topic" class="level1">
-<h1><a href="00_matlab_noQ.pdf">topic</a></h1>
+<section id="example-intro" class="level1">
+<h1>example (intro)</h1>
+<section id="decimal" class="level2">
+<h2 class="anchored" data-anchor-id="decimal">decimal</h2>
+<p><span class="math display">\[
+\begin{align*}
+0.3721 &amp;= 10^{0}\cdot \left(
+   \frac{3}{10}+\frac{7}{10^2}+\frac{2}{10^3}+\frac{1}{10^4}\right)
+\\
+21.65 &amp;= 10^2 \cdot 0.2165
+=10^2 \cdot \left( \frac{2}{10}+\frac{1}{10^2}+\frac{6}{10^3}+\frac{5}{10^4}\right)
+\\
+\frac{1}{3} &amp;= 0.3333333\ldots = 10^{0}\cdot 0.\overline{3}
+\\
+\pi &amp;= 3.141592\ldots=10^{1}\cdot 0.3141592\ldots
+\\
+\end{align*}
+\]</span></p>
 </section>
-<section id="exercises" class="level1">
-<h1><a href="00_matlab_Q.pdf">exercises</a></h1>
+<section id="binary" class="level2">
+<h2 class="anchored" data-anchor-id="binary">binary</h2>
+<p><span class="math display">\[
+\begin{align*}
+0.1101 &amp;= 2^{0} \cdot \left( \frac{1}{2}+\frac{1}{2^2}+\frac {0}{2^3}+\frac{1}{2^4}\right)
+\\
+0.001011 &amp;= 2^{-2} \cdot 0.1011
+\\
+\frac{1}{3} &amp;= 0.010101\ldots = 2^{-1}\cdot 0.\overline{10}
+\\
+\pi &amp;= 11.0010010000\ldots=2^{2}\cdot 0.110010010000\ldots
+\\
+\end{align*}
+\]</span></p>
+</section>
+</section>
+<section id="definitions" class="level1">
+<h1>definitions</h1>
+<p>The form of the nonzero floating point numbers:</p>
+<p><span class="math display">\[
+\pm a^k \cdot 0.m_1\ldots m_t
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(a&gt;1\)</span> integer, the <code>base</code> or <code>radix</code> of the system</li>
+<li><span class="math inline">\(t&gt;1\)</span> integer, the length of the <code>mantissa</code>, the number of digits used in the fractional part</li>
+<li><span class="math inline">\(k_-\leq k\leq k_+\)</span> integers, <span class="math inline">\(k\)</span> is the <code>characteristic</code>, usually <span class="math inline">\(k_-&lt;0\)</span> and <span class="math inline">\(k_+&gt;0\)</span>, they are fixed.</li>
+<li><span class="math inline">\(0\leq m_i\leq a-1\)</span> integers, for <span class="math inline">\(i=1,\ldots,t\)</span></li>
+<li>if <span class="math inline">\(m_1&gt;0\)</span> then the number is called <strong>normalized</strong>
+<ul>
+<li>for brevity the normalized modifier is often omitted</li>
+<li><span class="math inline">\(0\)</span> is not a normalized number!</li>
+</ul></li>
+<li>for a fixed <span class="math inline">\(a,k_{-},k_{+},t\)</span> the set of normalized numbers is called a floating point system.
+<ul>
+<li>this set will be denoted by <span class="math inline">\(\{a,k_{-},k_{+},t\}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="properties" class="level1">
+<h1>properties</h1>
+<p>Consider the floating point system <span class="math inline">\({\cal F}=\{a,k_{-},k_{+},t\}\)</span></p>
+<ul>
+<li>the form of <span class="math inline">\(1\)</span> is <span class="math inline">\(a^{1}\cdot 0.10\ldots 0\)</span>
+<ul>
+<li>also <span class="math inline">\(1=a^{2}\cdot 0.010\ldots 0\)</span> but this form is not normalized. (unique representation)</li>
+</ul></li>
+<li>the largest positive number in <span class="math inline">\(\cal F\)</span> is <span class="math inline">\(a^{k_{+}}\cdot 0.(a-1)\ldots (a-1)=a^{k_{+}}\cdot(1-a^{-t})\)</span>
+<ul>
+<li>it is denoted by <span class="math inline">\(M_{\infty}\)</span></li>
+</ul></li>
+<li>the smallest positive number in <span class="math inline">\(\cal F\)</span> is <span class="math inline">\(a^{k_{-}}\cdot 0.10\ldots 0=a^{k_{-}-1}\)</span>
+<ul>
+<li>it is denoted by <span class="math inline">\(\varepsilon_{0}\)</span></li>
+</ul></li>
+<li>the right neighbour of <span class="math inline">\(1\)</span> is <span class="math inline">\(a^{1}\cdot 0.10\ldots 01=1+a^{1-t}\)</span>
+<ul>
+<li>it is denoted by <span class="math inline">\(1_{+}\)</span></li>
+<li>the number <span class="math inline">\(\varepsilon_{1}=a^{1-t}\)</span> is the machine epsilon (of <span class="math inline">\(\cal F\)</span>)</li>
+</ul></li>
+<li>the left neighbour of <span class="math inline">\(1\)</span> is <span class="math inline">\(a^{0}\cdot 0.(a-1)\ldots (a-1)=1-a^{-t}\)</span>
+<ul>
+<li>it is denoted by <span class="math inline">\(1_{-}\)</span></li>
+<li>note that the two neighbours are in different distance (it is true for all powers of <span class="math inline">\(a\)</span>)</li>
+</ul></li>
+<li>if <span class="math inline">\(x=a^{k}\cdot 0.x_{1}\ldots x_{t}\)</span>, then <span class="math inline">\(x_{+}=x+a^{k-t}\)</span>
+<ul>
+<li><span class="math inline">\(a^{k-t}\)</span> is the stepsize for the characteristic <span class="math inline">\(k\)</span></li>
+</ul></li>
+<li>if <span class="math inline">\(k_{+}&gt;t\)</span> then the stepsize can be larger than <span class="math inline">\(1\)</span>
+<ul>
+<li>not all integers are floating point numbers from the interval <span class="math inline">\([-M_{\infty},M_{\infty}]\)</span>!</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-figure" class="level1">
+<h1>example (figure)</h1>
+<ul>
+<li>the pictorial representation floating point system</li>
+</ul>
+<p><span class="math display">\[
+\{a=2,t=4,k_{-}=-3,k_{+}=2\}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="skalazas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-cap="false"></p>
+</figure>
+</div>
+</section>
+<section id="example-table" class="level1">
+<h1>example (table)</h1>
+<ul>
+<li>all elements of the floating point system</li>
+</ul>
+<p><span class="math display">\[
+\{a=2,t=4,k_{-}=-3,k_{+}=2\}
+\]</span></p>
+<p><span class="math display">\[
+\begin{array}{|c|c|c|c|c|c|c|}
+\hline
+&amp;k=-3&amp;k=-2&amp;k=-1&amp;k=0&amp;k=1&amp;k=2\\
+\hline
+0.1000&amp;\frac{8}{128}&amp;\frac{8}{64}&amp;\frac{8}{32}&amp;\frac{8}{16}&amp;\frac{8}{8}&amp;\frac{8}{4}\\
+\hline
+0.1001&amp;\frac{9}{128}&amp;\frac{9}{64}&amp;\frac{9}{32}&amp;\frac{9}{16}&amp;\frac{9}{8}&amp;\frac{9}{4}\\
+\hline
+0.1010&amp;\frac{10}{128}&amp;\frac{10}{64}&amp;\frac{10}{32}&amp;\frac{10}{16}&amp;\frac{10}{8}&amp;\frac{10}{4}\\
+\hline
+0.1011&amp;\frac{11}{128}&amp;\frac{11}{64}&amp;\frac{11}{32}&amp;\frac{11}{16}&amp;\frac{11}{8}&amp;\frac{11}{4}\\
+\hline
+0.1100&amp;\frac{12}{128}&amp;\frac{12}{64}&amp;\frac{12}{32}&amp;\frac{12}{16}&amp;\frac{12}{8}&amp;\frac{12}{4}\\
+\hline
+0.1101&amp;\frac{13}{128}&amp;\frac{13}{64}&amp;\frac{13}{32}&amp;\frac{13}{16}&amp;\frac{13}{8}&amp;\frac{13}{4}\\
+\hline
+0.1110&amp;\frac{14}{128}&amp;\frac{14}{64}&amp;\frac{14}{32}&amp;\frac{14}{16}&amp;\frac{14}{8}&amp;\frac{14}{4}\\
+\hline
+0.1111&amp;\frac{15}{128}&amp;\frac{15}{64}&amp;\frac{15}{32}&amp;\frac{15}{16}&amp;\frac{15}{8}&amp;\frac{15}{4}\\
+\hline
+\end{array}
+\]</span></p>
+</section>
+<section id="rounding" class="level1">
+<h1>rounding</h1>
+<ul>
+<li>not all numbers has an exact representation in a floating point number system.</li>
+<li><span class="math inline">\(\frac{1}{10}\)</span> is <span class="math inline">\(0.0001100110011001100\ldots\)</span> in binary</li>
+<li><span class="math inline">\(\frac{1}{3}\)</span> is <span class="math inline">\(0.0101010101010\ldots\)</span> in binary</li>
+<li>let <span class="math inline">\(x\in [-M_\infty ,M_\infty]\)</span> a real number, and denote by <span class="math inline">\(fl(x)\)</span> the corresponding floating-point number.</li>
+<li>the two simplest method is: regular rounding and cutting/choping.
+<ul>
+<li>regular rounding:</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+fl(x)=
+\begin{cases}
+  0\hfill{} \text{, if\ } \vert x\vert &lt; \varepsilon_0\\
+  \text{the nearest and largest in absolute value, }\hfill{}\text{if\ }\vert x\vert \geq \varepsilon_0
+\end{cases}
+\]</span></p>
+<ul>
+<li><p>cutting, choping <span class="math display">\[
+fl(x)=\begin{cases}
+0\hfill{}\text{, if\ }\vert x\vert &lt; \varepsilon_0\\
+\text{the nearest towards zero,}\hfill{}\text{if\ } \vert x\vert \geq \varepsilon_0\\
+\end{cases}
+\]</span></p></li>
+<li><p>the rounding rules implemented in todays processors are more involved. For simplicity we will use the rules above.</p></li>
+<li><p><code>fl(x)</code> computed for numbers entered into the system and also for intermediate computation results.</p></li>
+</ul>
+</section>
+<section id="example-binary-expansion-of-integers" class="level1">
+<h1>example (binary expansion of integers)</h1>
+<ul>
+<li>consider the number <span class="math inline">\(222\)</span></li>
+<li>we always dividing by <span class="math inline">\(2\)</span> writing down the remainder and the quotient, until the (computed) quotient becomes zero.</li>
+<li><a href="../../store/float/bin_exp_int.html">background</a></li>
+</ul>
+<pre><code>222|0
+111|1
+ 55|1
+ 27|1
+ 13|1
+  6|0
+  3|1
+  1|1
+  0|stop</code></pre>
+</section>
+<section id="example-binary-expansion-of-fractional-numbers" class="level1">
+<h1>example (binary expansion of fractional numbers)</h1>
+<ul>
+<li>consider the number <span class="math inline">\(\frac{1}{10}=0.1\)</span></li>
+<li>we always multiply by <span class="math inline">\(2\)</span>, but we subtract the integer part, it does not take part in the further computations</li>
+<li><a href="../../store/float/bin_exp_frac.html">background</a></li>
+</ul>
+<pre><code>0.1    (initial state)
+0.2    step 1
+0.4    step 2 *
+0.8    step 3 *
+1.6    step 4 *
+1.2    step 5 *
+0.4    step 6</code></pre>
+<ul>
+<li>notice that at <code>step 6</code> we are in the same state as at <code>step 2</code>. it means that the pattern <code>step 2-5</code> is a repeating pattern: we know the full expansion.</li>
+</ul>
+</section>
+<section id="example-rounding" class="level1">
+<h1>example (rounding)</h1>
+<ul>
+<li>fix the system ${a=2, t=4, <span class="math inline">\(k_{-}=-3, k_{+}=2\}\)</span>.</li>
+<li>what is <span class="math inline">\(fl(0.1)\)</span>?</li>
+<li>the binary expansion (we need only <span class="math inline">\(t+1\)</span> digits)</li>
+</ul>
+<p><span class="math display">\[
+\frac{1}{10}={0.00011001100\ldots}_{2}=2^{-3}\cdot 0.11001\ldots
+\]</span> - chpoing: <span class="math inline">\(\frac{1}{10}=2^{-3}\cdot 0.1100\)</span> - regular rounding: <span class="math inline">\(\frac{1}{10}=2^{-3}\cdot 0.1101\)</span> - both of them are only an approximate value</p>
+</section>
+<section id="bounds-for-rounding" class="level1">
+<h1>bounds for rounding</h1>
 
 
 </section>
