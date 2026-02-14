@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-02-14">
 
-<title>matematika mérnököknek II – eduhub</title>
+<title>integrálás – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -110,13 +139,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#elérhetőség-discord" id="toc-elérhetőség-discord" class="nav-link active" data-scroll-target="#elérhetőség-discord">elérhetőség: discord</a></li>
-  <li><a href="#sillabusz" id="toc-sillabusz" class="nav-link" data-scroll-target="#sillabusz">sillabusz</a></li>
-  <li><a href="#vizsga" id="toc-vizsga" class="nav-link" data-scroll-target="#vizsga">vizsga</a></li>
-  <li><a href="#egyéb" id="toc-egyéb" class="nav-link" data-scroll-target="#egyéb">egyéb</a></li>
-  <li><a href="#irodalom" id="toc-irodalom" class="nav-link" data-scroll-target="#irodalom">irodalom</a></li>
-  <li><a href="#ismétlés" id="toc-ismétlés" class="nav-link" data-scroll-target="#ismétlés">ismétlés</a></li>
-  <li><a href="#differenciálegyenletek" id="toc-differenciálegyenletek" class="nav-link" data-scroll-target="#differenciálegyenletek">differenciálegyenletek</a></li>
+  <li><a href="#határozatlan-integrál" id="toc-határozatlan-integrál" class="nav-link active" data-scroll-target="#határozatlan-integrál">határozatlan integrál</a></li>
+  <li><a href="#tulajdonságok" id="toc-tulajdonságok" class="nav-link" data-scroll-target="#tulajdonságok">tulajdonságok</a></li>
+  <li><a href="#számoljuk-ki-a-következő-integrálokat" id="toc-számoljuk-ki-a-következő-integrálokat" class="nav-link" data-scroll-target="#számoljuk-ki-a-következő-integrálokat">számoljuk ki a következő integrálokat</a></li>
   </ul>
 </nav>
     </div>
@@ -125,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">matematika mérnököknek II</h1>
+<h1 class="title">integrálás</h1>
 </div>
 
 
@@ -148,57 +173,75 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="elérhetőség-discord" class="level1">
-<h1>elérhetőség: <a href="https://discord.gg/QdAa5EG87A">discord</a></h1>
-</section>
-<section id="sillabusz" class="level1">
-<h1><a href="../matmer-II/mm2syll.html">sillabusz</a></h1>
-</section>
-<section id="vizsga" class="level1">
-<h1><a href="../matmer-II/vizsga.html">vizsga</a></h1>
-</section>
-<section id="egyéb" class="level1">
-<h1>egyéb</h1>
+<section id="határozatlan-integrál" class="level1">
+<h1>határozatlan integrál</h1>
 <ul>
-<li><a href="zv.pdf">záróvizsga tételek</a></li>
+<li>anti-derivált, primitív függvény</li>
 </ul>
+<p><span class="math display">\[
+   \left( \int f\right)'=f
+\]</span></p>
 <hr>
 </section>
-<section id="irodalom" class="level1">
-<h1>irodalom</h1>
+<section id="tulajdonságok" class="level1">
+<h1>tulajdonságok</h1>
 <ul>
-<li><a href="book/pal_burai_math_eng_2.pdf">Burai Pál jegyzete</a></li>
-<li><a href="book/zill.pdf">Zill</a></li>
-<li><a href="book/dawkins.pdf">Dawknis</a></li>
+<li><span class="math inline">\(C,D\in\mathbb{R}\)</span></li>
 </ul>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 5%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td># régebbi anyagok pdf-ben</td>
-</tr>
-<tr class="even">
-<td>- (bevezetés)[mm2_anyag.pdf]</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>html változatok, készülőben</li>
-</ul>
+<p><span class="math display">\[\begin{gather*}
+   \int\left( Cf+g\right) =C\int{f}+\int{g}\\
+   \int C\text{d}x =  Cx+D\\
+   \int x^{C}\text{d}x =  \frac{x^{C+1}}{C+1}+D\hspace{1cm} C\neq-1\\
+   \int{\sin}=-\cos+C\\
+   \int{\cos}=\sin+C\\
+   \int \frac{1}{x}\text{d}x=\log{|x|}+C\hspace{1cm}x\neq0\\
+   \int C^x\text{d}x=\frac{C^x}{\log{C}}+D\hspace{1cm}C&gt;0,C\neq1\\
+   \int\left(f'g+fg'\right)=fg+C\\
+   \int f(g)g'=\left( \int f \right)(g)+C
+\end{gather*}\]</span></p>
+<hr>
 </section>
-<section id="ismétlés" class="level1">
-<h1>ismétlés</h1>
+<section id="számoljuk-ki-a-következő-integrálokat" class="level1">
+<h1>számoljuk ki a következő integrálokat</h1>
 <ul>
-<li><a href="../matmer-II/diff.html">differenciálás</a></li>
-<li><a href="../matmer-II/integ.html">integrálás</a></li>
-</ul>
-</section>
-<section id="differenciálegyenletek" class="level1">
-<h1>differenciálegyenletek</h1>
+<li><span class="math inline">\(\int xe^{x^2}\text{d}x\)</span>
 <ul>
-<li><a href="../matmer-II/er_lin_hom.html">elsőrendű lineáris homogén</a></li>
+<li>válasz: <span class="math display">\[\begin{gather*}
+\left(e^{x^2}\right){'}=2xe^{x^2} \ \ \rightarrow \  \frac{e^{x^2}}{2}+C
+\end{gather*}\]</span></li>
+</ul></li>
+<li><span class="math inline">\(\int \sin(x)e^x\text{d}x\)</span>
+<ul>
+<li>válasz: <span class="math display">\[\begin{gather*}
+\text{(1)}\ \ \int \sin(x)e^{x}\text{d}x=-\cos(x)e^{x}-\int -\cos(x)e^{x}\text{d}x=\\
+-\cos(x)e^{x}+\int \cos(x)e^{x}\text{d}x\\
+\text{(2)}\ \ \int \sin(x)e^{x}\text{d}x=\sin(x)e^{x}-\int \cos(x)e^{x}\text{d}x\\
+\text{(1)+(2)}\ \rightarrow \\
+\int \sin(x)e^{x}\text{d}x=\frac{\sin(x)-\cos(x)}{2}e^{x}+C
+\end{gather*}\]</span></li>
+</ul></li>
+<li><span class="math inline">\(\int \cos^3(x)\text{d}x\)</span>
+<ul>
+<li>válasz: <span class="math display">\[\begin{gather*}
+\text{helyettesítés: }\ u=sin(x)\\
+\int \cos^3(x)\text{d}x=\int (1-\sin^2(x))\cos(x)\text{d}x=\\
+\int 1-u^2\text{d}u=u-\frac{u^3}{3}+C=\sin(x)-\frac{\sin^3(x)}{3}+C
+\end{gather*}\]</span></li>
+</ul></li>
+<li><span class="math inline">\(\int e^{au}\sin(u)\text{d}u\ \ 0\neq a\in\mathbb{R}\)</span>
+<ul>
+<li>válasz: <span class="math display">\[\begin{gather*}
+\text{parciális integrálás: }\ f=e^{au},\ \ g'=\sin(u)\\
+\int e^{au}\sin(u)\text{d}u=-e^{au}\cos(u)-\int ae^{au}(-\cos(u))\text{d}u=\\
+=-e^{au}\cos(u)+a\int e^{au}\cos(u)\text{d}u\\
+\text{parciális integrálás: }\ f'=e^{au},\ \ g=\sin(u)\\
+\int e^{au}\sin(u)\text{d}u=\frac{e^{au}}{a}\sin(u)-\int \frac{e^{au}}{a}\cos(u)\text{d}u=\\
+\frac{e^{au}}{a}\sin(u)-\frac{1}{a}\int e^{au}\cos(u)\text{d}u\\
+\text{szorozzuk meg $a^2$-el a másodikat és adjuk össze az elsővel}\\
+(1+a^2)\int e^{au}\sin(u)\text{d}u=ae^{au}\sin(u)-e^{au}\cos(u) \ \ \implies\\
+\int e^{au}\sin(u)\text{d}u=\frac{e^{au}\left({a\sin(u)-\cos(u)}\right)}{1+a^2}
+\end{gather*}\]</span></li>
+</ul></li>
 </ul>
 
 
