@@ -1,1 +1,20 @@
 /* css styles */
+
+
+table.short-q, td.short-q {
+  border: 1em solid white;
+  border-collapse: collapse;
+}
+
+summary.short-q {
+  background-color: rgb(214, 214, 209);
+}
+
+details.short-q {
+  background-color: rgb(166, 236, 36);
+}
+
+
+
+
+

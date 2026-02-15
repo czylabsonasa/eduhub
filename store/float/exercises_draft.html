@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-13">
+<meta name="dcterms.date" content="2026-02-15">
 
 <title>exercises_draft – eduhub</title>
 <style>
@@ -175,7 +175,9 @@ window.Quarto = {
    
   <ul>
   <li><a href="#tools" id="toc-tools" class="nav-link active" data-scroll-target="#tools">tools</a></li>
+  <li><a href="#create-vectors0" id="toc-create-vectors0" class="nav-link" data-scroll-target="#create-vectors0">create vectors0</a></li>
   <li><a href="#create-vectors" id="toc-create-vectors" class="nav-link" data-scroll-target="#create-vectors">create vectors</a></li>
+  <li><a href="#modify-vectors" id="toc-modify-vectors" class="nav-link" data-scroll-target="#modify-vectors">modify vectors</a></li>
   <li><a href="#floating-point-systems" id="toc-floating-point-systems" class="nav-link" data-scroll-target="#floating-point-systems">floating point systems</a></li>
   </ul>
 </nav>
@@ -196,7 +198,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 13, 2026</p>
+      <p class="date">February 15, 2026</p>
     </div>
   </div>
   
@@ -227,8 +229,8 @@ window.Quarto = {
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
-<section id="create-vectors" class="level1">
-<h1>create vectors</h1>
+<section id="create-vectors0" class="level1">
+<h1>create vectors0</h1>
 <ul>
 <li>by vector here we mean row vector</li>
 <li><span class="math inline">\([1,2,...,21,22]\)</span></li>
@@ -270,6 +272,162 @@ window.Quarto = {
 <li>remove the powers of <span class="math inline">\(2\)</span> from <span class="math inline">\(x\)</span></li>
 </ul></li>
 </ul>
+</section>
+<section id="create-vectors" class="level1">
+<h1>create vectors</h1>
+<ul>
+<li><p>in the following exercises you should create the given vectors.</p></li>
+<li><p>it is enough to focus to the row-vectors (<code>transpose</code> and <code>'</code>)</p></li>
+<li><p>note that the supplied answer is <em>not</em> the only possible one.</p></li>
+<li><p>tools: <code>:, repmat</code></p>
+<table class="short-q" id="create vectors
+">
+<tbody><tr>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<p><span class="math inline">\([1,2,...,21,22]\)</span> &nbsp;&nbsp;</p>
+</summary>
+
+<p><code>1:22</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([22,21,...,2,1]\)</span> &nbsp;&nbsp;
+</summary>
+<p><code>22:-1:1</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([1,3,...,19,21]\)</span> &nbsp;&nbsp;
+</summary>
+<p><code>1:2:21</code></p>
+</details>
+</td>
+</tr>
+<tr>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([21,19,...,3,1]\)</span> &nbsp;&nbsp;
+</summary>
+<p><code>21:-1:1</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([1,4,9,...,81,100]\)</span> &nbsp;&nbsp;
+</summary>
+<p><code>(1:10).^2</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([1,2,1,2,...]\)</span> of length 22 &nbsp;&nbsp;
+</summary>
+<p><code>repmat([1,2],1,11)</code></p>
+</details>
+</td>
+</tr>
+<tr>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([1,2,3,1,2,3...]\)</span> of length 22 &nbsp;&nbsp;
+</summary>
+<p><code>t=repmat([1,2],1,8); t(1:22)</code></p>
+</details>
+</td>
+</tr>
+</tbody></table>
+</li></ul></section>
+<section id="modify-vectors" class="level1">
+<h1>modify vectors</h1>
+<ul>
+<li>create a vector <code>b</code> from <code>a</code> …</li>
+<li>note that the supplied answer is <strong>not</strong> the only possible one.</li>
+<li>you should inspect if your answer is correct or not</li>
+<li>tools: <code>:, a(...), []</code></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">a</span><span class="op">=</span>[<span class="va">nan</span><span class="op">,</span> <span class="fl">3</span><span class="op">,</span> <span class="fl">4</span><span class="op">,</span> <span class="fl">1</span> <span class="op">,</span> <span class="fl">7</span><span class="op">,</span> <span class="op">-</span><span class="fl">10</span><span class="op">,</span> <span class="fl">11</span><span class="op">,</span> <span class="va">pi</span><span class="op">,</span> <span class="op">-</span><span class="va">sin</span>(<span class="fl">2</span>)<span class="op">,</span> <span class="fl">2</span><span class="op">^</span><span class="fl">3</span><span class="op">,</span> <span class="fl">0</span><span class="op">,</span> <span class="fl">1</span><span class="op">,</span> <span class="fl">2</span><span class="op">^</span><span class="fl">3</span><span class="op">-</span><span class="fl">1</span><span class="op">,</span> <span class="va">inf</span><span class="op">,</span> <span class="fl">100</span><span class="op">,</span> <span class="fl">10000</span><span class="op">,</span> <span class="fl">7</span><span class="op">,</span> <span class="va">pi</span><span class="op">,</span> <span class="op">-</span><span class="va">pi</span><span class="op">,</span> <span class="fl">4</span><span class="op">^</span><span class="fl">4</span>]<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="short-q" id="modify vectors
+">
+<tbody><tr>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+by removing the even indexed elements &nbsp;&nbsp;
+</summary>
+<p><code>b=a(1:2:end)</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+by extending it to the left with a vector <code>[0, 1, 2]</code> &nbsp;&nbsp;
+</summary>
+<p><code>b=[[0,1,2],a];</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+by removing the elements that are <em>not</em> integers &nbsp;&nbsp;
+</summary>
+<p><code>b=a(a==floor(a));</code></p>
+</details>
+</td>
+</tr>
+<tr>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+by removing the elements that are integers &nbsp;&nbsp;
+</summary>
+<p><code>b=a(not(a==floor(a)));</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+by removing <code>nan</code>-s and ‘inf,-inf’-s &nbsp;&nbsp;
+</summary>
+<p><code>b=a(not(isnan(a)|isinf(a)));</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+keeping only the square integers &nbsp;&nbsp;
+</summary>
+<pre><code>% it's far from optimal
+b=a(not(isnan(a)|isinf(a))); 
+b=b(b&gt;=0);
+tmp=sqrt(b);
+b=b(floor(t)==t);</code></pre>
+</details>
+</td>
+</tr>
+</tbody></table>
 </section>
 <section id="floating-point-systems" class="level1">
 <h1>floating point systems</h1>
