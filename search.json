@@ -39,7 +39,7 @@
     "href": "store/float/exercises_draft.html",
     "title": "exercises_draft",
     "section": "",
-    "text": "tools\n\n:, ==,&lt;,&gt;,x(I),repmat\nmath functions\nrandi,rand for generate test vectors\nfunction y=f(x)\n  ...\n  y=...\nend\nf=@(x) ...\nfor i=...\n  ...\nend\nwhile ...\n  ...\nend\n\n\n\ncreate vectors0\n\nby vector here we mean row vector\n\\([1,2,...,21,22]\\)\nwrite a function that returns the vector \\([1,2,...,n-1,n]\\), given \\(n\\)\nwrite a function that returns the sum of the a vector \\([1,2,...,n-1,n]\\), given \\(n\\)\n\\([22,21..2,1]\\)\nwrite a function that returns \\([n,n-1,...,2,1]\\), given \\(n\\)\n\\([1,3,5,...,19,21]\\)\nwrite a function that returns the vector with odd numbers \\(\\le n\\), given \\(n\\)\nwrite a function that returns the sum of the odd numbers \\(\\le n\\), given \\(n\\)\n\\([2,4,6,...,20,22]\\)\nwrite a function that returns a vector with even numbers \\(\\le n\\), given \\(n\\)\nwrite a function that returns the sum of the even numbers \\(\\le n\\), given \\(n\\)\n\\([1^2,2^2,...,21^2,22^2]\\)\nwrite a function that returns \\([1^2,2^2,...,(n-1)^2,n^2]\\), given \\(n\\)\n\\([0,1,0,1,...,]\\) of length \\(22\\)\nwrite a function that returns the length \\(n\\) vector \\([0,1,0,1,...]\\), given \\(n\\)\n\\([1,2,3,2,1,2,3,2,1...,]\\) of length \\(22\\)\nwrite a function that returns the length \\(n\\) vector \\([1,2,3,2,1,2,3,2,1...,]\\), given \\(n\\)\n\\([-1,2,-3,...-21,22]\\)\nwrite a function that returns the length \\(n\\) vector \\([-1,2,-3,4,...]\\), given \\(n\\)\n\\([1,2,3,...,22,1,2,3,...,22]\\)\ngiven the vector \\(x=[222,221,...,2,1]\\)\n\nremove the odd elements from \\(x\\)\nremove the elements at odd indexed positions from \\(x\\)\nremove the prime numbers from \\(x\\)\nremove the elements at prime indexed positions from \\(x\\)\nremove the square numbers from \\(x\\)\nremove the elements at square number indexed positions from \\(x\\)\nremove the powers of \\(2\\) from \\(x\\)\nremove the elements at powers of \\(2\\) indexed positions from \\(x\\)\n\ngiven the vector \\(x\\) with integers\n\nremove the odd elements from \\(x\\)\nremove the prime numbers from \\(x\\)\nremove the squares from \\(x\\)\nremove the powers of \\(2\\) from \\(x\\)\n\n\n\n\ncreate vectors\n\nin the following exercises you should create the given vectors.\nit is enough to focus to the row-vectors (transpose and ')\nnote that the supplied answer is not the only possible one.\ntools: :, repmat\n\n\n\n\n\n\\([1,2,...,21,22]\\)   \n\n\n1:22\n\n\n\n\n\n\\([22,21,...,2,1]\\)   \n\n22:-1:1\n\n\n\n\n\n\\([1,3,...,19,21]\\)   \n\n1:2:21\n\n\n\n\n\n\n\n\\([21,19,...,3,1]\\)   \n\n21:-1:1\n\n\n\n\n\n\\([1,4,9,...,81,100]\\)   \n\n(1:10).^2\n\n\n\n\n\n\\([1,2,1,2,...]\\) of length 22   \n\nrepmat([1,2],1,11)\n\n\n\n\n\n\n\n\\([1,2,3,1,2,3...]\\) of length 22   \n\nt=repmat([1,2],1,8); t(1:22)\n\n\n\n\n\n\nmodify vectors\n\ncreate a vector b from a …\nnote that the supplied answer is not the only possible one.\nyou should inspect if your answer is correct or not\ntools: :, a(...), []\n\na=[nan, 3, 4, 1 , 7, -10, 11, pi, -sin(2), 2^3, 0, 1, 2^3-1, inf, 100, 10000, 7, pi, -pi, 4^4];\n\n\n\n\n\nby removing the even indexed elements   \n\nb=a(1:2:end)\n\n\n\n\n\nby extending it to the left with a vector [0, 1, 2]   \n\nb=[[0,1,2],a];\n\n\n\n\n\nby removing the elements that are not integers   \n\nb=a(a==floor(a));\n\n\n\n\n\n\n\nby removing the elements that are integers   \n\nb=a(not(a==floor(a)));\n\n\n\n\n\nby removing nan-s and ‘inf,-inf’-s   \n\nb=a(not(isnan(a)|isinf(a)));\n\n\n\n\n\nkeeping only the square integers   \n\n% it's far from optimal\nb=a(not(isnan(a)|isinf(a))); \nb=b(b&gt;=0);\ntmp=sqrt(b);\nb=b(floor(t)==t);\n\n\n\n\n\n\nfloating point systems\n\nlet \\({\\cal F}=\\{a=2, k_{-}=-3, k_{+}=3, t=4\\}\\)\n\ncompute the (normalized) representations for \\(0.2,\\ 1.45,\\ \\pi\\) in \\(\\cal F\\) using regular rounding\nwhat is \\(\\varepsilon_{0},\\ \\varepsilon_{1},\\ M_{\\infty},\\ 1_{+},\\ 1_{-}\\) in \\(\\cal F\\)\nhow many positive numbers \\(\\cal F\\) has?\nwhat is the smallest positive integer that is not in \\(\\cal F\\)?\n\nthese are double system related exercises\n\nwrite a function that returns \\(\\varepsilon_{0}\\)!\nwrite a function that returns \\(\\varepsilon_{1}\\)!\nwrite a function that returns \\(x_{+}\\), given \\(x\\)!\nverify, that \\((x+y)+z \\neq x+(y+z)\\) for \\(x=0.4,\\ y=-0.5, z=0.1\\)\n\ndoes it occur frequently?\n\nlet \\(x=\\frac{1}{3}\\). iterate \\(n=10,50,100\\) times the assignment: \\(x=4x-1\\). what can be observed?"
+    "text": "tools\n\n:, ==,&lt;,&gt;,x(I),repmat\nmath functions\nrandi,rand for generate test vectors\nfunction y=f(x)\n  ...\n  y=...\nend\nf=@(x) ...\nfor i=...\n  ...\nend\nwhile ...\n  ...\nend\n\n\n\ncreate vectors0\n\nby vector here we mean row vector\n\\([1,2,...,21,22]\\)\nwrite a function that returns the vector \\([1,2,...,n-1,n]\\), given \\(n\\)\nwrite a function that returns the sum of the a vector \\([1,2,...,n-1,n]\\), given \\(n\\)\n\\([22,21..2,1]\\)\nwrite a function that returns \\([n,n-1,...,2,1]\\), given \\(n\\)\n\\([1,3,5,...,19,21]\\)\nwrite a function that returns the vector with odd numbers \\(\\le n\\), given \\(n\\)\nwrite a function that returns the sum of the odd numbers \\(\\le n\\), given \\(n\\)\n\\([2,4,6,...,20,22]\\)\nwrite a function that returns a vector with even numbers \\(\\le n\\), given \\(n\\)\nwrite a function that returns the sum of the even numbers \\(\\le n\\), given \\(n\\)\n\\([1^2,2^2,...,21^2,22^2]\\)\nwrite a function that returns \\([1^2,2^2,...,(n-1)^2,n^2]\\), given \\(n\\)\n\\([0,1,0,1,...,]\\) of length \\(22\\)\nwrite a function that returns the length \\(n\\) vector \\([0,1,0,1,...]\\), given \\(n\\)\n\\([1,2,3,2,1,2,3,2,1...,]\\) of length \\(22\\)\nwrite a function that returns the length \\(n\\) vector \\([1,2,3,2,1,2,3,2,1...,]\\), given \\(n\\)\n\\([-1,2,-3,...-21,22]\\)\nwrite a function that returns the length \\(n\\) vector \\([-1,2,-3,4,...]\\), given \\(n\\)\n\\([1,2,3,...,22,1,2,3,...,22]\\)\ngiven the vector \\(x=[222,221,...,2,1]\\)\n\nremove the odd elements from \\(x\\)\nremove the elements at odd indexed positions from \\(x\\)\nremove the prime numbers from \\(x\\)\nremove the elements at prime indexed positions from \\(x\\)\nremove the square numbers from \\(x\\)\nremove the elements at square number indexed positions from \\(x\\)\nremove the powers of \\(2\\) from \\(x\\)\nremove the elements at powers of \\(2\\) indexed positions from \\(x\\)\n\ngiven the vector \\(x\\) with integers\n\nremove the odd elements from \\(x\\)\nremove the prime numbers from \\(x\\)\nremove the squares from \\(x\\)\nremove the powers of \\(2\\) from \\(x\\)\n\n\n\n\ncreate vectors\n\nin the following exercises you should create the given vectors.\nit is enough to focus to the row-vectors (transpose and ')\nnote that the supplied answer is not the only possible one.\ntools: :, repmat\n\n\n\n\n\n\\([1,2,...,21,22]\\)   \n\n\n1:22\n\n\n\n\n\n\\([22,21,...,2,1]\\)   \n\n22:-1:1\n\n\n\n\n\n\\([1,3,...,19,21]\\)   \n\n1:2:21\n\n\n\n\n\n\n\n\\([21,19,...,3,1]\\)   \n\n21:-1:1\n\n\n\n\n\n\\([1,4,9,...,81,100]\\)   \n\n(1:10).^2\n\n\n\n\n\n\\([1,2,1,2,...]\\) of length 22   \n\nrepmat([1,2],1,11)\n\n\n\n\n\n\n\n\\([1,2,3,1,2,3...]\\) of length 22   \n\nt=repmat([1,2],1,8); t(1:22)\n\n\n\n\n\n\nmodify vectors\n\ncreate a vector b from a …\nnote that the supplied answer is not the only possible one.\nyou should inspect if your answer is correct or not\ntools: :, a(...), []\n\na=[nan,3,4,1,7,-10,11,pi,-sin(2),2^3,0,1,2^3-1,inf,100,10000,7,pi,-pi,4^4];\n\n\n\n\n\nby removing the even indexed elements   \n\nb=a(1:2:end)\n\n\n\n\n\nby extending it to the left with a vector [0, 1, 2]   \n\nb=[[0,1,2],a];\n\n\n\n\n\nby removing the elements that are not integers   \n\nb=a(a==floor(a));\n\n\n\n\n\n\n\nby removing the elements that are integers   \n\nb=a(not(a==floor(a)));\n\n\n\n\n\nby removing nan-s and inf,-inf-s   \n\nb=a(not(isnan(a)|isinf(a)));\n\n\n\n\n\nkeeping only the square integers   \n\n% it's far from optimal\nb=a(not(isnan(a)|isinf(a))); \nb=b(b&gt;=0);\ntmp=sqrt(b);\nb=b(floor(tmp)==tmp);\n\n\n\n\n\n\nfloating point systems\n\nlet \\({\\cal F}=\\{a=2, k_{-}=-3, k_{+}=3, t=4\\}\\)\n\ncompute the (normalized) representations for \\(0.2,\\ 1.45,\\ \\pi\\) in \\(\\cal F\\) using regular rounding\nwhat is \\(\\varepsilon_{0},\\ \\varepsilon_{1},\\ M_{\\infty},\\ 1_{+},\\ 1_{-}\\) in \\(\\cal F\\)\nhow many positive numbers \\(\\cal F\\) has?\nwhat is the smallest positive integer that is not in \\(\\cal F\\)?\n\nthese are double system related exercises\n\nwrite a function that returns \\(\\varepsilon_{0}\\)!\nwrite a function that returns \\(\\varepsilon_{1}\\)!\nwrite a function that returns \\(x_{+}\\), given \\(x\\)!\nverify, that \\((x+y)+z \\neq x+(y+z)\\) for \\(x=0.4,\\ y=-0.5, z=0.1\\)\n\ndoes it occur frequently?\n\nlet \\(x=\\frac{1}{3}\\). iterate \\(n=10,50,100\\) times the assignment: \\(x=4x-1\\). what can be observed?"
   },
   {
     "objectID": "store/float/concepts_draft.html",
@@ -68,6 +68,48 @@
     "title": "getting matlab",
     "section": "",
     "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is or online usage is possible after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html",
+    "href": "store/norm/concepts_draft.html",
+    "title": "norms/concepts_draft",
+    "section": "",
+    "text": "in this section \\(x,y \\in \\mathbb{R}\\)\nhow large is a real number?\nabsolute value, distance from zero\n\n\\[\n\\vert x \\vert =\n\\begin{cases}\n  x & \\text{ if }\\ \\ x\\ge 0\\\\\n  -x & \\text{ otherwise }\n\\end{cases}\n\\]\n\nproperties:\n\n\\(\\vert x\\vert\\ge 0\\) and \\(\\vert x\\vert=0\\ \\text{ iff }\\ x=0\\)\n\\(\\vert x+y \\vert \\le \\vert x\\vert + \\vert y \\vert\\)\n\\(\\vert x\\cdot y \\vert = \\vert x\\vert \\cdot \\vert y \\vert\\)"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#norm",
+    "href": "store/norm/concepts_draft.html#norm",
+    "title": "norms/concepts_draft",
+    "section": "1-norm",
+    "text": "1-norm\n\\[\n\\Vert A\\Vert _1=\\max\\limits_{1\\leq j\\leq n}\\sum\\limits_{i=1}^n\\vert\na_{ij}\\vert\n\\]\n\nfor each column compute the sum of absolute values and take the maximal one\nasdasd"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#norm-1",
+    "href": "store/norm/concepts_draft.html#norm-1",
+    "title": "norms/concepts_draft",
+    "section": "2 norm",
+    "text": "2 norm\n\\[\n\\Vert A\\Vert _2=\\sqrt{\\lambda _{\\max} (A^{T}A)}\n\\]\n\ntake the square root of the maximal absolute value eigenvalue of the matrix \\((A^{T}A)\\)"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#infty-norm",
+    "href": "store/norm/concepts_draft.html#infty-norm",
+    "title": "norms/concepts_draft",
+    "section": "\\(\\infty\\) norm",
+    "text": "\\(\\infty\\) norm\n\\[\n\\Vert A\\Vert _\\infty=\\max_{1\\leq i\\leq n}\\sum_{j=1}^n\\vert a_{ij}\\vert\n\\]\n\nfor each row compute the sum of absolute values and take the maximal one"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#example",
+    "href": "store/norm/concepts_draft.html#example",
+    "title": "norms/concepts_draft",
+    "section": "example",
+    "text": "example\n\\[\nA=\\left[\\begin{array}{rrr}\n-3&0&4\\\\\n1&-1&2\\\\\n-2&1&-2\n\\end{array}\\right]\n\\]\n\n\\(\\Vert A\\Vert_{1}= 8\\)\n\\(\\Vert A\\Vert_{\\infty}= 7\\)"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#matlab",
+    "href": "store/norm/concepts_draft.html#matlab",
+    "title": "norms/concepts_draft",
+    "section": "matlab",
+    "text": "matlab\n\nthe function calls norm(A,1), norm(A,2), norm(A,inf) can be used"
   },
   {
     "objectID": "store/contact.html",
@@ -109,7 +151,7 @@
     "href": "num-math/index.html",
     "title": "numerical mathematics",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction\n\n\nfloating point numbers"
+    "text": "information\n\n\n\nmatlab introduction\n\n\nfloating point numbers\n\n\nnorms, condition numbers"
   },
   {
     "objectID": "app-math/info/index.html",
@@ -123,7 +165,7 @@
     "href": "app-math/index.html",
     "title": "applied mathematics",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers"
+    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers\n\n\nnorms, condition numbers"
   },
   {
     "objectID": "store/matlab-basics/index.html",
@@ -131,6 +173,20 @@
     "title": "matlab-basics",
     "section": "",
     "text": "concepts\n\n\nexercises"
+  },
+  {
+    "objectID": "store/norm/index.html#concepts-draft",
+    "href": "store/norm/index.html#concepts-draft",
+    "title": "norms, condition numbers",
+    "section": "concepts (draft)",
+    "text": "concepts (draft)"
+  },
+  {
+    "objectID": "store/norm/index.html#exercises-draft",
+    "href": "store/norm/index.html#exercises-draft",
+    "title": "norms, condition numbers",
+    "section": "exercises (draft)",
+    "text": "exercises (draft)"
   },
   {
     "objectID": "store/float/bin_exp_frac.html",

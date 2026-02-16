@@ -362,7 +362,7 @@ window.Quarto = {
 <li>you should inspect if your answer is correct or not</li>
 <li>tools: <code>:, a(...), []</code></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">a</span><span class="op">=</span>[<span class="va">nan</span><span class="op">,</span> <span class="fl">3</span><span class="op">,</span> <span class="fl">4</span><span class="op">,</span> <span class="fl">1</span> <span class="op">,</span> <span class="fl">7</span><span class="op">,</span> <span class="op">-</span><span class="fl">10</span><span class="op">,</span> <span class="fl">11</span><span class="op">,</span> <span class="va">pi</span><span class="op">,</span> <span class="op">-</span><span class="va">sin</span>(<span class="fl">2</span>)<span class="op">,</span> <span class="fl">2</span><span class="op">^</span><span class="fl">3</span><span class="op">,</span> <span class="fl">0</span><span class="op">,</span> <span class="fl">1</span><span class="op">,</span> <span class="fl">2</span><span class="op">^</span><span class="fl">3</span><span class="op">-</span><span class="fl">1</span><span class="op">,</span> <span class="va">inf</span><span class="op">,</span> <span class="fl">100</span><span class="op">,</span> <span class="fl">10000</span><span class="op">,</span> <span class="fl">7</span><span class="op">,</span> <span class="va">pi</span><span class="op">,</span> <span class="op">-</span><span class="va">pi</span><span class="op">,</span> <span class="fl">4</span><span class="op">^</span><span class="fl">4</span>]<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">a</span><span class="op">=</span>[<span class="va">nan</span><span class="op">,</span><span class="fl">3</span><span class="op">,</span><span class="fl">4</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">7</span><span class="op">,-</span><span class="fl">10</span><span class="op">,</span><span class="fl">11</span><span class="op">,</span><span class="va">pi</span><span class="op">,-</span><span class="va">sin</span>(<span class="fl">2</span>)<span class="op">,</span><span class="fl">2</span><span class="op">^</span><span class="fl">3</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">2</span><span class="op">^</span><span class="fl">3</span><span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="va">inf</span><span class="op">,</span><span class="fl">100</span><span class="op">,</span><span class="fl">10000</span><span class="op">,</span><span class="fl">7</span><span class="op">,</span><span class="va">pi</span><span class="op">,-</span><span class="va">pi</span><span class="op">,</span><span class="fl">4</span><span class="op">^</span><span class="fl">4</span>]<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="short-q" id="modify vectors
 ">
 <tbody><tr>
@@ -408,7 +408,7 @@ by removing the elements that are integers &nbsp;&nbsp;
 <details class="short-q" name="modify vectors
 ">
 <summary class="short-q">
-by removing <code>nan</code>-s and ‘inf,-inf’-s &nbsp;&nbsp;
+by removing <code>nan</code>-s and <code>inf,-inf</code>-s &nbsp;&nbsp;
 </summary>
 <p><code>b=a(not(isnan(a)|isinf(a)));</code></p>
 </details>
@@ -423,7 +423,7 @@ keeping only the square integers &nbsp;&nbsp;
 b=a(not(isnan(a)|isinf(a))); 
 b=b(b&gt;=0);
 tmp=sqrt(b);
-b=b(floor(t)==t);</code></pre>
+b=b(floor(tmp)==tmp);</code></pre>
 </details>
 </td>
 </tr>
