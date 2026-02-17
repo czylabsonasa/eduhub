@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-02-17">
 
-<title>norms/concepts_draft – eduhub</title>
+<title>norm/concepts_draft – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -191,6 +191,7 @@ window.Quarto = {
   <li><a href="#cond-in-matlab" id="toc-cond-in-matlab" class="nav-link" data-scroll-target="#cond-in-matlab">cond in matlab</a></li>
   <li><a href="#example-linsys-continued" id="toc-example-linsys-continued" class="nav-link" data-scroll-target="#example-linsys-continued">example (linsys, continued)</a></li>
   <li><a href="#properties-of-the-conditional-number" id="toc-properties-of-the-conditional-number" class="nav-link" data-scroll-target="#properties-of-the-conditional-number">properties of the conditional number</a></li>
+  <li><a href="#ill-conditioned" id="toc-ill-conditioned" class="nav-link" data-scroll-target="#ill-conditioned">ill-conditioned</a></li>
   </ul>
 </nav>
     </div>
@@ -199,7 +200,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">norms/concepts_draft</h1>
+<h1 class="title">norm/concepts_draft</h1>
 </div>
 
 
@@ -297,6 +298,7 @@ window.Quarto = {
 <ul>
 <li>one can read it: what is the largest relative change that is caused for a vector <span class="math inline">\(x\)</span> multiplying it by <span class="math inline">\(A\)</span></li>
 <li>it can be proved that the right hand side is well defined and the requirements are fulfilled</li>
+<li>there are infinitely many different vector norms</li>
 <li>the following matrix norms are important
 <ul>
 <li><span class="math inline">\(\Vert . \Vert_{1}\ \ \)</span> 1-norm, column norm</li>
@@ -480,6 +482,13 @@ x_{\text{relative error}} \le \text{cond}(A) b_{\text{relative error}}
 <li>here <span class="math inline">\(\lambda_{\max}\)</span> and <span class="math inline">\(\lambda_{\min}\)</span> are the largest and smallest eigenvalues in absolute value of <span class="math inline">\(A\)</span></li>
 </ul></li>
 <li>for <span class="math inline">\(c\neq 0\)</span>, <span class="math inline">\(\text{cond}(cA)=\text{cond}(A)\)</span></li>
+</ul>
+</section>
+<section id="ill-conditioned" class="level1">
+<h1>ill-conditioned</h1>
+<ul>
+<li>if <span class="math inline">\(\text{cond}(A)*b_{\text{relative error}}\ge 1\)</span> the system is called <strong>ill-conditioned</strong></li>
+<li>it means that the absolute error in the solution can be as large as the true solution itself - it is bad.</li>
 </ul>
 
 
