@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-02-17">
 
-<title>norms/concepts_draft – eduhub</title>
+<title>norm/exercises_draft – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -174,23 +139,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#intro-abs" id="toc-intro-abs" class="nav-link active" data-scroll-target="#intro-abs">intro (abs)</a></li>
-  <li><a href="#review-vector-norm" id="toc-review-vector-norm" class="nav-link" data-scroll-target="#review-vector-norm">review (vector norm)</a></li>
-  <li><a href="#intro-matrix-norm" id="toc-intro-matrix-norm" class="nav-link" data-scroll-target="#intro-matrix-norm">intro (matrix norm)</a></li>
-  <li><a href="#norm-properties" id="toc-norm-properties" class="nav-link" data-scroll-target="#norm-properties">norm properties</a></li>
-  <li><a href="#matrix-norm-computational-rules" id="toc-matrix-norm-computational-rules" class="nav-link" data-scroll-target="#matrix-norm-computational-rules">matrix norm computational rules</a>
-  <ul class="collapse">
-  <li><a href="#norm" id="toc-norm" class="nav-link" data-scroll-target="#norm">1-norm</a></li>
-  <li><a href="#norm-1" id="toc-norm-1" class="nav-link" data-scroll-target="#norm-1">2 norm</a></li>
-  <li><a href="#infty-norm" id="toc-infty-norm" class="nav-link" data-scroll-target="#infty-norm"><span class="math inline">\(\infty\)</span> norm</a></li>
-  </ul></li>
-  <li><a href="#example-norm" id="toc-example-norm" class="nav-link" data-scroll-target="#example-norm">example (norm)</a></li>
-  <li><a href="#norm-in-matlab" id="toc-norm-in-matlab" class="nav-link" data-scroll-target="#norm-in-matlab">norm in matlab</a></li>
-  <li><a href="#example-linsys" id="toc-example-linsys" class="nav-link" data-scroll-target="#example-linsys">example (linsys)</a></li>
-  <li><a href="#inequality-error-in-the-right-hand-side" id="toc-inequality-error-in-the-right-hand-side" class="nav-link" data-scroll-target="#inequality-error-in-the-right-hand-side">inequality (error in the right hand side)</a></li>
-  <li><a href="#cond-in-matlab" id="toc-cond-in-matlab" class="nav-link" data-scroll-target="#cond-in-matlab">cond in matlab</a></li>
-  <li><a href="#example-linsys-continued" id="toc-example-linsys-continued" class="nav-link" data-scroll-target="#example-linsys-continued">example (linsys, continued)</a></li>
-  <li><a href="#properties-of-the-conditional-number" id="toc-properties-of-the-conditional-number" class="nav-link" data-scroll-target="#properties-of-the-conditional-number">properties of the conditional number</a></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link active" data-scroll-target="#tools">tools</a></li>
+  <li><a href="#create-the-matrix" id="toc-create-the-matrix" class="nav-link" data-scroll-target="#create-the-matrix">create the matrix …</a></li>
+  <li><a href="#write-a-function" id="toc-write-a-function" class="nav-link" data-scroll-target="#write-a-function">write a function …</a></li>
   </ul>
 </nav>
     </div>
@@ -199,7 +150,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">norms/concepts_draft</h1>
+<h1 class="title">norm/exercises_draft</h1>
 </div>
 
 
@@ -222,265 +173,96 @@ window.Quarto = {
 </header>
 
 
-<section id="intro-abs" class="level1">
-<h1>intro (abs)</h1>
+<section id="tools" class="level1">
+<h1>tools</h1>
 <ul>
-<li>in this section <span class="math inline">\(x,y \in \mathbb{R}\)</span></li>
-<li>how large is a real number?</li>
-<li>absolute value, distance from zero</li>
-</ul>
-<p><span class="math display">\[
-\vert x \vert =
-\begin{cases}
-  x &amp; \text{ if }\ \ x\ge 0\\
-  -x &amp; \text{ otherwise }
-\end{cases}
-\]</span></p>
-<ul>
-<li>properties:
-<ul>
-<li><span class="math inline">\(\vert x\vert\ge 0\)</span> and <span class="math inline">\(\vert x\vert=0\ \text{ iff }\ x=0\)</span></li>
-<li><span class="math inline">\(\vert x+y \vert \le \vert x\vert + \vert y \vert\)</span></li>
-<li><span class="math inline">\(\vert x\cdot y \vert = \vert x\vert \cdot \vert y \vert\)</span></li>
-</ul></li>
+<li><code>ones, zeros, repmat, diag, imshow</code></li>
+<li><a href="https://ch.mathworks.com/help/matlab/matlab_prog/compatible-array-sizes-for-basic-operations.html">also read this</a></li>
+<li>expectation: avoid loops. use builtin features instead.</li>
 </ul>
 </section>
-<section id="review-vector-norm" class="level1">
-<h1>review (vector norm)</h1>
-<ul>
-<li>in this section <span class="math inline">\(x,y \in \mathbb{R}^n\)</span> and <span class="math inline">\(\alpha \in \mathbb{R}\)</span></li>
-<li>how large is a vector?</li>
-<li>it is denoted by <span class="math inline">\(\Vert x \Vert\)</span></li>
-<li>requirements (axioms):
-<ul>
-<li><span class="math inline">\(\Vert x\Vert\ge 0\)</span> and <span class="math inline">\(\Vert x\Vert=0\ \text{ iff }\ x=0\)</span></li>
-<li><span class="math inline">\(\Vert x+y \Vert \le \Vert x\Vert + \Vert y \Vert\)</span>
-<ul>
-<li>it is the triangle inequality</li>
-</ul></li>
-<li><span class="math inline">\(\Vert \alpha \cdot x \Vert = \vert \alpha\vert \cdot \Vert x \Vert\)</span></li>
-</ul></li>
-<li>the following vector norms are important
-<ul>
-<li><span class="math inline">\(\Vert x \Vert_{2} = \sqrt{\vert x_1\vert^2 + \ldots + \vert x_n\vert^2}\ \ \)</span> (euclidean or 2-norm)</li>
-<li><span class="math inline">\(\Vert x \Vert_{1} = \vert x_1\vert + \ldots + \vert x_n\vert\ \ \)</span> (manhattan or 1-norm)</li>
-<li><span class="math inline">\(\Vert x \Vert_{\infty} = \max_{i=k\ldots n}\vert x_k\vert\ \ \)</span> (<span class="math inline">\(\infty\)</span>-norm)</li>
-</ul></li>
-<li>the <strong>distance</strong> between vectors: <span class="math inline">\(\Vert x-y\Vert\)</span>
-<ul>
-<li>small: close to each other</li>
-<li>large: far from each other</li>
-</ul></li>
-</ul>
-</section>
-<section id="intro-matrix-norm" class="level1">
-<h1>intro (matrix norm)</h1>
-<ul>
-<li>in this section <span class="math inline">\(A,B \in {\cal M}_{n\times n}\)</span> and <span class="math inline">\(x \in \mathbb{R}^n\)</span> and <span class="math inline">\(\alpha \in \mathbb{R}\)</span></li>
-<li>how large is a matrix?</li>
-<li>it is denoted by <span class="math inline">\(\Vert A \Vert\)</span></li>
-<li>requirements (axioms):
-<ul>
-<li><span class="math inline">\(\Vert A\Vert\ge 0\)</span> and <span class="math inline">\(\Vert A\Vert=0\ \text{ iff }\ A=0\)</span></li>
-<li><span class="math inline">\(\Vert A+B \Vert \le \Vert A\Vert + \Vert B \Vert\ \ \)</span> (the triangle inequality)</li>
-<li><span class="math inline">\(\Vert \alpha \cdot A \Vert = \vert \alpha\vert \cdot \Vert A \Vert\)</span></li>
-</ul></li>
-<li>how can we define a matrix norm?
-<ul>
-<li>induced matrix norm, it is induced (determined) by a vector norm</li>
-<li>let’s fix a vector norm <span class="math inline">\(\Vert . \Vert\)</span></li>
-</ul></li>
-</ul>
-<p><span class="math display">\[
-\Vert A \Vert = \max_{x\neq 0} \frac{\Vert Ax\Vert}{\Vert x\Vert}
-\]</span></p>
-<ul>
-<li>one can read it: what is the largest relative change that is caused for a vector <span class="math inline">\(x\)</span> multiplying it by <span class="math inline">\(A\)</span></li>
-<li>it can be proved that the right hand side is well defined and the requirements are fulfilled</li>
-<li>the following matrix norms are important
-<ul>
-<li><span class="math inline">\(\Vert . \Vert_{1}\ \ \)</span> 1-norm, column norm</li>
-<li><span class="math inline">\(\Vert . \Vert_{2}\ \ \)</span> 2-norm, euclidean norm, spectral norm</li>
-<li><span class="math inline">\(\Vert . \Vert_{\infty}\ \ \)</span> <span class="math inline">\(\infty\)</span>-norm, row norm</li>
-</ul></li>
-<li>the <strong>distance</strong> between matrices: <span class="math inline">\(\Vert A-B\Vert\)</span>
-<ul>
-<li>small: close to each other</li>
-<li>large: far from each other</li>
-</ul></li>
-</ul>
-</section>
-<section id="norm-properties" class="level1">
-<h1>norm properties</h1>
-<ul>
-<li>the following properties are also valid</li>
-</ul>
-<p><span class="math display">\[\begin{gather*}
-\Vert E \Vert = 1\\
-\Vert A\cdot x\Vert \le \Vert A\Vert \cdot \Vert x \Vert\\
-\Vert A\cdot B \Vert \le \Vert A\Vert \cdot \Vert B \Vert\\
-\end{gather*}\]</span></p>
-</section>
-<section id="matrix-norm-computational-rules" class="level1">
-<h1>matrix norm computational rules</h1>
-<ul>
-<li><span class="math inline">\(a_{ij}\)</span> is <span class="math inline">\(j\)</span>-th element of the <span class="math inline">\(i\)</span>-th row for a matrix <span class="math inline">\(A\)</span></li>
-</ul>
-<section id="norm" class="level2">
-<h2 class="anchored" data-anchor-id="norm">1-norm</h2>
-<p><span class="math display">\[
-\Vert A\Vert _1=\max\limits_{1\leq j\leq n}\sum\limits_{i=1}^n\vert
-a_{ij}\vert
-\]</span></p>
-<ul>
-<li>for each <strong>column</strong> compute the sum of absolute values and take the maximal one</li>
-<li>asdasd</li>
-</ul>
-</section>
-<section id="norm-1" class="level2">
-<h2 class="anchored" data-anchor-id="norm-1">2 norm</h2>
-<p><span class="math display">\[
-\Vert A\Vert _2=\sqrt{\lambda _{\max} (A^{T}A)}
-\]</span></p>
-<ul>
-<li>take the square root of the maximal absolute value <strong>eigenvalue</strong> of the matrix <span class="math inline">\((A^{T}A)\)</span></li>
-</ul>
-</section>
-<section id="infty-norm" class="level2">
-<h2 class="anchored" data-anchor-id="infty-norm"><span class="math inline">\(\infty\)</span> norm</h2>
-<p><span class="math display">\[
-\Vert A\Vert _\infty=\max_{1\leq i\leq n}\sum_{j=1}^n\vert a_{ij}\vert
-\]</span></p>
-<ul>
-<li>for each <strong>row</strong> compute the sum of absolute values and take the maximal one</li>
-</ul>
-</section>
-</section>
-<section id="example-norm" class="level1">
-<h1>example (norm)</h1>
-<p><span class="math display">\[
-A=\left[\begin{array}{rrr}
--3&amp;0&amp;4\\
-1&amp;-1&amp;2\\
--2&amp;1&amp;-2
-\end{array}\right]
-\]</span></p>
-<ul>
-<li><span class="math inline">\(\Vert A\Vert_{1}= 8\)</span></li>
-<li><span class="math inline">\(\Vert A\Vert_{\infty}= 7\)</span></li>
-</ul>
-</section>
-<section id="norm-in-matlab" class="level1">
-<h1>norm in matlab</h1>
-<ul>
-<li>the function calls <code>norm(A,1), norm(A,2), norm(A,inf)</code> can be used</li>
-</ul>
-</section>
-<section id="example-linsys" class="level1">
-<h1>example (linsys)</h1>
-<ul>
-<li>compare the solutions of the linear systems below <span class="math display">\[
-\left[
-\begin{array}{rr}
-1&amp;1\\
-1&amp;1.0001
-\end{array}
-\right]
-\left[\begin{array}{r}
-x_1\\
-x_2
-\end{array}\right] =
-\left[\begin{array}{r}
-2\\
-2
-\end{array}\right]
-\]</span>
-<ul>
-<li><span class="math inline">\(x=[2,0]^{T}\)</span> <span class="math display">\[
-\left[
-\begin{array}{rr}
-1&amp;1\\
-1&amp;1.0001
-\end{array}
-\right]
-\left[\begin{array}{r}
-y_1\\
-y_2
-\end{array}\right] =
-\left[\begin{array}{r}
-2\\
-2.0001
-\end{array}\right]
-\]</span></li>
-<li><span class="math inline">\(y=[1,1]^{T}\)</span></li>
-</ul></li>
-<li>large difference, despite the matrix is the same and the right hand sides are very close to each other (in vector norm!)</li>
-<li>how can we explain this behavior?</li>
-</ul>
-</section>
-<section id="inequality-error-in-the-right-hand-side" class="level1">
-<h1>inequality (error in the right hand side)</h1>
-<ul>
-<li>let the matrix <span class="math inline">\(A\)</span> be invertible and fix a vector norm and the corresponding matrix norm</li>
-<li>consider the linear systems: <span class="math display">\[\begin{align*}
-Ax &amp;= b \\
-A(x+\Delta{x}) &amp;= b+\Delta{b}
-\end{align*}\]</span></li>
-<li>we’ll have different solutions for the systems, but how far they are from each other?</li>
-<li>the following inequality holds: <span class="math display">\[
-\frac{\Vert \Delta{x}\Vert}{\Vert x\Vert} \le \Vert A\Vert \Vert A^{-1}\Vert \frac{\Vert \Delta{b}\Vert}{\Vert b\Vert}
-\]</span></li>
-<li>the inequality is tight, no gap between the sides</li>
-<li>read it: the relative error in the solution is in the worst case is <span class="math inline">\(\Vert A\Vert \Vert A^{-1}\Vert\)</span> times the relative error in the right hand side</li>
-<li>the quantity <span class="math inline">\(\Vert A\Vert \Vert A^{-1}\Vert\)</span> is called the <strong>conditional</strong> number of <span class="math inline">\(A\)</span>
-<ul>
-<li><span class="math inline">\(\text{cond}(A)=\Vert A\Vert \Vert A^{-1}\Vert\)</span> <span class="math display">\[
-x_{\text{relative error}} \le \text{cond}(A) b_{\text{relative error}}
-\]</span></li>
-</ul></li>
-<li><strong>important</strong>: this kind of error propagation has nothing to do with floating point computational errors.</li>
-</ul>
-</section>
-<section id="cond-in-matlab" class="level1">
-<h1>cond in matlab</h1>
-<ul>
-<li>the call <code>cond(A,1), cond(A,2), cond(A,inf)</code> can be used</li>
-</ul>
-</section>
-<section id="example-linsys-continued" class="level1">
-<h1>example (linsys, continued)</h1>
-<ul>
-<li>examine the output of the script below</li>
-<li>play with different <span class="math inline">\(p\)</span> values!</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">p</span><span class="op">=</span><span class="fl">1</span><span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">nrm</span><span class="op">=@</span>(<span class="va">x</span>)<span class="va">norm</span>(<span class="va">x</span><span class="op">,</span><span class="va">p</span>)<span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">cnd</span><span class="op">=@</span>(<span class="va">x</span>)<span class="va">cond</span>(<span class="va">x</span><span class="op">,</span><span class="va">p</span>)<span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">A</span><span class="op">=</span>[<span class="fl">1</span><span class="op">,</span><span class="fl">1</span><span class="op">;</span><span class="fl">1</span><span class="op">,</span><span class="fl">1.0001</span>]<span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="va">b0</span><span class="op">=</span>[<span class="fl">2</span><span class="op">;</span><span class="fl">2</span>]<span class="op">;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="va">b1</span><span class="op">=</span>[<span class="fl">2</span><span class="op">;</span><span class="fl">2.0001</span>]<span class="op">;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="va">x0</span><span class="op">=</span><span class="va">A</span><span class="op">\</span><span class="va">b0</span><span class="op">;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="va">x1</span><span class="op">=</span><span class="va">A</span><span class="op">\</span><span class="va">b1</span><span class="op">;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="va">xrel</span><span class="op">=</span><span class="va">nrm</span>(<span class="va">x0</span><span class="op">-</span><span class="va">x1</span>)<span class="op">/</span><span class="va">nrm</span>(<span class="va">x0</span>)<span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="va">brel</span><span class="op">=</span><span class="va">nrm</span>(<span class="va">b0</span><span class="op">-</span><span class="va">b1</span>)<span class="op">/</span><span class="va">nrm</span>(<span class="va">b0</span>)<span class="op">;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="va">disp</span>(<span class="st">"observed: "</span><span class="op">+</span><span class="va">string</span>(<span class="va">xrel</span><span class="op">/</span><span class="va">brel</span>))<span class="op">;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="va">disp</span>(<span class="st">"theory  : "</span><span class="op">+</span><span class="va">string</span>(<span class="va">cnd</span>(<span class="va">A</span>)))<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="properties-of-the-conditional-number" class="level1">
-<h1>properties of the conditional number</h1>
-<ul>
-<li>its value <strong>does</strong> depend on the norm used</li>
-<li><span class="math inline">\(\text{cond}(A) \geq 1\)</span></li>
-<li>if <span class="math inline">\(A\)</span> is orthogonal (<span class="math inline">\(A^{T}A=E\)</span>), then <span class="math inline">\(\text{cond}_{2}(A)=1\)</span></li>
+<section id="create-the-matrix" class="level1">
+<h1>create the matrix …</h1>
+<ol type="1">
 <li><span class="math display">\[
-\left\vert\frac{\lambda_{\max}}{\lambda_{\min}}\right\vert\leq \text{cond}(A)
-\]</span>
+\left[
+\begin{array}{ccc}
+1 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0\\
+1 &amp; 0 &amp; 1\\
+\end{array}
+\right]
+\]</span></li>
+<li>that is the <span class="math inline">\(100\times 100\)</span> version of the previous one</li>
+<li><span class="math display">\[
+\left[
+\begin{array}{ccc}
+3 &amp; 0 &amp; 0\\
+0 &amp; 4 &amp; 0\\
+0 &amp; 0 &amp; 5\\
+\end{array}
+\right]
+\]</span></li>
+<li>whose main diagonal (downward) is <span class="math inline">\([3,4,\ldots,101,102]\)</span> and every other elements are zero</li>
+<li>whose anti-diagonal (downward) is <span class="math inline">\([3,4,\ldots,101,102]\)</span> and every other elements are zero</li>
+<li><span class="math display">\[
+\left[
+\begin{array}{ccc}
+1 &amp; 1 &amp; 1\\
+1 &amp; 0 &amp; 1\\
+1 &amp; 1 &amp; 1\\
+\end{array}
+\right]
+\]</span></li>
+<li>of size <span class="math inline">\(10\times 10\)</span> whose border elements are 1’s and every other elements are zero</li>
+<li><span class="math display">\[
+\left[
+\begin{array}{ccc}
+0 &amp; 1 &amp; 0\\
+1 &amp; 1 &amp; 1\\
+0 &amp; 1 &amp; 0\\
+\end{array}
+\right]
+\]</span></li>
+<li>that is the <span class="math inline">\(11\times 11\)</span> version of the previous one. (middle row+middle column=1’s and 0’s otherwise)</li>
+<li><span class="math display">\[
+\left[
+\begin{array}{cccc}
+0 &amp; 0 &amp; 1 &amp; 1\\
+0 &amp; 0 &amp; 1 &amp; 1\\
+1 &amp; 1 &amp; 0 &amp; 0\\
+1 &amp; 1 &amp; 0 &amp; 0\\
+\end{array}
+\right]
+\]</span></li>
+<li>that is the <span class="math inline">\(20\times 20\)</span> version of the previous one: its <span class="math inline">\(10\times 10\)</span> corners are 0’s and 1’s <img src="corner20x20.png" style="width:20.0%;height:20.0%"></li>
+<li>of size <span class="math inline">\(20\times 20\)</span> whose <code>imshow</code> is: <img src="checker20x20.png" style="width:20.0%;height:20.0%"></li>
+<li><span class="math display">\[
+\left[
+\begin{array}{cccc}
+1 &amp; 2 &amp; 3 &amp; 4\\
+2 &amp; 1 &amp; 2 &amp; 3\\
+3 &amp; 2 &amp; 1 &amp; 2\\
+4 &amp; 3 &amp; 2 &amp; 1\\
+\end{array}
+\right]
+\]</span></li>
+<li>of size <span class="math inline">\(10\times 10\)</span> whose <code>imshow</code> is: <img src="band10x10.png" style="width:20.0%;height:20.0%">
 <ul>
-<li>here <span class="math inline">\(\lambda_{\max}\)</span> and <span class="math inline">\(\lambda_{\min}\)</span> are the largest and smallest eigenvalues in absolute value of <span class="math inline">\(A\)</span></li>
+<li>use the numbers <span class="math inline">\([1,2,\ldots,9,10]/11\)</span> as colors starting from the main diagonal)</li>
 </ul></li>
-<li>for <span class="math inline">\(c\neq 0\)</span>, <span class="math inline">\(\text{cond}(cA)=\text{cond}(A)\)</span></li>
-</ul>
+</ol>
+</section>
+<section id="write-a-function" class="level1">
+<h1>write a function …</h1>
+<ol type="1">
+<li>that returns the 1-norm of a given matrix!</li>
+<li>that returns the <span class="math inline">\(\infty\)</span>-norm of a given matrix!</li>
+<li>that returns the <span class="math inline">\(n\times n\)</span> <a href="https://en.wikipedia.org/wiki/Hilbert_matrix">Hilbert matrix</a>!
+<ul>
+<li>what is the condition number for <span class="math inline">\(n=10\)</span> ?</li>
+</ul></li>
+</ol>
 
 
 </section>
