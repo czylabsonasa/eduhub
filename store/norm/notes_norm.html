@@ -142,6 +142,11 @@ window.Quarto = {
   <li><a href="#triangle-inequality" id="toc-triangle-inequality" class="nav-link active" data-scroll-target="#triangle-inequality">triangle-inequality</a></li>
   <li><a href="#induced-norm-definition" id="toc-induced-norm-definition" class="nav-link" data-scroll-target="#induced-norm-definition">induced-norm-definition</a></li>
   <li><a href="#cond-inequality" id="toc-cond-inequality" class="nav-link" data-scroll-target="#cond-inequality">cond-inequality</a></li>
+  <li><a href="#comp-rules" id="toc-comp-rules" class="nav-link" data-scroll-target="#comp-rules">comp-rules</a>
+  <ul class="collapse">
+  <li><a href="#infty-norm" id="toc-infty-norm" class="nav-link" data-scroll-target="#infty-norm"><span class="math inline">\(\infty\)</span>-norm</a></li>
+  <li><a href="#norm" id="toc-norm" class="nav-link" data-scroll-target="#norm"><span class="math inline">\(1\)</span>-norm</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -207,8 +212,31 @@ A\Delta x =\Delta b\ \ \longrightarrow\ \ \Delta x =A^{-1}\Delta b\\
 Ax =b\ \ \longrightarrow\ \ \ \frac{1}{\Vert x\Vert}\le \frac{\Vert A\Vert}{\Vert b\Vert}\\
 (*) = \Vert A\Vert \Vert A^{-1}\Vert \frac{\Vert \Delta b\Vert}{\Vert b\Vert}
 \end{gather*}\]</span> if <span class="math inline">\(\Vert Ax\Vert \approx \Vert A\Vert\Vert x\Vert\)</span> and <span class="math inline">\(\Vert A^{-1}\Delta b\Vert \approx \Vert A^{-1}\Vert\Vert \Delta b\Vert\)</span> then the two sides are also close to each other - <strong>worst case scenario</strong>.</p>
+</section>
+<section id="comp-rules" class="level1">
+<h1>comp-rules</h1>
+<section id="infty-norm" class="level2">
+<h2 class="anchored" data-anchor-id="infty-norm"><span class="math inline">\(\infty\)</span>-norm</h2>
+<p><span class="math display">\[\begin{gather*}
+\vert(Ax)_{i}\vert=
+\vert\sum_{j} a_{ij} x_{j}\vert\le
+\sum_{j} \vert a_{ij}\vert \vert x_{j}\vert\le
+\sum_{j} \vert a_{ij}\vert \Vert x\Vert_{\infty}\le
+\Vert A\Vert_{\infty} \vert \Vert x\Vert_{\infty}
+\end{gather*}\]</span> if the maximum in the <span class="math inline">\(i\)</span>-th row then for the <strong>sign</strong> vector of that row equality holds.</p>
+</section>
+<section id="norm" class="level2">
+<h2 class="anchored" data-anchor-id="norm"><span class="math inline">\(1\)</span>-norm</h2>
+<p><span class="math display">\[\begin{gather*}
+\sum_{i}\vert(Ax)_{i}\vert\le
+\sum_{i}\sum_{j} \vert a_{ij}\vert \vert x_{j}\vert=
+\sum_{j} \vert x_{j}\vert \sum_{i} \vert a_{ij}\vert \le
+\sum_{j} \vert x_{j}\vert \Vert A\Vert_{1} \le
+\Vert x\Vert_{1} \Vert A\Vert_{1}
+\end{gather*}\]</span> if the maximum is attained in the <span class="math inline">\(j\)</span>-th column then for the vector <span class="math inline">\(e_{j}\)</span> the two sides are equal.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

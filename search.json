@@ -242,7 +242,7 @@
     "href": "store/norm/notes_norm.html",
     "title": "norm/notes_norm",
     "section": "",
-    "text": "triangle-inequality\n\n\\(\\Vert x+y\\Vert_{2} \\le \\Vert x\\Vert_{2}+\\Vert y\\Vert_{2}\\)\ninner/scalar/dot product: \\(\\langle x,y\\rangle=\\sum_{i=1}^{n} x_{k}y_{k}\\)\n\\(\\Vert x\\Vert_{2}=\\sqrt{\\langle x,y\\rangle}\\)\nan important inequality related to the scalar product: CBS-inequality\nthe triangle inequality for \\(\\Vert . \\Vert_{2}\\) is the consequence of the CBS-inequality\nequality holds iff. \\(x=0 \\ \\text{ or }\\  y=0 \\ \\text{ or }\\  x=\\lambda y \\text{ for some } \\lambda&gt;0\\)\nthe two inequalities in \\(\\mathbb{R}^{n}\\) are the same (equivalent)\n\n\n\ninduced-norm-definition\n\nthe two sets below are equal. why? \\[\\begin{gather*}\nS_1 = \\left\\{ \\frac{\\Vert Ax\\Vert}{\\Vert x\\Vert} \\ :\\  x\\neq 0 \\right\\}\\\\\nS_2 = \\left\\{ \\Vert Ax\\Vert \\ :\\  \\Vert x\\Vert = 1 \\right\\}\n\\end{gather*}\\]\n\\(x\\rightarrow \\Vert x\\Vert\\) is continous\n\\(S_2\\) is a closed, bounded set of \\(\\mathbb{R}^n\\)\nthe maximum in the definition of the induced matrix norm is well defined because of the multivariable form of EVT\n\n\n\ncond-inequality\n\\[\\begin{gather*}\nA\\Delta x =\\Delta b\\ \\ \\longrightarrow\\ \\ \\Delta x =A^{-1}\\Delta b\\\\\n\\frac{\\Vert \\Delta x\\Vert}{\\Vert x\\Vert} =\n\\frac{\\Vert A^{-1}\\Delta b\\Vert}{\\Vert x\\Vert} \\le\n\\frac{\\Vert A^{-1}\\Vert \\Vert\\Delta b\\Vert}{\\Vert x\\Vert}\\le\\ \\  (*)\\\\\nAx =b\\ \\ \\longrightarrow\\ \\ \\ \\frac{1}{\\Vert x\\Vert}\\le \\frac{\\Vert A\\Vert}{\\Vert b\\Vert}\\\\\n(*) = \\Vert A\\Vert \\Vert A^{-1}\\Vert \\frac{\\Vert \\Delta b\\Vert}{\\Vert b\\Vert}\n\\end{gather*}\\] if \\(\\Vert Ax\\Vert \\approx \\Vert A\\Vert\\Vert x\\Vert\\) and \\(\\Vert A^{-1}\\Delta b\\Vert \\approx \\Vert A^{-1}\\Vert\\Vert \\Delta b\\Vert\\) then the two sides are also close to each other - worst case scenario."
+    "text": "\\(\\Vert x+y\\Vert_{2} \\le \\Vert x\\Vert_{2}+\\Vert y\\Vert_{2}\\)\ninner/scalar/dot product: \\(\\langle x,y\\rangle=\\sum_{i=1}^{n} x_{k}y_{k}\\)\n\\(\\Vert x\\Vert_{2}=\\sqrt{\\langle x,y\\rangle}\\)\nan important inequality related to the scalar product: CBS-inequality\nthe triangle inequality for \\(\\Vert . \\Vert_{2}\\) is the consequence of the CBS-inequality\nequality holds iff. \\(x=0 \\ \\text{ or }\\  y=0 \\ \\text{ or }\\  x=\\lambda y \\text{ for some } \\lambda&gt;0\\)\nthe two inequalities in \\(\\mathbb{R}^{n}\\) are the same (equivalent)"
   },
   {
     "objectID": "store/norm/concepts_draft.html#review",
@@ -284,7 +284,7 @@
     "href": "store/norm/concepts_draft.html#computational-rules",
     "title": "norm/concepts_draft",
     "section": "computational rules",
-    "text": "computational rules\n\n\\(a_{ij}\\) is \\(j\\)-th element of the \\(i\\)-th row for a matrix \\(A\\)\n\n\n1-norm\n\\[\n\\Vert A\\Vert _1=\\max\\limits_{1\\leq j\\leq n}\\sum\\limits_{i=1}^n\\vert\na_{ij}\\vert\n\\]\n\nfor each column compute the sum of absolute values and take the maximal one\nasdasd\n\n\n\n2 norm\n\\[\n\\Vert A\\Vert _2=\\sqrt{\\lambda _{\\max} (A^{T}A)}\n\\]\n\ntake the square root of the maximal absolute value eigenvalue of the matrix \\((A^{T}A)\\)\n\n\n\n\\(\\infty\\) norm\n\\[\n\\Vert A\\Vert _\\infty=\\max_{1\\leq i\\leq n}\\sum_{j=1}^n\\vert a_{ij}\\vert\n\\]\n\nfor each row compute the sum of absolute values and take the maximal one"
+    "text": "computational rules\n\n\\(a_{ij}\\) is \\(j\\)-th element of the \\(i\\)-th row for a matrix \\(A\\)\n\n\n1-norm\n\nread this for details \\[\n\\Vert A\\Vert _1=\\max\\limits_{1\\leq j\\leq n}\\sum\\limits_{i=1}^n\\vert\na_{ij}\\vert\n\\]\nfor each column compute the sum of absolute values and take the maximal one\n\n\n\n2 norm\n\\[\n\\Vert A\\Vert _2=\\sqrt{\\lambda _{\\max} (A^{T}A)}\n\\]\n\ntake the square root of the maximal absolute value eigenvalue of the matrix \\((A^{T}A)\\)\n\n\n\n\\(\\infty\\) norm\n\\[\n\\Vert A\\Vert _\\infty=\\max_{1\\leq i\\leq n}\\sum_{j=1}^n\\vert a_{ij}\\vert\n\\]\n\nfor each row compute the sum of absolute values and take the maximal one"
   },
   {
     "objectID": "store/norm/concepts_draft.html#numerical-example",
@@ -355,5 +355,19 @@
     "title": "norm/concepts_draft",
     "section": "ill-conditioned",
     "text": "ill-conditioned\n\nif \\(\\text{cond}(A)*b_{\\text{relative error}}\\ge 1\\) the system is called ill-conditioned\nit means that the absolute error in the solution can be as large as the true solution itself - it is bad."
+  },
+  {
+    "objectID": "store/norm/notes_norm.html#norm",
+    "href": "store/norm/notes_norm.html#norm",
+    "title": "norm/notes_norm",
+    "section": "\\(1\\)-norm",
+    "text": "\\(1\\)-norm\n\\[\\begin{gather*}\n\\sum_{i}\\vert(Ax)_{i}\\vert\\le\n\\sum_{i}\\sum_{j} \\vert a_{ij}\\vert \\vert x_{j}\\vert=\n\\sum_{j} \\vert x_{j}\\vert \\sum_{i} \\vert a_{ij}\\vert \\le\n\\sum_{j} \\vert x_{j}\\vert \\Vert A\\Vert_{1} \\le\n\\Vert x\\Vert_{1} \\Vert A\\Vert_{1}\n\\end{gather*}\\] if the maximum is attained in the \\(j\\)-th column then for the vector \\(e_{j}\\) the two sides are equal."
+  },
+  {
+    "objectID": "store/norm/notes_norm.html#infty-norm",
+    "href": "store/norm/notes_norm.html#infty-norm",
+    "title": "norm/notes_norm",
+    "section": "\\(\\infty\\)-norm",
+    "text": "\\(\\infty\\)-norm\n\\[\\begin{gather*}\n\\vert(Ax)_{i}\\vert=\n\\vert\\sum_{j} a_{ij} x_{j}\\vert\\le\n\\sum_{j} \\vert a_{ij}\\vert \\vert x_{j}\\vert\\le\n\\sum_{j} \\vert a_{ij}\\vert \\Vert x\\Vert_{\\infty}\\le\n\\Vert A\\Vert_{\\infty} \\vert \\Vert x\\Vert_{\\infty}\n\\end{gather*}\\] if the maximum in the \\(i\\)-th row then for the sign vector of that row equality holds."
   }
 ]
