@@ -229,5 +229,131 @@
     "title": "differenciálás",
     "section": "",
     "text": "pillanatnyi változási gyorsaság\n\naz érintő \\(x\\) tengellyel bezárt szögének tangense, meredekség.\n\n\\[\n   f'(x_0)=\\lim_{h\\to 0} \\frac{f(x_0+h)-f(x_0)}{h}\n\\]\n\n\n\nderiválás és műveletek (\n\nlegyen \\(C\\in\\mathbb{R}\\)\n\n\\[\\begin{gather*}\n  (Cf)'=cf'\\hspace{1cm}\\\\\n  (f+g)=f'+g'\\\\\n  (fg)'=f'g+fg'\\\\\n  \\left( \\frac{f}{g}\\right) '=\\frac{f'g-fg'}{g^2}\\hspace{1cm} g\\neq 0\\\\\n  f(g)'=f'(g)g'\\\\\n  (f^{-1})'(x)=\\frac{1}{f'(f^{-1}(x))}\n\\end{gather*}\\]\n\n\n\nelemi függvények deriváltjai\n\\[\\begin{gather*}\n  C' =  0\\\\\n  (x^{C})' = Cx^{C-1}\\\\\n  \\exp(x)'=exp(x)\\\\\n  (C^x)'=\\log(C)C^x\\hspace{1cm}C&gt;0\\\\\n  \\sin(x)'=\\cos(x)\\\\\n  \\cos(x)'=-\\sin(x)\\\\\n  \\tan(x)'=\\frac{1}{\\cos(x)^2}\\\\\n  \\cot(x)'=-\\frac{1}{\\sin(x)^2}\\\\\n  \\log(|x|)'=\\frac{1}{x}\\hspace{1cm}x\\neq0\n\\end{gather*}\\]\n\n\n\nszámoljuk ki \\(f'\\)-t adott \\(f\\) esetén\n\n\\(f(x)=e^{xe^{\\sin(x)}}\\)\n\nválasz: \\(e^{xe^{\\sin(x)}}(e^{\\sin(x)}+xe^{\\sin(x)}\\cos(x))\\)\n\n\\(f(x)=\\frac{\\log(x\\log(x))}{x^2}\\)\n\nválasz: \\(\\frac{\\log(x) + 1}{x^3\\log(x)} - \\frac{2\\log(x\\log(x))}{x^3}\\)\n\n\n\n\n\nmatlab\n\nsyms, diff"
+  },
+  {
+    "objectID": "store/norm/notes_vector_norms.html",
+    "href": "store/norm/notes_vector_norms.html",
+    "title": "norm/notes_vector_norms",
+    "section": "",
+    "text": "\\(\\Vert x+y\\Vert_{2} \\le \\Vert x\\Vert_{2}+\\Vert y\\Vert_{2}\\)\n\ninner/scalar/dot product: \\(\\langle x,y\\rangle=\\sum_{i=1}^{n} x_{k}y_{k}\\)\n\\(\\Vert x\\Vert_{2}=\\sqrt{\\langle x,y\\rangle}\\)\nan important inequality related to the scalar product: Cauchy-Bunyakovsky-Schwarz\ntriangle inequality for \\(\\Vert . \\Vert_{2}\\) is the consequence of the CBS-inequality\nequality holds iff. \\(x=0 \\ \\text{ or }\\  y=0 \\ \\text{ or }\\  x=\\lambda y \\text{ for some } \\lambda&gt;0\\)"
+  },
+  {
+    "objectID": "store/norm/notes_norm.html",
+    "href": "store/norm/notes_norm.html",
+    "title": "norm/notes_norm",
+    "section": "",
+    "text": "triangle-inequality\n\n\\(\\Vert x+y\\Vert_{2} \\le \\Vert x\\Vert_{2}+\\Vert y\\Vert_{2}\\)\ninner/scalar/dot product: \\(\\langle x,y\\rangle=\\sum_{i=1}^{n} x_{k}y_{k}\\)\n\\(\\Vert x\\Vert_{2}=\\sqrt{\\langle x,y\\rangle}\\)\nan important inequality related to the scalar product: CBS-inequality\nthe triangle inequality for \\(\\Vert . \\Vert_{2}\\) is the consequence of the CBS-inequality\nequality holds iff. \\(x=0 \\ \\text{ or }\\  y=0 \\ \\text{ or }\\  x=\\lambda y \\text{ for some } \\lambda&gt;0\\)\nthe two inequalities in \\(\\mathbb{R}^{n}\\) are the same (equivalent)\n\n\n\ninduced-norm-definition\n\nthe two sets below are equal. why? \\[\\begin{gather*}\nS_1 = \\left\\{ \\frac{\\Vert Ax\\Vert}{\\Vert x\\Vert} \\ :\\  x\\neq 0 \\right\\}\\\\\nS_2 = \\left\\{ \\Vert Ax\\Vert \\ :\\  \\Vert x\\Vert = 1 \\right\\}\n\\end{gather*}\\]\n\\(x\\rightarrow \\Vert x\\Vert\\) is continous\n\\(S_2\\) is a closed, bounded set of \\(\\mathbb{R}^n\\)\nthe maximum in the definition of the induced matrix norm is well defined because of the multivariable form of EVT\n\n\n\ncond-inequality\n\\[\\begin{gather*}\nA\\Delta x =\\Delta b\\ \\ \\longrightarrow\\ \\ \\Delta x =A^{-1}\\Delta b\\\\\n\\frac{\\Vert \\Delta x\\Vert}{\\Vert x\\Vert} =\n\\frac{\\Vert A^{-1}\\Delta b\\Vert}{\\Vert x\\Vert} \\le\n\\frac{\\Vert A^{-1}\\Vert \\Vert\\Delta b\\Vert}{\\Vert x\\Vert}\\le\\ \\  (*)\\\\\nAx =b\\ \\ \\longrightarrow\\ \\ \\ \\frac{1}{\\Vert x\\Vert}\\le \\frac{\\Vert A\\Vert}{\\Vert b\\Vert}\\\\\n(*) = \\Vert A\\Vert \\Vert A^{-1}\\Vert \\frac{\\Vert \\Delta b\\Vert}{\\Vert b\\Vert}\n\\end{gather*}\\] if \\(\\Vert Ax\\Vert \\approx \\Vert A\\Vert\\Vert x\\Vert\\) and \\(\\Vert A^{-1}\\Delta b\\Vert \\approx \\Vert A^{-1}\\Vert\\Vert \\Delta b\\Vert\\) then the two sides are also close to each other - worst case scenario."
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#review",
+    "href": "store/norm/concepts_draft.html#review",
+    "title": "norm/concepts_draft",
+    "section": "",
+    "text": "in this section \\(x,y \\in \\mathbb{R}\\)\nhow large is a real number?\nabsolute value, distance from zero\n\n\\[\n\\vert x \\vert =\n\\begin{cases}\n  x & \\text{ if }\\ \\ x\\ge 0\\\\\n  -x & \\text{ otherwise }\n\\end{cases}\n\\]\n\nproperties:\n\n\\(\\vert x\\vert\\ge 0\\) and \\(\\vert x\\vert=0\\ \\text{ iff }\\ x=0\\)\n\\(\\vert x+y \\vert \\le \\vert x\\vert + \\vert y \\vert\\)\n\\(\\vert x\\cdot y \\vert = \\vert x\\vert \\cdot \\vert y \\vert\\)"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#review-1",
+    "href": "store/norm/concepts_draft.html#review-1",
+    "title": "norm/concepts_draft",
+    "section": "review",
+    "text": "review\n\nin this section \\(x,y \\in \\mathbb{R}^n\\) and \\(\\alpha \\in \\mathbb{R}\\)\nhow large is a vector?\nit is denoted by \\(\\Vert x \\Vert\\)\nrequirements (axioms):\n\n\\(\\Vert x\\Vert\\ge 0\\) and \\(\\Vert x\\Vert=0\\ \\text{ iff }\\ x=0\\)\n\\(\\Vert x+y \\Vert \\le \\Vert x\\Vert + \\Vert y \\Vert\\)\n\nit is the triangle inequality\n\n\\(\\Vert \\alpha \\cdot x \\Vert = \\vert \\alpha\\vert \\cdot \\Vert x \\Vert\\)\n\nthe following vector norms are important\n\n\\(\\Vert x \\Vert_{2} = \\sqrt{\\vert x_1\\vert^2 + \\ldots + \\vert x_n\\vert^2}\\ \\ \\) (euclidean or 2-norm)\n\\(\\Vert x \\Vert_{1} = \\vert x_1\\vert + \\ldots + \\vert x_n\\vert\\ \\ \\) (manhattan or 1-norm)\n\\(\\Vert x \\Vert_{\\infty} = \\max_{i=k\\ldots n}\\vert x_k\\vert\\ \\ \\) (\\(\\infty\\)-norm)\n\nthe distance between vectors: \\(\\Vert x-y\\Vert\\)\n\nsmall: close to each other\nlarge: far from each other\n\nread this for more details"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#additional-properties",
+    "href": "store/norm/concepts_draft.html#additional-properties",
+    "title": "norm/concepts_draft",
+    "section": "additional-properties",
+    "text": "additional-properties\n\nfor all \\(x \\in \\mathbb{R}^{n}\\) \\[\n\\Vert x\\Vert_{\\infty} \\le \\Vert x\\Vert_{2} \\le \\Vert x\\Vert_{1}\n\\]"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#properties",
+    "href": "store/norm/concepts_draft.html#properties",
+    "title": "norm/concepts_draft",
+    "section": "properties",
+    "text": "properties\n\nthe following properties are also valid\n\n\\[\\begin{gather*}\n\\Vert E \\Vert = 1\\\\\n\\Vert A\\cdot x\\Vert \\le \\Vert A\\Vert \\cdot \\Vert x \\Vert\\\\\n\\Vert A\\cdot B \\Vert \\le \\Vert A\\Vert \\cdot \\Vert B \\Vert\\\\\n\\end{gather*}\\]"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#additional-properties-1",
+    "href": "store/norm/concepts_draft.html#additional-properties-1",
+    "title": "norm/concepts_draft",
+    "section": "additional properties",
+    "text": "additional properties\n\nfor all \\(A \\in {\\cal M}_{n\\times n}\\): \\[\n\\Vert A\\Vert_{\\infty} \\le \\Vert A\\Vert_{2} \\le \\Vert A\\Vert_{1}\n\\]"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#computational-rules",
+    "href": "store/norm/concepts_draft.html#computational-rules",
+    "title": "norm/concepts_draft",
+    "section": "computational rules",
+    "text": "computational rules\n\n\\(a_{ij}\\) is \\(j\\)-th element of the \\(i\\)-th row for a matrix \\(A\\)\n\n\n1-norm\n\\[\n\\Vert A\\Vert _1=\\max\\limits_{1\\leq j\\leq n}\\sum\\limits_{i=1}^n\\vert\na_{ij}\\vert\n\\]\n\nfor each column compute the sum of absolute values and take the maximal one\nasdasd\n\n\n\n2 norm\n\\[\n\\Vert A\\Vert _2=\\sqrt{\\lambda _{\\max} (A^{T}A)}\n\\]\n\ntake the square root of the maximal absolute value eigenvalue of the matrix \\((A^{T}A)\\)\n\n\n\n\\(\\infty\\) norm\n\\[\n\\Vert A\\Vert _\\infty=\\max_{1\\leq i\\leq n}\\sum_{j=1}^n\\vert a_{ij}\\vert\n\\]\n\nfor each row compute the sum of absolute values and take the maximal one"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#numerical-example",
+    "href": "store/norm/concepts_draft.html#numerical-example",
+    "title": "norm/concepts_draft",
+    "section": "numerical-example",
+    "text": "numerical-example\n\\[\nA=\\left[\\begin{array}{rrr}\n-3&0&4\\\\\n1&-1&2\\\\\n-2&1&-2\n\\end{array}\\right]\n\\]\n\n\\(\\Vert A\\Vert_{1}= 8\\)\n\\(\\Vert A\\Vert_{\\infty}= 7\\)"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#norm-in-matlab",
+    "href": "store/norm/concepts_draft.html#norm-in-matlab",
+    "title": "norm/concepts_draft",
+    "section": "norm-in-matlab",
+    "text": "norm-in-matlab\n\nthe function calls norm(A,1), norm(A,2), norm(A,inf) can be used"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#example-linsys",
+    "href": "store/norm/concepts_draft.html#example-linsys",
+    "title": "norm/concepts_draft",
+    "section": "example (linsys)",
+    "text": "example (linsys)\n\ncompare the solutions of the linear systems below \\[\n\\left[\n\\begin{array}{rr}\n1&1\\\\\n1&1.0001\n\\end{array}\n\\right]\n\\left[\\begin{array}{r}\nx_1\\\\\nx_2\n\\end{array}\\right] =\n\\left[\\begin{array}{r}\n2\\\\\n2\n\\end{array}\\right]\n\\]\n\n\\(x=[2,0]^{T}\\) \\[\n\\left[\n\\begin{array}{rr}\n1&1\\\\\n1&1.0001\n\\end{array}\n\\right]\n\\left[\\begin{array}{r}\ny_1\\\\\ny_2\n\\end{array}\\right] =\n\\left[\\begin{array}{r}\n2\\\\\n2.0001\n\\end{array}\\right]\n\\]\n\\(y=[1,1]^{T}\\)\n\nlarge difference, despite the matrix is the same and the right hand sides are very close to each other (in vector norm!)\nhow can we explain this behavior?"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#inequality",
+    "href": "store/norm/concepts_draft.html#inequality",
+    "title": "norm/concepts_draft",
+    "section": "inequality",
+    "text": "inequality\n\nthis is the error in the right hand side inequality\nlet the matrix \\(A\\) be invertible and fix a vector norm and the corresponding matrix norm\nconsider the linear systems: \\[\\begin{align*}\nAx &= b \\\\\nA(x+\\Delta{x}) &= b+\\Delta{b}\n\\end{align*}\\]\nwe’ll have different solutions for the systems, but how far they are from each other?\nthe following inequality holds: \\[\n\\frac{\\Vert \\Delta{x}\\Vert}{\\Vert x\\Vert} \\le \\Vert A\\Vert \\Vert A^{-1}\\Vert \\frac{\\Vert \\Delta{b}\\Vert}{\\Vert b\\Vert}\n\\]\nthe inequality is tight, no gap between the sides\nread it: the relative error in the solution is in the worst case is \\(\\Vert A\\Vert \\Vert A^{-1}\\Vert\\) times the relative error in the right hand side\nthe quantity \\(\\Vert A\\Vert \\Vert A^{-1}\\Vert\\) is called the conditional number of \\(A\\)\n\n\\(\\text{cond}(A)=\\Vert A\\Vert \\Vert A^{-1}\\Vert\\)\n\nread this for more details \\[\nx_{\\text{relative error}} \\le \\text{cond}(A) b_{\\text{relative error}}\n\\]\nimportant: this kind of error propagation has nothing to do with floating point computational errors."
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#matlab",
+    "href": "store/norm/concepts_draft.html#matlab",
+    "title": "norm/concepts_draft",
+    "section": "matlab",
+    "text": "matlab\n\nnorm(x,1), norm(x,2), norm(x,inf)"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#matlab-1",
+    "href": "store/norm/concepts_draft.html#matlab-1",
+    "title": "norm/concepts_draft",
+    "section": "matlab",
+    "text": "matlab\n\nnorm(A,1), norm(A,2), norm(A,inf)"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#matlab-2",
+    "href": "store/norm/concepts_draft.html#matlab-2",
+    "title": "norm/concepts_draft",
+    "section": "matlab",
+    "text": "matlab\n\ncond(A,1), cond(A,2), cond(A,inf)"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#example-linsys-continued",
+    "href": "store/norm/concepts_draft.html#example-linsys-continued",
+    "title": "norm/concepts_draft",
+    "section": "example (linsys, continued)",
+    "text": "example (linsys, continued)\n\nexamine the output of the script below\nplay with different \\(p\\) values!\n\nclc;\np=1;\nnrm=@(x)norm(x,p);\ncnd=@(x)cond(x,p);\nA=[1,1;1,1.0001];\nb0=[2;2];\nb1=[2;2.0001];\nx0=A\\b0;\nx1=A\\b1;\nxrel=nrm(x0-x1)/nrm(x0);\nbrel=nrm(b0-b1)/nrm(b0);\ndisp(\"observed: \"+string(xrel/brel));\ndisp(\"theory  : \"+string(cnd(A)));"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#properties-1",
+    "href": "store/norm/concepts_draft.html#properties-1",
+    "title": "norm/concepts_draft",
+    "section": "properties",
+    "text": "properties\n\nits value does depend on the norm used\n\\(\\text{cond}(A) \\geq 1\\)\nif \\(A\\) is orthogonal (\\(A^{T}A=E\\)), then \\(\\text{cond}_{2}(A)=1\\)\n\\[\n\\left\\vert\\frac{\\lambda_{\\max}}{\\lambda_{\\min}}\\right\\vert\\leq \\text{cond}(A)\n\\]\n\nhere \\(\\lambda_{\\max}\\) and \\(\\lambda_{\\min}\\) are the largest and smallest eigenvalues in absolute value of \\(A\\)\n\nfor \\(c\\neq 0\\), \\(\\text{cond}(cA)=\\text{cond}(A)\\)"
+  },
+  {
+    "objectID": "store/norm/concepts_draft.html#ill-conditioned",
+    "href": "store/norm/concepts_draft.html#ill-conditioned",
+    "title": "norm/concepts_draft",
+    "section": "ill-conditioned",
+    "text": "ill-conditioned\n\nif \\(\\text{cond}(A)*b_{\\text{relative error}}\\ge 1\\) the system is called ill-conditioned\nit means that the absolute error in the solution can be as large as the true solution itself - it is bad."
   }
 ]
