@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-02-22">
 
-<title>numerical mathematics – eduhub</title>
+<title>exercises_draft – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,27 +21,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,8 +105,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">eduhub</span>
     </a>
   </div>
@@ -91,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -110,10 +174,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#information" id="toc-information" class="nav-link active" data-scroll-target="#information">information</a></li>
-  <li><a href="#matlab-introduction" id="toc-matlab-introduction" class="nav-link" data-scroll-target="#matlab-introduction">matlab introduction</a></li>
-  <li><a href="#floating-point-numbers" id="toc-floating-point-numbers" class="nav-link" data-scroll-target="#floating-point-numbers">floating point numbers</a></li>
-  <li><a href="#norms-condition-numbers" id="toc-norms-condition-numbers" class="nav-link" data-scroll-target="#norms-condition-numbers">norms, condition numbers</a></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link active" data-scroll-target="#tools">tools</a></li>
+  <li><a href="#create-vectors0" id="toc-create-vectors0" class="nav-link" data-scroll-target="#create-vectors0">create vectors0</a></li>
+  <li><a href="#create-vectors" id="toc-create-vectors" class="nav-link" data-scroll-target="#create-vectors">create vectors</a></li>
+  <li><a href="#modify-vectors" id="toc-modify-vectors" class="nav-link" data-scroll-target="#modify-vectors">modify vectors</a></li>
+  <li><a href="#floating-point-systems" id="toc-floating-point-systems" class="nav-link" data-scroll-target="#floating-point-systems">floating point systems</a></li>
   </ul>
 </nav>
     </div>
@@ -122,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">numerical mathematics</h1>
+<h1 class="title">exercises_draft</h1>
 </div>
 
 
@@ -145,18 +210,247 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="information" class="level1">
-<h1><a href="../num-math/info/index.html">information</a></h1>
-<hr>
+<section id="tools" class="level1">
+<h1>tools</h1>
+<ul>
+<li><code>:</code>, <code>==,&lt;,&gt;</code>,<code>x(I)</code>,<code>repmat</code></li>
+<li>math functions</li>
+<li><code>randi</code>,<code>rand</code> for generate test vectors</li>
+<li><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="va">y</span><span class="op">=</span><span class="va">f</span>(<span class="va">x</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span><span class="op">=...</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">f</span><span class="op">=@</span>(<span class="va">x</span>) <span class="op">...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">i</span><span class="op">=...</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">while</span> <span class="op">...</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
 </section>
-<section id="matlab-introduction" class="level1">
-<h1><a href="../store/matlab-basics/index.html">matlab introduction</a></h1>
+<section id="create-vectors0" class="level1">
+<h1>create vectors0</h1>
+<ul>
+<li>by vector here we mean row vector</li>
+<li><span class="math inline">\([1,2,...,21,22]\)</span></li>
+<li>write a function that returns the vector <span class="math inline">\([1,2,...,n-1,n]\)</span>, given <span class="math inline">\(n\)</span></li>
+<li>write a function that returns the sum of the a vector <span class="math inline">\([1,2,...,n-1,n]\)</span>, given <span class="math inline">\(n\)</span></li>
+<li><span class="math inline">\([22,21..2,1]\)</span></li>
+<li>write a function that returns <span class="math inline">\([n,n-1,...,2,1]\)</span>, given <span class="math inline">\(n\)</span></li>
+<li><span class="math inline">\([1,3,5,...,19,21]\)</span></li>
+<li>write a function that returns the vector with odd numbers <span class="math inline">\(\le n\)</span>, given <span class="math inline">\(n\)</span></li>
+<li>write a function that returns the sum of the odd numbers <span class="math inline">\(\le n\)</span>, given <span class="math inline">\(n\)</span></li>
+<li><span class="math inline">\([2,4,6,...,20,22]\)</span></li>
+<li>write a function that returns a vector with even numbers <span class="math inline">\(\le n\)</span>, given <span class="math inline">\(n\)</span></li>
+<li>write a function that returns the sum of the even numbers <span class="math inline">\(\le n\)</span>, given <span class="math inline">\(n\)</span></li>
+<li><span class="math inline">\([1^2,2^2,...,21^2,22^2]\)</span></li>
+<li>write a function that returns <span class="math inline">\([1^2,2^2,...,(n-1)^2,n^2]\)</span>, given <span class="math inline">\(n\)</span></li>
+<li><span class="math inline">\([0,1,0,1,...,]\)</span> of length <span class="math inline">\(22\)</span></li>
+<li>write a function that returns the length <span class="math inline">\(n\)</span> vector <span class="math inline">\([0,1,0,1,...]\)</span>, given <span class="math inline">\(n\)</span></li>
+<li><span class="math inline">\([1,2,3,2,1,2,3,2,1...,]\)</span> of length <span class="math inline">\(22\)</span></li>
+<li>write a function that returns the length <span class="math inline">\(n\)</span> vector <span class="math inline">\([1,2,3,2,1,2,3,2,1...,]\)</span>, given <span class="math inline">\(n\)</span></li>
+<li><span class="math inline">\([-1,2,-3,...-21,22]\)</span></li>
+<li>write a function that returns the length <span class="math inline">\(n\)</span> vector <span class="math inline">\([-1,2,-3,4,...]\)</span>, given <span class="math inline">\(n\)</span></li>
+<li><span class="math inline">\([1,2,3,...,22,1,2,3,...,22]\)</span></li>
+<li>given the vector <span class="math inline">\(x=[222,221,...,2,1]\)</span>
+<ul>
+<li>remove the odd elements from <span class="math inline">\(x\)</span></li>
+<li>remove the elements at odd indexed positions from <span class="math inline">\(x\)</span></li>
+<li>remove the prime numbers from <span class="math inline">\(x\)</span></li>
+<li>remove the elements at prime indexed positions from <span class="math inline">\(x\)</span></li>
+<li>remove the square numbers from <span class="math inline">\(x\)</span></li>
+<li>remove the elements at square number indexed positions from <span class="math inline">\(x\)</span></li>
+<li>remove the powers of <span class="math inline">\(2\)</span> from <span class="math inline">\(x\)</span></li>
+<li>remove the elements at powers of <span class="math inline">\(2\)</span> indexed positions from <span class="math inline">\(x\)</span></li>
+</ul></li>
+<li>given the vector <span class="math inline">\(x\)</span> with integers
+<ul>
+<li>remove the odd elements from <span class="math inline">\(x\)</span></li>
+<li>remove the prime numbers from <span class="math inline">\(x\)</span></li>
+<li>remove the squares from <span class="math inline">\(x\)</span></li>
+<li>remove the powers of <span class="math inline">\(2\)</span> from <span class="math inline">\(x\)</span></li>
+</ul></li>
+</ul>
 </section>
-<section id="floating-point-numbers" class="level1">
-<h1><a href="../store/floats/index.html">floating point numbers</a></h1>
+<section id="create-vectors" class="level1">
+<h1>create vectors</h1>
+<ul>
+<li><p>in the following exercises you should create the given vectors.</p></li>
+<li><p>it is enough to focus to the row-vectors (<code>transpose</code> and <code>'</code>)</p></li>
+<li><p>note that the supplied answer is <em>not</em> the only possible one.</p></li>
+<li><p>tools: <code>:, repmat</code></p>
+<table class="short-q" id="create vectors
+">
+<tbody><tr>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<p><span class="math inline">\([1,2,...,21,22]\)</span> &nbsp;&nbsp;</p>
+</summary>
+
+<p><code>1:22</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([22,21,...,2,1]\)</span> &nbsp;&nbsp;
+</summary>
+<p><code>22:-1:1</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([1,3,...,19,21]\)</span> &nbsp;&nbsp;
+</summary>
+<p><code>1:2:21</code></p>
+</details>
+</td>
+</tr>
+<tr>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([21,19,...,3,1]\)</span> &nbsp;&nbsp;
+</summary>
+<p><code>21:-1:1</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([1,4,9,...,81,100]\)</span> &nbsp;&nbsp;
+</summary>
+<p><code>(1:10).^2</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([1,2,1,2,...]\)</span> of length 22 &nbsp;&nbsp;
+</summary>
+<p><code>repmat([1,2],1,11)</code></p>
+</details>
+</td>
+</tr>
+<tr>
+<td class="short-q">
+<details class="short-q" name="create vectors
+">
+<summary class="short-q">
+<span class="math inline">\([1,2,3,1,2,3...]\)</span> of length 22 &nbsp;&nbsp;
+</summary>
+<p><code>t=repmat([1,2],1,8); t(1:22)</code></p>
+</details>
+</td>
+</tr>
+</tbody></table>
+</li></ul></section>
+<section id="modify-vectors" class="level1">
+<h1>modify vectors</h1>
+<ul>
+<li>create a vector <code>b</code> from <code>a</code> …</li>
+<li>note that the supplied answer is <strong>not</strong> the only possible one.</li>
+<li>you should inspect if your answer is correct or not</li>
+<li>tools: <code>:, a(...), []</code></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">a</span><span class="op">=</span>[<span class="va">nan</span><span class="op">,</span><span class="fl">3</span><span class="op">,</span><span class="fl">4</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">7</span><span class="op">,-</span><span class="fl">10</span><span class="op">,</span><span class="fl">11</span><span class="op">,</span><span class="va">pi</span><span class="op">,-</span><span class="va">sin</span>(<span class="fl">2</span>)<span class="op">,</span><span class="fl">2</span><span class="op">^</span><span class="fl">3</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">2</span><span class="op">^</span><span class="fl">3</span><span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="va">inf</span><span class="op">,</span><span class="fl">100</span><span class="op">,</span><span class="fl">10000</span><span class="op">,</span><span class="fl">7</span><span class="op">,</span><span class="va">pi</span><span class="op">,-</span><span class="va">pi</span><span class="op">,</span><span class="fl">4</span><span class="op">^</span><span class="fl">4</span>]<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="short-q" id="modify vectors
+">
+<tbody><tr>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+by removing the even indexed elements &nbsp;&nbsp;
+</summary>
+<p><code>b=a(1:2:end)</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+by extending it to the left with a vector <code>[0, 1, 2]</code> &nbsp;&nbsp;
+</summary>
+<p><code>b=[[0,1,2],a];</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+by removing the elements that are <em>not</em> integers &nbsp;&nbsp;
+</summary>
+<p><code>b=a(a==floor(a));</code></p>
+</details>
+</td>
+</tr>
+<tr>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+by removing the elements that are integers &nbsp;&nbsp;
+</summary>
+<p><code>b=a(not(a==floor(a)));</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+by removing <code>nan</code>-s and <code>inf,-inf</code>-s &nbsp;&nbsp;
+</summary>
+<p><code>b=a(not(isnan(a)|isinf(a)));</code></p>
+</details>
+</td>
+<td class="short-q">
+<details class="short-q" name="modify vectors
+">
+<summary class="short-q">
+keeping only the square integers &nbsp;&nbsp;
+</summary>
+<pre><code>% it's far from optimal
+b=a(not(isnan(a)|isinf(a))); 
+b=b(b&gt;=0);
+tmp=sqrt(b);
+b=b(floor(tmp)==tmp);</code></pre>
+</details>
+</td>
+</tr>
+</tbody></table>
 </section>
-<section id="norms-condition-numbers" class="level1">
-<h1><a href="../store/norms/index.html">norms, condition numbers</a></h1>
+<section id="floating-point-systems" class="level1">
+<h1>floating point systems</h1>
+<ul>
+<li>let <span class="math inline">\({\cal F}=\{a=2, k_{-}=-3, k_{+}=3, t=4\}\)</span>
+<ol type="1">
+<li>compute the (normalized) representations for <span class="math inline">\(0.2,\ 1.45,\ \pi\)</span> in <span class="math inline">\(\cal F\)</span> using regular rounding</li>
+<li>what is <span class="math inline">\(\varepsilon_{0},\ \varepsilon_{1},\ M_{\infty},\ 1_{+},\ 1_{-}\)</span> in <span class="math inline">\(\cal F\)</span></li>
+<li>how many positive numbers <span class="math inline">\(\cal F\)</span> has?</li>
+<li>what is the smallest positive integer that is not in <span class="math inline">\(\cal F\)</span>?</li>
+</ol></li>
+<li>these are <code>double</code> system related exercises
+<ul>
+<li>write a function that returns <span class="math inline">\(\varepsilon_{0}\)</span>!</li>
+<li>write a function that returns <span class="math inline">\(\varepsilon_{1}\)</span>!</li>
+<li>write a function that returns <span class="math inline">\(x_{+}\)</span>, given <span class="math inline">\(x\)</span>!</li>
+<li>verify, that <span class="math inline">\((x+y)+z \neq x+(y+z)\)</span> for <span class="math inline">\(x=0.4,\ y=-0.5, z=0.1\)</span>
+<ul>
+<li>does it occur frequently?</li>
+</ul></li>
+<li>let <span class="math inline">\(x=\frac{1}{3}\)</span>. iterate <span class="math inline">\(n=10,50,100\)</span> times the assignment: <span class="math inline">\(x=4x-1\)</span>. what can be observed?</li>
+</ul></li>
+</ul>
 
 
 </section>
