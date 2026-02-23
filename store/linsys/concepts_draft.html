@@ -178,16 +178,16 @@ window.Quarto = {
   <li><a href="#transformations" id="toc-transformations" class="nav-link" data-scroll-target="#transformations">transformations</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">examples</a>
   <ul class="collapse">
-  <li><a href="#unique-solution" id="toc-unique-solution" class="nav-link" data-scroll-target="#unique-solution">unique solution</a></li>
-  <li><a href="#solutions" id="toc-solutions" class="nav-link" data-scroll-target="#solutions"><span class="math inline">\(0\)</span> solutions</a></li>
-  <li><a href="#infty-solutions" id="toc-infty-solutions" class="nav-link" data-scroll-target="#infty-solutions"><span class="math inline">\(\infty\)</span> solutions</a></li>
+  <li><a href="#sec-ge1" id="toc-sec-ge1" class="nav-link" data-scroll-target="#sec-ge1">unique solution</a></li>
+  <li><a href="#sec-ge0" id="toc-sec-ge0" class="nav-link" data-scroll-target="#sec-ge0"><span class="math inline">\(0\)</span> solutions</a></li>
+  <li><a href="#sec-geinf" id="toc-sec-geinf" class="nav-link" data-scroll-target="#sec-geinf"><span class="math inline">\(\infty\)</span> solutions</a></li>
   <li><a href="#matlab" id="toc-matlab" class="nav-link" data-scroll-target="#matlab">matlab</a></li>
   </ul></li>
   <li><a href="#the-examples-w-rref" id="toc-the-examples-w-rref" class="nav-link" data-scroll-target="#the-examples-w-rref">the examples w/ <code>rref</code></a>
   <ul class="collapse">
   <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution"><span class="math inline">\(1\)</span> solution</a></li>
-  <li><a href="#solutions-1" id="toc-solutions-1" class="nav-link" data-scroll-target="#solutions-1"><span class="math inline">\(0\)</span> solutions</a></li>
-  <li><a href="#infty-solutions-1" id="toc-infty-solutions-1" class="nav-link" data-scroll-target="#infty-solutions-1"><span class="math inline">\(\infty\)</span> solutions</a></li>
+  <li><a href="#solutions" id="toc-solutions" class="nav-link" data-scroll-target="#solutions"><span class="math inline">\(0\)</span> solutions</a></li>
+  <li><a href="#infty-solutions" id="toc-infty-solutions" class="nav-link" data-scroll-target="#infty-solutions"><span class="math inline">\(\infty\)</span> solutions</a></li>
   </ul></li>
   <li><a href="#complexity" id="toc-complexity" class="nav-link" data-scroll-target="#complexity">complexity</a></li>
   <li><a href="#lu-factorization" id="toc-lu-factorization" class="nav-link" data-scroll-target="#lu-factorization">LU factorization</a>
@@ -273,7 +273,7 @@ x_{1}a_{.1}+x_{2}a_{.2}+\ldots+x_{n}a_{.n}=b\\
 <li><strong>multiply</strong> the <span class="math inline">\(i\)</span>-th row by a nonzero scalar: <span class="math inline">\(a_{i.}=\lambda a_{i.}, \ \ b_{i}=\lambda b_{i}\)</span></li>
 <li><strong>elimination</strong>: <span class="math inline">\(a_{j.}=a_{j.}-\lambda a_{i.},\ \ b_{j}=b_{j}-\lambda b_{i}\)</span>
 <ul>
-<li>the <span class="math inline">\(lambda\)</span> is called an eliminating factor</li>
+<li>the <span class="math inline">\(lambda\)</span> is called an eliminating factor (<span class="math inline">\(i\neq j\)</span>)</li>
 </ul></li>
 <li><strong>swap</strong> the <span class="math inline">\(i\)</span>-th and <span class="math inline">\(j\)</span>-th row: <span class="math inline">\(a_{i.}\leftrightarrow a_{j.},\ b_{i}\leftrightarrow b_{j}\)</span></li>
 </ul></li>
@@ -287,7 +287,7 @@ M_{K}\ldots M_{2}M_{1}Ax=M_{K}\ldots M_{2}M_{1}b
 \end{gather*}
 \]</span></p></li>
 <li><p>where each of the <span class="math inline">\(M_{k}\)</span>’s are invertible <span class="math inline">\(m\times m\)</span> matrices. That’s why the set of solutions does not change and every linear relationship between the column vectors will be preserved.</p></li>
-<li><p>for example the elimination matrix is <span class="math inline">\(E-\lambda E_{ij}\)</span> where <span class="math inline">\(E\)</span> is the identity matrix, <span class="math inline">\(E_{ij}\)</span> is a matrix of full of zeros but its <span class="math inline">\(ij\)</span>-th element is 1.</p></li>
+<li><p>for example the elimination matrix is <span class="math inline">\(E-\lambda E_{ji}\)</span> where <span class="math inline">\(E\)</span> is the identity matrix, <span class="math inline">\(E_{ji}\)</span> is a matrix of full of zeros but its <span class="math inline">\(ji\)</span>-th element is 1.</p></li>
 <li><p>at the end of these steps (hopefully) we will have a simpler system.</p></li>
 <li><p>performing these steps to reduce the system is called <strong>gaussian-elimination</strong></p></li>
 </ul>
@@ -297,8 +297,8 @@ M_{K}\ldots M_{2}M_{1}Ax=M_{K}\ldots M_{2}M_{1}b
 <ul>
 <li>in the examples below <a href="matlab/mkGauss.m">this</a> program is used.</li>
 </ul>
-<section id="unique-solution" class="level2">
-<h2 class="anchored" data-anchor-id="unique-solution">unique solution</h2>
+<section id="sec-ge1" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ge1">unique solution</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">A</span><span class="op">=</span>[<span class="fl">1</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">3</span><span class="op">;</span><span class="fl">3</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">;</span><span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">3</span>]<span class="op">;</span> <span class="va">b</span><span class="op">=</span>[<span class="fl">1</span><span class="op">;</span><span class="fl">2</span><span class="op">;</span><span class="fl">3</span>]<span class="op">;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">ge</span><span class="op">=</span><span class="va">mkGauss</span>([<span class="va">A</span><span class="op">,</span><span class="va">b</span>])<span class="op">;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>       <span class="fl">1</span>              <span class="fl">2</span>              <span class="fl">3</span>              <span class="fl">1</span>       </span>
@@ -344,8 +344,8 @@ M_{K}\ldots M_{2}M_{1}Ax=M_{K}\ldots M_{2}M_{1}b
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>       <span class="fl">0</span>              <span class="fl">1</span>              <span class="fl">0</span>            <span class="op">-</span><span class="fl">11</span><span class="op">/</span><span class="fl">12</span>    </span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>       <span class="fl">0</span>              <span class="fl">0</span>              <span class="fl">1</span>              <span class="fl">7</span><span class="op">/</span><span class="fl">12</span>           </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="solutions" class="level2">
-<h2 class="anchored" data-anchor-id="solutions"><span class="math inline">\(0\)</span> solutions</h2>
+<section id="sec-ge0" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ge0"><span class="math inline">\(0\)</span> solutions</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">A</span><span class="op">=</span>[<span class="fl">1</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">3</span><span class="op">;</span><span class="fl">3</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">;</span><span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">3</span><span class="op">;-</span><span class="fl">2</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">2</span>]<span class="op">;</span> <span class="va">b</span><span class="op">=</span>[<span class="fl">1</span><span class="op">;</span><span class="fl">2</span><span class="op">;</span><span class="fl">3</span><span class="op">;</span><span class="fl">1</span>]<span class="op">;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">ge</span><span class="op">=</span><span class="va">mkGauss</span>([<span class="va">A</span><span class="op">,</span><span class="va">b</span>])<span class="op">;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>       <span class="fl">1</span>              <span class="fl">2</span>              <span class="fl">3</span>              <span class="fl">1</span>       </span>
@@ -386,8 +386,8 @@ M_{K}\ldots M_{2}M_{1}Ax=M_{K}\ldots M_{2}M_{1}b
 <li>here we stopped after seeing the upper-triangle form, for it is clear that we have no solution.</li>
 </ul>
 </section>
-<section id="infty-solutions" class="level2">
-<h2 class="anchored" data-anchor-id="infty-solutions"><span class="math inline">\(\infty\)</span> solutions</h2>
+<section id="sec-geinf" class="level2">
+<h2 class="anchored" data-anchor-id="sec-geinf"><span class="math inline">\(\infty\)</span> solutions</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">A</span><span class="op">=</span>[<span class="fl">1</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">3</span><span class="op">,</span><span class="fl">4</span><span class="op">;</span><span class="fl">3</span><span class="op">,</span><span class="fl">4</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">;</span><span class="fl">4</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">3</span>]<span class="op">;</span> <span class="va">b</span><span class="op">=</span>[<span class="fl">1</span><span class="op">;</span><span class="fl">2</span><span class="op">;</span><span class="fl">4</span>]<span class="op">;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">ge</span><span class="op">=</span><span class="va">mkGauss</span>([<span class="va">A</span><span class="op">,</span><span class="va">b</span>])<span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>       <span class="fl">1</span>              <span class="fl">2</span>              <span class="fl">3</span>              <span class="fl">4</span>              <span class="fl">1</span>       </span>
@@ -457,8 +457,8 @@ M_{K}\ldots M_{2}M_{1}Ax=M_{K}\ldots M_{2}M_{1}b
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">format</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="solutions-1" class="level2">
-<h2 class="anchored" data-anchor-id="solutions-1"><span class="math inline">\(0\)</span> solutions</h2>
+<section id="solutions" class="level2">
+<h2 class="anchored" data-anchor-id="solutions"><span class="math inline">\(0\)</span> solutions</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">format</span> <span class="va">rat</span><span class="op">;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">A</span><span class="op">=</span>[<span class="fl">1</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">3</span><span class="op">;</span><span class="fl">3</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">;</span><span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">3</span><span class="op">;-</span><span class="fl">2</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">2</span>]<span class="op">;</span> <span class="va">b</span><span class="op">=</span>[<span class="fl">1</span><span class="op">;</span><span class="fl">2</span><span class="op">;</span><span class="fl">3</span><span class="op">;</span><span class="fl">1</span>]<span class="op">;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">rref</span>([<span class="va">A</span><span class="op">,</span><span class="va">b</span>])</span>
@@ -472,8 +472,8 @@ M_{K}\ldots M_{2}M_{1}Ax=M_{K}\ldots M_{2}M_{1}b
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">format</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="infty-solutions-1" class="level2">
-<h2 class="anchored" data-anchor-id="infty-solutions-1"><span class="math inline">\(\infty\)</span> solutions</h2>
+<section id="infty-solutions" class="level2">
+<h2 class="anchored" data-anchor-id="infty-solutions"><span class="math inline">\(\infty\)</span> solutions</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">format</span> <span class="va">rat</span><span class="op">;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">A</span><span class="op">=</span>[<span class="fl">1</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">3</span><span class="op">,</span><span class="fl">4</span><span class="op">;</span><span class="fl">3</span><span class="op">,</span><span class="fl">4</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">;</span><span class="fl">4</span><span class="op">,</span><span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">3</span>]<span class="op">;</span> <span class="va">b</span><span class="op">=</span>[<span class="fl">1</span><span class="op">;</span><span class="fl">2</span><span class="op">;</span><span class="fl">4</span>]<span class="op">;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">rref</span>([<span class="va">A</span><span class="op">,</span><span class="va">b</span>])</span>
@@ -644,6 +644,7 @@ A=LU
 <h2 class="anchored" data-anchor-id="determinant">determinant</h2>
 <ul>
 <li>assuming that no row multiplications were used, just multiply together the diagonal elements of <span class="math inline">\(U\)</span> and take its negative if odd number of row swaps were used.</li>
+<li>for example the determinant of the coefficient matrix of <a href="#sec-ge1" class="quarto-xref">Section&nbsp;3.1</a> is : -12 (why?)</li>
 </ul>
 </section>
 <section id="rank" class="level2">
@@ -651,6 +652,7 @@ A=LU
 <ul>
 <li>that is: the dimension of the subspace generated by the column-vectors of <span class="math inline">\(A\)</span></li>
 <li>count the number of non-zero elements in the main diagonal of <span class="math inline">\(U\)</span></li>
+<li>for example the rank of the coefficient matrix of <a href="#sec-geinf" class="quarto-xref">Section&nbsp;3.3</a> is : 3 (why?)</li>
 </ul>
 
 
