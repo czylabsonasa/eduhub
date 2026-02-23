@@ -438,7 +438,7 @@
     "href": "store/linsys/concepts_draft.html#matlab-1",
     "title": "linsys/concepts_draft",
     "section": "matlab",
-    "text": "matlab\n\nthe function call [L,U,P]=lu(A) will create a \\(PLU\\) factorization for the parameter matrix. Almost always row-swaps will be performed.\nthe backslash (\\) operator is a built-in for solving linear systems.\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];b=[1;2;4];\n&gt;&gt; x=A\\b;\n&gt;&gt; x\n\nx =\n\n    0.3830\n    0.2979\n    0.8298\n\n&gt;&gt; A*x\n\nans =\n\n    1.0000\n    2.0000\n    4.0000\n\nPLU factorization\n\nfor an arbitrary square matrix \\(A\\) it is always exist. The used row swaps are represented by the matrix \\(P\\), which is a permutation matrix: it is obtained by reordering the rows/columns of the identity matrix."
+    "text": "matlab\n\nthe function call [L,U,P]=lu(A) will create a \\(PLU\\) factorization for the parameter matrix. Almost always row-swaps will be performed.\nthe backslash (\\) operator is a built-in for solving linear systems.\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];b=[1;2;4];\n&gt;&gt; x=A\\b;\n&gt;&gt; x\n\nx =\n\n    0.3830\n    0.2979\n    0.8298\n\n&gt;&gt; A*x\n\nans =\n\n    1.0000\n    2.0000\n    4.0000"
   },
   {
     "objectID": "store/linsys/concepts_draft.html#determinant",
