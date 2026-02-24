@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-23">
+<meta name="dcterms.date" content="2026-02-24">
 
 <title>linsys/concepts_draft – eduhub</title>
 <style>
@@ -200,7 +200,9 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant">determinant</a></li>
   <li><a href="#rank" id="toc-rank" class="nav-link" data-scroll-target="#rank">rank</a></li>
+  <li><a href="#classic-lights-out-puzzle" id="toc-classic-lights-out-puzzle" class="nav-link" data-scroll-target="#classic-lights-out-puzzle">classic lights out puzzle</a></li>
   </ul></li>
+  <li><a href="#special-square-matrices-unfinished" id="toc-special-square-matrices-unfinished" class="nav-link" data-scroll-target="#special-square-matrices-unfinished">special square matrices (unfinished)</a></li>
   </ul>
 </nav>
     </div>
@@ -220,7 +222,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 23, 2026</p>
+      <p class="date">February 24, 2026</p>
     </div>
   </div>
   
@@ -266,18 +268,21 @@ x_{1}a_{.1}+x_{2}a_{.2}+\ldots+x_{n}a_{.n}=b\\
 <section id="transformations" class="level1">
 <h1>transformations</h1>
 <ul>
-<li><p>the aim is to reduce the original system to a simpler but equivalent one - which can be solved trivially</p></li>
-<li><p>we denote the <span class="math inline">\(i\)</span>-th row by <span class="math inline">\(a_{i.}\)</span></p></li>
-<li><p>these are the equivalent (they keep the solution system intact) transformations of a LSE:</p>
+<li>the aim is to reduce the original system to a simpler but equivalent one - which can be solved trivially</li>
+<li>we denote the <span class="math inline">\(i\)</span>-th row by <span class="math inline">\(a_{i.}\)</span></li>
+<li>these are the equivalent (they keep the solution system intact) transformations of a LSE:
 <ul>
 <li><strong>multiply</strong> the <span class="math inline">\(i\)</span>-th row by a nonzero scalar: <span class="math inline">\(a_{i.}=\lambda a_{i.}, \ \ b_{i}=\lambda b_{i}\)</span></li>
 <li><strong>elimination</strong>: <span class="math inline">\(a_{j.}=a_{j.}-\lambda a_{i.},\ \ b_{j}=b_{j}-\lambda b_{i}\)</span>
 <ul>
-<li>the <span class="math inline">\(lambda\)</span> is called an eliminating factor (<span class="math inline">\(i\neq j\)</span>)</li>
+<li>the <span class="math inline">\(\lambda\)</span> is called an eliminating factor (<span class="math inline">\(i\neq j\)</span>)</li>
+<li><span class="math inline">\(\lambda=\frac{a_{ji}}{a_{ii}}\)</span></li>
 </ul></li>
 <li><strong>swap</strong> the <span class="math inline">\(i\)</span>-th and <span class="math inline">\(j\)</span>-th row: <span class="math inline">\(a_{i.}\leftrightarrow a_{j.},\ b_{i}\leftrightarrow b_{j}\)</span></li>
 </ul></li>
-<li><p>each of the transformation above can be described as a matrix operation (<span class="math inline">\(M_{k}\)</span>): <span class="math display">\[
+<li>each of the transformation above can be described as a matrix operation (<span class="math inline">\(M_{k}\)</span>):</li>
+</ul>
+<p><span class="math display">\[
 \begin{gather*}
 Ax=b\ \rightarrow \\
 M_{1}Ax=M_{1}b\ \rightarrow \\
@@ -285,11 +290,12 @@ M_{2}M_{1}Ax=M_{2}M_{1}b \ \rightarrow \\
 \ldots \\
 M_{K}\ldots M_{2}M_{1}Ax=M_{K}\ldots M_{2}M_{1}b
 \end{gather*}
-\]</span></p></li>
-<li><p>where each of the <span class="math inline">\(M_{k}\)</span>’s are invertible <span class="math inline">\(m\times m\)</span> matrices. That’s why the set of solutions does not change and every linear relationship between the column vectors will be preserved.</p></li>
-<li><p>for example the elimination matrix is <span class="math inline">\(E-\lambda E_{ji}\)</span> where <span class="math inline">\(E\)</span> is the identity matrix, <span class="math inline">\(E_{ji}\)</span> is a matrix of full of zeros but its <span class="math inline">\(ji\)</span>-th element is 1.</p></li>
-<li><p>at the end of these steps (hopefully) we will have a simpler system.</p></li>
-<li><p>performing these steps to reduce the system is called <strong>gaussian-elimination</strong></p></li>
+\]</span></p>
+<ul>
+<li>where each of the <span class="math inline">\(M_{k}\)</span>’s are invertible <span class="math inline">\(m\times m\)</span> matrices. That’s why the set of solutions does not change and every linear relationship between the column vectors will be preserved.</li>
+<li>for example <span class="math inline">\(E-\lambda E_{ji}\)</span> is the matrix that is used in the elimination steps, where <span class="math inline">\(E\)</span> is the identity matrix, <span class="math inline">\(E_{ji}\)</span> is a matrix of full of zeros but its <span class="math inline">\(ji\)</span>-th element is 1.</li>
+<li>at the end of these steps (hopefully) we will have a simpler system.</li>
+<li>performing these steps to reduce the system is called <strong>gaussian-elimination</strong></li>
 </ul>
 </section>
 <section id="examples" class="level1">
@@ -627,6 +633,32 @@ A=LU
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1.0000</span></span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.0000</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.0000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>it is important that the <code>\</code> can return a non-solution. It tries to find the best possible answer and if there is no solution then it tries to minimize <span class="math inline">\(\Vert Ax - b\Vert_{2}\)</span> (least square optimal solution):</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">A</span><span class="op">=</span>[<span class="fl">1</span> <span class="fl">0</span><span class="op">;</span> <span class="fl">2</span> <span class="fl">3</span><span class="op">;</span> <span class="fl">0</span> <span class="fl">1</span>]<span class="op">;</span> <span class="va">b</span><span class="op">=</span>[<span class="fl">6</span><span class="op">;</span><span class="fl">3</span><span class="op">;</span><span class="fl">0</span>]<span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">x</span><span class="op">=</span><span class="va">A</span><span class="op">\</span><span class="va">b</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="va">x</span> <span class="op">=</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.7143</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span><span class="fl">1.9286</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">A</span><span class="op">*</span><span class="va">x</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="va">ans</span> <span class="op">=</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.7143</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="fl">3.6429</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span><span class="fl">1.9286</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="co">% we will learn we this form used:</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">norm</span>(<span class="va">A</span><span class="op">'*</span><span class="va">A</span><span class="op">*</span><span class="va">x</span> <span class="op">-</span> <span class="va">A</span><span class="op">'*</span><span class="va">b</span>)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="va">ans</span> <span class="op">=</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>   <span class="fl">5.0243e-15</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="plu-factorization" class="level1">
@@ -654,9 +686,26 @@ A=LU
 <li>count the number of non-zero elements in the main diagonal of <span class="math inline">\(U\)</span></li>
 <li>for example the rank of the coefficient matrix of <a href="#sec-geinf" class="quarto-xref">Section&nbsp;3.3</a> is : 3 (why?)</li>
 </ul>
-
-
 </section>
+<section id="classic-lights-out-puzzle" class="level2">
+<h2 class="anchored" data-anchor-id="classic-lights-out-puzzle">classic lights out puzzle</h2>
+<ul>
+<li>see <a href="https://www.jaapsch.net/puzzles/lights.htm#solution">here</a></li>
+<li>let’s develop a linear algebraic <a href="../../store/linsys/lightsout.html">solution</a>!</li>
+</ul>
+</section>
+</section>
+<section id="special-square-matrices-unfinished" class="level1">
+<h1>special square matrices (unfinished)</h1>
+<ul>
+<li>for symmetric matrices <span class="math inline">\(A=LDL^{T}\)</span></li>
+<li>for symmetric positive definite matrices <span class="math inline">\(A=LL^{T}\)</span>
+<ul>
+<li>here the main diagonal of <span class="math inline">\(L\)</span> is not neccessarily full of ones.</li>
+</ul></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-22">
+<meta name="dcterms.date" content="2026-02-24">
 
 <title>linsys/exercises_draft – eduhub</title>
 <style>
@@ -70,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -105,8 +134,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#determinant-inverse-conditional" id="toc-determinant-inverse-conditional" class="nav-link active" data-scroll-target="#determinant-inverse-conditional">determinant, inverse, conditional</a></li>
+  <li><a href="#linear-systems" id="toc-linear-systems" class="nav-link" data-scroll-target="#linear-systems">linear systems</a></li>
+  <li><a href="#mixed" id="toc-mixed" class="nav-link" data-scroll-target="#mixed">mixed</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -124,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 22, 2026</p>
+      <p class="date">February 24, 2026</p>
     </div>
   </div>
   
@@ -136,8 +173,78 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="determinant-inverse-conditional" class="level1">
+<h1>determinant, inverse, conditional</h1>
+<ul>
+<li>compute the deterinants for the matrices below!</li>
+<li>compute the inverses for the matrices below! (if exist)</li>
+<li>compute the <span class="math inline">\(\text{cond}_{1}\)</span> and <span class="math inline">\(\text{cond}_{\infty}\)</span> for the matrices below!</li>
+<li>verify your result with matlab!</li>
+<li><span class="math display">\[
+A=\left[\begin{array}{ccc}
+-1 &amp;  0 &amp;  0 \\
+  1 &amp; -1 &amp;  0 \\
+  2 &amp; -2 &amp;  6 \\
+\end{array}\right]
+\]</span></li>
+<li><span class="math display">\[
+A=\left[\begin{array}{ccc}
+  2 &amp;  4 &amp;  2 \\
+  0 &amp; -1 &amp; -3 \\
+  0 &amp;  0 &amp; -7 \\
+\end{array}\right]
+\]</span></li>
+<li><span class="math display">\[
+A=\left[\begin{array}{ccc}
+  3 &amp;  0 &amp;  0 \\
+  0 &amp;  4 &amp;  0 \\
+  0 &amp;  0 &amp;  3 \\
+\end{array}\right]
+\]</span></li>
+<li><span class="math display">\[
+A=\left[\begin{array}{ccc}
+  0 &amp;  0 &amp;  3 \\
+  0 &amp;  4 &amp;  0 \\
+  3 &amp;  0 &amp;  0 \\
+\end{array}\right]
+\]</span></li>
+</ul>
+</section>
+<section id="linear-systems" class="level1">
+<h1>linear systems</h1>
+<ul>
+<li>solve the <span class="math inline">\(Ax=b\)</span> for the matrices of the previous section, where</li>
+<li><span class="math display">\[
+b=\left[\begin{array}{c}
+  0\\
+  0\\
+  0\\
+\end{array}\right]
+\]</span></li>
+<li><span class="math display">\[
+b=\left[\begin{array}{c}
+  0\\
+  0\\
+  \frac{1}{100}\\
+\end{array}\right]
+\]</span></li>
+<li><span class="math display">\[
+b=\left[\begin{array}{c}
+  -1\\
+  2\\
+  3\\
+\end{array}\right]
+\]</span></li>
+</ul>
+</section>
+<section id="mixed" class="level1">
+<h1>mixed</h1>
+<ul>
+<li>if <span class="math inline">\(A*X=E\)</span> then what can we say about <span class="math inline">\(X*A\)</span>?</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
