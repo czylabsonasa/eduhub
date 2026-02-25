@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>important numbers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+</style>
+
+
+
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<style type="text/css">
+body {
+background-color: rgb(241, 244, 245);
+}
+table.short-q, td.short-q {
+border: 1em solid white;
+border-collapse: collapse;
+}
+summary.short-q {
+background-color: rgb(214, 214, 209);
+}
+details.short-q {
+background-color: rgb(166, 236, 36);
+}
+</style>
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">important numbers</h1>
+
+</header>
+
+
+<div id="exr-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-6,k_{+}=3,t=4\}</span><br> what is <span class="math inline">\varepsilon_0,\varepsilon_1,M_{\infty},1_{+},1_{-}</span> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<p><span class="math display">{\begin{array}{cc}\varepsilon_0&amp; \frac{1}{128}\\ \varepsilon_1&amp; \frac{1}{8}\\ M_{\infty}&amp; \frac{15}{2}\\ 1_{+}&amp; \frac{9}{8}\\ 1_{-}&amp; \frac{15}{16}\end{array}}</span></p>
+</details>
+</div>
+<hr>
+<div id="exr-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-5,k_{+}=7,t=6\}</span><br> what is <span class="math inline">\varepsilon_0,\varepsilon_1,M_{\infty},1_{+},1_{-}</span> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<p><span class="math display">{\begin{array}{cc}\varepsilon_0&amp; \frac{1}{64}\\ \varepsilon_1&amp; \frac{1}{32}\\ M_{\infty}&amp; \frac{126}{1}\\ 1_{+}&amp; \frac{33}{32}\\ 1_{-}&amp; \frac{63}{64}\end{array}}</span></p>
+</details>
+</div>
+<hr>
+<div id="exr-3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-7,k_{+}=5,t=7\}</span><br> what is <span class="math inline">\varepsilon_0,\varepsilon_1,M_{\infty},1_{+},1_{-}</span> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<p><span class="math display">{\begin{array}{cc}\varepsilon_0&amp; \frac{1}{256}\\ \varepsilon_1&amp; \frac{1}{64}\\ M_{\infty}&amp; \frac{127}{4}\\ 1_{+}&amp; \frac{65}{64}\\ 1_{-}&amp; \frac{127}{128}\end{array}}</span></p>
+</details>
+</div>
+<hr>
+<div id="exr-4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-8,k_{+}=8,t=4\}</span><br> what is <span class="math inline">\varepsilon_0,\varepsilon_1,M_{\infty},1_{+},1_{-}</span> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<p><span class="math display">{\begin{array}{cc}\varepsilon_0&amp; \frac{1}{512}\\ \varepsilon_1&amp; \frac{1}{8}\\ M_{\infty}&amp; \frac{240}{1}\\ 1_{+}&amp; \frac{9}{8}\\ 1_{-}&amp; \frac{15}{16}\end{array}}</span></p>
+</details>
+</div>
+<hr>
+<div id="exr-5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-8,k_{+}=4,t=6\}</span><br> what is <span class="math inline">\varepsilon_0,\varepsilon_1,M_{\infty},1_{+},1_{-}</span> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<p><span class="math display">{\begin{array}{cc}\varepsilon_0&amp; \frac{1}{512}\\ \varepsilon_1&amp; \frac{1}{32}\\ M_{\infty}&amp; \frac{63}{4}\\ 1_{+}&amp; \frac{33}{32}\\ 1_{-}&amp; \frac{63}{64}\end{array}}</span></p>
+</details>
+</div>
+<hr>
+<div id="exr-6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-8,k_{+}=5,t=5\}</span><br> what is <span class="math inline">\varepsilon_0,\varepsilon_1,M_{\infty},1_{+},1_{-}</span> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<p><span class="math display">{\begin{array}{cc}\varepsilon_0&amp; \frac{1}{512}\\ \varepsilon_1&amp; \frac{1}{16}\\ M_{\infty}&amp; \frac{31}{1}\\ 1_{+}&amp; \frac{17}{16}\\ 1_{-}&amp; \frac{31}{32}\end{array}}</span></p>
+</details>
+</div>
+<hr>
+<div id="exr-7" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-3,k_{+}=3,t=6\}</span><br> what is <span class="math inline">\varepsilon_0,\varepsilon_1,M_{\infty},1_{+},1_{-}</span> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<p><span class="math display">{\begin{array}{cc}\varepsilon_0&amp; \frac{1}{16}\\ \varepsilon_1&amp; \frac{1}{32}\\ M_{\infty}&amp; \frac{63}{8}\\ 1_{+}&amp; \frac{33}{32}\\ 1_{-}&amp; \frac{63}{64}\end{array}}</span></p>
+</details>
+</div>
+<hr>
+<div id="exr-8" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-7,k_{+}=5,t=7\}</span><br> what is <span class="math inline">\varepsilon_0,\varepsilon_1,M_{\infty},1_{+},1_{-}</span> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<p><span class="math display">{\begin{array}{cc}\varepsilon_0&amp; \frac{1}{256}\\ \varepsilon_1&amp; \frac{1}{64}\\ M_{\infty}&amp; \frac{127}{4}\\ 1_{+}&amp; \frac{65}{64}\\ 1_{-}&amp; \frac{127}{128}\end{array}}</span></p>
+</details>
+</div>
+<hr>
+<div id="exr-9" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-8,k_{+}=8,t=3\}</span><br> what is <span class="math inline">\varepsilon_0,\varepsilon_1,M_{\infty},1_{+},1_{-}</span> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<p><span class="math display">{\begin{array}{cc}\varepsilon_0&amp; \frac{1}{512}\\ \varepsilon_1&amp; \frac{1}{4}\\ M_{\infty}&amp; \frac{224}{1}\\ 1_{+}&amp; \frac{5}{4}\\ 1_{-}&amp; \frac{7}{8}\end{array}}</span></p>
+</details>
+</div>
+<hr>
+<div id="exr-10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 10</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-3,k_{+}=8,t=7\}</span><br> what is <span class="math inline">\varepsilon_0,\varepsilon_1,M_{\infty},1_{+},1_{-}</span> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<p><span class="math display">{\begin{array}{cc}\varepsilon_0&amp; \frac{1}{16}\\ \varepsilon_1&amp; \frac{1}{64}\\ M_{\infty}&amp; \frac{254}{1}\\ 1_{+}&amp; \frac{65}{64}\\ 1_{-}&amp; \frac{127}{128}\end{array}}</span></p>
+</details>
+</div>
+
+
+
+
+
+</body></html>
