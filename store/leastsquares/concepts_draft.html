@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-03-01">
 
-<title>numerical mathematics – eduhub</title>
+<title>leastsquares/concepts_draft – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,8 +70,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">eduhub</span>
     </a>
   </div>
@@ -91,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -110,12 +139,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#information" id="toc-information" class="nav-link active" data-scroll-target="#information">information</a></li>
-  <li><a href="#matlab-introduction" id="toc-matlab-introduction" class="nav-link" data-scroll-target="#matlab-introduction">matlab introduction</a></li>
-  <li><a href="#floating-point-numbers" id="toc-floating-point-numbers" class="nav-link" data-scroll-target="#floating-point-numbers">floating point numbers</a></li>
-  <li><a href="#norms-condition-numbers" id="toc-norms-condition-numbers" class="nav-link" data-scroll-target="#norms-condition-numbers">norms, condition numbers</a></li>
-  <li><a href="#systems-of-linear-equations" id="toc-systems-of-linear-equations" class="nav-link" data-scroll-target="#systems-of-linear-equations">systems of linear equations</a></li>
-  <li><a href="#method-of-least-squares" id="toc-method-of-least-squares" class="nav-link" data-scroll-target="#method-of-least-squares">method of least squares</a></li>
+  <li><a href="#intro---in-nutshell" id="toc-intro---in-nutshell" class="nav-link active" data-scroll-target="#intro---in-nutshell">intro - in nutshell:</a></li>
+  <li><a href="#example---watertank" id="toc-example---watertank" class="nav-link" data-scroll-target="#example---watertank">example - watertank</a></li>
+  <li><a href="#gauss-normal-equation" id="toc-gauss-normal-equation" class="nav-link" data-scroll-target="#gauss-normal-equation">Gauss normal equation</a></li>
   </ul>
 </nav>
     </div>
@@ -124,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">numerical mathematics</h1>
+<h1 class="title">leastsquares/concepts_draft</h1>
 </div>
 
 
@@ -147,24 +173,124 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="information" class="level1">
-<h1><a href="../num-math/info/index.html">information</a></h1>
-<hr>
+<section id="intro---in-nutshell" class="level1">
+<h1>intro - in nutshell:</h1>
+<ul>
+<li>Collect the data.</li>
+<li>Select the most appropriate model.</li>
+<li>Compute the best instance of the chosen model</li>
+<li>Use the model (predicting future values of the process)</li>
+</ul>
 </section>
-<section id="matlab-introduction" class="level1">
-<h1><a href="../store/matlab-basics/index.html">matlab introduction</a></h1>
+<section id="example---watertank" class="level1">
+<h1>example - watertank</h1>
+<p>A cylindrical, <span class="math inline">\(0.5\)</span>m height tank is being filled with water at a constant rate. Peter starts to observe the height of water (at <span class="math inline">\(t=0\)</span>) in the tank. The measurements are summarized in the table below.</p>
+<p><span class="math display">\[
+\begin{array}{c|r|r|r|r|r|r|r}
+t_i\  \texttt{min}\ &amp;0 &amp;2&amp;4&amp; 6&amp; 8 &amp;10&amp; 12\\ \hline
+f_i\  \text{cm}\ &amp;3 &amp;4&amp;5 &amp;5.5 &amp;6.5 &amp;7 &amp;8
+\end{array}
+\]</span></p>
+<p>The following questions arise:</p>
+<ul>
+<li>What is the height of the water in the tank at <span class="math inline">\(t=20\)</span>?</li>
+<li>When will be the tank full?</li>
+<li>When was the tank empty?</li>
+</ul>
+<p>Using the information in the observations we will try to answer these questions.</p>
+<p><img src="peter.png" class="img-fluid"></p>
+<p>By examining the plot and understandig the circumstances we decided to use a first-order polynomial to model the data.</p>
+<p><span class="math display">\[
+F(t) = x_1 t + x_2
+\]</span></p>
+<p>The question is how to choose the parameters <span class="math inline">\(x_1, x_2\)</span> to get the best function - in some sense. For deciding about the parameters let’s consider the following function:</p>
+<p><span class="math display">\[
+J(x_1,x_2)=\sum_{k=1}^{7} (x_1 t_k + x_2 - f_k)^2
+\]</span></p>
+<p>For our data <span class="math inline">\(m=7\)</span> and we have to substitute the actual values data points: the result will be a second order polinomial with variables <span class="math inline">\(x_1,x_2\)</span>. By this function the distance of the line <span class="math inline">\(x_1 t + x_2\)</span> and the data points <span class="math inline">\(t, f\)</span> is measured. We need such <span class="math inline">\(x_1,x_2\)</span> parameters for which <span class="math inline">\(J\)</span> is as small as possible. This kind of <span class="math inline">\(x_1,x_2\)</span> always exist. We will learn how to compute them.</p>
 </section>
-<section id="floating-point-numbers" class="level1">
-<h1><a href="../store/floats/index.html">floating point numbers</a></h1>
-</section>
-<section id="norms-condition-numbers" class="level1">
-<h1><a href="../store/norms/index.html">norms, condition numbers</a></h1>
-</section>
-<section id="systems-of-linear-equations" class="level1">
-<h1><a href="../store/linsys/index.html">systems of linear equations</a></h1>
-</section>
-<section id="method-of-least-squares" class="level1">
-<h1><a href="../store/leastsquares/index.html">method of least squares</a></h1>
+<section id="gauss-normal-equation" class="level1">
+<h1>Gauss normal equation</h1>
+<p>We <span class="math inline">\(m\)</span> have data points <span class="math inline">\(t=(t_1,\ldots,t_m)\)</span> and <span class="math inline">\(f=(f_1,\ldots,f_m)\)</span>. We are going to model the data with the help of the model function</p>
+<p><span class="math display">\[
+F(t) = \sum_{k=1}^{n} x_{k}\varphi_{k}(t)
+\]</span></p>
+<p>where <span class="math inline">\(\varphi_k\)</span>’s are completely known one-variable functions. <span class="math inline">\(F\)</span> is an <span class="math inline">\(n\)</span> variable function, it is the <span class="math inline">\(x_1,\ldots,x_n\)</span> coefficient linear combination of the <span class="math inline">\(\varphi_k\)</span> functions. It describes infinitely many possible functions at once. We are searching the best model instance, that is a coefficient system <span class="math inline">\(x_1,\ldots,x_n\)</span></p>
+<p><span class="math display">\[
+J(x_1,\ldots,x_n)=\sum_{k=1}^{m} (F(t_k)-f_k)^2
+\]</span></p>
+<p>is as small as possible. How to determine the unknowns <span class="math inline">\(x_1,\ldots,x_n\)</span> to get the smallest possible value/error for <span class="math inline">\(J\)</span>? One can rewrite the conditions in linear algebraic terms. By setting</p>
+<p><span class="math display">\[
+A=\left[\begin{array}{ccccc}
+\varphi_1(t_1) &amp; \varphi_2(t_1) &amp; \ldots &amp; \varphi_{n-1}(t_1) &amp; \varphi_n(t_{1})\\
+\varphi_1(t_2) &amp; \varphi_2(t_2) &amp; \ldots &amp; \varphi_{n-1}(t_2) &amp; \varphi_n(t_{2})\\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+\varphi_1(t_{m-1}) &amp; \varphi_2(t_{m-1}) &amp; \ldots &amp; \varphi_{n-1}(t_{m-1}) &amp; \varphi_{n}(t_{m-1})\\
+\varphi_1(t_m) &amp; \varphi_2(t_m) &amp; \ldots &amp; \varphi_{n-1}(t_{m}) &amp; \varphi_{n}(t_{m})\\
+\end{array}\right]\ \
+\]</span></p>
+<p><span class="math display">\[
+x=\left[
+\begin{array}{c}
+x_{1}\\
+x_{2}\\
+\vdots\\
+x_{n-1}\\
+x_{n}\\
+\end{array}
+\right]
+\ \ \text{and} \ \ \\
+f=\left[
+\begin{array}{c}
+f_{1}\\
+f_{2}\\
+\vdots\\
+f_{m-1}\\
+f_{m}\\
+\end{array}
+\right]
+\]</span></p>
+<p>the function <span class="math inline">\(J\)</span> can be written in the form</p>
+<p><span class="math display">\[
+J(x_1,\ldots,x_n)=\Vert Ax - f\Vert_{2}^2
+\]</span></p>
+<p>and our problem is to find</p>
+<p><span class="math display">\[
+\Vert Ax - f\Vert_{2}^2 \ \overset{x_1,\ldots,x_n}{\longrightarrow} \ \min
+\]</span></p>
+<p>Note that <span class="math inline">\(A\)</span> and <span class="math inline">\(f\)</span> are numerical values and if the linear system <span class="math inline">\(Ax=b\)</span> has a solution then we know the best model function instance - but in practice this system has no solution/inconsistent.</p>
+<p><a href="https://hu.wikipedia.org/wiki/Carl_Friedrich_Gauss">Gauss</a> proved that finding minimizer for <span class="math inline">\(J\)</span> is equivalent to solving the system</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+A^{T}Ax=A^{T}f
+\]</span></p>
+</div>
+</div>
+<p>It is the gaussian <strong>normal equation</strong> - GN.</p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>properties of the GN</p>
+<ul>
+<li>it always has a solution</li>
+<li>it has a unique solution <em>iff</em> <span class="math inline">\(A\)</span> or equivalently <span class="math inline">\(A^{T}A\)</span> is a rank <span class="math inline">\(n\)</span> matrix.</li>
+<li>if the columns of <span class="math inline">\(A\)</span> form a dependent vector system then it has <span class="math inline">\(\infty\)</span> many solutions. to resolve this one can <strong>get more data</strong> or <strong>simplify the model</strong></li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>
