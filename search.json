@@ -126,13 +126,6 @@
     "text": "example (linsys)\n\ncompare the solutions of the linear systems below \\[\n\\left[\n\\begin{array}{rr}\n1&1\\\\\n1&1.0001\n\\end{array}\n\\right]\n\\left[\\begin{array}{r}\nx_1\\\\\nx_2\n\\end{array}\\right] =\n\\left[\\begin{array}{r}\n2\\\\\n2\n\\end{array}\\right]\n\\]\n\n\\(x=[2,0]^{T}\\) \\[\n\\left[\n\\begin{array}{rr}\n1&1\\\\\n1&1.0001\n\\end{array}\n\\right]\n\\left[\\begin{array}{r}\ny_1\\\\\ny_2\n\\end{array}\\right] =\n\\left[\\begin{array}{r}\n2\\\\\n2.0001\n\\end{array}\\right]\n\\]\n\\(y=[1,1]^{T}\\)\n\nlarge difference, despite the matrix is the same and the right hand sides are very close to each other (in vector norm!)\nhow can we explain this behavior?"
   },
   {
-    "objectID": "store/norms/concepts_draft.html#inequality",
-    "href": "store/norms/concepts_draft.html#inequality",
-    "title": "norm/concepts_draft",
-    "section": "inequality",
-    "text": "inequality\n\nthis is the error in the right hand side inequality\nlet the matrix \\(A\\) be invertible and fix a vector norm and the corresponding matrix norm\nconsider the linear systems: \\[\\begin{align*}\nAx &= b \\\\\nA(x+\\Delta{x}) &= b+\\Delta{b}\n\\end{align*}\\]\nwe’ll have different solutions for the systems, but how far they are from each other?\nthe following inequality holds: \\[\n\\frac{\\Vert \\Delta{x}\\Vert}{\\Vert x\\Vert} \\le \\Vert A\\Vert \\Vert A^{-1}\\Vert \\frac{\\Vert \\Delta{b}\\Vert}{\\Vert b\\Vert}\n\\]\nthe inequality is tight, no gap between the sides\nread it: the relative error in the solution is in the worst case is \\(\\Vert A\\Vert \\Vert A^{-1}\\Vert\\) times the relative error in the right hand side\nthe quantity \\(\\Vert A\\Vert \\Vert A^{-1}\\Vert\\) is called the conditional number of \\(A\\)\n\n\\(\\text{cond}(A)=\\Vert A\\Vert \\Vert A^{-1}\\Vert\\)\n\nread this for more details \\[\nx_{\\text{relative error}} \\le \\text{cond}(A) b_{\\text{relative error}}\n\\]\nimportant: this kind of error propagation has nothing to do with floating point computational errors."
-  },
-  {
     "objectID": "store/norms/concepts_draft.html#matlab-2",
     "href": "store/norms/concepts_draft.html#matlab-2",
     "title": "norm/concepts_draft",
@@ -161,11 +154,151 @@
     "text": "ill-conditioned\n\nif \\(\\text{cond}(A)*b_{\\text{relative error}}\\ge 1\\) the system is called ill-conditioned\nit means that the absolute error in the solution can be as large as the true solution itself - it is bad."
   },
   {
-    "objectID": "store/gettingmatlab.html",
-    "href": "store/gettingmatlab.html",
-    "title": "getting matlab",
+    "objectID": "store/linsys/index.html#concepts-draft",
+    "href": "store/linsys/index.html#concepts-draft",
+    "title": "systems of linear equations (SLE)",
+    "section": "concepts (draft)",
+    "text": "concepts (draft)"
+  },
+  {
+    "objectID": "store/linsys/index.html#exercises-draft",
+    "href": "store/linsys/index.html#exercises-draft",
+    "title": "systems of linear equations (SLE)",
+    "section": "exercises (draft)",
+    "text": "exercises (draft)"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html",
+    "href": "store/linsys/concepts_draft.html",
+    "title": "linsys/concepts_draft",
     "section": "",
-    "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is or online usage is possible after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
+    "text": "setting up an appropriate SLE is the hardest part of the problem solving…but here we only deal with the “how to solve it” part.\nour aim is to solve systems of linear equations (SLE’s)\nwe have \\(m\\) equations \\(n\\) variables, a cofficient matrix \\(A\\) and a right hand side \\(b\\) \\[\n\\begin{gather*}\na_{11}x_{1}+\\ldots+a_{1n}x_{n} = b_{1}\\\\\na_{21}x_{1}+\\ldots+a_{2n}x_{n} = b_{2}\\\\\n\\vdots{}\\\\\na_{m1}x_{1}+\\ldots+a_{mn}x_{n} = b_{m}\\\\\n\\text{or}\\\\\nAx=b\\\\\n\\text{or}\\\\\nx_{1}a_{.1}+x_{2}a_{.2}+\\ldots+x_{n}a_{.n}=b\\\\\n\\end{gather*}\n\\]\nhere by \\(a_{.j}\\) we mean the \\(j\\)-th column of \\(A\\)\nthe third form is the most expressive one\n\nit tells us that we are working in vector spaces\nit tells us that we are searching for a linear combination of the column vectors that is \\(b\\) and the solution for the system (if any) is coefficiant set of the combination.\nfrom linear algebra we know that we have three cases:\n\nwe cannot express \\(b\\) by means of the given system (0 solutions)\nwe can express \\(b\\) uniquely (1-solution)\nwe can express \\(b\\) in several different ways (\\(\\infty\\)-solutions)"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#sec-ge1",
+    "href": "store/linsys/concepts_draft.html#sec-ge1",
+    "title": "linsys/concepts_draft",
+    "section": "unique solution",
+    "text": "unique solution\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3]; b=[1;2;3];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n&gt;&gt; ge.mul(1/3,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(-8,3,2);\n       1              2              3              1       \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -3/4     \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.mul(-1/4,2);\n       1              2              0             -3/4     \n       0              1              0            -11/12    \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0             13/12    \n       0              1              0            -11/12    \n       0              0              1              7/12"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#sec-ge0",
+    "href": "store/linsys/concepts_draft.html#sec-ge0",
+    "title": "linsys/concepts_draft",
+    "section": "\\(0\\) solutions",
+    "text": "\\(0\\) solutions\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3;-2,0,2]; b=[1;2;3;1];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(-2,1,4);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n       0              4              8              3       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n       0              4              8              3       \n\n&gt;&gt; ge.subtract(-1,2,4);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n       0              0              0              2       \n\nhere we stopped after seeing the upper-triangle form, for it is clear that we have no solution."
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#sec-geinf",
+    "href": "store/linsys/concepts_draft.html#sec-geinf",
+    "title": "linsys/concepts_draft",
+    "section": "\\(\\infty\\) solutions",
+    "text": "\\(\\infty\\) solutions\n&gt;&gt; A=[1,2,3,4;3,4,2,1;4,2,1,3]; b=[1;2;4];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              4              1       \n       3              4              2              1              2       \n       4              2              1              3              4       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       4              2              1              3              4       \n\n&gt;&gt; ge.subtract(4,1,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0             -6            -11            -13              0       \n\n&gt;&gt; ge.subtract(3,2,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0              0             10             20              3       \n\n&gt;&gt; ge.mul(1/10,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(-7,3,2);\n       1              2              3              4              1       \n       0             -2              0              3             11/10    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -2              1/10    \n       0             -2              0              3             11/10    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.mul(-1/2,2);\n       1              2              0             -2              1/10    \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0              1              6/5     \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#matlab",
+    "href": "store/linsys/concepts_draft.html#matlab",
+    "title": "linsys/concepts_draft",
+    "section": "matlab",
+    "text": "matlab\n\nthe function rref can and should be used. it also performs the backward elimination steps and the rows are normalized."
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#solution",
+    "href": "store/linsys/concepts_draft.html#solution",
+    "title": "linsys/concepts_draft",
+    "section": "\\(1\\) solution",
+    "text": "\\(1\\) solution\n&gt;&gt; format rat;\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3]; b=[1;2;3];\n&gt;&gt; rref([A,b])\n\nans =\n\n       1              0              0             13/12    \n       0              1              0            -11/12    \n       0              0              1              7/12    \n\n&gt;&gt; format;"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#solutions",
+    "href": "store/linsys/concepts_draft.html#solutions",
+    "title": "linsys/concepts_draft",
+    "section": "\\(0\\) solutions",
+    "text": "\\(0\\) solutions\n&gt;&gt; format rat;\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3;-2,0,2]; b=[1;2;3;1];\n&gt;&gt; rref([A,b])\n\nans =\n\n       1              0              0              0       \n       0              1              0              0       \n       0              0              1              0       \n       0              0              0              1       \n\n&gt;&gt; format;"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#infty-solutions",
+    "href": "store/linsys/concepts_draft.html#infty-solutions",
+    "title": "linsys/concepts_draft",
+    "section": "\\(\\infty\\) solutions",
+    "text": "\\(\\infty\\) solutions\n&gt;&gt; format rat;\n&gt;&gt; A=[1,2,3,4;3,4,2,1;4,2,1,3]; b=[1;2;4];\n&gt;&gt; rref([A,b])\n\nans =\n\n       1              0              0              1              6/5     \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10    \n\nthe parametric solution system is the following \\[\nx=\\left[\\begin{array}{c}\n\\frac{6}{5}\\\\\n-\\frac{11}{20}\\\\\n\\frac{3}{10}\\\\\n0\\\\\n\\end{array}\\right]-\n\\lambda\\left[\\begin{array}{c}\n1\\\\\n-\\frac{3}{2}\\\\\n2\\\\\n-1\\\\\n\\end{array}\\right]\n\\]\nwe often have some restrictions for the solution, for example we need a solution with positive components. for this example we can easily fulfill this restriction.\nthis parametric solution can also be obtained by calling null(A,\"rational\")."
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#example",
+    "href": "store/linsys/concepts_draft.html#example",
+    "title": "linsys/concepts_draft",
+    "section": "example",
+    "text": "example\n\nfor this computation this program is used.\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];\n&gt;&gt; [L,U]=mylu(A)\n\nphase 0:\n\n   1   0   0   4   1  -1\n   0   1   0  -1   8   0\n   0   0   1   1   1   4\n\npress a key to continue\n\n\nphase 1:\n\n  sub-phase 2:\n\n    subtract -1/4 times the 1. row from the 2. row\n\n     1     0     0     4     1    -1\n  -1/4     1     0     0  33/4  -1/4\n     0     0     1     1     1     4\n\npress a key to continue\n\n\n  sub-phase 3:\n\n    subtract 1/4 times the 1. row from the 3. row\n\n     1     0     0     4     1    -1\n  -1/4     1     0     0  33/4  -1/4\n   1/4     0     1     0   3/4  17/4\n\npress a key to continue\n\n\nphase 2:\n\n  sub-phase 3:\n\n    subtract 1/11 times the 2. row from the 3. row\n\n      1      0      0      4      1     -1\n   -1/4      1      0      0   33/4   -1/4\n    1/4   1/11      1      0      0  47/11\n\npress a key to continue\n\n\nL =\n\n       1              0              0       \n      -1/4            1              0       \n       1/4            1/11           1       \n\n\nU =\n\n       4              1             -1       \n       0             33/4           -1/4     \n       0              0             47/11"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#matlab-1",
+    "href": "store/linsys/concepts_draft.html#matlab-1",
+    "title": "linsys/concepts_draft",
+    "section": "matlab",
+    "text": "matlab\n\nthe function call [L,U,P]=lu(A) will create a \\(PLU\\) factorization for the parameter matrix. Almost always row-swaps will be performed.\nthe backslash (\\) operator is a built-in for solving linear systems.\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];b=[1;2;4];\n&gt;&gt; x=A\\b;\n&gt;&gt; x\n\nx =\n\n    0.3830\n    0.2979\n    0.8298\n\n&gt;&gt; A*x\n\nans =\n\n    1.0000\n    2.0000\n    4.0000\n\nit is important that the \\ can return a non-solution. It tries to find the best possible answer and if there is no solution then it tries to minimize \\(\\Vert Ax - b\\Vert_{2}\\) (least square optimal solution):\n\n&gt;&gt; A=[1 0; 2 3; 0 1]; b=[6;3;0];\n&gt;&gt; x=A\\b\n\nx =\n\n    4.7143\n   -1.9286\n\n&gt;&gt; A*x\n\nans =\n\n    4.7143\n    3.6429\n   -1.9286\n\n\n&gt;&gt; % we will learn we this form used:\n&gt;&gt; norm(A'*A*x - A'*b)\n\nans =\n\n   5.0243e-15"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#determinant",
+    "href": "store/linsys/concepts_draft.html#determinant",
+    "title": "linsys/concepts_draft",
+    "section": "determinant",
+    "text": "determinant\n\nassuming that no row multiplications were used, just multiply together the diagonal elements of \\(U\\) and take its negative if odd number of row swaps were used.\nfor example the determinant of the coefficient matrix of Section 3.1 is : -12 (why?)"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#rank",
+    "href": "store/linsys/concepts_draft.html#rank",
+    "title": "linsys/concepts_draft",
+    "section": "rank",
+    "text": "rank\n\nthat is: the dimension of the subspace generated by the column-vectors of \\(A\\)\ncount the number of non-zero elements in the main diagonal of \\(U\\)\nfor example the rank of the coefficient matrix of Section 3.3 is : 3 (why?)"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#classic-lights-out-puzzle",
+    "href": "store/linsys/concepts_draft.html#classic-lights-out-puzzle",
+    "title": "linsys/concepts_draft",
+    "section": "classic lights out puzzle",
+    "text": "classic lights out puzzle\n\nsee here\nlet’s develop a linear algebraic solution!"
+  },
+  {
+    "objectID": "store/leastsquares/index.html#concepts-draft",
+    "href": "store/leastsquares/index.html#concepts-draft",
+    "title": "systems of linear equations (SLE)",
+    "section": "concepts (draft)",
+    "text": "concepts (draft)"
+  },
+  {
+    "objectID": "store/leastsquares/index.html#exercises-draft",
+    "href": "store/leastsquares/index.html#exercises-draft",
+    "title": "systems of linear equations (SLE)",
+    "section": "exercises (draft)",
+    "text": "exercises (draft)"
+  },
+  {
+    "objectID": "store/leastsquares/GN.html",
+    "href": "store/leastsquares/GN.html",
+    "title": "leastsquares/GN",
+    "section": "",
+    "text": "\\[\n\\Vert f-Ax \\Vert_{2}^{2} \\ \\ \\text{is minimal} \\ \\ \\Longleftrightarrow \\ \\ A^{T}Ax=A^{T}f\n\\]\n\n\n\na mechanic calculation\ntake the partial derivatives of \\(J\\) by \\(x_k\\)’s\nsolve the system \\(\\frac{\\partial}{\\partial x_k}J=0\\)\nthe “solution” is \\(A^{T}Ax=A^{T}f\\)\n\\(A^{T}A\\) is positive semi-definite matrix: the solution is a local minimizer.\n\n\n\n\n\nit provides more insight to the background of the least squares-method\nif \\(Ax=f\\) is solvable then the statement is trivial\nlemma: if \\(\\langle y,Ax\\rangle=0\\ \\ (\\forall x) \\ \\ \\Longrightarrow\\ \\ A^{T}y=0\\)\nlet’s assume that \\(f\\) does not lie in the columns space of \\(A\\)\nit follows from the Gram-Schmidt method that there is an \\(\\hat{x}\\) for which \\(f-A\\hat{x}\\) is orthogonal to an arbitrary \\(Ax\\)\n\\(A\\hat{x}\\) is called orthogonal projection (…)\nusing the lemma one can prove that \\(A^{T}A\\hat{x}=A^{T}f\\)\nusing the Pythagorean theorem\n\nit follows that \\(A\\hat{x}\\) is the unique minimizer of \\(\\Vert f-Ax\\Vert_{2}\\).\nif \\(f-Ay\\) is orthogonal to an arbitrary \\(Ax\\) for some \\(Ay\\) then \\(Ay=A\\hat{x}\\).\n\nwe already know that \\(\\hat{x}\\) minimizes \\(J\\) and it is a solution for \\(A^{T}Ax=A^{T}f\\).\nusing the lemma again one can prove that if \\(A^{T}Ay=A^{T}f\\) for a \\(y\\) then \\(Ay=A\\hat{x}\\), that is it also \\(y\\) also a minimizer for \\(J\\)."
+  },
+  {
+    "objectID": "store/leastsquares/GN.html#calculus",
+    "href": "store/leastsquares/GN.html#calculus",
+    "title": "leastsquares/GN",
+    "section": "",
+    "text": "a mechanic calculation\ntake the partial derivatives of \\(J\\) by \\(x_k\\)’s\nsolve the system \\(\\frac{\\partial}{\\partial x_k}J=0\\)\nthe “solution” is \\(A^{T}Ax=A^{T}f\\)\n\\(A^{T}A\\) is positive semi-definite matrix: the solution is a local minimizer."
+  },
+  {
+    "objectID": "store/leastsquares/GN.html#linear-algebra",
+    "href": "store/leastsquares/GN.html#linear-algebra",
+    "title": "leastsquares/GN",
+    "section": "",
+    "text": "it provides more insight to the background of the least squares-method\nif \\(Ax=f\\) is solvable then the statement is trivial\nlemma: if \\(\\langle y,Ax\\rangle=0\\ \\ (\\forall x) \\ \\ \\Longrightarrow\\ \\ A^{T}y=0\\)\nlet’s assume that \\(f\\) does not lie in the columns space of \\(A\\)\nit follows from the Gram-Schmidt method that there is an \\(\\hat{x}\\) for which \\(f-A\\hat{x}\\) is orthogonal to an arbitrary \\(Ax\\)\n\\(A\\hat{x}\\) is called orthogonal projection (…)\nusing the lemma one can prove that \\(A^{T}A\\hat{x}=A^{T}f\\)\nusing the Pythagorean theorem\n\nit follows that \\(A\\hat{x}\\) is the unique minimizer of \\(\\Vert f-Ax\\Vert_{2}\\).\nif \\(f-Ay\\) is orthogonal to an arbitrary \\(Ax\\) for some \\(Ay\\) then \\(Ay=A\\hat{x}\\).\n\nwe already know that \\(\\hat{x}\\) minimizes \\(J\\) and it is a solution for \\(A^{T}Ax=A^{T}f\\).\nusing the lemma again one can prove that if \\(A^{T}Ay=A^{T}f\\) for a \\(y\\) then \\(Ay=A\\hat{x}\\), that is it also \\(y\\) also a minimizer for \\(J\\)."
+  },
+  {
+    "objectID": "store/matlab-basics/index.html",
+    "href": "store/matlab-basics/index.html",
+    "title": "matlab-basics",
+    "section": "",
+    "text": "concepts\n\n\nexercises"
   },
   {
     "objectID": "store/floats/index.html#concepts-draft",
@@ -280,25 +413,74 @@
     "text": ":, ==,&lt;,&gt;,x(I),repmat\nmath functions\nrandi,rand for generate test vectors\nfunction y=f(x)\n  ...\n  y=...\nend\nf=@(x) ...\nfor i=...\n  ...\nend\nwhile ...\n  ...\nend"
   },
   {
-    "objectID": "store/matlab-basics/index.html",
-    "href": "store/matlab-basics/index.html",
-    "title": "matlab-basics",
+    "objectID": "store/floats/exercises_draft.html#representing-numbers",
+    "href": "store/floats/exercises_draft.html#representing-numbers",
+    "title": "exercises_draft",
+    "section": "representing numbers",
+    "text": "representing numbers"
+  },
+  {
+    "objectID": "store/floats/exercises_draft.html#important-numbers",
+    "href": "store/floats/exercises_draft.html#important-numbers",
+    "title": "exercises_draft",
+    "section": "important numbers",
+    "text": "important numbers\n\nlet \\({\\cal F}=\\{a=2, k_{-}=-3, k_{+}=3, t=4\\}\\)\n\ncompute the (normalized) representations for \\(0.2,\\ 1.45,\\ \\pi\\) in \\(\\cal F\\) using regular rounding\nwhat is \\(\\varepsilon_{0},\\ \\varepsilon_{1},\\ M_{\\infty},\\ 1_{+},\\ 1_{-}\\) in \\(\\cal F\\)\nhow many positive numbers \\(\\cal F\\) has?\nwhat is the smallest positive integer that is not in \\(\\cal F\\)?\n\nthese are double system related exercises\n\nwrite a function that returns \\(\\varepsilon_{0}\\)!\nwrite a function that returns \\(\\varepsilon_{1}\\)!\nwrite a function that returns \\(x_{+}\\), given \\(x\\)!\nverify, that \\((x+y)+z \\neq x+(y+z)\\) for \\(x=0.4,\\ y=-0.5, z=0.1\\)\n\ndoes it occur frequently?\n\nlet \\(x=\\frac{1}{3}\\). iterate \\(n=10,50,100\\) times the assignment: \\(x=4x-1\\). what can be observed?"
+  },
+  {
+    "objectID": "store/floats/generated/impnumbers.html",
+    "href": "store/floats/generated/impnumbers.html",
+    "title": "important numbers",
     "section": "",
-    "text": "concepts\n\n\nexercises"
+    "text": "Exercise 1  \n\ngiven the system \\{a=2,k_{-}=-6,k_{+}=3,t=4\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{128}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{8}\\\\ & \\\\ M_{\\infty}& \\frac{15}{2}\\\\ & \\\\ 1_{+}& \\frac{9}{8}\\\\ & \\\\ 1_{-}& \\frac{15}{16}\\end{array}}\n\n\n\n\nExercise 2  \n\ngiven the system \\{a=2,k_{-}=-5,k_{+}=7,t=6\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{64}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{32}\\\\ & \\\\ M_{\\infty}& 126\\\\ & \\\\ 1_{+}& \\frac{33}{32}\\\\ & \\\\ 1_{-}& \\frac{63}{64}\\end{array}}\n\n\n\n\nExercise 3  \n\ngiven the system \\{a=2,k_{-}=-7,k_{+}=5,t=7\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{256}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{64}\\\\ & \\\\ M_{\\infty}& \\frac{127}{4}\\\\ & \\\\ 1_{+}& \\frac{65}{64}\\\\ & \\\\ 1_{-}& \\frac{127}{128}\\end{array}}\n\n\n\n\nExercise 4  \n\ngiven the system \\{a=2,k_{-}=-8,k_{+}=8,t=4\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{512}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{8}\\\\ & \\\\ M_{\\infty}& 240\\\\ & \\\\ 1_{+}& \\frac{9}{8}\\\\ & \\\\ 1_{-}& \\frac{15}{16}\\end{array}}\n\n\n\n\nExercise 5  \n\ngiven the system \\{a=2,k_{-}=-8,k_{+}=4,t=6\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{512}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{32}\\\\ & \\\\ M_{\\infty}& \\frac{63}{4}\\\\ & \\\\ 1_{+}& \\frac{33}{32}\\\\ & \\\\ 1_{-}& \\frac{63}{64}\\end{array}}\n\n\n\n\nExercise 6  \n\ngiven the system \\{a=2,k_{-}=-8,k_{+}=5,t=5\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{512}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{16}\\\\ & \\\\ M_{\\infty}& 31\\\\ & \\\\ 1_{+}& \\frac{17}{16}\\\\ & \\\\ 1_{-}& \\frac{31}{32}\\end{array}}\n\n\n\n\nExercise 7  \n\ngiven the system \\{a=2,k_{-}=-3,k_{+}=3,t=6\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{16}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{32}\\\\ & \\\\ M_{\\infty}& \\frac{63}{8}\\\\ & \\\\ 1_{+}& \\frac{33}{32}\\\\ & \\\\ 1_{-}& \\frac{63}{64}\\end{array}}\n\n\n\n\nExercise 8  \n\ngiven the system \\{a=2,k_{-}=-7,k_{+}=5,t=7\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{256}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{64}\\\\ & \\\\ M_{\\infty}& \\frac{127}{4}\\\\ & \\\\ 1_{+}& \\frac{65}{64}\\\\ & \\\\ 1_{-}& \\frac{127}{128}\\end{array}}\n\n\n\n\nExercise 9  \n\ngiven the system \\{a=2,k_{-}=-8,k_{+}=8,t=3\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{512}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{4}\\\\ & \\\\ M_{\\infty}& 224\\\\ & \\\\ 1_{+}& \\frac{5}{4}\\\\ & \\\\ 1_{-}& \\frac{7}{8}\\end{array}}\n\n\n\n\nExercise 10  \n\ngiven the system \\{a=2,k_{-}=-3,k_{+}=8,t=7\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{16}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{64}\\\\ & \\\\ M_{\\infty}& 254\\\\ & \\\\ 1_{+}& \\frac{65}{64}\\\\ & \\\\ 1_{-}& \\frac{127}{128}\\end{array}}"
   },
   {
-    "objectID": "store/linsys/index.html#concepts-draft",
-    "href": "store/linsys/index.html#concepts-draft",
-    "title": "systems of linear equations (SLE)",
-    "section": "concepts (draft)",
-    "text": "concepts (draft)"
+    "objectID": "store/leastsquares/concepts_draft.html",
+    "href": "store/leastsquares/concepts_draft.html",
+    "title": "leastsquares/concepts_draft",
+    "section": "",
+    "text": "Collect the data.\nSelect the most appropriate model.\nCompute the best instance of the chosen model\nUse the model (predicting future values of the process)"
   },
   {
-    "objectID": "store/linsys/index.html#exercises-draft",
-    "href": "store/linsys/index.html#exercises-draft",
-    "title": "systems of linear equations (SLE)",
-    "section": "exercises (draft)",
-    "text": "exercises (draft)"
+    "objectID": "store/leastsquares/concepts_draft.html#fitting-a-line",
+    "href": "store/leastsquares/concepts_draft.html#fitting-a-line",
+    "title": "leastsquares/concepts_draft",
+    "section": "fitting a line",
+    "text": "fitting a line\n\\[\n\\begin{gather*}\n\\varphi_{1}(t)=1\\ \\ \\varphi_{2}(t)=t\\\\\n\\\\\nA=\\left[\n\\begin{array}{cc}\n1 & t_1\\\\\n1 & t_2\\\\\n\\vdots & \\vdots\\\\\n1 & t_{m-1}\\\\\n1 & t_{m}\\\\\n\\end{array}\n\\right]\\\\\n\\\\\n\\text{the GN:}\\ \\\n\\left[\n\\begin{array}{cc}\nm & \\sum t\\\\\n\\sum t & \\sum t^2\\\\\n\\end{array}\n\\right]=\n\\left[\n\\begin{array}{c}\n\\sum f\\\\\n\\sum tf\\\\\n\\end{array}\n\\right]\n\\end{gather*}\n\\]"
+  },
+  {
+    "objectID": "store/leastsquares/concepts_draft.html#fitting-a-parabola",
+    "href": "store/leastsquares/concepts_draft.html#fitting-a-parabola",
+    "title": "leastsquares/concepts_draft",
+    "section": "fitting a parabola",
+    "text": "fitting a parabola\n\\[\n\\begin{gather*}\n\\varphi_{1}(t)=1\\ \\ \\varphi_{2}(t)=t \\ \\ \\varphi_{3}(t)=t^2\\\\\n\\\\\nA=\\left[\n\\begin{array}{ccc}\n1 & t_1 & t_1^2\\\\\n1 & t_2 & t_1^2\\\\\n\\vdots & \\vdots & \\vdots\\\\\n1 & t_{m-1} & t_{m-1}^2\\\\\n1 & t_{m} & t_{m}^2\\\\\n\\end{array}\n\\right]\\\\\n\\\\\n\\text{the GN:}\\ \\\n\\left[\n\\begin{array}{ccc}\nm & \\sum t & \\sum t^2\\\\\n\\sum t & \\sum t^2 & \\sum t^3\\\\\n\\sum t^2 & \\sum t^3 & \\sum t^4\\\\\n\\end{array}\n\\right]=\n\\left[\n\\begin{array}{c}\n\\sum f\\\\\n\\sum tf\\\\\n\\sum t^2 f\\\\\n\\end{array}\n\\right]\n\\end{gather*}\n\\]"
+  },
+  {
+    "objectID": "store/leastsquares/concepts_draft.html#matlab",
+    "href": "store/leastsquares/concepts_draft.html#matlab",
+    "title": "leastsquares/concepts_draft",
+    "section": "matlab",
+    "text": "matlab\n\nfor polynomial fitting the polyfit, polyval functions are used.\nthe polynomials in matlab represented by a vector, the main coefficient is the first, the constant is the last element - the are represented by decreasing degree coefficients\nthe form is classical/traditional (as there are other forms too) \\[\n\\begin{gather*}\n\\text{the vector}\\\\\n[p_{n-1},\\ldots,p_0]\\\\\n\\text{in polynomial context is the polynomial }\\\\\np_{n-1}x^{n-1}+p_{n-2}x^{n-2}+\\ldots+p_{1}x+p_0\\\\\n\\end{gather*}\n\\]"
+  },
+  {
+    "objectID": "store/gettingmatlab.html",
+    "href": "store/gettingmatlab.html",
+    "title": "getting matlab",
+    "section": "",
+    "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is or online usage is possible after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
+  },
+  {
+    "objectID": "store/linsys/exercises_draft.html",
+    "href": "store/linsys/exercises_draft.html",
+    "title": "linsys/exercises_draft",
+    "section": "",
+    "text": "determinant, inverse, conditional\n\ncompute the deterinants for the matrices below!\ncompute the inverses for the matrices below! (if exist)\ncompute the \\(\\text{cond}_{1}\\) and \\(\\text{cond}_{\\infty}\\) for the matrices below!\nverify your result with matlab!\n\\[\nA=\\left[\\begin{array}{ccc}\n-1 &  0 &  0 \\\\\n  1 & -1 &  0 \\\\\n  2 & -2 &  6 \\\\\n\\end{array}\\right]\n\\]\n\\[\nA=\\left[\\begin{array}{ccc}\n  2 &  4 &  2 \\\\\n  0 & -1 & -3 \\\\\n  0 &  0 & -7 \\\\\n\\end{array}\\right]\n\\]\n\\[\nA=\\left[\\begin{array}{ccc}\n  3 &  0 &  0 \\\\\n  0 &  4 &  0 \\\\\n  0 &  0 &  3 \\\\\n\\end{array}\\right]\n\\]\n\\[\nA=\\left[\\begin{array}{ccc}\n  0 &  0 &  3 \\\\\n  0 &  4 &  0 \\\\\n  3 &  0 &  0 \\\\\n\\end{array}\\right]\n\\]\n\n\n\nlinear systems\n\nsolve the \\(Ax=b\\) for the matrices of the previous section, where\n\\[\nb=\\left[\\begin{array}{c}\n  0\\\\\n  0\\\\\n  0\\\\\n\\end{array}\\right]\n\\]\n\\[\nb=\\left[\\begin{array}{c}\n  0\\\\\n  0\\\\\n  \\frac{1}{100}\\\\\n\\end{array}\\right]\n\\]\n\\[\nb=\\left[\\begin{array}{c}\n  -1\\\\\n  2\\\\\n  3\\\\\n\\end{array}\\right]\n\\]\n\n\n\nmixed\n\nif \\(A*X=E\\) then what can we say about \\(X*A\\)?"
+  },
+  {
+    "objectID": "store/linsys/lightsout.html",
+    "href": "store/linsys/lightsout.html",
+    "title": "the classic lights out puzzle",
+    "section": "",
+    "text": "intro\n\nthink about the \\(5\\times 5\\) classical puzzle\nthe initial state of game is a flattened matrix : a zero-one vector (\\(S\\))\nthe target state (\\(T\\)) is \\(25\\times 1\\) zero vector (but one can control it)\nfor each button we can assign a specific zero-one vector (\\(a_{k}\\))\nby pressing a button: we add a corresponding \\(25\\times 1\\) zero-one vector to the current state vector\nit is clear that we don’t need to press a button more than time.\nmod(2) arithmetic used to solve the system: \\(x_k\\in \\{0,1\\}\\)\n\n\\[\\begin{align*}\nS + x_1 a_1 + \\ldots + x_{25} a_{25} &= T\\\\\nx_1 a_1 + \\ldots + x_{25} a_{25} &= S+T\\\\\n\\end{align*}\\]\n\n\nmatlab\n\nwe have mod(2) arithmetic: xor (for logical/boolean values)\n\n\n% lights out puzzle by linear algebra\n% one among several different aproaches\n% it can be shortened by using specific matlab features (true,false)\n% the sizes a wired in constants\n% columnwise flattening used! matrix -&gt; matrix(:)\n% in a mod(2) system the elimination is a simple xor() operation:\n% aj=aj-1*ai is the only possible elimination operation and -1 is 1 (mod(2)).\n\nclc; clear;\n\n% initial state\n% these are puzzles from the applet in the link\n%\n% puzzle 1\n% S=zeros(5,5); \n% S(3,:)=[1,0,1,0,1]; \n% S=logical(S);\n%\n% puzzle 2\n% S=zeros(5,5); \n% S([1,2,4,5],:)=repmat([1,0,1,0,1],4,1); \n% S=logical(S);\n%\n% puzzle 3\nS=zeros(5,5); \nS([2,3,4],:)=repmat([1,1,0,1,1],3,1); \nS([1,5],:)=repmat([0,1,0,1,0],2,1); \nS=logical(S);\n\n\nS\nS=S(:);\n% target state (zero here)\nT=zeros(5,5); T=logical(T);\n%T\nT=T(:);\n\nA=zeros(25,25); A=logical(A);\n\n% the button vectors, that is the coefficient matrix\n% the column-wise flattening is heavily used\nfor j=1:5\n   for i=1:5\n      k=i+(j-1)*5; % column-wise flattening\n      % fprintf(\"%d %d %d\\n\",i,j,k);\n      A(k,k)=1;\n      % neighbours in the column\n      if i&gt;1, A(k-1,k)=1;end\n      if i&lt;5, A(k+1,k)=1;end\n      % neighbours in the row\n      if j&gt;1, A(k-5,k)=1;end\n      if j&lt;5, A(k+5,k)=1;end\n   end\nend\nA\n\n% here comes the actual gaussian elimination\n% for simplicity we'll also use backward elimination (Gauss-Jordan)\n% this way no need to extract the solution separately\n\n% extended matrix:\nA=[A, xor(S,T)];\n% forward elimination\nfor i=1:25\n   nonzeros=find(A(i:end,i));\n   if isempty(nonzeros)\n      continue;\n   else\n      % relative index!!!\n      k=nonzeros(1);\n      if k&gt;1\n         A([i,i+k-1],:)=A([i+k-1,i],:);\n      end\n   end\n   for j=(i+1):25\n      if A(j,i)\n         A(j,:)=xor(A(j,:),A(i,:));\n      end\n   end\nend\nA\n% backward elimination\nfor i=25:-1:1\n   if not(A(i,i)), continue; end\n   for j=(i-1):-1:1\n      if A(j,i)\n         A(j,:)=xor(A(j,:),A(i,:));\n      end\n   end\nend\n\nA\n\n% transforming back the matrix and the right hand side\n% the b became x\nx=A(:,26);\nA=A(1:25,:);\n\n% final check (impossibility)\n% full zero row in A but a non-zero in x (in the same row)\n% the classical is always solvable, but one can set different flipping rules\n% for the buttons...\n\n% we apply here row-wise summation -&gt; look for the 2. parameter in sum call\nif any(x&gt;sum(A,2))\n   disp(\"we failed :-(\");\n   return;\nend\n\n% reshaping to get the human readable locations of the used buttons\nreshape(x,5,5)"
   },
   {
     "objectID": "store/norms/exercises_draft.html",
@@ -355,243 +537,5 @@
     "title": "differenciálás",
     "section": "",
     "text": "pillanatnyi változási gyorsaság\n\naz érintő \\(x\\) tengellyel bezárt szögének tangense, meredekség.\n\n\\[\n   f'(x_0)=\\lim_{h\\to 0} \\frac{f(x_0+h)-f(x_0)}{h}\n\\]\n\n\n\nderiválás és műveletek (\n\nlegyen \\(C\\in\\mathbb{R}\\)\n\n\\[\\begin{gather*}\n  (Cf)'=cf'\\hspace{1cm}\\\\\n  (f+g)=f'+g'\\\\\n  (fg)'=f'g+fg'\\\\\n  \\left( \\frac{f}{g}\\right) '=\\frac{f'g-fg'}{g^2}\\hspace{1cm} g\\neq 0\\\\\n  f(g)'=f'(g)g'\\\\\n  (f^{-1})'(x)=\\frac{1}{f'(f^{-1}(x))}\n\\end{gather*}\\]\n\n\n\nelemi függvények deriváltjai\n\\[\\begin{gather*}\n  C' =  0\\\\\n  (x^{C})' = Cx^{C-1}\\\\\n  \\exp(x)'=exp(x)\\\\\n  (C^x)'=\\log(C)C^x\\hspace{1cm}C&gt;0\\\\\n  \\sin(x)'=\\cos(x)\\\\\n  \\cos(x)'=-\\sin(x)\\\\\n  \\tan(x)'=\\frac{1}{\\cos(x)^2}\\\\\n  \\cot(x)'=-\\frac{1}{\\sin(x)^2}\\\\\n  \\log(|x|)'=\\frac{1}{x}\\hspace{1cm}x\\neq0\n\\end{gather*}\\]\n\n\n\nszámoljuk ki \\(f'\\)-t adott \\(f\\) esetén\n\n\\(f(x)=e^{xe^{\\sin(x)}}\\)\n\nválasz: \\(e^{xe^{\\sin(x)}}(e^{\\sin(x)}+xe^{\\sin(x)}\\cos(x))\\)\n\n\\(f(x)=\\frac{\\log(x\\log(x))}{x^2}\\)\n\nválasz: \\(\\frac{\\log(x) + 1}{x^3\\log(x)} - \\frac{2\\log(x\\log(x))}{x^3}\\)\n\n\n\n\n\nmatlab\n\nsyms, diff"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html",
-    "href": "store/linsys/concepts_draft.html",
-    "title": "linsys/concepts_draft",
-    "section": "",
-    "text": "setting up an appropriate SLE is the hardest part of the problem solving…but here we only deal with the “how to solve it” part.\nour aim is to solve systems of linear equations (SLE’s)\nwe have \\(m\\) equations \\(n\\) variables, a cofficient matrix \\(A\\) and a right hand side \\(b\\) \\[\n\\begin{gather*}\na_{11}x_{1}+\\ldots+a_{1n}x_{n} = b_{1}\\\\\na_{21}x_{1}+\\ldots+a_{2n}x_{n} = b_{2}\\\\\n\\vdots{}\\\\\na_{m1}x_{1}+\\ldots+a_{mn}x_{n} = b_{m}\\\\\n\\text{or}\\\\\nAx=b\\\\\n\\text{or}\\\\\nx_{1}a_{.1}+x_{2}a_{.2}+\\ldots+x_{n}a_{.n}=b\\\\\n\\end{gather*}\n\\]\nhere by \\(a_{.j}\\) we mean the \\(j\\)-th column of \\(A\\)\nthe third form is the most expressive one\n\nit tells us that we are working in vector spaces\nit tells us that we are searching for a linear combination of the column vectors that is \\(b\\) and the solution for the system (if any) is coefficiant set of the combination.\nfrom linear algebra we know that we have three cases:\n\nwe cannot express \\(b\\) by means of the given system (0 solutions)\nwe can express \\(b\\) uniquely (1-solution)\nwe can express \\(b\\) in several different ways (\\(\\infty\\)-solutions)"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#transformations",
-    "href": "store/linsys/concepts_draft.html#transformations",
-    "title": "linsys/concepts_draft",
-    "section": "",
-    "text": "the aim is to reduce the original system to a simpler but equivalent one - which can be solved trivially\nwe denote the \\(i\\)-th row by \\(a_{i.}\\)\nthese are the equivalent (they keep the solution system intact) transformations of a LSE:\n\nmultiply the \\(i\\)-th row by a nonzero scalar: \\(a_{i.}=\\lambda a_{i.}, \\ \\ b_{i}=\\lambda b_{i}\\)\nelimination: \\(a_{j.}=a_{j.}-\\lambda a_{i.},\\ \\ b_{j}=b_{j}-\\lambda b_{i}\\)\nswap the \\(i\\)-th and \\(j\\)-th row: \\(a_{i.}\\leftrightarrow a_{j.},\\ b_{i}\\leftrightarrow b_{j}\\)\n\neach of the transformation above can be described as a matrix operation (\\(M_{k}\\)): \\[\n\\begin{gather*}\nAx=b\\ \\rightarrow \\\\\nM_{1}Ax=M_{1}b\\ \\rightarrow \\\\\nM_{2}M_{1}Ax=M_{2}M_{1}b \\ \\rightarrow \\\\\n\\ldots \\\\\nM_{K}\\ldots M_{2}M_{1}Ax=M_{K}\\ldots M_{2}M_{1}b\n\\end{gather*}\n\\]\nwhere each of the \\(M_{k}\\)’s are invertible \\(m\\times m\\) matrices. That’s why the set of solutions does not change.\nat the end of these steps (hopefully) we will have a simpler system."
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#examples",
-    "href": "store/linsys/concepts_draft.html#examples",
-    "title": "linsys/concepts_draft",
-    "section": "",
-    "text": "in the examples below this program is used.\n\n\n\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3]; b=[1;2;3];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n&gt;&gt; ge.mul(1/3,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(-8,3,2);\n       1              2              3              1       \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -3/4     \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.mul(-1/4,2);\n       1              2              0             -3/4     \n       0              1              0            -11/12    \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0             13/12    \n       0              1              0            -11/12    \n       0              0              1              7/12           \n\n\n\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3;-2,0,2]; b=[1;2;3;1];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(-2,1,4);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n       0              4              8              3       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n       0              4              8              3       \n\n&gt;&gt; ge.subtract(-1,2,4);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n       0              0              0              2       \n\nhere we stopped after seeing the upper-triangle form, for it is clear that we have no solution.\n\n\n\n\n&gt;&gt; A=[1,2,3,4;3,4,2,1;4,2,1,3]; b=[1;2;4];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              4              1       \n       3              4              2              1              2       \n       4              2              1              3              4       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       4              2              1              3              4       \n\n&gt;&gt; ge.subtract(4,1,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0             -6            -11            -13              0       \n\n&gt;&gt; ge.subtract(3,2,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0              0             10             20              3       \n\n&gt;&gt; ge.mul(1/10,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(-7,3,2);\n       1              2              3              4              1       \n       0             -2              0              3             11/10    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -2              1/10    \n       0             -2              0              3             11/10    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.mul(-1/2,2);\n       1              2              0             -2              1/10    \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0              1              6/5     \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#unique-solution",
-    "href": "store/linsys/concepts_draft.html#unique-solution",
-    "title": "linsys/concepts_draft",
-    "section": "unique solution",
-    "text": "unique solution\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3]; b=[1;2;3];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n&gt;&gt; ge.mul(1/3,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(-8,3,2);\n       1              2              3              1       \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -3/4     \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.mul(-1/4,2);\n       1              2              0             -3/4     \n       0              1              0            -11/12    \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0             13/12    \n       0              1              0            -11/12    \n       0              0              1              7/12           \n(#lst-ge1)"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#solutions",
-    "href": "store/linsys/concepts_draft.html#solutions",
-    "title": "linsys/concepts_draft",
-    "section": "\\(0\\) solutions",
-    "text": "\\(0\\) solutions\n&gt;&gt; format rat;\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3;-2,0,2]; b=[1;2;3;1];\n&gt;&gt; rref([A,b])\n\nans =\n\n       1              0              0              0       \n       0              1              0              0       \n       0              0              1              0       \n       0              0              0              1       \n\n&gt;&gt; format;"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#infty-solutions",
-    "href": "store/linsys/concepts_draft.html#infty-solutions",
-    "title": "linsys/concepts_draft",
-    "section": "\\(\\infty\\) solutions",
-    "text": "\\(\\infty\\) solutions\n&gt;&gt; format rat;\n&gt;&gt; A=[1,2,3,4;3,4,2,1;4,2,1,3]; b=[1;2;4];\n&gt;&gt; rref([A,b])\n\nans =\n\n       1              0              0              1              6/5     \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10    \n\nthe parametric solution system is the following \\[\nx=\\left[\\begin{array}{c}\n\\frac{6}{5}\\\\\n-\\frac{11}{20}\\\\\n\\frac{3}{10}\\\\\n0\\\\\n\\end{array}\\right]-\n\\lambda\\left[\\begin{array}{c}\n1\\\\\n-\\frac{3}{2}\\\\\n2\\\\\n-1\\\\\n\\end{array}\\right]\n\\]\nwe often have some restrictions for the solution, for example we need a solution with positive components. for this example we can easily fulfill this restriction.\nthis parametric solution can also be obtained by calling null(A,\"rational\")."
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#matlab",
-    "href": "store/linsys/concepts_draft.html#matlab",
-    "title": "linsys/concepts_draft",
-    "section": "matlab",
-    "text": "matlab\n\nthe function rref can and should be used. it also performs the backward elimination steps and the rows are normalized."
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#solution",
-    "href": "store/linsys/concepts_draft.html#solution",
-    "title": "linsys/concepts_draft",
-    "section": "\\(1\\) solution",
-    "text": "\\(1\\) solution\n&gt;&gt; format rat;\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3]; b=[1;2;3];\n&gt;&gt; rref([A,b])\n\nans =\n\n       1              0              0             13/12    \n       0              1              0            -11/12    \n       0              0              1              7/12    \n\n&gt;&gt; format;"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#solutions-1",
-    "href": "store/linsys/concepts_draft.html#solutions-1",
-    "title": "linsys/concepts_draft",
-    "section": "\\(0\\) solutions",
-    "text": "\\(0\\) solutions\n&gt;&gt; format rat;\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3;-2,0,2]; b=[1;2;3;1];\n&gt;&gt; rref([A,b])\n\nans =\n\n       1              0              0              0       \n       0              1              0              0       \n       0              0              1              0       \n       0              0              0              1       \n\n&gt;&gt; format;"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#infty-solutions-1",
-    "href": "store/linsys/concepts_draft.html#infty-solutions-1",
-    "title": "linsys/concepts_draft",
-    "section": "\\(\\infty\\) solutions",
-    "text": "\\(\\infty\\) solutions\n&gt;&gt; format rat;\n&gt;&gt; A=[1,2,3,4;3,4,2,1;4,2,1,3]; b=[1;2;4];\n&gt;&gt; rref([A,b])\n\nans =\n\n       1              0              0              1              6/5     \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10    \n\nthe parametric solution system is the following \\[\nx=\\left[\\begin{array}{c}\n\\frac{6}{5}\\\\\n-\\frac{11}{20}\\\\\n\\frac{3}{10}\\\\\n0\\\\\n\\end{array}\\right]-\n\\lambda\\left[\\begin{array}{c}\n1\\\\\n-\\frac{3}{2}\\\\\n2\\\\\n-1\\\\\n\\end{array}\\right]\n\\]\nwe often have some restrictions for the solution, for example we need a solution with positive components. for this example we can easily fulfill this restriction.\nthis parametric solution can also be obtained by calling null(A,\"rational\")."
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#example",
-    "href": "store/linsys/concepts_draft.html#example",
-    "title": "linsys/concepts_draft",
-    "section": "example",
-    "text": "example\n\nfor this computation this program is used.\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];\n&gt;&gt; [L,U]=mylu(A)\n\nphase 0:\n\n   1   0   0   4   1  -1\n   0   1   0  -1   8   0\n   0   0   1   1   1   4\n\npress a key to continue\n\n\nphase 1:\n\n  sub-phase 2:\n\n    subtract -1/4 times the 1. row from the 2. row\n\n     1     0     0     4     1    -1\n  -1/4     1     0     0  33/4  -1/4\n     0     0     1     1     1     4\n\npress a key to continue\n\n\n  sub-phase 3:\n\n    subtract 1/4 times the 1. row from the 3. row\n\n     1     0     0     4     1    -1\n  -1/4     1     0     0  33/4  -1/4\n   1/4     0     1     0   3/4  17/4\n\npress a key to continue\n\n\nphase 2:\n\n  sub-phase 3:\n\n    subtract 1/11 times the 2. row from the 3. row\n\n      1      0      0      4      1     -1\n   -1/4      1      0      0   33/4   -1/4\n    1/4   1/11      1      0      0  47/11\n\npress a key to continue\n\n\nL =\n\n       1              0              0       \n      -1/4            1              0       \n       1/4            1/11           1       \n\n\nU =\n\n       4              1             -1       \n       0             33/4           -1/4     \n       0              0             47/11"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#matlab-1",
-    "href": "store/linsys/concepts_draft.html#matlab-1",
-    "title": "linsys/concepts_draft",
-    "section": "matlab",
-    "text": "matlab\n\nthe function call [L,U,P]=lu(A) will create a \\(PLU\\) factorization for the parameter matrix. Almost always row-swaps will be performed.\nthe backslash (\\) operator is a built-in for solving linear systems.\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];b=[1;2;4];\n&gt;&gt; x=A\\b;\n&gt;&gt; x\n\nx =\n\n    0.3830\n    0.2979\n    0.8298\n\n&gt;&gt; A*x\n\nans =\n\n    1.0000\n    2.0000\n    4.0000\n\nit is important that the \\ can return a non-solution. It tries to find the best possible answer and if there is no solution then it tries to minimize \\(\\Vert Ax - b\\Vert_{2}\\) (least square optimal solution):\n\n&gt;&gt; A=[1 0; 2 3; 0 1]; b=[6;3;0];\n&gt;&gt; x=A\\b\n\nx =\n\n    4.7143\n   -1.9286\n\n&gt;&gt; A*x\n\nans =\n\n    4.7143\n    3.6429\n   -1.9286\n\n\n&gt;&gt; % we will learn we this form used:\n&gt;&gt; norm(A'*A*x - A'*b)\n\nans =\n\n   5.0243e-15"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#determinant",
-    "href": "store/linsys/concepts_draft.html#determinant",
-    "title": "linsys/concepts_draft",
-    "section": "determinant",
-    "text": "determinant\n\nassuming that no row multiplications were used, just multiply together the diagonal elements of \\(U\\) and take its negative if odd number of row swaps were used.\nfor example the determinant of the coefficient matrix of Section 3.1 is : -12 (why?)"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#rank",
-    "href": "store/linsys/concepts_draft.html#rank",
-    "title": "linsys/concepts_draft",
-    "section": "rank",
-    "text": "rank\n\nthat is: the dimension of the subspace generated by the column-vectors of \\(A\\)\ncount the number of non-zero elements in the main diagonal of \\(U\\)\nfor example the rank of the coefficient matrix of Section 3.3 is : 3 (why?)"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#ge_1",
-    "href": "store/linsys/concepts_draft.html#ge_1",
-    "title": "linsys/concepts_draft",
-    "section": "unique solution",
-    "text": "unique solution\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3]; b=[1;2;3];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n&gt;&gt; ge.mul(1/3,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(-8,3,2);\n       1              2              3              1       \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -3/4     \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.mul(-1/4,2);\n       1              2              0             -3/4     \n       0              1              0            -11/12    \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0             13/12    \n       0              1              0            -11/12    \n       0              0              1              7/12"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#ge_0",
-    "href": "store/linsys/concepts_draft.html#ge_0",
-    "title": "linsys/concepts_draft",
-    "section": "\\(0\\) solutions",
-    "text": "\\(0\\) solutions\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3;-2,0,2]; b=[1;2;3;1];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(-2,1,4);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n       0              4              8              3       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n       0              4              8              3       \n\n&gt;&gt; ge.subtract(-1,2,4);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n       0              0              0              2       \n\nhere we stopped after seeing the upper-triangle form, for it is clear that we have no solution."
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#ge_inf",
-    "href": "store/linsys/concepts_draft.html#ge_inf",
-    "title": "linsys/concepts_draft",
-    "section": "\\(\\infty\\) solutions",
-    "text": "\\(\\infty\\) solutions\n&gt;&gt; A=[1,2,3,4;3,4,2,1;4,2,1,3]; b=[1;2;4];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              4              1       \n       3              4              2              1              2       \n       4              2              1              3              4       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       4              2              1              3              4       \n\n&gt;&gt; ge.subtract(4,1,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0             -6            -11            -13              0       \n\n&gt;&gt; ge.subtract(3,2,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0              0             10             20              3       \n\n&gt;&gt; ge.mul(1/10,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(-7,3,2);\n       1              2              3              4              1       \n       0             -2              0              3             11/10    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -2              1/10    \n       0             -2              0              3             11/10    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.mul(-1/2,2);\n       1              2              0             -2              1/10    \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0              1              6/5     \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#exm-ge1",
-    "href": "store/linsys/concepts_draft.html#exm-ge1",
-    "title": "linsys/concepts_draft",
-    "section": "unique solution",
-    "text": "unique solution\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3]; b=[1;2;3];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n&gt;&gt; ge.mul(1/3,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(-8,3,2);\n       1              2              3              1       \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -3/4     \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.mul(-1/4,2);\n       1              2              0             -3/4     \n       0              1              0            -11/12    \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0             13/12    \n       0              1              0            -11/12    \n       0              0              1              7/12"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#exm-ge0",
-    "href": "store/linsys/concepts_draft.html#exm-ge0",
-    "title": "linsys/concepts_draft",
-    "section": "\\(0\\) solutions",
-    "text": "\\(0\\) solutions\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3;-2,0,2]; b=[1;2;3;1];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(-2,1,4);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n       0              4              8              3       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n       0              4              8              3       \n\n&gt;&gt; ge.subtract(-1,2,4);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n       0              0              0              2       \n\nhere we stopped after seeing the upper-triangle form, for it is clear that we have no solution."
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#exm-geinf",
-    "href": "store/linsys/concepts_draft.html#exm-geinf",
-    "title": "linsys/concepts_draft",
-    "section": "\\(\\infty\\) solutions",
-    "text": "\\(\\infty\\) solutions\n&gt;&gt; A=[1,2,3,4;3,4,2,1;4,2,1,3]; b=[1;2;4];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              4              1       \n       3              4              2              1              2       \n       4              2              1              3              4       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       4              2              1              3              4       \n\n&gt;&gt; ge.subtract(4,1,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0             -6            -11            -13              0       \n\n&gt;&gt; ge.subtract(3,2,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0              0             10             20              3       \n\n&gt;&gt; ge.mul(1/10,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(-7,3,2);\n       1              2              3              4              1       \n       0             -2              0              3             11/10    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -2              1/10    \n       0             -2              0              3             11/10    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.mul(-1/2,2);\n       1              2              0             -2              1/10    \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0              1              6/5     \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#sec-ge1",
-    "href": "store/linsys/concepts_draft.html#sec-ge1",
-    "title": "linsys/concepts_draft",
-    "section": "unique solution",
-    "text": "unique solution\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3]; b=[1;2;3];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n&gt;&gt; ge.mul(1/3,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(-8,3,2);\n       1              2              3              1       \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -3/4     \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.mul(-1/4,2);\n       1              2              0             -3/4     \n       0              1              0            -11/12    \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0             13/12    \n       0              1              0            -11/12    \n       0              0              1              7/12"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#sec-ge0",
-    "href": "store/linsys/concepts_draft.html#sec-ge0",
-    "title": "linsys/concepts_draft",
-    "section": "\\(0\\) solutions",
-    "text": "\\(0\\) solutions\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3;-2,0,2]; b=[1;2;3;1];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n      -2              0              2              1       \n\n&gt;&gt; ge.subtract(-2,1,4);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n       0              4              8              3       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n       0              4              8              3       \n\n&gt;&gt; ge.subtract(-1,2,4);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n       0              0              0              2       \n\nhere we stopped after seeing the upper-triangle form, for it is clear that we have no solution."
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#sec-geinf",
-    "href": "store/linsys/concepts_draft.html#sec-geinf",
-    "title": "linsys/concepts_draft",
-    "section": "\\(\\infty\\) solutions",
-    "text": "\\(\\infty\\) solutions\n&gt;&gt; A=[1,2,3,4;3,4,2,1;4,2,1,3]; b=[1;2;4];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              4              1       \n       3              4              2              1              2       \n       4              2              1              3              4       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       4              2              1              3              4       \n\n&gt;&gt; ge.subtract(4,1,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0             -6            -11            -13              0       \n\n&gt;&gt; ge.subtract(3,2,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0              0             10             20              3       \n\n&gt;&gt; ge.mul(1/10,3);\n       1              2              3              4              1       \n       0             -2             -7            -11             -1       \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(-7,3,2);\n       1              2              3              4              1       \n       0             -2              0              3             11/10    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -2              1/10    \n       0             -2              0              3             11/10    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.mul(-1/2,2);\n       1              2              0             -2              1/10    \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0              1              6/5     \n       0              1              0             -3/2          -11/20    \n       0              0              1              2              3/10"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#lst-ge1",
-    "href": "store/linsys/concepts_draft.html#lst-ge1",
-    "title": "linsys/concepts_draft",
-    "section": "unique solution",
-    "text": "unique solution\n&gt;&gt; A=[1,2,3;3,2,1;2,1,3]; b=[1;2;3];\n&gt;&gt; ge=mkGauss([A,b]);\n       1              2              3              1       \n       3              2              1              2       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(3,1,2);\n       1              2              3              1       \n       0             -4             -8             -1       \n       2              1              3              3       \n\n&gt;&gt; ge.subtract(2,1,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0             -3             -3              1       \n\n&gt;&gt; ge.subtract(3/4,2,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              3              7/4     \n&gt;&gt; ge.mul(1/3,3);\n       1              2              3              1       \n       0             -4             -8             -1       \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(-8,3,2);\n       1              2              3              1       \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(3,3,1);\n       1              2              0             -3/4     \n       0             -4              0             11/3     \n       0              0              1              7/12    \n\n&gt;&gt; ge.mul(-1/4,2);\n       1              2              0             -3/4     \n       0              1              0            -11/12    \n       0              0              1              7/12    \n\n&gt;&gt; ge.subtract(2,2,1);\n       1              0              0             13/12    \n       0              1              0            -11/12    \n       0              0              1              7/12           \n[#lst-ge1]"
-  },
-  {
-    "objectID": "store/linsys/exercises_draft.html",
-    "href": "store/linsys/exercises_draft.html",
-    "title": "linsys/exercises_draft",
-    "section": "",
-    "text": "determinant, inverse, conditional\n\ncompute the deterinants for the matrices below!\ncompute the inverses for the matrices below! (if exist)\ncompute the \\(\\text{cond}_{1}\\) and \\(\\text{cond}_{\\infty}\\) for the matrices below!\nverify your result with matlab!\n\\[\nA=\\left[\\begin{array}{ccc}\n-1 &  0 &  0 \\\\\n  1 & -1 &  0 \\\\\n  2 & -2 &  6 \\\\\n\\end{array}\\right]\n\\]\n\\[\nA=\\left[\\begin{array}{ccc}\n  2 &  4 &  2 \\\\\n  0 & -1 & -3 \\\\\n  0 &  0 & -7 \\\\\n\\end{array}\\right]\n\\]\n\\[\nA=\\left[\\begin{array}{ccc}\n  3 &  0 &  0 \\\\\n  0 &  4 &  0 \\\\\n  0 &  0 &  3 \\\\\n\\end{array}\\right]\n\\]\n\\[\nA=\\left[\\begin{array}{ccc}\n  0 &  0 &  3 \\\\\n  0 &  4 &  0 \\\\\n  3 &  0 &  0 \\\\\n\\end{array}\\right]\n\\]\n\n\n\nlinear systems\n\nsolve the \\(Ax=b\\) for the matrices of the previous section, where\n\\[\nb=\\left[\\begin{array}{c}\n  0\\\\\n  0\\\\\n  0\\\\\n\\end{array}\\right]\n\\]\n\\[\nb=\\left[\\begin{array}{c}\n  0\\\\\n  0\\\\\n  \\frac{1}{100}\\\\\n\\end{array}\\right]\n\\]\n\\[\nb=\\left[\\begin{array}{c}\n  -1\\\\\n  2\\\\\n  3\\\\\n\\end{array}\\right]\n\\]\n\n\n\nmixed\n\nif \\(A*X=E\\) then what can we say about \\(X*A\\)?"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#classic-lights-out-puzzle",
-    "href": "store/linsys/concepts_draft.html#classic-lights-out-puzzle",
-    "title": "linsys/concepts_draft",
-    "section": "classic lights out puzzle",
-    "text": "classic lights out puzzle\n\nsee here\nlet’s develop a linear algebraic solution!"
-  },
-  {
-    "objectID": "store/linsys/lightsout.html",
-    "href": "store/linsys/lightsout.html",
-    "title": "the classic lights out puzzle",
-    "section": "",
-    "text": "think about the \\(5x5\\) puzzle in the link\nthe initial state of game: flattened 0-1 matrix (\\(S\\))\nthe target state (\\(T\\)) is \\(25x1\\) zero vector (but one can control it)\nfor each button we can assign a specific 0-1 vector (\\(a_{k}\\))\nby pressing a button: we add a corresponding \\(25\\time 1\\) 0-1 vector to the current state vector\nit is clear that we don’t need to press a button more than time.\nmod(2) arithmetic used to solve the system\n\n\\[\\begin{gather*}\nS + x_1*a_1 + \\ldots + x_{25}*a_{25}=T\\\\\nx_1*a_1 + \\ldots + x_{25}*a_{25}=S+T\\\\\n\\end{gather*}\\]"
-  },
-  {
-    "objectID": "store/floats/exercises_draft.html#representing-numbers",
-    "href": "store/floats/exercises_draft.html#representing-numbers",
-    "title": "exercises_draft",
-    "section": "representing numbers",
-    "text": "representing numbers"
-  },
-  {
-    "objectID": "store/floats/exercises_draft.html#important-numbers",
-    "href": "store/floats/exercises_draft.html#important-numbers",
-    "title": "exercises_draft",
-    "section": "important numbers",
-    "text": "important numbers\n\nlet \\({\\cal F}=\\{a=2, k_{-}=-3, k_{+}=3, t=4\\}\\)\n\ncompute the (normalized) representations for \\(0.2,\\ 1.45,\\ \\pi\\) in \\(\\cal F\\) using regular rounding\nwhat is \\(\\varepsilon_{0},\\ \\varepsilon_{1},\\ M_{\\infty},\\ 1_{+},\\ 1_{-}\\) in \\(\\cal F\\)\nhow many positive numbers \\(\\cal F\\) has?\nwhat is the smallest positive integer that is not in \\(\\cal F\\)?\n\nthese are double system related exercises\n\nwrite a function that returns \\(\\varepsilon_{0}\\)!\nwrite a function that returns \\(\\varepsilon_{1}\\)!\nwrite a function that returns \\(x_{+}\\), given \\(x\\)!\nverify, that \\((x+y)+z \\neq x+(y+z)\\) for \\(x=0.4,\\ y=-0.5, z=0.1\\)\n\ndoes it occur frequently?\n\nlet \\(x=\\frac{1}{3}\\). iterate \\(n=10,50,100\\) times the assignment: \\(x=4x-1\\). what can be observed?"
-  },
-  {
-    "objectID": "store/floats/generated/impnumbers.html",
-    "href": "store/floats/generated/impnumbers.html",
-    "title": "important numbers",
-    "section": "",
-    "text": "Exercise 1  \n\ngiven the system \\{a=2,k_{-}=-6,k_{+}=3,t=4\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{128}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{8}\\\\ & \\\\ M_{\\infty}& \\frac{15}{2}\\\\ & \\\\ 1_{+}& \\frac{9}{8}\\\\ & \\\\ 1_{-}& \\frac{15}{16}\\end{array}}\n\n\n\n\nExercise 2  \n\ngiven the system \\{a=2,k_{-}=-5,k_{+}=7,t=6\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{64}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{32}\\\\ & \\\\ M_{\\infty}& 126\\\\ & \\\\ 1_{+}& \\frac{33}{32}\\\\ & \\\\ 1_{-}& \\frac{63}{64}\\end{array}}\n\n\n\n\nExercise 3  \n\ngiven the system \\{a=2,k_{-}=-7,k_{+}=5,t=7\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{256}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{64}\\\\ & \\\\ M_{\\infty}& \\frac{127}{4}\\\\ & \\\\ 1_{+}& \\frac{65}{64}\\\\ & \\\\ 1_{-}& \\frac{127}{128}\\end{array}}\n\n\n\n\nExercise 4  \n\ngiven the system \\{a=2,k_{-}=-8,k_{+}=8,t=4\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{512}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{8}\\\\ & \\\\ M_{\\infty}& 240\\\\ & \\\\ 1_{+}& \\frac{9}{8}\\\\ & \\\\ 1_{-}& \\frac{15}{16}\\end{array}}\n\n\n\n\nExercise 5  \n\ngiven the system \\{a=2,k_{-}=-8,k_{+}=4,t=6\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{512}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{32}\\\\ & \\\\ M_{\\infty}& \\frac{63}{4}\\\\ & \\\\ 1_{+}& \\frac{33}{32}\\\\ & \\\\ 1_{-}& \\frac{63}{64}\\end{array}}\n\n\n\n\nExercise 6  \n\ngiven the system \\{a=2,k_{-}=-8,k_{+}=5,t=5\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{512}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{16}\\\\ & \\\\ M_{\\infty}& 31\\\\ & \\\\ 1_{+}& \\frac{17}{16}\\\\ & \\\\ 1_{-}& \\frac{31}{32}\\end{array}}\n\n\n\n\nExercise 7  \n\ngiven the system \\{a=2,k_{-}=-3,k_{+}=3,t=6\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{16}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{32}\\\\ & \\\\ M_{\\infty}& \\frac{63}{8}\\\\ & \\\\ 1_{+}& \\frac{33}{32}\\\\ & \\\\ 1_{-}& \\frac{63}{64}\\end{array}}\n\n\n\n\nExercise 8  \n\ngiven the system \\{a=2,k_{-}=-7,k_{+}=5,t=7\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{256}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{64}\\\\ & \\\\ M_{\\infty}& \\frac{127}{4}\\\\ & \\\\ 1_{+}& \\frac{65}{64}\\\\ & \\\\ 1_{-}& \\frac{127}{128}\\end{array}}\n\n\n\n\nExercise 9  \n\ngiven the system \\{a=2,k_{-}=-8,k_{+}=8,t=3\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{512}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{4}\\\\ & \\\\ M_{\\infty}& 224\\\\ & \\\\ 1_{+}& \\frac{5}{4}\\\\ & \\\\ 1_{-}& \\frac{7}{8}\\end{array}}\n\n\n\n\nExercise 10  \n\ngiven the system \\{a=2,k_{-}=-3,k_{+}=8,t=7\\} what is \\varepsilon_0,\\varepsilon_1,M_{\\infty},1_{+},1_{-} in it?\n\n\n\nsolution\n\n{\\begin{array}{cc}\\varepsilon_0& \\frac{1}{16}\\\\ & \\\\ \\varepsilon_1& \\frac{1}{64}\\\\ & \\\\ M_{\\infty}& 254\\\\ & \\\\ 1_{+}& \\frac{65}{64}\\\\ & \\\\ 1_{-}& \\frac{127}{128}\\end{array}}"
-  },
-  {
-    "objectID": "store/leastsquares/index.html#concepts-draft",
-    "href": "store/leastsquares/index.html#concepts-draft",
-    "title": "systems of linear equations (SLE)",
-    "section": "concepts (draft)",
-    "text": "concepts (draft)"
-  },
-  {
-    "objectID": "store/leastsquares/index.html#exercises-draft",
-    "href": "store/leastsquares/index.html#exercises-draft",
-    "title": "systems of linear equations (SLE)",
-    "section": "exercises (draft)",
-    "text": "exercises (draft)"
-  },
-  {
-    "objectID": "store/leastsquares/concepts_draft.html",
-    "href": "store/leastsquares/concepts_draft.html",
-    "title": "leastsquares/concepts_draft",
-    "section": "",
-    "text": "intro - in nutshell:\n\nCollect the data.\nSelect the most appropriate model.\nCompute the best instance of the chosen model\nUse the model (predicting future values of the process)\n\n\n\nexample - watertank\nA cylindrical, \\(0.5\\)m height tank is being filled with water at a constant rate. Peter starts to observe the height of water (at \\(t=0\\)) in the tank. The measurements are summarized in the table below.\n\\[\n\\begin{array}{c|r|r|r|r|r|r|r}\nt_i\\  \\texttt{min}\\ &0 &2&4& 6& 8 &10& 12\\\\ \\hline\nf_i\\  \\text{cm}\\ &3 &4&5 &5.5 &6.5 &7 &8\n\\end{array}\n\\]\nThe following questions arise:\n\nWhat is the height of the water in the tank at \\(t=20\\)?\nWhen will be the tank full?\nWhen was the tank empty?\n\nUsing the information in the observations we will try to answer these questions.\n\nBy examining the plot and understandig the circumstances we decided to use a first-order polynomial to model the data.\n\\[\nF(t) = x_1 t + x_2\n\\]\nThe question is how to choose the parameters \\(x_1, x_2\\) to get the best function - in some sense. For deciding about the parameters let’s consider the following function:\n\\[\nJ(x_1,x_2)=\\sum_{k=1}^{7} (x_1 t_k + x_2 - f_k)^2\n\\]\nFor our data \\(m=7\\) and we have to substitute the actual values data points: the result will be a second order polinomial with variables \\(x_1,x_2\\). By this function the distance of the line \\(x_1 t + x_2\\) and the data points \\(t, f\\) is measured. We need such \\(x_1,x_2\\) parameters for which \\(J\\) is as small as possible. This kind of \\(x_1,x_2\\) always exist. We will learn how to compute them.\n\n\nGauss normal equation\nWe \\(m\\) have data points \\(t=(t_1,\\ldots,t_m)\\) and \\(f=(f_1,\\ldots,f_m)\\). We are going to model the data with the help of the model function\n\\[\nF(t) = \\sum_{k=1}^{n} x_{k}\\varphi_{k}(t)\n\\]\nwhere \\(\\varphi_k\\)’s are completely known one-variable functions. \\(F\\) is an \\(n\\) variable function, it is the \\(x_1,\\ldots,x_n\\) coefficient linear combination of the \\(\\varphi_k\\) functions. It describes infinitely many possible functions at once. We are searching the best model instance, that is a coefficient system \\(x_1,\\ldots,x_n\\)\n\\[\nJ(x_1,\\ldots,x_n)=\\sum_{k=1}^{m} (F(t_k)-f_k)^2\n\\]\nis as small as possible. How to determine the unknowns \\(x_1,\\ldots,x_n\\) to get the smallest possible value/error for \\(J\\)? One can rewrite the conditions in linear algebraic terms. By setting\n\\[\nA=\\left[\\begin{array}{ccccc}\n\\varphi_1(t_1) & \\varphi_2(t_1) & \\ldots & \\varphi_{n-1}(t_1) & \\varphi_n(t_{1})\\\\\n\\varphi_1(t_2) & \\varphi_2(t_2) & \\ldots & \\varphi_{n-1}(t_2) & \\varphi_n(t_{2})\\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots\\\\\n\\varphi_1(t_{m-1}) & \\varphi_2(t_{m-1}) & \\ldots & \\varphi_{n-1}(t_{m-1}) & \\varphi_{n}(t_{m-1})\\\\\n\\varphi_1(t_m) & \\varphi_2(t_m) & \\ldots & \\varphi_{n-1}(t_{m}) & \\varphi_{n}(t_{m})\\\\\n\\end{array}\\right]\\ \\\n\\]\n\\[\nx=\\left[\n\\begin{array}{c}\nx_{1}\\\\\nx_{2}\\\\\n\\vdots\\\\\nx_{n-1}\\\\\nx_{n}\\\\\n\\end{array}\n\\right]\n\\ \\ \\text{and} \\ \\ \\\\\nf=\\left[\n\\begin{array}{c}\nf_{1}\\\\\nf_{2}\\\\\n\\vdots\\\\\nf_{m-1}\\\\\nf_{m}\\\\\n\\end{array}\n\\right]\n\\]\nthe function \\(J\\) can be written in the form\n\\[\nJ(x_1,\\ldots,x_n)=\\Vert Ax - f\\Vert_{2}^2\n\\]\nand our problem is to find\n\\[\n\\Vert Ax - f\\Vert_{2}^2 \\ \\overset{x_1,\\ldots,x_n}{\\longrightarrow} \\ \\min\n\\]\nNote that \\(A\\) and \\(f\\) are numerical values and if the linear system \\(Ax=b\\) has a solution then we know the best model function instance - but in practice this system has no solution/inconsistent.\nGauss proved that finding minimizer for \\(J\\) is equivalent to solving the system\n\n\n\n\n\n\nImportant\n\n\n\n\\[\nA^{T}Ax=A^{T}f\n\\]\n\n\nIt is the gaussian normal equation - GN.\n\n\n\n\n\n\nproperties of the GN\n\nit always has a solution\nit has a unique solution iff \\(A\\) or equivalently \\(A^{T}A\\) is a rank \\(n\\) matrix.\nif the columns of \\(A\\) form a dependent vector system then it has \\(\\infty\\) many solutions. to resolve this one can get more data or simplify the model"
-  },
-  {
-    "objectID": "store/leastsquares/concepts_draft.html#properties",
-    "href": "store/leastsquares/concepts_draft.html#properties",
-    "title": "leastsquares/concepts_draft",
-    "section": "properties",
-    "text": "properties\n\nit always has a solution\nit has a unique solution iff \\(A\\) or equivalently \\(A^{T}A\\) is a rank \\(n\\) matrix.\nif the columns of \\(A\\) form a dependent vector system then it has \\(\\infty\\) many solutions\n\none can get more data or simplify the model function in this case"
   }
 ]
