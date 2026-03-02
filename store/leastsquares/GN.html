@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-03-02">
 
-<title>leastsquares/concepts_draft – eduhub</title>
+<title>leastsquares/GN – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -174,17 +139,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#in-nutshell" id="toc-in-nutshell" class="nav-link active" data-scroll-target="#in-nutshell">in nutshell</a></li>
-  <li><a href="#example---watertank" id="toc-example---watertank" class="nav-link" data-scroll-target="#example---watertank">example - watertank</a></li>
-  <li><a href="#gauss-normal-equation" id="toc-gauss-normal-equation" class="nav-link" data-scroll-target="#gauss-normal-equation">Gauss normal equation</a></li>
-  <li><a href="#special-cases" id="toc-special-cases" class="nav-link" data-scroll-target="#special-cases">special cases</a>
+  <li><a href="#gn" id="toc-gn" class="nav-link active" data-scroll-target="#gn">GN</a>
   <ul class="collapse">
-  <li><a href="#fitting-a-line" id="toc-fitting-a-line" class="nav-link" data-scroll-target="#fitting-a-line">fitting a line</a></li>
-  <li><a href="#fitting-a-parabola" id="toc-fitting-a-parabola" class="nav-link" data-scroll-target="#fitting-a-parabola">fitting a parabola</a></li>
-  <li><a href="#matlab" id="toc-matlab" class="nav-link" data-scroll-target="#matlab">matlab</a></li>
+  <li><a href="#calculus" id="toc-calculus" class="nav-link" data-scroll-target="#calculus">calculus</a></li>
+  <li><a href="#linear-algebra" id="toc-linear-algebra" class="nav-link" data-scroll-target="#linear-algebra">linear algebra</a></li>
   </ul></li>
-  <li><a href="#example---watertank---solution" id="toc-example---watertank---solution" class="nav-link" data-scroll-target="#example---watertank---solution">example - watertank - solution</a></li>
-  <li><a href="#example---acceleration" id="toc-example---acceleration" class="nav-link" data-scroll-target="#example---acceleration">example - acceleration</a></li>
   </ul>
 </nav>
     </div>
@@ -193,7 +152,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">leastsquares/concepts_draft</h1>
+<h1 class="title">leastsquares/GN</h1>
 </div>
 
 
@@ -216,265 +175,42 @@ window.Quarto = {
 </header>
 
 
-<section id="in-nutshell" class="level1">
-<h1>in nutshell</h1>
+<section id="gn" class="level1">
+<h1>GN</h1>
+<p><span class="math display">\[
+\Vert f-Ax \Vert_{2}^{2} \ \ \text{is minimal} \ \ \Longleftrightarrow \ \ A^{T}Ax=A^{T}f
+\]</span></p>
+<section id="calculus" class="level2">
+<h2 class="anchored" data-anchor-id="calculus">calculus</h2>
 <ul>
-<li>Collect the data.</li>
-<li>Select the most appropriate model.</li>
-<li>Compute the best instance of the chosen model</li>
-<li>Use the model (predicting future values of the process)</li>
+<li>a mechanic calculation</li>
+<li>take the partial derivatives of <span class="math inline">\(J\)</span> by <span class="math inline">\(x_k\)</span>’s</li>
+<li>solve the system <span class="math inline">\(\frac{\partial}{\partial x_k}J=0\)</span></li>
+<li>the “solution” is <span class="math inline">\(A^{T}Ax=A^{T}f\)</span></li>
+<li><span class="math inline">\(A^{T}A\)</span> is positive semi-definite matrix: the solution is a local minimizer.</li>
 </ul>
 </section>
-<section id="example---watertank" class="level1">
-<h1>example - watertank</h1>
-<p>A cylindrical, <span class="math inline">\(0.5\)</span>m height tank is being filled with water at a constant rate. Peter starts to observe the height of water (at <span class="math inline">\(t=0\)</span>) in the tank. The measurements are summarized in the table below.</p>
-<p><span class="math display">\[
-\begin{array}{c|r|r|r|r|r|r|r}
-t_i\  \texttt{min}\ &amp;0 &amp;2&amp;4&amp; 6&amp; 8 &amp;10&amp; 12\\ \hline
-f_i\  \text{cm}\ &amp;3 &amp;4&amp;5 &amp;5.5 &amp;6.5 &amp;7 &amp;8
-\end{array}
-\]</span></p>
-<p>The following questions arise:</p>
+<section id="linear-algebra" class="level2">
+<h2 class="anchored" data-anchor-id="linear-algebra">linear algebra</h2>
 <ul>
-<li>What is the height of the water in the tank at <span class="math inline">\(t=20\)</span>?</li>
-<li>When will be the tank full?</li>
-<li>When was the tank empty?</li>
-</ul>
-<p>Using the information in the observations we will try to answer these questions.</p>
-<p><img src="peter_water_data.png" class="img-fluid" style="width:80.0%"></p>
-<p>By examining the plot and understandig the circumstances we decided to use a first-order polynomial to model the data.</p>
-<p><span class="math display">\[
-F(t) = x_1 t + x_2
-\]</span></p>
-<p>The question is how to choose the parameters <span class="math inline">\(x_1, x_2\)</span> to get the best function - in some sense. For deciding about the parameters let’s consider the following function:</p>
-<p><span class="math display">\[
-J(x_1,x_2)=\sum_{k=1}^{7} (x_1 t_k + x_2 - f_k)^2
-\]</span></p>
-<p>For our data <span class="math inline">\(m=7\)</span> and we have to substitute the actual values data points: the result will be a second order polinomial with variables <span class="math inline">\(x_1,x_2\)</span>. By this function the distance of the line <span class="math inline">\(x_1 t + x_2\)</span> and the data points <span class="math inline">\(t, f\)</span> is measured. We need such <span class="math inline">\(x_1,x_2\)</span> parameters for which <span class="math inline">\(J\)</span> is as small as possible. This kind of <span class="math inline">\(x_1,x_2\)</span> always exist. We will learn how to compute them.</p>
-</section>
-<section id="gauss-normal-equation" class="level1">
-<h1>Gauss normal equation</h1>
-<p>We <span class="math inline">\(m\)</span> have data points <span class="math inline">\(t=(t_1,\ldots,t_m)\)</span> and <span class="math inline">\(f=(f_1,\ldots,f_m)\)</span>. We are going to model the data with the help of the model function</p>
-<p><span class="math display">\[
-F(t) = \sum_{k=1}^{n} x_{k}\varphi_{k}(t)
-\]</span></p>
-<p>where <span class="math inline">\(\varphi_k\ \ k=1\ldots n\)</span>’s are completely known one-variable functions. They are known as <strong>basis functions</strong> (or <strong>features</strong> in machine learning), but you can think of them informally as the <strong>building blocks</strong> of the model. <span class="math inline">\(F\)</span> is an <span class="math inline">\(n\)</span> variable function, it is the <span class="math inline">\(x_1,\ldots,x_n\)</span> coefficient linear combination of the <span class="math inline">\(\varphi_k\)</span> functions. It describes infinitely many possible functions at once. We are searching the best model instance, that is a coefficient system <span class="math inline">\(x_1,\ldots,x_n\)</span></p>
-<p><span class="math display">\[
-J(x_1,\ldots,x_n)=\sum_{k=1}^{m} (f_k - F(t_k))^2
-\]</span></p>
-<p>is as small as possible. How to determine the unknowns <span class="math inline">\(x_1,\ldots,x_n\)</span> to get the smallest possible value/error for <span class="math inline">\(J\)</span>? One can rewrite the conditions in linear algebraic terms. By setting</p>
-<p><span class="math display">\[
-A=\left[\begin{array}{ccccc}
-\varphi_1(t_1) &amp; \varphi_2(t_1) &amp; \ldots &amp; \varphi_{n-1}(t_1) &amp; \varphi_n(t_{1})\\
-\varphi_1(t_2) &amp; \varphi_2(t_2) &amp; \ldots &amp; \varphi_{n-1}(t_2) &amp; \varphi_n(t_{2})\\
-\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
-\varphi_1(t_{m-1}) &amp; \varphi_2(t_{m-1}) &amp; \ldots &amp; \varphi_{n-1}(t_{m-1}) &amp; \varphi_{n}(t_{m-1})\\
-\varphi_1(t_m) &amp; \varphi_2(t_m) &amp; \ldots &amp; \varphi_{n-1}(t_{m}) &amp; \varphi_{n}(t_{m})\\
-\end{array}\right]\ \
-\]</span></p>
-<p><span class="math display">\[
-x=\left[
-\begin{array}{c}
-x_{1}\\
-x_{2}\\
-\vdots\\
-x_{n-1}\\
-x_{n}\\
-\end{array}
-\right]
-\ \ \text{and} \ \ \\
-f=\left[
-\begin{array}{c}
-f_{1}\\
-f_{2}\\
-\vdots\\
-f_{m-1}\\
-f_{m}\\
-\end{array}
-\right]
-\]</span></p>
-<p>the function <span class="math inline">\(J\)</span> can be written in the form</p>
-<p><span class="math display">\[
-J(x_1,\ldots,x_n)=\Vert f- Ax \Vert_{2}^2
-\]</span></p>
-<p>and our problem is to find</p>
-<p><span class="math display">\[
-\Vert f - Ax\Vert_{2}^2 \ \overset{x_1,\ldots,x_n}{\longrightarrow} \ \min
-\]</span></p>
-<p>Note that <span class="math inline">\(A\)</span> and <span class="math inline">\(f\)</span> are numerical values and if the linear system <span class="math inline">\(Ax=f\)</span> has a solution then we know the best model function instance - but in practice this system has no solution/inconsistent.</p>
-<p><a href="https://hu.wikipedia.org/wiki/Carl_Friedrich_Gauss">Gauss</a> proved that finding minimizer for <span class="math inline">\(J\)</span> is equivalent to solving the system</p>
-<div class="thm-GN callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>the GN equation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math display">\[
-A^{T}Ax=A^{T}f
-\]</span></p>
-</div>
-</div>
-<p>It is the gaussian <strong>normal equation</strong> - GN.</p>
-<div class="thm-PROP-GN callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>properties of the GN equation
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<li>it provides more insight to the background of the least squares-method</li>
+<li>if <span class="math inline">\(Ax=f\)</span> is solvable then the statement is trivial</li>
+<li>lemma: if <span class="math inline">\(\langle y,Ax\rangle=0\ \ (\forall x) \ \ \Longrightarrow\ \ A^{T}y=0\)</span></li>
+<li>let’s assume that <span class="math inline">\(f\)</span> does not lie in the columns space of <span class="math inline">\(A\)</span></li>
+<li>it follows from the <a href="https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process">Gram-Schmidt</a> method that there is an <span class="math inline">\(\hat{x}\)</span> for which <span class="math inline">\(f-A\hat{x}\)</span> is orthogonal to an arbitrary <span class="math inline">\(Ax\)</span></li>
+<li><span class="math inline">\(A\hat{x}\)</span> is called orthogonal projection (…)</li>
+<li>using the lemma one can prove that <span class="math inline">\(A^{T}A\hat{x}=A^{T}f\)</span></li>
+<li>using the Pythagorean theorem
 <ul>
-<li>it always has a solution</li>
-<li>it has a unique solution <em>iff</em> <span class="math inline">\(A\)</span> (or equivalently <span class="math inline">\(A^{T}A\)</span>) is a rank <span class="math inline">\(n\)</span> matrix.</li>
-<li>if the columns of <span class="math inline">\(A\)</span> form a dependent vector system then it has <span class="math inline">\(\infty\)</span> many solutions. to resolve this one can <strong>get more data</strong> or <strong>simplify the model</strong></li>
-<li>each of the possible solutions provide the same “best” value for <span class="math inline">\(J\)</span>.</li>
-<li>if we have less observations than the number of unknowns () <span class="math inline">\(m&lt;n\)</span></li>
-<li>by solving the GN equation we say that we computed the <strong>best fitting</strong> model function</li>
-<li><a href="../../store/leastsquares/GN.html">Here</a> you may find some words about the derivation.</li>
+<li>it follows that <span class="math inline">\(A\hat{x}\)</span> is the unique minimizer of <span class="math inline">\(\Vert f-Ax\Vert_{2}\)</span>.</li>
+<li>if <span class="math inline">\(f-Ay\)</span> is orthogonal to an arbitrary <span class="math inline">\(Ax\)</span> for some <span class="math inline">\(Ay\)</span> then <span class="math inline">\(Ay=A\hat{x}\)</span>.</li>
+</ul></li>
+<li>we already know that <span class="math inline">\(\hat{x}\)</span> minimizes <span class="math inline">\(J\)</span> and it is a solution for <span class="math inline">\(A^{T}Ax=A^{T}f\)</span>.</li>
+<li>using the lemma again one can prove that if <span class="math inline">\(A^{T}Ay=A^{T}f\)</span> for a <span class="math inline">\(y\)</span> then <span class="math inline">\(Ay=A\hat{x}\)</span>, that is it also <span class="math inline">\(y\)</span> also a minimizer for <span class="math inline">\(J\)</span>.</li>
 </ul>
-</div>
-</div>
-</section>
-<section id="special-cases" class="level1">
-<h1>special cases</h1>
-<ul>
-<li>polynomial fitting</li>
-</ul>
-<section id="fitting-a-line" class="level2">
-<h2 class="anchored" data-anchor-id="fitting-a-line">fitting a line</h2>
-<p><span class="math display">\[
-\begin{gather*}
-\varphi_{1}(t)=1\ \ \varphi_{2}(t)=t\\
-\\
-A=\left[
-\begin{array}{cc}
-1 &amp; t_1\\
-1 &amp; t_2\\
-\vdots &amp; \vdots\\
-1 &amp; t_{m-1}\\
-1 &amp; t_{m}\\
-\end{array}
-\right]\\
-\\
-\text{the GN:}\ \
-\left[
-\begin{array}{cc}
-m &amp; \sum t\\
-\sum t &amp; \sum t^2\\
-\end{array}
-\right]=
-\left[
-\begin{array}{c}
-\sum f\\
-\sum tf\\
-\end{array}
-\right]
-\end{gather*}
-\]</span></p>
-</section>
-<section id="fitting-a-parabola" class="level2">
-<h2 class="anchored" data-anchor-id="fitting-a-parabola">fitting a parabola</h2>
-<p><span class="math display">\[
-\begin{gather*}
-\varphi_{1}(t)=1\ \ \varphi_{2}(t)=t \ \ \varphi_{3}(t)=t^2\\
-\\
-A=\left[
-\begin{array}{ccc}
-1 &amp; t_1 &amp; t_1^2\\
-1 &amp; t_2 &amp; t_1^2\\
-\vdots &amp; \vdots &amp; \vdots\\
-1 &amp; t_{m-1} &amp; t_{m-1}^2\\
-1 &amp; t_{m} &amp; t_{m}^2\\
-\end{array}
-\right]\\
-\\
-\text{the GN:}\ \
-\left[
-\begin{array}{ccc}
-m &amp; \sum t &amp; \sum t^2\\
-\sum t &amp; \sum t^2 &amp; \sum t^3\\
-\sum t^2 &amp; \sum t^3 &amp; \sum t^4\\
-\end{array}
-\right]=
-\left[
-\begin{array}{c}
-\sum f\\
-\sum tf\\
-\sum t^2 f\\
-\end{array}
-\right]
-\end{gather*}
-\]</span></p>
-</section>
-<section id="matlab" class="level2">
-<h2 class="anchored" data-anchor-id="matlab">matlab</h2>
-<ul>
-<li>for polynomial fitting the <code>polyfit, polyval</code> functions are used.</li>
-<li>the polynomials in matlab represented by a vector, the main coefficient is the first, the constant is the last element - the are represented by decreasing degree coefficients</li>
-<li>the form is classical/traditional (as there are other forms too) <span class="math display">\[
-\begin{gather*}
-\text{the vector}\\
-[p_{n-1},\ldots,p_0]\\
-\text{in polynomial context is the polynomial }\\
-p_{n-1}x^{n-1}+p_{n-2}x^{n-2}+\ldots+p_{1}x+p_0\\
-\end{gather*}
-\]</span></li>
-</ul>
-</section>
-</section>
-<section id="example---watertank---solution" class="level1">
-<h1>example - watertank - solution</h1>
-<ul>
-<li>it is a result of the matlab <a href="peter_water_solution.m">script</a></li>
-</ul>
-<p><img src="peter_water_solution.png" class="img-fluid" style="width:80.0%"></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">rref</span> <span class="va">of</span> <span class="va">the</span> <span class="va">gaussian</span> <span class="va">normal</span> <span class="va">equation</span><span class="op">:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1.0000</span>         <span class="fl">0</span>    <span class="fl">3.1607</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>         <span class="fl">0</span>    <span class="fl">1.0000</span>    <span class="fl">0.4018</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">best</span> <span class="va">line</span> <span class="va">is</span><span class="op">:</span> <span class="fl">3.1607</span> <span class="op">+</span> <span class="fl">0.4018</span><span class="op">*</span><span class="va">t</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span><span class="fl">20</span> <span class="va">the</span> <span class="va">height</span> <span class="va">of</span> <span class="va">the</span> <span class="va">water</span> <span class="va">is</span><span class="op">:</span> <span class="fl">3.1607</span> <span class="op">+</span> <span class="fl">0.4018</span><span class="op">*</span><span class="fl">20</span> <span class="op">=</span> <span class="fl">11.1964</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">tank</span> <span class="va">will</span> <span class="va">be</span> <span class="va">full</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span>(<span class="fl">50</span><span class="op">-</span><span class="fl">3.1607</span>)<span class="op">/</span><span class="fl">0.4018</span> <span class="op">=</span> <span class="fl">116.5778</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">tank</span> <span class="va">was</span> <span class="va">empty</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span>(<span class="fl">0</span><span class="op">-</span><span class="fl">3.1607</span>)<span class="op">/</span><span class="fl">0.4018</span> <span class="op">=</span> <span class="op">-</span><span class="fl">7.8667</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="example---acceleration" class="level1">
-<h1>example - acceleration</h1>
-<p>Peter is observing a body moving along a straight line with uniform acceleration. The object starts from the origin with zero initial velocity and moves along the x-axis. The collected data is the following:</p>
-<p><span class="math display">\[
-\begin{array}{c|r|r|r|r|r|r|r}
-t_i\  \texttt{sec}\ &amp;0 &amp;2&amp;4&amp; 6&amp; 8 &amp;10&amp; 12\\ \hline
-f_i\  \text{meter}\ &amp;0 &amp;   5.7700 &amp;  18.0900 &amp;  37.9600  &amp; 69.0400 &amp; 103.5000 &amp; 156.8400\\
-\end{array}
-\]</span></p>
-<p>Based on the data</p>
-<ul>
-<li>where will be the object at <span class="math inline">\(t=13\)</span></li>
-<li>at what time does the object reach the position <span class="math inline">\(x=1000\)</span>?</li>
-<li>what is the acceleration of the object?</li>
-</ul>
-<p>According to the description and the physical laws the object position is described by a function <span class="math inline">\(F(t)=s_0 + \frac{a}{2}t^2\)</span>.</p>
-<p><img src="peter_acc_solution.png" class="img-fluid" style="width:80.0%"></p>
-<p>it is the ouput of the <a href="peter_acc_solution.m">script</a></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">rref</span> <span class="va">of</span> <span class="va">the</span> <span class="va">gaussian</span> <span class="va">normal</span> <span class="va">equation</span><span class="op">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1.0000</span>         <span class="fl">0</span>    <span class="fl">0.2601</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="fl">0</span>    <span class="fl">1.0000</span>    <span class="fl">1.0697</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">best</span> <span class="kw">function</span> <span class="va">is</span><span class="op">:</span> <span class="fl">0.2601</span> <span class="op">+</span> <span class="fl">2.1394</span><span class="op">/</span><span class="fl">2</span><span class="op">*</span><span class="va">t</span><span class="op">^</span><span class="fl">2</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span><span class="fl">13</span> <span class="va">the</span> <span class="va">position</span> <span class="va">will</span> <span class="va">be</span> <span class="va">x</span><span class="op">=</span><span class="fl">0.2601</span> <span class="op">+</span> <span class="fl">2.1394</span><span class="op">/</span><span class="fl">2</span><span class="op">*</span><span class="fl">13</span><span class="op">^</span><span class="fl">2</span> <span class="op">=</span> <span class="fl">181.0433</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">position</span> <span class="va">x</span><span class="op">=</span><span class="fl">1000</span> <span class="va">will</span> <span class="va">be</span> <span class="va">reached</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span><span class="fl">30.5709</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">acceleration</span> <span class="va">is</span> <span class="va">a</span><span class="op">=</span><span class="fl">2.1394</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

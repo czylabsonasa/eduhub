@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-22">
+<meta name="dcterms.date" content="2026-03-02">
 
 <title>norm/concepts_draft – eduhub</title>
 <style>
@@ -200,7 +200,9 @@ window.Quarto = {
   <li><a href="#matrix-conditional" id="toc-matrix-conditional" class="nav-link" data-scroll-target="#matrix-conditional">matrix-conditional</a>
   <ul class="collapse">
   <li><a href="#example-linsys" id="toc-example-linsys" class="nav-link" data-scroll-target="#example-linsys">example (linsys)</a></li>
-  <li><a href="#inequality" id="toc-inequality" class="nav-link" data-scroll-target="#inequality">inequality</a></li>
+  </ul></li>
+  <li><a href="#an-inequality" id="toc-an-inequality" class="nav-link" data-scroll-target="#an-inequality">an inequality</a>
+  <ul class="collapse">
   <li><a href="#matlab-2" id="toc-matlab-2" class="nav-link" data-scroll-target="#matlab-2">matlab</a></li>
   <li><a href="#example-linsys-continued" id="toc-example-linsys-continued" class="nav-link" data-scroll-target="#example-linsys-continued">example (linsys, continued)</a></li>
   <li><a href="#properties-1" id="toc-properties-1" class="nav-link" data-scroll-target="#properties-1">properties</a></li>
@@ -225,7 +227,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 22, 2026</p>
+      <p class="date">March 2, 2026</p>
     </div>
   </div>
   
@@ -464,8 +466,9 @@ y_2
 <li>how can we explain this behavior?</li>
 </ul>
 </section>
-<section id="inequality" class="level2">
-<h2 class="anchored" data-anchor-id="inequality">inequality</h2>
+</section>
+<section id="an-inequality" class="level1">
+<h1>an inequality</h1>
 <ul>
 <li>this is the <strong>error in the right hand side</strong> inequality</li>
 <li>let the matrix <span class="math inline">\(A\)</span> be invertible and fix a vector norm and the corresponding matrix norm</li>
@@ -474,21 +477,53 @@ Ax &amp;= b \\
 A(x+\Delta{x}) &amp;= b+\Delta{b}
 \end{align*}\]</span></li>
 <li>we’ll have different solutions for the systems, but how far they are from each other?</li>
-<li>the following inequality holds: <span class="math display">\[
-\frac{\Vert \Delta{x}\Vert}{\Vert x\Vert} \le \Vert A\Vert \Vert A^{-1}\Vert \frac{\Vert \Delta{b}\Vert}{\Vert b\Vert}
-\]</span></li>
+<li>the following inequality holds:</li>
+</ul>
+<div class="thm-CI callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>the conditional inequality (CI)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{gather*}
+\frac{\Vert \Delta{x}\Vert}{\Vert x\Vert} \le \Vert A\Vert \Vert A^{-1}\Vert \frac{\Vert \Delta{b}\Vert}{\Vert b\Vert}\\
+\\
+\text{cond}(A):=\Vert A\Vert \Vert A^{-1}\Vert\\
+\\
+\frac{\Vert \Delta{x}\Vert}{\Vert x\Vert} \le \text{cond}(A) \frac{\Vert \Delta{b}\Vert}{\Vert b\Vert}\\
+\\
+x_{\text{relative error}} \le \text{cond}(A)~ b_{\text{relative error}}
+\end{gather*}
+\]</span></p>
+</div>
+</div>
+<div class="thm-CI-PROP callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>properties of CI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
 <li>the inequality is tight, no gap between the sides</li>
 <li>read it: the relative error in the solution is in the worst case is <span class="math inline">\(\Vert A\Vert \Vert A^{-1}\Vert\)</span> times the relative error in the right hand side</li>
 <li>the quantity <span class="math inline">\(\Vert A\Vert \Vert A^{-1}\Vert\)</span> is called the <strong>conditional</strong> number of <span class="math inline">\(A\)</span>
 <ul>
 <li><span class="math inline">\(\text{cond}(A)=\Vert A\Vert \Vert A^{-1}\Vert\)</span></li>
 </ul></li>
-<li>read <a href="../../store/norms/notes_norm.html#cond-inequality">this</a> for more details <span class="math display">\[
-x_{\text{relative error}} \le \text{cond}(A) b_{\text{relative error}}
-\]</span></li>
 <li><strong>important</strong>: this kind of error propagation has nothing to do with floating point computational errors.</li>
+<li>read <a href="../../store/norms/notes_norm.html#cond-inequality">this</a> for more details</li>
 </ul>
-</section>
+</div>
+</div>
 <section id="matlab-2" class="level2">
 <h2 class="anchored" data-anchor-id="matlab-2">matlab</h2>
 <ul>
