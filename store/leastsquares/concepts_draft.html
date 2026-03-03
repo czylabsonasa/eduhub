@@ -199,6 +199,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#example---watertank---solution" id="toc-example---watertank---solution" class="nav-link" data-scroll-target="#example---watertank---solution">example - watertank - solution</a></li>
   <li><a href="#example---acceleration" id="toc-example---acceleration" class="nav-link" data-scroll-target="#example---acceleration">example - acceleration</a></li>
+  <li><a href="#example---mean-temperatures" id="toc-example---mean-temperatures" class="nav-link" data-scroll-target="#example---mean-temperatures">example - mean temperatures</a></li>
+  <li><a href="#supporting-scripts" id="toc-supporting-scripts" class="nav-link" data-scroll-target="#supporting-scripts">supporting scripts</a></li>
   </ul>
 </nav>
     </div>
@@ -441,9 +443,18 @@ m &amp; \sum t &amp; \sum t^2\\
 </section>
 <section id="example---watertank---solution" class="level1">
 <h1>example - watertank - solution</h1>
-<ul>
-<li>it is a result of the matlab <a href="peter_water_solution.m">script</a></li>
-</ul>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>click to open
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><img src="peter_water_solution.png" class="img-fluid" style="width:80.0%"></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">rref</span> <span class="va">of</span> <span class="va">the</span> <span class="va">gaussian</span> <span class="va">normal</span> <span class="va">equation</span><span class="op">:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -455,6 +466,9 @@ m &amp; \sum t &amp; \sum t^2\\
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span><span class="fl">20</span> <span class="va">the</span> <span class="va">height</span> <span class="va">of</span> <span class="va">the</span> <span class="va">water</span> <span class="va">is</span><span class="op">:</span> <span class="fl">3.1607</span> <span class="op">+</span> <span class="fl">0.4018</span><span class="op">*</span><span class="fl">20</span> <span class="op">=</span> <span class="fl">11.1964</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">tank</span> <span class="va">will</span> <span class="va">be</span> <span class="va">full</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span>(<span class="fl">50</span><span class="op">-</span><span class="fl">3.1607</span>)<span class="op">/</span><span class="fl">0.4018</span> <span class="op">=</span> <span class="fl">116.5778</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">tank</span> <span class="va">was</span> <span class="va">empty</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span>(<span class="fl">0</span><span class="op">-</span><span class="fl">3.1607</span>)<span class="op">/</span><span class="fl">0.4018</span> <span class="op">=</span> <span class="op">-</span><span class="fl">7.8667</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 </section>
 <section id="example---acceleration" class="level1">
 <h1>example - acceleration</h1>
@@ -471,9 +485,20 @@ f_i\  \text{meter}\ &amp;0 &amp;   5.7700 &amp;  18.0900 &amp;  37.9600  &amp; 6
 <li>at what time does the object reach the position <span class="math inline">x=1000</span>?</li>
 <li>what is the acceleration of the object?</li>
 </ul>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>click to open
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>According to the description and the physical laws the object position is described by a function <span class="math inline">F(t)=\frac{a}{2}t^2</span>.</p>
 <p><img src="peter_acc_solution.png" class="img-fluid" style="width:80.0%"></p>
-<p>it is the ouput of the <a href="peter_acc_solution.m">script</a></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">rref</span> <span class="va">of</span> <span class="va">the</span> <span class="va">gaussian</span> <span class="va">normal</span> <span class="va">equation</span><span class="op">:</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -485,6 +510,53 @@ f_i\  \text{meter}\ &amp;0 &amp;   5.7700 &amp;  18.0900 &amp;  37.9600  &amp; 6
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">position</span> <span class="va">x</span><span class="op">=</span><span class="fl">1000</span> <span class="va">will</span> <span class="va">be</span> <span class="va">reached</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span><span class="fl">30.5377</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">acceleration</span> <span class="va">is</span> <span class="va">a</span><span class="op">=</span><span class="fl">2.1446</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example---mean-temperatures" class="level1">
+<h1>example - mean temperatures</h1>
+<p>Given the data of monthly mean temperature values (Budapest, 1901-1950).</p>
+<p><span class="math display">
+\begin{array}{c|r|r|r|r|r|r|r|r|r|r|r|r}
+t_i\  \texttt{sec}\ &amp; 15 &amp; 46 &amp; 74  &amp;105 &amp; 135 &amp; 166 &amp; 196 &amp; 227 &amp; 258 &amp; 288 &amp; 319 &amp; 349 \\ \hline
+f_i\  \text{meter}\ &amp; -1.7 &amp; 0.1 &amp; 5.2 &amp; 10.3 &amp; 15.8 &amp; 18.9 &amp; 21.1 &amp; 20.3 &amp; 16.1 &amp; 10.2 &amp; 4.2 &amp; 0.5
+\end{array}
+</span></p>
+<p>Search for the best fitting model of type:</p>
+<p><span class="math display">
+F(t)=x_1 + x_2 \cos(2\pi\frac{t-14}{365})
+</span></p>
+<p><img src="mean_temp.png" class="img-fluid" style="width:80.0%"></p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>click to open
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="mean_temp_solution.png" class="img-fluid" style="width:80.0%"></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">rref</span> <span class="va">of</span> <span class="va">the</span> <span class="va">gaussian</span> <span class="va">normal</span> <span class="va">equation</span><span class="op">:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1.0000</span>         <span class="fl">0</span>   <span class="fl">10.1248</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>         <span class="fl">0</span>    <span class="fl">1.0000</span>  <span class="op">-</span><span class="fl">11.2577</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">best</span> <span class="va">parameters</span><span class="op">:</span> <span class="fl">10.1248</span><span class="op">,</span> <span class="op">-</span><span class="fl">11.2577</span><span class="op">*</span><span class="va">t</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">best</span> <span class="va">model</span><span class="op">:</span> <span class="fl">10.1248</span> <span class="op">+</span> (<span class="op">-</span><span class="fl">11.2577</span>) <span class="va">cos</span>(<span class="fl">2</span><span class="op">*</span><span class="va">pi</span><span class="op">*</span>(<span class="va">t</span><span class="op">-</span><span class="fl">14</span>)<span class="op">/</span><span class="fl">365</span>) </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="supporting-scripts" class="level1">
+<h1>supporting <a href="../../store/leastsquares/scripts.html">scripts</a></h1>
 
 
 </section>

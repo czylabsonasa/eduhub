@@ -8,7 +8,6 @@ hold on;
 
 rng(2*22*22);
 
-% transform the
 t=0:2:12;
 acc=2.22;
 f=acc/2*t.^2+t.*datasample(-10:10,length(t))/12;
@@ -50,5 +49,5 @@ fprintf("- the position x=1000 will be reached at t=%.4f\n",sqrt(2*1000/a));
 fprintf("- the acceleration is a=%.4f\n",a);
 
 
-diary off;
 hold off;
+diary off;

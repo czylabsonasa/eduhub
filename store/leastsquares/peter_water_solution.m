@@ -1,8 +1,10 @@
 % Peter - watertank - solution
 clc; clf; clear;
+delete peter_water_solution.txt;
+diary peter_water_solution.txt;
+
 hold on;
 
-% transform the
 t=0:2:12;
 f=[3,4,5,5.5,6.5,7,8];
 
@@ -39,3 +41,5 @@ fprintf("- the tank was empty at t=(0-%.4f)/%.4f = %.4f\n",b,a,(0-b)/a);
 
 
 hold off;
+
+diary off;

@@ -275,14 +275,14 @@
   {
     "objectID": "store/leastsquares/index.html#concepts-draft",
     "href": "store/leastsquares/index.html#concepts-draft",
-    "title": "systems of linear equations (SLE)",
+    "title": "method of least squares",
     "section": "concepts (draft)",
     "text": "concepts (draft)"
   },
   {
     "objectID": "store/leastsquares/index.html#exercises-draft",
     "href": "store/leastsquares/index.html#exercises-draft",
-    "title": "systems of linear equations (SLE)",
+    "title": "method of least squares",
     "section": "exercises (draft)",
     "text": "exercises (draft)"
   },
@@ -558,5 +558,19 @@
     "title": "differenciálás",
     "section": "",
     "text": "pillanatnyi változási gyorsaság\n\naz érintő x tengellyel bezárt szögének tangense, meredekség.\n\n\n   f'(x_0)=\\lim_{h\\to 0} \\frac{f(x_0+h)-f(x_0)}{h}\n\n\n\n\nderiválás és műveletek (\n\nlegyen C\\in\\mathbb{R}\n\n\\begin{gather*}\n  (Cf)'=cf'\\hspace{1cm}\\\\\n  (f+g)=f'+g'\\\\\n  (fg)'=f'g+fg'\\\\\n  \\left( \\frac{f}{g}\\right) '=\\frac{f'g-fg'}{g^2}\\hspace{1cm} g\\neq 0\\\\\n  f(g)'=f'(g)g'\\\\\n  (f^{-1})'(x)=\\frac{1}{f'(f^{-1}(x))}\n\\end{gather*}\n\n\n\nelemi függvények deriváltjai\n\\begin{gather*}\n  C' =  0\\\\\n  (x^{C})' = Cx^{C-1}\\\\\n  \\exp(x)'=exp(x)\\\\\n  (C^x)'=\\log(C)C^x\\hspace{1cm}C&gt;0\\\\\n  \\sin(x)'=\\cos(x)\\\\\n  \\cos(x)'=-\\sin(x)\\\\\n  \\tan(x)'=\\frac{1}{\\cos(x)^2}\\\\\n  \\cot(x)'=-\\frac{1}{\\sin(x)^2}\\\\\n  \\log(|x|)'=\\frac{1}{x}\\hspace{1cm}x\\neq0\n\\end{gather*}\n\n\n\nszámoljuk ki f'-t adott f esetén\n\nf(x)=e^{xe^{\\sin(x)}}\n\nválasz: e^{xe^{\\sin(x)}}(e^{\\sin(x)}+xe^{\\sin(x)}\\cos(x))\n\nf(x)=\\frac{\\log(x\\log(x))}{x^2}\n\nválasz: \\frac{\\log(x) + 1}{x^3\\log(x)} - \\frac{2\\log(x\\log(x))}{x^3}\n\n\n\n\n\nmatlab\n\nsyms, diff"
+  },
+  {
+    "objectID": "store/leastsquares/scripts.html",
+    "href": "store/leastsquares/scripts.html",
+    "title": "leastsquares/scripts",
+    "section": "",
+    "text": "Nonepeter watertank\n\n\n\n\n\n\n% Peter - watertank - solution\nclc; clf; clear;\ndelete peter_water_solution.txt;\ndiary peter_water_solution.txt;\n\nhold on;\n\nt=0:2:12;\nf=[3,4,5,5.5,6.5,7,8];\n\n% we are also examine the rref\n% transforming them to a column vector\nt=t(:); f=f(:);\n% build the gaussian equation\nA=[ones(size(t)), t];\nfprintf(\"- the rref of the gaussian normal equation:\\n\\n\")\ndisp(rref([A'*A, A'*f]))\nfprintf(\"\\n\");\n\n\n\np=polyfit(t,f,1);\n% we are searching the line in b+at form\na=p(1); b=p(2);\n\nplot(t,f,\"*\",\"MarkerSize\",8);\n% saveas(gca(),\"peter_water_data.png\",\"png\");\n% return;\n\nplot([-1,13],polyval(p,[-1,13]),\"r\",\"LineWidth\",1);\n\nlegend([\"data points\",\"the best fitting line\"],\"Location\",\"southeast\");\naxis([-1,13,2,9]);\n\nsaveas(gca(),\"peter_water_solution.png\",\"png\");\n\nfprintf(\"- the best line is: %.4f + %.4f*t\\n\",b,a);\nfprintf(\"- at t=20 the height of the water is: %.4f + %.4f*20 = %.4f\\n\",b,a,polyval(p,20));\nfprintf(\"- the tank will be full at t=(50-%.4f)/%.4f = %.4f\\n\",b,a,(50-b)/a);\nfprintf(\"- the tank was empty at t=(0-%.4f)/%.4f = %.4f\\n\",b,a,(0-b)/a);\n\n\nhold off;\n\ndiary off;\n\n\n\n\n\n\n\n\n\n\nNonepeter acceleration\n\n\n\n\n\n\n% Peter - accel - solution\nclc; clf; clear;\n\ndelete peter_acc_solution.txt;\ndiary peter_acc_solution.txt;\n\nhold on;\n\nrng(2*22*22);\n\nt=0:2:12;\nacc=2.22;\nf=acc/2*t.^2+t.*datasample(-10:10,length(t))/12;\nf=round(f,2);\nf(1)=0;\n\n\n% f\n% return\n\n% we are also examine the rref\n% transforming them to a column vector\nt=t(:); f=f(:);\n% build the gaussian equation\nA=[t.^2];\nfprintf(\"- the rref of the gaussian normal equation:\\n\\n\")\ndisp(rref([A'*A, A'*f]))\nfprintf(\"\\n\");\n\n% also using the backslash to solve the system\nx=(A'*A)\\(A'*f);\n\n% we are searching the in s+a/2*t^2 form\na=2*x(1);\n\nplot(t,f,\"*\",\"MarkerSize\",8);\n% we need more points to plot a nice parabola\nxx=linspace(-1,13);\nplot(xx,a/2*xx.^2,\"r\",\"LineWidth\",1);\n\nlegend([\"data points\",\"the best fitting function\"],\"Location\",\"southeast\");\naxis([-1,13,-inf,inf]);\n\nsaveas(gca(),\"peter_acc_solution.png\",\"png\");\n\nfprintf(\"- the best function is: %.4f/2*t^2\\n\",a);\nfprintf(\"- at t=13 the position will be x=%.4f/2*13^2 = %.4f\\n\", a,a/2*13^2);\nfprintf(\"- the position x=1000 will be reached at t=%.4f\\n\",sqrt(2*1000/a));\nfprintf(\"- the acceleration is a=%.4f\\n\",a);\n\n\nhold off;\ndiary off;\n\n\n\n\n\n\n\n\n\n\nNonemean temperature\n\n\n\n\n\n\n% Budapest - temp - solution\nclc; clf; clear;\ndelete mean_temp_solution.txt;\ndiary mean_temp_solution.txt;\n\nhold on;\n\nt=[15 46 74 105 135 166 196 227 258 288 319 349];\nf=[ -1.7 0.1 5.2 10.3 15.8 18.9 21.1 20.3 16.1 10.2 4.2 0.5];\n\n% we are also examine the rref\n% transforming them to a column vector\nt=t(:); f=f(:);\nfprintf(\"- the rref of the gaussian normal equation:\\n\\n\")\n% build the gaussian equation\nA=[ones(size(t)), cos(2*pi*(t-14)/365)];\ndisp(rref([A'*A, A'*f]))\nfprintf(\"\\n\");\n\n\nplot(t,f,\"*\",\"MarkerSize\",8);\n% saveas(gca(),\"mean_temp.png\",\"png\");\n% return;\n\nx=(A'*A)\\(A'*f);\n\nxx=linspace(0,365,200);\nyy=x(1)+x(2)*cos(2*pi*(xx-14)/365);\n\nplot(xx,yy,\"r\",\"LineWidth\",1);\n\nlegend([\"data points\",\"the best fitting function\"],\"Location\",\"south\");\n%axis([-1,13,2,9]);\n\nsaveas(gca(),\"mean_temp_solution.png\",\"png\");\n\nfprintf(\"- the best parameters: %.4f, %.4f*t\\n\",x(1), x(2));\nfprintf(\"- the best model: %.4f + (%.4f) cos(2*pi*(t-14)/365) \",x(1), x(2));\n\n\nhold off;\n\ndiary off;"
+  },
+  {
+    "objectID": "store/leastsquares/exercises_draft.html",
+    "href": "store/leastsquares/exercises_draft.html",
+    "title": "leastsquares/exercises_draft",
+    "section": "",
+    "text": "Noneex-1\n\n\n\n\n\nDetermine the best fitting quadratic polynomial for the data\nt=[2.1  2.2  2.3  2.3  2.5  2.6  2.8  2.9];\nf=[2.5  2  2.5  2.7  3  4  5.4  7];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-2\n\n\n\n\n\nDetermine the best fitting line for the data\nt=[1  1.2  1.4  1.4  1.5  1.7  1.9  2];\nf=[6.2  7  8  7.9  8.4  9.2  10  10.6];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-3\n\n\n\n\n\nDetermine the best fitting cubic polynomial for the data\nt=[0.5  0.8  1.1  1.3  1.5  1.7  1.9  2.1  2.3];\nf=[2.5  2.3  1.8  1.3  0.9  0.4  0.1  -0.05  -0.01];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-4\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a = \\frac{b}{t}\n\nt=[1  1.2  1.4  1.4  1.5  1.7  1.9  2  2.1  2.2];\nf=[4.2  3.8  3.4  3.3  3.3  3  2.8  2.8  2.75  2.7];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-5\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a\\sin(t)+b\\sin(2t)+c\\sin(3t)\n\nfor the data\nt=[0.1 0.5 1.2 1.5 2 2.1 2.4  3  3.2 3.4  3.8  4  4.2  4.6  5];\nf=[1 4.1 3 1 -1.5 -1.6 -1.7  -0.4  0.1 0.7  1.6  1.8  1.6  0.2  -2.5];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-6\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a+b\\log(t)\n\nfor the data\nt=[0.1  0.5  1.2  1.5  2  2.1  2.4  3  3.2];\nf=[-0.6  1.5  2.5  2.9  3.2  3.3  3.5  3.8  3.9];\nCreate an appropriate plot!"
   }
 ]
