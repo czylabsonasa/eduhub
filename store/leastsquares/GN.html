@@ -70,8 +70,22 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -177,36 +191,36 @@ window.Quarto = {
 
 <section id="gn" class="level1">
 <h1>GN</h1>
-<p><span class="math display">\[
+<p><span class="math display">
 \Vert f-Ax \Vert_{2}^{2} \ \ \text{is minimal} \ \ \Longleftrightarrow \ \ A^{T}Ax=A^{T}f
-\]</span></p>
+</span></p>
 <section id="calculus" class="level2">
 <h2 class="anchored" data-anchor-id="calculus">calculus</h2>
 <ul>
 <li>a mechanic calculation</li>
-<li>take the partial derivatives of <span class="math inline">\(J\)</span> by <span class="math inline">\(x_k\)</span>’s</li>
-<li>solve the system <span class="math inline">\(\frac{\partial}{\partial x_k}J=0\)</span></li>
-<li>the “solution” is <span class="math inline">\(A^{T}Ax=A^{T}f\)</span></li>
-<li><span class="math inline">\(A^{T}A\)</span> is positive semi-definite matrix: the solution is a local minimizer.</li>
+<li>take the partial derivatives of <span class="math inline">J</span> by <span class="math inline">x_k</span>’s</li>
+<li>solve the system <span class="math inline">\frac{\partial}{\partial x_k}J=0</span></li>
+<li>the “solution” is <span class="math inline">A^{T}Ax=A^{T}f</span></li>
+<li><span class="math inline">A^{T}A</span> is positive semi-definite matrix: the solution is a local minimizer.</li>
 </ul>
 </section>
 <section id="linear-algebra" class="level2">
 <h2 class="anchored" data-anchor-id="linear-algebra">linear algebra</h2>
 <ul>
 <li>it provides more insight to the background of the least squares-method</li>
-<li>if <span class="math inline">\(Ax=f\)</span> is solvable then the statement is trivial</li>
-<li>lemma: if <span class="math inline">\(\langle y,Ax\rangle=0\ \ (\forall x) \ \ \Longrightarrow\ \ A^{T}y=0\)</span></li>
-<li>let’s assume that <span class="math inline">\(f\)</span> does not lie in the columns space of <span class="math inline">\(A\)</span></li>
-<li>it follows from the <a href="https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process">Gram-Schmidt</a> method that there is an <span class="math inline">\(\hat{x}\)</span> for which <span class="math inline">\(f-A\hat{x}\)</span> is orthogonal to an arbitrary <span class="math inline">\(Ax\)</span></li>
-<li><span class="math inline">\(A\hat{x}\)</span> is called orthogonal projection (…)</li>
-<li>using the lemma one can prove that <span class="math inline">\(A^{T}A\hat{x}=A^{T}f\)</span></li>
+<li>if <span class="math inline">Ax=f</span> is solvable then the statement is trivial</li>
+<li>lemma: if <span class="math inline">\langle y,Ax\rangle=0\ \ (\forall x) \ \ \Longrightarrow\ \ A^{T}y=0</span></li>
+<li>let’s assume that <span class="math inline">f</span> does not lie in the columns space of <span class="math inline">A</span></li>
+<li>it follows from the <a href="https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process">Gram-Schmidt</a> method that there is an <span class="math inline">\hat{x}</span> for which <span class="math inline">f-A\hat{x}</span> is orthogonal to an arbitrary <span class="math inline">Ax</span></li>
+<li><span class="math inline">A\hat{x}</span> is called orthogonal projection (…)</li>
+<li>using the lemma one can prove that <span class="math inline">A^{T}A\hat{x}=A^{T}f</span></li>
 <li>using the Pythagorean theorem
 <ul>
-<li>it follows that <span class="math inline">\(A\hat{x}\)</span> is the unique minimizer of <span class="math inline">\(\Vert f-Ax\Vert_{2}\)</span>.</li>
-<li>if <span class="math inline">\(f-Ay\)</span> is orthogonal to an arbitrary <span class="math inline">\(Ax\)</span> for some <span class="math inline">\(Ay\)</span> then <span class="math inline">\(Ay=A\hat{x}\)</span>.</li>
+<li>it follows that <span class="math inline">A\hat{x}</span> is the unique minimizer of <span class="math inline">\Vert f-Ax\Vert_{2}</span>.</li>
+<li>if <span class="math inline">f-Ay</span> is orthogonal to an arbitrary <span class="math inline">Ax</span> for some <span class="math inline">Ay</span> then <span class="math inline">Ay=A\hat{x}</span>.</li>
 </ul></li>
-<li>we already know that <span class="math inline">\(\hat{x}\)</span> minimizes <span class="math inline">\(J\)</span> and it is a solution for <span class="math inline">\(A^{T}Ax=A^{T}f\)</span>.</li>
-<li>using the lemma again one can prove that if <span class="math inline">\(A^{T}Ay=A^{T}f\)</span> for a <span class="math inline">\(y\)</span> then <span class="math inline">\(Ay=A\hat{x}\)</span>, that is it also <span class="math inline">\(y\)</span> also a minimizer for <span class="math inline">\(J\)</span>.</li>
+<li>we already know that <span class="math inline">\hat{x}</span> minimizes <span class="math inline">J</span> and it is a solution for <span class="math inline">A^{T}Ax=A^{T}f</span>.</li>
+<li>using the lemma again one can prove that if <span class="math inline">A^{T}Ay=A^{T}f</span> for a <span class="math inline">y</span> then <span class="math inline">Ay=A\hat{x}</span>, that is it also <span class="math inline">y</span> also a minimizer for <span class="math inline">J</span>.</li>
 </ul>
 
 

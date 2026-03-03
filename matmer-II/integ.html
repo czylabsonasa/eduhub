@@ -70,8 +70,22 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -178,17 +192,17 @@ window.Quarto = {
 <ul>
 <li>anti-derivált, primitív függvény</li>
 </ul>
-<p><span class="math display">\[
+<p><span class="math display">
    \left( \int f\right)'=f
-\]</span></p>
+</span></p>
 <hr>
 </section>
 <section id="tulajdonságok" class="level1">
 <h1>tulajdonságok</h1>
 <ul>
-<li><span class="math inline">\(C,D\in\mathbb{R}\)</span></li>
+<li><span class="math inline">C,D\in\mathbb{R}</span></li>
 </ul>
-<p><span class="math display">\[\begin{gather*}
+<p><span class="math display">\begin{gather*}
    \int\left( Cf+g\right) =C\int{f}+\int{g}\\
    \mint{C}{x} =  Cx+D\\
    \mint{x^{C}}{x} =  \frac{x^{C+1}}{C+1}+D\hspace{1cm} C\neq-1\\
@@ -198,39 +212,39 @@ window.Quarto = {
    \mint{C^x}{x}=\frac{C^x}{\log{C}}+D\hspace{1cm}C&gt;0,C\neq1\\
    \int\left(f'g+fg'\right)=fg+C\\
    \int f(g)g'=\left( \int f \right)(g)+C
-\end{gather*}\]</span></p>
+\end{gather*}</span></p>
 <hr>
 </section>
 <section id="számoljuk-ki-a-következő-integrálokat" class="level1">
 <h1>számoljuk ki a következő integrálokat</h1>
 <ul>
-<li><span class="math inline">\(\mint{xe^{x^2}}{x}\)</span>
+<li><span class="math inline">\mint{xe^{x^2}}{x}</span>
 <ul>
-<li>válasz: <span class="math display">\[\begin{gather*}
+<li>válasz: <span class="math display">\begin{gather*}
 \mder{e^{x^2}}=2xe^{x^2} \ \ \rightarrow \  \frac{e^{x^2}}{2}+C
-\end{gather*}\]</span></li>
+\end{gather*}</span></li>
 </ul></li>
-<li><span class="math inline">\(\mint{\sin(x)e^x}{x}\)</span>
+<li><span class="math inline">\mint{\sin(x)e^x}{x}</span>
 <ul>
-<li>válasz: <span class="math display">\[\begin{gather*}
+<li>válasz: <span class="math display">\begin{gather*}
 \text{(1)}\ \ \mint{\sin(x)e^{x}}{x}=-\cos(x)e^{x}-\mint{-\cos(x)e^{x}}{x}=\\
 -\cos(x)e^{x}+\mint{\cos(x)e^{x}}{x}\\
 \text{(2)}\ \ \mint{\sin(x)e^{x}}{x}=\sin(x)e^{x}-\mint{\cos(x)e^{x}}{x}\\
 \text{(1)+(2)}\ \rightarrow \\
 \mint{\sin(x)e^{x}}{x}=\frac{\sin(x)-\cos(x)}{2}e^{x}+C
-\end{gather*}\]</span></li>
+\end{gather*}</span></li>
 </ul></li>
-<li><span class="math inline">\(\mint{\cos^3(x)}{x}\)</span>
+<li><span class="math inline">\mint{\cos^3(x)}{x}</span>
 <ul>
-<li>válasz: <span class="math display">\[\begin{gather*}
+<li>válasz: <span class="math display">\begin{gather*}
 \text{helyettesítés: }\ u=sin(x)\\
 \mint{\cos^3(x)}{x}=\mint{(1-\sin^2(x))\cos(x)}{x}=\\
 \mint{1-u^2}{u}=u-\frac{u^3}{3}+C=\sin(x)-\frac{\sin^3(x)}{3}+C
-\end{gather*}\]</span></li>
+\end{gather*}</span></li>
 </ul></li>
-<li><span class="math inline">\(\mint{e^{au}\sin(u)}{u}\ \ 0\neq a\in\mathbb{R}\)</span>
+<li><span class="math inline">\mint{e^{au}\sin(u)}{u}\ \ 0\neq a\in\mathbb{R}</span>
 <ul>
-<li>válasz: <span class="math display">\[\begin{gather*}
+<li>válasz: <span class="math display">\begin{gather*}
 \text{parciális integrálás: }\ f=e^{au},\ \ g'=\sin(u)\\
 \mint{e^{au}\sin(u)}{u}=-e^{au}\cos(u)-\mint{ae^{au}(-\cos(u))}{u}=\\
 =-e^{au}\cos(u)+a\mint{e^{au}\cos(u)}{u}\\
@@ -240,7 +254,7 @@ window.Quarto = {
 \text{szorozzuk meg $a^2$-el a másodikat és adjuk össze az elsővel}\\
 (1+a^2)\mint{e^{au}\sin(u)}{u}=ae^{au}\sin(u)-e^{au}\cos(u) \ \ \implies\\
 \mint{e^{au}\sin(u)}{u}=\frac{e^{au}\left({a\sin(u)-\cos(u)}\right)}{1+a^2}
-\end{gather*}\]</span></li>
+\end{gather*}</span></li>
 </ul></li>
 </ul>
 

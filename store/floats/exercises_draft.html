@@ -105,8 +105,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -237,43 +251,43 @@ window.Quarto = {
 <h1>create vectors0</h1>
 <ul>
 <li>by vector here we mean row vector</li>
-<li><span class="math inline">\([1,2,...,21,22]\)</span></li>
-<li>write a function that returns the vector <span class="math inline">\([1,2,...,n-1,n]\)</span>, given <span class="math inline">\(n\)</span></li>
-<li>write a function that returns the sum of the a vector <span class="math inline">\([1,2,...,n-1,n]\)</span>, given <span class="math inline">\(n\)</span></li>
-<li><span class="math inline">\([22,21..2,1]\)</span></li>
-<li>write a function that returns <span class="math inline">\([n,n-1,...,2,1]\)</span>, given <span class="math inline">\(n\)</span></li>
-<li><span class="math inline">\([1,3,5,...,19,21]\)</span></li>
-<li>write a function that returns the vector with odd numbers <span class="math inline">\(\le n\)</span>, given <span class="math inline">\(n\)</span></li>
-<li>write a function that returns the sum of the odd numbers <span class="math inline">\(\le n\)</span>, given <span class="math inline">\(n\)</span></li>
-<li><span class="math inline">\([2,4,6,...,20,22]\)</span></li>
-<li>write a function that returns a vector with even numbers <span class="math inline">\(\le n\)</span>, given <span class="math inline">\(n\)</span></li>
-<li>write a function that returns the sum of the even numbers <span class="math inline">\(\le n\)</span>, given <span class="math inline">\(n\)</span></li>
-<li><span class="math inline">\([1^2,2^2,...,21^2,22^2]\)</span></li>
-<li>write a function that returns <span class="math inline">\([1^2,2^2,...,(n-1)^2,n^2]\)</span>, given <span class="math inline">\(n\)</span></li>
-<li><span class="math inline">\([0,1,0,1,...,]\)</span> of length <span class="math inline">\(22\)</span></li>
-<li>write a function that returns the length <span class="math inline">\(n\)</span> vector <span class="math inline">\([0,1,0,1,...]\)</span>, given <span class="math inline">\(n\)</span></li>
-<li><span class="math inline">\([1,2,3,2,1,2,3,2,1...,]\)</span> of length <span class="math inline">\(22\)</span></li>
-<li>write a function that returns the length <span class="math inline">\(n\)</span> vector <span class="math inline">\([1,2,3,2,1,2,3,2,1...,]\)</span>, given <span class="math inline">\(n\)</span></li>
-<li><span class="math inline">\([-1,2,-3,...-21,22]\)</span></li>
-<li>write a function that returns the length <span class="math inline">\(n\)</span> vector <span class="math inline">\([-1,2,-3,4,...]\)</span>, given <span class="math inline">\(n\)</span></li>
-<li><span class="math inline">\([1,2,3,...,22,1,2,3,...,22]\)</span></li>
-<li>given the vector <span class="math inline">\(x=[222,221,...,2,1]\)</span>
+<li><span class="math inline">[1,2,...,21,22]</span></li>
+<li>write a function that returns the vector <span class="math inline">[1,2,...,n-1,n]</span>, given <span class="math inline">n</span></li>
+<li>write a function that returns the sum of the a vector <span class="math inline">[1,2,...,n-1,n]</span>, given <span class="math inline">n</span></li>
+<li><span class="math inline">[22,21..2,1]</span></li>
+<li>write a function that returns <span class="math inline">[n,n-1,...,2,1]</span>, given <span class="math inline">n</span></li>
+<li><span class="math inline">[1,3,5,...,19,21]</span></li>
+<li>write a function that returns the vector with odd numbers <span class="math inline">\le n</span>, given <span class="math inline">n</span></li>
+<li>write a function that returns the sum of the odd numbers <span class="math inline">\le n</span>, given <span class="math inline">n</span></li>
+<li><span class="math inline">[2,4,6,...,20,22]</span></li>
+<li>write a function that returns a vector with even numbers <span class="math inline">\le n</span>, given <span class="math inline">n</span></li>
+<li>write a function that returns the sum of the even numbers <span class="math inline">\le n</span>, given <span class="math inline">n</span></li>
+<li><span class="math inline">[1^2,2^2,...,21^2,22^2]</span></li>
+<li>write a function that returns <span class="math inline">[1^2,2^2,...,(n-1)^2,n^2]</span>, given <span class="math inline">n</span></li>
+<li><span class="math inline">[0,1,0,1,...,]</span> of length <span class="math inline">22</span></li>
+<li>write a function that returns the length <span class="math inline">n</span> vector <span class="math inline">[0,1,0,1,...]</span>, given <span class="math inline">n</span></li>
+<li><span class="math inline">[1,2,3,2,1,2,3,2,1...,]</span> of length <span class="math inline">22</span></li>
+<li>write a function that returns the length <span class="math inline">n</span> vector <span class="math inline">[1,2,3,2,1,2,3,2,1...,]</span>, given <span class="math inline">n</span></li>
+<li><span class="math inline">[-1,2,-3,...-21,22]</span></li>
+<li>write a function that returns the length <span class="math inline">n</span> vector <span class="math inline">[-1,2,-3,4,...]</span>, given <span class="math inline">n</span></li>
+<li><span class="math inline">[1,2,3,...,22,1,2,3,...,22]</span></li>
+<li>given the vector <span class="math inline">x=[222,221,...,2,1]</span>
 <ul>
-<li>remove the odd elements from <span class="math inline">\(x\)</span></li>
-<li>remove the elements at odd indexed positions from <span class="math inline">\(x\)</span></li>
-<li>remove the prime numbers from <span class="math inline">\(x\)</span></li>
-<li>remove the elements at prime indexed positions from <span class="math inline">\(x\)</span></li>
-<li>remove the square numbers from <span class="math inline">\(x\)</span></li>
-<li>remove the elements at square number indexed positions from <span class="math inline">\(x\)</span></li>
-<li>remove the powers of <span class="math inline">\(2\)</span> from <span class="math inline">\(x\)</span></li>
-<li>remove the elements at powers of <span class="math inline">\(2\)</span> indexed positions from <span class="math inline">\(x\)</span></li>
+<li>remove the odd elements from <span class="math inline">x</span></li>
+<li>remove the elements at odd indexed positions from <span class="math inline">x</span></li>
+<li>remove the prime numbers from <span class="math inline">x</span></li>
+<li>remove the elements at prime indexed positions from <span class="math inline">x</span></li>
+<li>remove the square numbers from <span class="math inline">x</span></li>
+<li>remove the elements at square number indexed positions from <span class="math inline">x</span></li>
+<li>remove the powers of <span class="math inline">2</span> from <span class="math inline">x</span></li>
+<li>remove the elements at powers of <span class="math inline">2</span> indexed positions from <span class="math inline">x</span></li>
 </ul></li>
-<li>given the vector <span class="math inline">\(x\)</span> with integers
+<li>given the vector <span class="math inline">x</span> with integers
 <ul>
-<li>remove the odd elements from <span class="math inline">\(x\)</span></li>
-<li>remove the prime numbers from <span class="math inline">\(x\)</span></li>
-<li>remove the squares from <span class="math inline">\(x\)</span></li>
-<li>remove the powers of <span class="math inline">\(2\)</span> from <span class="math inline">\(x\)</span></li>
+<li>remove the odd elements from <span class="math inline">x</span></li>
+<li>remove the prime numbers from <span class="math inline">x</span></li>
+<li>remove the squares from <span class="math inline">x</span></li>
+<li>remove the powers of <span class="math inline">2</span> from <span class="math inline">x</span></li>
 </ul></li>
 </ul>
 </section>
@@ -291,7 +305,7 @@ window.Quarto = {
 <details class="short-q" name="create vectors
 ">
 <summary class="short-q">
-<p><span class="math inline">\([1,2,...,21,22]\)</span> &nbsp;&nbsp;</p>
+<p><span class="math inline">[1,2,...,21,22]</span> &nbsp;&nbsp;</p>
 </summary>
 
 <p><code>1:22</code></p>
@@ -301,7 +315,7 @@ window.Quarto = {
 <details class="short-q" name="create vectors
 ">
 <summary class="short-q">
-<span class="math inline">\([22,21,...,2,1]\)</span> &nbsp;&nbsp;
+<span class="math inline">[22,21,...,2,1]</span> &nbsp;&nbsp;
 </summary>
 <p><code>22:-1:1</code></p>
 </details>
@@ -310,7 +324,7 @@ window.Quarto = {
 <details class="short-q" name="create vectors
 ">
 <summary class="short-q">
-<span class="math inline">\([1,3,...,19,21]\)</span> &nbsp;&nbsp;
+<span class="math inline">[1,3,...,19,21]</span> &nbsp;&nbsp;
 </summary>
 <p><code>1:2:21</code></p>
 </details>
@@ -321,7 +335,7 @@ window.Quarto = {
 <details class="short-q" name="create vectors
 ">
 <summary class="short-q">
-<span class="math inline">\([21,19,...,3,1]\)</span> &nbsp;&nbsp;
+<span class="math inline">[21,19,...,3,1]</span> &nbsp;&nbsp;
 </summary>
 <p><code>21:-1:1</code></p>
 </details>
@@ -330,7 +344,7 @@ window.Quarto = {
 <details class="short-q" name="create vectors
 ">
 <summary class="short-q">
-<span class="math inline">\([1,4,9,...,81,100]\)</span> &nbsp;&nbsp;
+<span class="math inline">[1,4,9,...,81,100]</span> &nbsp;&nbsp;
 </summary>
 <p><code>(1:10).^2</code></p>
 </details>
@@ -339,7 +353,7 @@ window.Quarto = {
 <details class="short-q" name="create vectors
 ">
 <summary class="short-q">
-<span class="math inline">\([1,2,1,2,...]\)</span> of length 22 &nbsp;&nbsp;
+<span class="math inline">[1,2,1,2,...]</span> of length 22 &nbsp;&nbsp;
 </summary>
 <p><code>repmat([1,2],1,11)</code></p>
 </details>
@@ -350,7 +364,7 @@ window.Quarto = {
 <details class="short-q" name="create vectors
 ">
 <summary class="short-q">
-<span class="math inline">\([1,2,3,1,2,3...]\)</span> of length 22 &nbsp;&nbsp;
+<span class="math inline">[1,2,3,1,2,3...]</span> of length 22 &nbsp;&nbsp;
 </summary>
 <p><code>t=repmat([1,2],1,8); t(1:22)</code></p>
 </details>
@@ -441,23 +455,23 @@ b=b(floor(tmp)==tmp);</code></pre>
 <section id="important-numbers" class="level2">
 <h2 class="anchored" data-anchor-id="important-numbers"><a href="generated/_impnumbers.html">important numbers</a></h2>
 <ul>
-<li>let <span class="math inline">\({\cal F}=\{a=2, k_{-}=-3, k_{+}=3, t=4\}\)</span>
+<li>let <span class="math inline">{\cal F}=\{a=2, k_{-}=-3, k_{+}=3, t=4\}</span>
 <ol type="1">
-<li>compute the (normalized) representations for <span class="math inline">\(0.2,\ 1.45,\ \pi\)</span> in <span class="math inline">\(\cal F\)</span> using regular rounding</li>
-<li>what is <span class="math inline">\(\varepsilon_{0},\ \varepsilon_{1},\ M_{\infty},\ 1_{+},\ 1_{-}\)</span> in <span class="math inline">\(\cal F\)</span></li>
-<li>how many positive numbers <span class="math inline">\(\cal F\)</span> has?</li>
-<li>what is the smallest positive integer that is not in <span class="math inline">\(\cal F\)</span>?</li>
+<li>compute the (normalized) representations for <span class="math inline">0.2,\ 1.45,\ \pi</span> in <span class="math inline">\cal F</span> using regular rounding</li>
+<li>what is <span class="math inline">\varepsilon_{0},\ \varepsilon_{1},\ M_{\infty},\ 1_{+},\ 1_{-}</span> in <span class="math inline">\cal F</span></li>
+<li>how many positive numbers <span class="math inline">\cal F</span> has?</li>
+<li>what is the smallest positive integer that is not in <span class="math inline">\cal F</span>?</li>
 </ol></li>
 <li>these are <code>double</code> system related exercises
 <ul>
-<li>write a function that returns <span class="math inline">\(\varepsilon_{0}\)</span>!</li>
-<li>write a function that returns <span class="math inline">\(\varepsilon_{1}\)</span>!</li>
-<li>write a function that returns <span class="math inline">\(x_{+}\)</span>, given <span class="math inline">\(x\)</span>!</li>
-<li>verify, that <span class="math inline">\((x+y)+z \neq x+(y+z)\)</span> for <span class="math inline">\(x=0.4,\ y=-0.5, z=0.1\)</span>
+<li>write a function that returns <span class="math inline">\varepsilon_{0}</span>!</li>
+<li>write a function that returns <span class="math inline">\varepsilon_{1}</span>!</li>
+<li>write a function that returns <span class="math inline">x_{+}</span>, given <span class="math inline">x</span>!</li>
+<li>verify, that <span class="math inline">(x+y)+z \neq x+(y+z)</span> for <span class="math inline">x=0.4,\ y=-0.5, z=0.1</span>
 <ul>
 <li>does it occur frequently?</li>
 </ul></li>
-<li>let <span class="math inline">\(x=\frac{1}{3}\)</span>. iterate <span class="math inline">\(n=10,50,100\)</span> times the assignment: <span class="math inline">\(x=4x-1\)</span>. what can be observed?</li>
+<li>let <span class="math inline">x=\frac{1}{3}</span>. iterate <span class="math inline">n=10,50,100</span> times the assignment: <span class="math inline">x=4x-1</span>. what can be observed?</li>
 </ul></li>
 </ul>
 

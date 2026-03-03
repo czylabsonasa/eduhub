@@ -20,7 +20,7 @@ f
 % transforming them to a column vector
 t=t(:); f=f(:);
 % build the gaussian equation
-A=[ones(size(t)), t.^2];
+A=[t.^2];
 fprintf("- the rref of the gaussian normal equation:\n\n")
 disp(rref([A'*A, A'*f]))
 fprintf("\n");
@@ -29,23 +29,21 @@ fprintf("\n");
 x=(A'*A)\(A'*f);
 
 % we are searching the in s+a/2*t^2 form
-s=x(1); 
-a=2*x(2);
+a=2*x(1);
 
 plot(t,f,"*","MarkerSize",8);
 % we need more points to plot a nice parabola
 xx=linspace(-1,13);
-plot(xx,s+a/2*xx.^2,"r","LineWidth",1);
+plot(xx,a/2*xx.^2,"r","LineWidth",1);
 
 legend(["data points","the best fitting function"],"Location","southeast");
 axis([-1,13,-inf,inf]);
 
 saveas(gca(),"peter_acc_solution.png","png");
 
-fprintf("- the best function is: %.4f + %.4f/2*t^2\n",s,a);
-fprintf("- at t=13 the position will be x=%.4f + %.4f/2*13^2 = %.4f\n",...
-   s,a,s+a/2*13^2);
-fprintf("- the position x=1000 will be reached at t=%.4f\n",sqrt(2*(1000-s)/a));
+fprintf("- the best function is: %.4f/2*t^2\n",a);
+fprintf("- at t=13 the position will be x=%.4f/2*13^2 = %.4f\n", a,a/2*13^2);
+fprintf("- the position x=1000 will be reached at t=%.4f\n",sqrt(2*1000/a));
 fprintf("- the acceleration is a=%.4f\n",a);
 
 

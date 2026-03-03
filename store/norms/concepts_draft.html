@@ -105,8 +105,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -192,7 +206,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#norm" id="toc-norm" class="nav-link" data-scroll-target="#norm">1-norm</a></li>
   <li><a href="#norm-1" id="toc-norm-1" class="nav-link" data-scroll-target="#norm-1">2 norm</a></li>
-  <li><a href="#infty-norm" id="toc-infty-norm" class="nav-link" data-scroll-target="#infty-norm"><span class="math inline">\(\infty\)</span> norm</a></li>
+  <li><a href="#infty-norm" id="toc-infty-norm" class="nav-link" data-scroll-target="#infty-norm"><span class="math inline">\infty</span> norm</a></li>
   </ul></li>
   <li><a href="#numerical-example" id="toc-numerical-example" class="nav-link" data-scroll-target="#numerical-example">numerical-example</a></li>
   <li><a href="#matlab-1" id="toc-matlab-1" class="nav-link" data-scroll-target="#matlab-1">matlab</a></li>
@@ -244,23 +258,23 @@ window.Quarto = {
 <section id="review" class="level2">
 <h2 class="anchored" data-anchor-id="review">review</h2>
 <ul>
-<li>in this section <span class="math inline">\(x,y \in \mathbb{R}\)</span></li>
+<li>in this section <span class="math inline">x,y \in \mathbb{R}</span></li>
 <li>how large is a real number?</li>
 <li>absolute value, distance from zero</li>
 </ul>
-<p><span class="math display">\[
+<p><span class="math display">
 \vert x \vert =
 \begin{cases}
   x &amp; \text{ if }\ \ x\ge 0\\
   -x &amp; \text{ otherwise }
 \end{cases}
-\]</span></p>
+</span></p>
 <ul>
 <li>properties:
 <ul>
-<li><span class="math inline">\(\vert x\vert\ge 0\)</span> and <span class="math inline">\(\vert x\vert=0\ \text{ iff }\ x=0\)</span></li>
-<li><span class="math inline">\(\vert x+y \vert \le \vert x\vert + \vert y \vert\)</span></li>
-<li><span class="math inline">\(\vert x\cdot y \vert = \vert x\vert \cdot \vert y \vert\)</span></li>
+<li><span class="math inline">\vert x\vert\ge 0</span> and <span class="math inline">\vert x\vert=0\ \text{ iff }\ x=0</span></li>
+<li><span class="math inline">\vert x+y \vert \le \vert x\vert + \vert y \vert</span></li>
+<li><span class="math inline">\vert x\cdot y \vert = \vert x\vert \cdot \vert y \vert</span></li>
 </ul></li>
 </ul>
 </section>
@@ -270,25 +284,25 @@ window.Quarto = {
 <section id="review-1" class="level2">
 <h2 class="anchored" data-anchor-id="review-1">review</h2>
 <ul>
-<li>in this section <span class="math inline">\(x,y \in \mathbb{R}^n\)</span> and <span class="math inline">\(\alpha \in \mathbb{R}\)</span></li>
+<li>in this section <span class="math inline">x,y \in \mathbb{R}^n</span> and <span class="math inline">\alpha \in \mathbb{R}</span></li>
 <li>how large is a vector?</li>
-<li>it is denoted by <span class="math inline">\(\Vert x \Vert\)</span></li>
+<li>it is denoted by <span class="math inline">\Vert x \Vert</span></li>
 <li>requirements (axioms):
 <ul>
-<li><span class="math inline">\(\Vert x\Vert\ge 0\)</span> and <span class="math inline">\(\Vert x\Vert=0\ \text{ iff }\ x=0\)</span></li>
-<li><span class="math inline">\(\Vert x+y \Vert \le \Vert x\Vert + \Vert y \Vert\)</span>
+<li><span class="math inline">\Vert x\Vert\ge 0</span> and <span class="math inline">\Vert x\Vert=0\ \text{ iff }\ x=0</span></li>
+<li><span class="math inline">\Vert x+y \Vert \le \Vert x\Vert + \Vert y \Vert</span>
 <ul>
 <li>it is the triangle inequality</li>
 </ul></li>
-<li><span class="math inline">\(\Vert \alpha \cdot x \Vert = \vert \alpha\vert \cdot \Vert x \Vert\)</span></li>
+<li><span class="math inline">\Vert \alpha \cdot x \Vert = \vert \alpha\vert \cdot \Vert x \Vert</span></li>
 </ul></li>
 <li>the following vector norms are important
 <ul>
-<li><span class="math inline">\(\Vert x \Vert_{2} = \sqrt{\vert x_1\vert^2 + \ldots + \vert x_n\vert^2}\ \ \)</span> (euclidean or 2-norm)</li>
-<li><span class="math inline">\(\Vert x \Vert_{1} = \vert x_1\vert + \ldots + \vert x_n\vert\ \ \)</span> (manhattan or 1-norm)</li>
-<li><span class="math inline">\(\Vert x \Vert_{\infty} = \max_{i=k\ldots n}\vert x_k\vert\ \ \)</span> (<span class="math inline">\(\infty\)</span>-norm)</li>
+<li><span class="math inline">\Vert x \Vert_{2} = \sqrt{\vert x_1\vert^2 + \ldots + \vert x_n\vert^2}\ \ </span> (euclidean or 2-norm)</li>
+<li><span class="math inline">\Vert x \Vert_{1} = \vert x_1\vert + \ldots + \vert x_n\vert\ \ </span> (manhattan or 1-norm)</li>
+<li><span class="math inline">\Vert x \Vert_{\infty} = \max_{i=k\ldots n}\vert x_k\vert\ \ </span> (<span class="math inline">\infty</span>-norm)</li>
 </ul></li>
-<li>the <strong>distance</strong> between vectors: <span class="math inline">\(\Vert x-y\Vert\)</span>
+<li>the <strong>distance</strong> between vectors: <span class="math inline">\Vert x-y\Vert</span>
 <ul>
 <li>small: close to each other</li>
 <li>large: far from each other</li>
@@ -299,9 +313,9 @@ window.Quarto = {
 <section id="additional-properties" class="level2">
 <h2 class="anchored" data-anchor-id="additional-properties">additional-properties</h2>
 <ul>
-<li>for all <span class="math inline">\(x \in \mathbb{R}^{n}\)</span> <span class="math display">\[
+<li>for all <span class="math inline">x \in \mathbb{R}^{n}</span> <span class="math display">
 \Vert x\Vert_{\infty} \le \Vert x\Vert_{2} \le \Vert x\Vert_{1}
-\]</span></li>
+</span></li>
 </ul>
 </section>
 <section id="matlab" class="level2">
@@ -314,34 +328,34 @@ window.Quarto = {
 <section id="matrix-norm" class="level1">
 <h1>matrix-norm</h1>
 <ul>
-<li>in this section <span class="math inline">\(A,B \in {\cal M}_{n\times n}\)</span> and <span class="math inline">\(x \in \mathbb{R}^n\)</span> and <span class="math inline">\(\alpha \in \mathbb{R}\)</span></li>
+<li>in this section <span class="math inline">A,B \in {\cal M}_{n\times n}</span> and <span class="math inline">x \in \mathbb{R}^n</span> and <span class="math inline">\alpha \in \mathbb{R}</span></li>
 <li>how large is a matrix?</li>
-<li>it is denoted by <span class="math inline">\(\Vert A \Vert\)</span></li>
+<li>it is denoted by <span class="math inline">\Vert A \Vert</span></li>
 <li>requirements (axioms):
 <ul>
-<li><span class="math inline">\(\Vert A\Vert\ge 0\)</span> and <span class="math inline">\(\Vert A\Vert=0\ \text{ iff }\ A=0\)</span></li>
-<li><span class="math inline">\(\Vert A+B \Vert \le \Vert A\Vert + \Vert B \Vert\ \ \)</span> (the triangle inequality)</li>
-<li><span class="math inline">\(\Vert \alpha \cdot A \Vert = \vert \alpha\vert \cdot \Vert A \Vert\)</span></li>
+<li><span class="math inline">\Vert A\Vert\ge 0</span> and <span class="math inline">\Vert A\Vert=0\ \text{ iff }\ A=0</span></li>
+<li><span class="math inline">\Vert A+B \Vert \le \Vert A\Vert + \Vert B \Vert\ \ </span> (the triangle inequality)</li>
+<li><span class="math inline">\Vert \alpha \cdot A \Vert = \vert \alpha\vert \cdot \Vert A \Vert</span></li>
 </ul></li>
 <li>how can we define a matrix norm?
 <ul>
 <li>induced matrix norm, it is induced (determined) by a <strong>fixed</strong> vector norm (read <a href="../../store/norms/notes_norm.html#induced-norm-definition">this</a> for more details)</li>
 </ul></li>
 </ul>
-<p><span class="math display">\[
+<p><span class="math display">
 \Vert A \Vert = \max_{x\neq 0} \frac{\Vert Ax\Vert}{\Vert x\Vert}
-\]</span></p>
+</span></p>
 <ul>
-<li>one can read it: what is the largest relative change that is caused for a vector <span class="math inline">\(x\)</span> multiplying it by <span class="math inline">\(A\)</span></li>
+<li>one can read it: what is the largest relative change that is caused for a vector <span class="math inline">x</span> multiplying it by <span class="math inline">A</span></li>
 <li>it can be proved that the right hand side is well defined and the requirements are fulfilled</li>
 <li>there are infinitely many different vector norms</li>
 <li>the following matrix norms are important
 <ul>
-<li><span class="math inline">\(\Vert . \Vert_{1}\ \ \)</span> 1-norm, column norm</li>
-<li><span class="math inline">\(\Vert . \Vert_{2}\ \ \)</span> 2-norm, euclidean norm, spectral norm</li>
-<li><span class="math inline">\(\Vert . \Vert_{\infty}\ \ \)</span> <span class="math inline">\(\infty\)</span>-norm, row norm</li>
+<li><span class="math inline">\Vert . \Vert_{1}\ \ </span> 1-norm, column norm</li>
+<li><span class="math inline">\Vert . \Vert_{2}\ \ </span> 2-norm, euclidean norm, spectral norm</li>
+<li><span class="math inline">\Vert . \Vert_{\infty}\ \ </span> <span class="math inline">\infty</span>-norm, row norm</li>
 </ul></li>
-<li>the <strong>distance</strong> between matrices: <span class="math inline">\(\Vert A-B\Vert\)</span>
+<li>the <strong>distance</strong> between matrices: <span class="math inline">\Vert A-B\Vert</span>
 <ul>
 <li>small: close to each other</li>
 <li>large: far from each other</li>
@@ -352,49 +366,49 @@ window.Quarto = {
 <ul>
 <li>the following properties are also valid</li>
 </ul>
-<p><span class="math display">\[\begin{gather*}
+<p><span class="math display">\begin{gather*}
 \Vert E \Vert = 1\\
 \Vert A\cdot x\Vert \le \Vert A\Vert \cdot \Vert x \Vert\\
 \Vert A\cdot B \Vert \le \Vert A\Vert \cdot \Vert B \Vert\\
-\end{gather*}\]</span></p>
+\end{gather*}</span></p>
 </section>
 <section id="additional-properties-1" class="level2">
 <h2 class="anchored" data-anchor-id="additional-properties-1">additional properties</h2>
 <ul>
-<li>for all <span class="math inline">\(A \in {\cal M}_{n\times n}\)</span>: <span class="math display">\[
+<li>for all <span class="math inline">A \in {\cal M}_{n\times n}</span>: <span class="math display">
 \Vert A\Vert_{\infty} \le \Vert A\Vert_{2} \le \Vert A\Vert_{1}
-\]</span></li>
+</span></li>
 </ul>
 </section>
 <section id="computational-rules" class="level2">
 <h2 class="anchored" data-anchor-id="computational-rules">computational rules</h2>
 <ul>
-<li><span class="math inline">\(a_{ij}\)</span> is <span class="math inline">\(j\)</span>-th element of the <span class="math inline">\(i\)</span>-th row for a matrix <span class="math inline">\(A\)</span></li>
+<li><span class="math inline">a_{ij}</span> is <span class="math inline">j</span>-th element of the <span class="math inline">i</span>-th row for a matrix <span class="math inline">A</span></li>
 </ul>
 <section id="norm" class="level3">
 <h3 class="anchored" data-anchor-id="norm">1-norm</h3>
-<p><span class="math display">\[
+<p><span class="math display">
 \Vert A\Vert _1=\max\limits_{1\leq j\leq n}\sum\limits_{i=1}^n\vert
 a_{ij}\vert
-\]</span></p>
+</span></p>
 <ul>
 <li>for each <strong>column</strong> compute the sum of absolute values and take the maximal one</li>
 </ul>
 </section>
 <section id="norm-1" class="level3">
 <h3 class="anchored" data-anchor-id="norm-1">2 norm</h3>
-<p><span class="math display">\[
+<p><span class="math display">
 \Vert A\Vert _2=\sqrt{\lambda _{\max} (A^{T}A)}
-\]</span></p>
+</span></p>
 <ul>
-<li>take the square root of the maximal absolute value <strong>eigenvalue</strong> of the matrix <span class="math inline">\((A^{T}A)\)</span></li>
+<li>take the square root of the maximal absolute value <strong>eigenvalue</strong> of the matrix <span class="math inline">(A^{T}A)</span></li>
 </ul>
 </section>
 <section id="infty-norm" class="level3">
-<h3 class="anchored" data-anchor-id="infty-norm"><span class="math inline">\(\infty\)</span> norm</h3>
-<p><span class="math display">\[
+<h3 class="anchored" data-anchor-id="infty-norm"><span class="math inline">\infty</span> norm</h3>
+<p><span class="math display">
 \Vert A\Vert _\infty=\max_{1\leq i\leq n}\sum_{j=1}^n\vert a_{ij}\vert
-\]</span></p>
+</span></p>
 <ul>
 <li>for each <strong>row</strong> compute the sum of absolute values and take the maximal one</li>
 </ul>
@@ -403,16 +417,16 @@ a_{ij}\vert
 </section>
 <section id="numerical-example" class="level2">
 <h2 class="anchored" data-anchor-id="numerical-example">numerical-example</h2>
-<p><span class="math display">\[
+<p><span class="math display">
 A=\left[\begin{array}{rrr}
 -3&amp;0&amp;4\\
 1&amp;-1&amp;2\\
 -2&amp;1&amp;-2
 \end{array}\right]
-\]</span></p>
+</span></p>
 <ul>
-<li><span class="math inline">\(\Vert A\Vert_{1}= 8\)</span></li>
-<li><span class="math inline">\(\Vert A\Vert_{\infty}= 7\)</span></li>
+<li><span class="math inline">\Vert A\Vert_{1}= 8</span></li>
+<li><span class="math inline">\Vert A\Vert_{\infty}= 7</span></li>
 </ul>
 </section>
 <section id="matlab-1" class="level2">
@@ -427,7 +441,7 @@ A=\left[\begin{array}{rrr}
 <section id="example-linsys" class="level2">
 <h2 class="anchored" data-anchor-id="example-linsys">example (linsys)</h2>
 <ul>
-<li>compare the solutions of the linear systems below <span class="math display">\[
+<li>compare the solutions of the linear systems below <span class="math display">
 \left[
 \begin{array}{rr}
 1&amp;1\\
@@ -442,9 +456,9 @@ x_2
 2\\
 2
 \end{array}\right]
-\]</span>
+</span>
 <ul>
-<li><span class="math inline">\(x=[2,0]^{T}\)</span> <span class="math display">\[
+<li><span class="math inline">x=[2,0]^{T}</span> <span class="math display">
 \left[
 \begin{array}{rr}
 1&amp;1\\
@@ -459,8 +473,8 @@ y_2
 2\\
 2.0001
 \end{array}\right]
-\]</span></li>
-<li><span class="math inline">\(y=[1,1]^{T}\)</span></li>
+</span></li>
+<li><span class="math inline">y=[1,1]^{T}</span></li>
 </ul></li>
 <li>large difference, despite the matrix is the same and the right hand sides are very close to each other (in vector norm!)</li>
 <li>how can we explain this behavior?</li>
@@ -471,11 +485,11 @@ y_2
 <h1>an inequality</h1>
 <ul>
 <li>this is the <strong>error in the right hand side</strong> inequality</li>
-<li>let the matrix <span class="math inline">\(A\)</span> be invertible and fix a vector norm and the corresponding matrix norm</li>
-<li>consider the linear systems: <span class="math display">\[\begin{align*}
+<li>let the matrix <span class="math inline">A</span> be invertible and fix a vector norm and the corresponding matrix norm</li>
+<li>consider the linear systems: <span class="math display">\begin{align*}
 Ax &amp;= b \\
 A(x+\Delta{x}) &amp;= b+\Delta{b}
-\end{align*}\]</span></li>
+\end{align*}</span></li>
 <li>we’ll have different solutions for the systems, but how far they are from each other?</li>
 <li>the following inequality holds:</li>
 </ul>
@@ -489,7 +503,7 @@ A(x+\Delta{x}) &amp;= b+\Delta{b}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><span class="math display">\[
+<p><span class="math display">
 \begin{gather*}
 \frac{\Vert \Delta{x}\Vert}{\Vert x\Vert} \le \Vert A\Vert \Vert A^{-1}\Vert \frac{\Vert \Delta{b}\Vert}{\Vert b\Vert}\\
 \\
@@ -499,7 +513,7 @@ A(x+\Delta{x}) &amp;= b+\Delta{b}
 \\
 x_{\text{relative error}} \le \text{cond}(A)~ b_{\text{relative error}}
 \end{gather*}
-\]</span></p>
+</span></p>
 </div>
 </div>
 <div class="thm-CI-PROP callout callout-style-default callout-note callout-titled">
@@ -514,10 +528,10 @@ x_{\text{relative error}} \le \text{cond}(A)~ b_{\text{relative error}}
 <div class="callout-body-container callout-body">
 <ul>
 <li>the inequality is tight, no gap between the sides</li>
-<li>read it: the relative error in the solution is in the worst case is <span class="math inline">\(\Vert A\Vert \Vert A^{-1}\Vert\)</span> times the relative error in the right hand side</li>
-<li>the quantity <span class="math inline">\(\Vert A\Vert \Vert A^{-1}\Vert\)</span> is called the <strong>conditional</strong> number of <span class="math inline">\(A\)</span>
+<li>read it: the relative error in the solution is in the worst case is <span class="math inline">\Vert A\Vert \Vert A^{-1}\Vert</span> times the relative error in the right hand side</li>
+<li>the quantity <span class="math inline">\Vert A\Vert \Vert A^{-1}\Vert</span> is called the <strong>conditional</strong> number of <span class="math inline">A</span>
 <ul>
-<li><span class="math inline">\(\text{cond}(A)=\Vert A\Vert \Vert A^{-1}\Vert\)</span></li>
+<li><span class="math inline">\text{cond}(A)=\Vert A\Vert \Vert A^{-1}\Vert</span></li>
 </ul></li>
 <li><strong>important</strong>: this kind of error propagation has nothing to do with floating point computational errors.</li>
 <li>read <a href="../../store/norms/notes_norm.html#cond-inequality">this</a> for more details</li>
@@ -534,7 +548,7 @@ x_{\text{relative error}} \le \text{cond}(A)~ b_{\text{relative error}}
 <h2 class="anchored" data-anchor-id="example-linsys-continued">example (linsys, continued)</h2>
 <ul>
 <li>examine the output of the script below</li>
-<li>play with different <span class="math inline">\(p\)</span> values!</li>
+<li>play with different <span class="math inline">p</span> values!</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">p</span><span class="op">=</span><span class="fl">1</span><span class="op">;</span></span>
@@ -554,15 +568,15 @@ x_{\text{relative error}} \le \text{cond}(A)~ b_{\text{relative error}}
 <h2 class="anchored" data-anchor-id="properties-1">properties</h2>
 <ul>
 <li>its value <strong>does</strong> depend on the norm used</li>
-<li><span class="math inline">\(\text{cond}(A) \geq 1\)</span></li>
-<li>for <span class="math inline">\(c\neq 0\)</span>, <span class="math inline">\(\text{cond}(cA)=\text{cond}(A)\)</span></li>
+<li><span class="math inline">\text{cond}(A) \geq 1</span></li>
+<li>for <span class="math inline">c\neq 0</span>, <span class="math inline">\text{cond}(cA)=\text{cond}(A)</span></li>
 </ul>
 <p>read <a href="../../store/norms/notes_norm.html#cond-property">this</a> for more details</p>
 </section>
 <section id="ill-conditioned" class="level2">
 <h2 class="anchored" data-anchor-id="ill-conditioned">ill-conditioned</h2>
 <ul>
-<li>if <span class="math inline">\(\text{cond}(A)*b_{\text{relative error}}\ge 1\)</span> the system is called <strong>ill-conditioned</strong></li>
+<li>if <span class="math inline">\text{cond}(A)*b_{\text{relative error}}\ge 1</span> the system is called <strong>ill-conditioned</strong></li>
 <li>it means that the absolute error in the solution can be as large as the true solution itself - it is bad.</li>
 </ul>
 

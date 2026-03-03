@@ -105,8 +105,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -210,18 +224,18 @@ window.Quarto = {
 <section id="intro" class="level1">
 <h1>intro</h1>
 <ul>
-<li>think about the <span class="math inline">\(5\times 5\)</span> classical <a href="https://www.jaapsch.net/puzzles/javascript/lightjcl.htm" target="_blank">puzzle</a></li>
-<li>the initial state of game is a flattened matrix : a zero-one vector (<span class="math inline">\(S\)</span>)</li>
-<li>the target state (<span class="math inline">\(T\)</span>) is <span class="math inline">\(25\times 1\)</span> zero vector (but one can control it)</li>
-<li>for each button we can assign a specific zero-one vector (<span class="math inline">\(a_{k}\)</span>)</li>
-<li>by pressing a button: we add a corresponding <span class="math inline">\(25\times 1\)</span> zero-one vector to the current state vector</li>
+<li>think about the <span class="math inline">5\times 5</span> classical <a href="https://www.jaapsch.net/puzzles/javascript/lightjcl.htm" target="_blank">puzzle</a></li>
+<li>the initial state of game is a flattened matrix : a zero-one vector (<span class="math inline">S</span>)</li>
+<li>the target state (<span class="math inline">T</span>) is <span class="math inline">25\times 1</span> zero vector (but one can control it)</li>
+<li>for each button we can assign a specific zero-one vector (<span class="math inline">a_{k}</span>)</li>
+<li>by pressing a button: we add a corresponding <span class="math inline">25\times 1</span> zero-one vector to the current state vector</li>
 <li>it is clear that we don’t need to press a button more than time.</li>
-<li><code>mod(2)</code> arithmetic used to solve the system: <span class="math inline">\(x_k\in \{0,1\}\)</span></li>
+<li><code>mod(2)</code> arithmetic used to solve the system: <span class="math inline">x_k\in \{0,1\}</span></li>
 </ul>
-<p><span class="math display">\[\begin{align*}
+<p><span class="math display">\begin{align*}
 S + x_1 a_1 + \ldots + x_{25} a_{25} &amp;= T\\
 x_1 a_1 + \ldots + x_{25} a_{25} &amp;= S+T\\
-\end{align*}\]</span></p>
+\end{align*}</span></p>
 </section>
 <section id="matlab" class="level1">
 <h1>matlab</h1>

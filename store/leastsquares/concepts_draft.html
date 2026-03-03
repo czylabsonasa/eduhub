@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-03-02">
+<meta name="dcterms.date" content="2026-03-03">
 
 <title>leastsquares/concepts_draft – eduhub</title>
 <style>
@@ -105,8 +105,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -204,7 +218,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 2, 2026</p>
+      <p class="date">March 3, 2026</p>
     </div>
   </div>
   
@@ -227,43 +241,43 @@ window.Quarto = {
 </section>
 <section id="example---watertank" class="level1">
 <h1>example - watertank</h1>
-<p>A cylindrical, <span class="math inline">\(0.5\)</span>m height tank is being filled with water at a constant rate. Peter starts to observe the height of water (at <span class="math inline">\(t=0\)</span>) in the tank. The measurements are summarized in the table below.</p>
-<p><span class="math display">\[
+<p>A cylindrical, <span class="math inline">0.5</span>m height tank is being filled with water at a constant rate. Peter starts to observe the height of water (at <span class="math inline">t=0</span>) in the tank. The measurements are summarized in the table below.</p>
+<p><span class="math display">
 \begin{array}{c|r|r|r|r|r|r|r}
 t_i\  \texttt{min}\ &amp;0 &amp;2&amp;4&amp; 6&amp; 8 &amp;10&amp; 12\\ \hline
 f_i\  \text{cm}\ &amp;3 &amp;4&amp;5 &amp;5.5 &amp;6.5 &amp;7 &amp;8
 \end{array}
-\]</span></p>
+</span></p>
 <p>The following questions arise:</p>
 <ul>
-<li>What is the height of the water in the tank at <span class="math inline">\(t=20\)</span>?</li>
+<li>What is the height of the water in the tank at <span class="math inline">t=20</span>?</li>
 <li>When will be the tank full?</li>
 <li>When was the tank empty?</li>
 </ul>
 <p>Using the information in the observations we will try to answer these questions.</p>
 <p><img src="peter_water_data.png" class="img-fluid" style="width:80.0%"></p>
 <p>By examining the plot and understandig the circumstances we decided to use a first-order polynomial to model the data.</p>
-<p><span class="math display">\[
+<p><span class="math display">
 F(t) = x_1 t + x_2
-\]</span></p>
-<p>The question is how to choose the parameters <span class="math inline">\(x_1, x_2\)</span> to get the best function - in some sense. For deciding about the parameters let’s consider the following function:</p>
-<p><span class="math display">\[
+</span></p>
+<p>The question is how to choose the parameters <span class="math inline">x_1, x_2</span> to get the best function - in some sense. For deciding about the parameters let’s consider the following function:</p>
+<p><span class="math display">
 J(x_1,x_2)=\sum_{k=1}^{7} (x_1 t_k + x_2 - f_k)^2
-\]</span></p>
-<p>For our data <span class="math inline">\(m=7\)</span> and we have to substitute the actual values data points: the result will be a second order polinomial with variables <span class="math inline">\(x_1,x_2\)</span>. By this function the distance of the line <span class="math inline">\(x_1 t + x_2\)</span> and the data points <span class="math inline">\(t, f\)</span> is measured. We need such <span class="math inline">\(x_1,x_2\)</span> parameters for which <span class="math inline">\(J\)</span> is as small as possible. This kind of <span class="math inline">\(x_1,x_2\)</span> always exist. We will learn how to compute them.</p>
+</span></p>
+<p>For our data <span class="math inline">m=7</span> and we have to substitute the actual values data points: the result will be a second order polinomial with variables <span class="math inline">x_1,x_2</span>. By this function the distance of the line <span class="math inline">x_1 t + x_2</span> and the data points <span class="math inline">t, f</span> is measured. We need such <span class="math inline">x_1,x_2</span> parameters for which <span class="math inline">J</span> is as small as possible. This kind of <span class="math inline">x_1,x_2</span> always exist. We will learn how to compute them.</p>
 </section>
 <section id="gauss-normal-equation" class="level1">
 <h1>Gauss normal equation</h1>
-<p>We <span class="math inline">\(m\)</span> have data points <span class="math inline">\(t=(t_1,\ldots,t_m)\)</span> and <span class="math inline">\(f=(f_1,\ldots,f_m)\)</span>. We are going to model the data with the help of the model function</p>
-<p><span class="math display">\[
+<p>We <span class="math inline">m</span> have data points <span class="math inline">t=(t_1,\ldots,t_m)</span> and <span class="math inline">f=(f_1,\ldots,f_m)</span>. We are going to model the data with the help of the model function</p>
+<p><span class="math display">
 F(t) = \sum_{k=1}^{n} x_{k}\varphi_{k}(t)
-\]</span></p>
-<p>where <span class="math inline">\(\varphi_k\ \ k=1\ldots n\)</span>’s are completely known one-variable functions. They are known as <strong>basis functions</strong> (or <strong>features</strong> in machine learning), but you can think of them informally as the <strong>building blocks</strong> of the model. <span class="math inline">\(F\)</span> is an <span class="math inline">\(n\)</span> variable function, it is the <span class="math inline">\(x_1,\ldots,x_n\)</span> coefficient linear combination of the <span class="math inline">\(\varphi_k\)</span> functions. It describes infinitely many possible functions at once. We are searching the best model instance, that is a coefficient system <span class="math inline">\(x_1,\ldots,x_n\)</span></p>
-<p><span class="math display">\[
+</span></p>
+<p>where <span class="math inline">\varphi_k\ \ k=1\ldots n</span>’s are completely known one-variable functions. They are known as <strong>basis functions</strong> (or <strong>features</strong> in machine learning), but you can think of them informally as the <strong>building blocks</strong> of the model. <span class="math inline">F</span> is an <span class="math inline">n</span> variable function, it is the <span class="math inline">x_1,\ldots,x_n</span> coefficient linear combination of the <span class="math inline">\varphi_k</span> functions. It describes infinitely many possible functions at once. We are searching the best model instance, that is a coefficient system <span class="math inline">x_1,\ldots,x_n</span></p>
+<p><span class="math display">
 J(x_1,\ldots,x_n)=\sum_{k=1}^{m} (f_k - F(t_k))^2
-\]</span></p>
-<p>is as small as possible. How to determine the unknowns <span class="math inline">\(x_1,\ldots,x_n\)</span> to get the smallest possible value/error for <span class="math inline">\(J\)</span>? One can rewrite the conditions in linear algebraic terms. By setting</p>
-<p><span class="math display">\[
+</span></p>
+<p>is as small as possible. How to determine the unknowns <span class="math inline">x_1,\ldots,x_n</span> to get the smallest possible value/error for <span class="math inline">J</span>? One can rewrite the conditions in linear algebraic terms. By setting</p>
+<p><span class="math display">
 A=\left[\begin{array}{ccccc}
 \varphi_1(t_1) &amp; \varphi_2(t_1) &amp; \ldots &amp; \varphi_{n-1}(t_1) &amp; \varphi_n(t_{1})\\
 \varphi_1(t_2) &amp; \varphi_2(t_2) &amp; \ldots &amp; \varphi_{n-1}(t_2) &amp; \varphi_n(t_{2})\\
@@ -271,8 +285,8 @@ A=\left[\begin{array}{ccccc}
 \varphi_1(t_{m-1}) &amp; \varphi_2(t_{m-1}) &amp; \ldots &amp; \varphi_{n-1}(t_{m-1}) &amp; \varphi_{n}(t_{m-1})\\
 \varphi_1(t_m) &amp; \varphi_2(t_m) &amp; \ldots &amp; \varphi_{n-1}(t_{m}) &amp; \varphi_{n}(t_{m})\\
 \end{array}\right]\ \
-\]</span></p>
-<p><span class="math display">\[
+</span></p>
+<p><span class="math display">
 x=\left[
 \begin{array}{c}
 x_{1}\\
@@ -292,17 +306,17 @@ f_{m-1}\\
 f_{m}\\
 \end{array}
 \right]
-\]</span></p>
-<p>the function <span class="math inline">\(J\)</span> can be written in the form</p>
-<p><span class="math display">\[
+</span></p>
+<p>the function <span class="math inline">J</span> can be written in the form</p>
+<p><span class="math display">
 J(x_1,\ldots,x_n)=\Vert f- Ax \Vert_{2}^2
-\]</span></p>
+</span></p>
 <p>and our problem is to find</p>
-<p><span class="math display">\[
+<p><span class="math display">
 \Vert f - Ax\Vert_{2}^2 \ \overset{x_1,\ldots,x_n}{\longrightarrow} \ \min
-\]</span></p>
-<p>Note that <span class="math inline">\(A\)</span> and <span class="math inline">\(f\)</span> are numerical values and if the linear system <span class="math inline">\(Ax=f\)</span> has a solution then we know the best model function instance - but in practice this system has no solution/inconsistent.</p>
-<p><a href="https://hu.wikipedia.org/wiki/Carl_Friedrich_Gauss">Gauss</a> proved that finding minimizer for <span class="math inline">\(J\)</span> is equivalent to solving the system</p>
+</span></p>
+<p>Note that <span class="math inline">A</span> and <span class="math inline">f</span> are numerical values and if the linear system <span class="math inline">Ax=f</span> has a solution then we know the best model function instance - but in practice this system has no solution/inconsistent.</p>
+<p><a href="https://hu.wikipedia.org/wiki/Carl_Friedrich_Gauss">Gauss</a> proved that finding minimizer for <span class="math inline">J</span> is equivalent to solving the system</p>
 <div class="thm-GN callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -313,9 +327,9 @@ J(x_1,\ldots,x_n)=\Vert f- Ax \Vert_{2}^2
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><span class="math display">\[
+<p><span class="math display">
 A^{T}Ax=A^{T}f
-\]</span></p>
+</span></p>
 </div>
 </div>
 <p>It is the gaussian <strong>normal equation</strong> - GN.</p>
@@ -331,10 +345,10 @@ A^{T}Ax=A^{T}f
 <div class="callout-body-container callout-body">
 <ul>
 <li>it always has a solution</li>
-<li>it has a unique solution <em>iff</em> <span class="math inline">\(A\)</span> (or equivalently <span class="math inline">\(A^{T}A\)</span>) is a rank <span class="math inline">\(n\)</span> matrix.</li>
-<li>if the columns of <span class="math inline">\(A\)</span> form a dependent vector system then it has <span class="math inline">\(\infty\)</span> many solutions. to resolve this one can <strong>get more data</strong> or <strong>simplify the model</strong></li>
-<li>each of the possible solutions provide the same “best” value for <span class="math inline">\(J\)</span>.</li>
-<li>if we have less observations than the number of unknowns () <span class="math inline">\(m&lt;n\)</span></li>
+<li>it has a unique solution <em>iff</em> <span class="math inline">A</span> (or equivalently <span class="math inline">A^{T}A</span>) is a rank <span class="math inline">n</span> matrix.</li>
+<li>if the columns of <span class="math inline">A</span> form a dependent vector system then it has <span class="math inline">\infty</span> many solutions. to resolve this one can <strong>get more data</strong> or <strong>simplify the model</strong></li>
+<li>each of the possible solutions provide the same “best” value for <span class="math inline">J</span>.</li>
+<li>if we have less observations than the number of unknowns (<span class="math inline">m&lt;n</span>)</li>
 <li>by solving the GN equation we say that we computed the <strong>best fitting</strong> model function</li>
 <li><a href="../../store/leastsquares/GN.html">Here</a> you may find some words about the derivation.</li>
 </ul>
@@ -348,7 +362,7 @@ A^{T}Ax=A^{T}f
 </ul>
 <section id="fitting-a-line" class="level2">
 <h2 class="anchored" data-anchor-id="fitting-a-line">fitting a line</h2>
-<p><span class="math display">\[
+<p><span class="math display">
 \begin{gather*}
 \varphi_{1}(t)=1\ \ \varphi_{2}(t)=t\\
 \\
@@ -376,11 +390,11 @@ m &amp; \sum t\\
 \end{array}
 \right]
 \end{gather*}
-\]</span></p>
+</span></p>
 </section>
 <section id="fitting-a-parabola" class="level2">
 <h2 class="anchored" data-anchor-id="fitting-a-parabola">fitting a parabola</h2>
-<p><span class="math display">\[
+<p><span class="math display">
 \begin{gather*}
 \varphi_{1}(t)=1\ \ \varphi_{2}(t)=t \ \ \varphi_{3}(t)=t^2\\
 \\
@@ -410,21 +424,21 @@ m &amp; \sum t &amp; \sum t^2\\
 \end{array}
 \right]
 \end{gather*}
-\]</span></p>
+</span></p>
 </section>
 <section id="matlab" class="level2">
 <h2 class="anchored" data-anchor-id="matlab">matlab</h2>
 <ul>
 <li>for polynomial fitting the <code>polyfit, polyval</code> functions are used.</li>
 <li>the polynomials in matlab represented by a vector, the main coefficient is the first, the constant is the last element - the are represented by decreasing degree coefficients</li>
-<li>the form is classical/traditional (as there are other forms too) <span class="math display">\[
+<li>the form is classical/traditional (as there are other forms too) <span class="math display">
 \begin{gather*}
 \text{the vector}\\
 [p_{n-1},\ldots,p_0]\\
 \text{in polynomial context is the polynomial }\\
 p_{n-1}x^{n-1}+p_{n-2}x^{n-2}+\ldots+p_{1}x+p_0\\
 \end{gather*}
-\]</span></li>
+</span></li>
 </ul>
 </section>
 </section>
@@ -447,20 +461,20 @@ p_{n-1}x^{n-1}+p_{n-2}x^{n-2}+\ldots+p_{1}x+p_0\\
 </section>
 <section id="example---acceleration" class="level1">
 <h1>example - acceleration</h1>
-<p>Peter is observing a body moving along a straight line with uniform acceleration. The object starts from the origin with zero initial velocity and moves along the x-axis. The collected data is the following:</p>
-<p><span class="math display">\[
+<p>Peter is observing a body moving along a straight line with uniform (constant) acceleration. The object starts from the origin with zero initial velocity and moves along the x-axis. The collected data is the following:</p>
+<p><span class="math display">
 \begin{array}{c|r|r|r|r|r|r|r}
 t_i\  \texttt{sec}\ &amp;0 &amp;2&amp;4&amp; 6&amp; 8 &amp;10&amp; 12\\ \hline
 f_i\  \text{meter}\ &amp;0 &amp;   5.7700 &amp;  18.0900 &amp;  37.9600  &amp; 69.0400 &amp; 103.5000 &amp; 156.8400\\
 \end{array}
-\]</span></p>
+</span></p>
 <p>Based on the data</p>
 <ul>
-<li>where will be the object at <span class="math inline">\(t=13\)</span></li>
-<li>at what time does the object reach the position <span class="math inline">\(x=1000\)</span>?</li>
+<li>where will be the object at <span class="math inline">t=13</span></li>
+<li>at what time does the object reach the position <span class="math inline">x=1000</span>?</li>
 <li>what is the acceleration of the object?</li>
 </ul>
-<p>According to the description and the physical laws the object position is described by a function <span class="math inline">\(F(t)=s_0 + \frac{a}{2}t^2\)</span>.</p>
+<p>According to the description and the physical laws the object position is described by a function <span class="math inline">F(t)=\frac{a}{2}t^2</span>.</p>
 <p><img src="peter_acc_solution.png" class="img-fluid" style="width:80.0%"></p>
 <p>it is the ouput of the <a href="peter_acc_solution.m">script</a></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">rref</span> <span class="va">of</span> <span class="va">the</span> <span class="va">gaussian</span> <span class="va">normal</span> <span class="va">equation</span><span class="op">:</span></span>
