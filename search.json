@@ -473,7 +473,7 @@
     "href": "store/leastsquares/concepts_draft.html#matlab",
     "title": "leastsquares/concepts_draft",
     "section": "matlab",
-    "text": "matlab\n\nfor polynomial fitting the polyfit, polyval functions are used.\nthe polynomials in matlab represented by a vector, the main coefficient is the first, the constant is the last element - the are represented by decreasing degree coefficients\nthe form is classical/traditional (as there are other forms too) \n\\begin{gather*}\n\\text{the vector}\\\\\n[p_{n-1},\\ldots,p_0]\\\\\n\\text{in polynomial context is the polynomial }\\\\\np_{n-1}x^{n-1}+p_{n-2}x^{n-2}+\\ldots+p_{1}x+p_0\\\\\n\\end{gather*}"
+    "text": "matlab\n\nfor polynomial fitting the polyfit, polyval functions are used.\nthe polynomials in matlab represented by a vector, the main coefficient is the first, the constant is the last element - the are represented by decreasing degree coefficients\nthe form is classical/traditional (as there are other forms too) \n\\begin{align*}\n\\text{vector:}& \\ \\ [p_{n-1},\\ldots,p_0]\\\\\n\\text{polynomial:}& \\ \\ p_{n-1}x^{n-1}+p_{n-2}x^{n-2}+\\ldots+p_{1}x+p_0\\\\\n\\end{align*}"
   },
   {
     "objectID": "store/gettingmatlab.html",

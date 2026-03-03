@@ -285,8 +285,7 @@ A=\left[\begin{array}{ccccc}
 \varphi_1(t_{m-1}) &amp; \varphi_2(t_{m-1}) &amp; \ldots &amp; \varphi_{n-1}(t_{m-1}) &amp; \varphi_{n}(t_{m-1})\\
 \varphi_1(t_m) &amp; \varphi_2(t_m) &amp; \ldots &amp; \varphi_{n-1}(t_{m}) &amp; \varphi_{n}(t_{m})\\
 \end{array}\right]\ \
-</span></p>
-<p><span class="math display">
+\\
 x=\left[
 \begin{array}{c}
 x_{1}\\
@@ -296,7 +295,7 @@ x_{n-1}\\
 x_{n}\\
 \end{array}
 \right]
-\ \ \text{and} \ \ \\
+\\
 f=\left[
 \begin{array}{c}
 f_{1}\\
@@ -432,12 +431,10 @@ m &amp; \sum t &amp; \sum t^2\\
 <li>for polynomial fitting the <code>polyfit, polyval</code> functions are used.</li>
 <li>the polynomials in matlab represented by a vector, the main coefficient is the first, the constant is the last element - the are represented by decreasing degree coefficients</li>
 <li>the form is classical/traditional (as there are other forms too) <span class="math display">
-\begin{gather*}
-\text{the vector}\\
-[p_{n-1},\ldots,p_0]\\
-\text{in polynomial context is the polynomial }\\
-p_{n-1}x^{n-1}+p_{n-2}x^{n-2}+\ldots+p_{1}x+p_0\\
-\end{gather*}
+\begin{align*}
+\text{vector:}&amp; \ \ [p_{n-1},\ldots,p_0]\\
+\text{polynomial:}&amp; \ \ p_{n-1}x^{n-1}+p_{n-2}x^{n-2}+\ldots+p_{1}x+p_0\\
+\end{align*}
 </span></li>
 </ul>
 </section>
@@ -477,16 +474,17 @@ f_i\  \text{meter}\ &amp;0 &amp;   5.7700 &amp;  18.0900 &amp;  37.9600  &amp; 6
 <p>According to the description and the physical laws the object position is described by a function <span class="math inline">F(t)=\frac{a}{2}t^2</span>.</p>
 <p><img src="peter_acc_solution.png" class="img-fluid" style="width:80.0%"></p>
 <p>it is the ouput of the <a href="peter_acc_solution.m">script</a></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">rref</span> <span class="va">of</span> <span class="va">the</span> <span class="va">gaussian</span> <span class="va">normal</span> <span class="va">equation</span><span class="op">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1.0000</span>         <span class="fl">0</span>    <span class="fl">0.2601</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="fl">0</span>    <span class="fl">1.0000</span>    <span class="fl">1.0697</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">rref</span> <span class="va">of</span> <span class="va">the</span> <span class="va">gaussian</span> <span class="va">normal</span> <span class="va">equation</span><span class="op">:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1.0000</span>    <span class="fl">1.0723</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">best</span> <span class="kw">function</span> <span class="va">is</span><span class="op">:</span> <span class="fl">0.2601</span> <span class="op">+</span> <span class="fl">2.1394</span><span class="op">/</span><span class="fl">2</span><span class="op">*</span><span class="va">t</span><span class="op">^</span><span class="fl">2</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span><span class="fl">13</span> <span class="va">the</span> <span class="va">position</span> <span class="va">will</span> <span class="va">be</span> <span class="va">x</span><span class="op">=</span><span class="fl">0.2601</span> <span class="op">+</span> <span class="fl">2.1394</span><span class="op">/</span><span class="fl">2</span><span class="op">*</span><span class="fl">13</span><span class="op">^</span><span class="fl">2</span> <span class="op">=</span> <span class="fl">181.0433</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">position</span> <span class="va">x</span><span class="op">=</span><span class="fl">1000</span> <span class="va">will</span> <span class="va">be</span> <span class="va">reached</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span><span class="fl">30.5709</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">acceleration</span> <span class="va">is</span> <span class="va">a</span><span class="op">=</span><span class="fl">2.1394</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">best</span> <span class="kw">function</span> <span class="va">is</span><span class="op">:</span> <span class="fl">2.1446</span><span class="op">/</span><span class="fl">2</span><span class="op">*</span><span class="va">t</span><span class="op">^</span><span class="fl">2</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span><span class="fl">13</span> <span class="va">the</span> <span class="va">position</span> <span class="va">will</span> <span class="va">be</span> <span class="va">x</span><span class="op">=</span><span class="fl">2.1446</span><span class="op">/</span><span class="fl">2</span><span class="op">*</span><span class="fl">13</span><span class="op">^</span><span class="fl">2</span> <span class="op">=</span> <span class="fl">181.2228</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">position</span> <span class="va">x</span><span class="op">=</span><span class="fl">1000</span> <span class="va">will</span> <span class="va">be</span> <span class="va">reached</span> <span class="va">at</span> <span class="va">t</span><span class="op">=</span><span class="fl">30.5377</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">acceleration</span> <span class="va">is</span> <span class="va">a</span><span class="op">=</span><span class="fl">2.1446</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
