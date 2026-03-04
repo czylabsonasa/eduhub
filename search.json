@@ -32,7 +32,7 @@
     "href": "index.html",
     "title": "eduhub",
     "section": "",
-    "text": "numerical mathematics\n\n\napplied mathematics\n\n\nmatematika mérnököknek"
+    "text": "numerical mathematics\n\n\napplied mathematics\n\n\nmatematika mérnököknek\n\n\noptalg"
   },
   {
     "objectID": "store/norms/index.html#concepts-draft",
@@ -572,5 +572,75 @@
     "title": "leastsquares/exercises_draft",
     "section": "",
     "text": "Noneex-1\n\n\n\n\n\nDetermine the best fitting quadratic polynomial for the data\nt=[2.1  2.2  2.3  2.3  2.5  2.6  2.8  2.9];\nf=[2.5  2  2.5  2.7  3  4  5.4  7];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-2\n\n\n\n\n\nDetermine the best fitting line for the data\nt=[1  1.2  1.4  1.4  1.5  1.7  1.9  2];\nf=[6.2  7  8  7.9  8.4  9.2  10  10.6];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-3\n\n\n\n\n\nDetermine the best fitting cubic polynomial for the data\nt=[0.5  0.8  1.1  1.3  1.5  1.7  1.9  2.1  2.3];\nf=[2.5  2.3  1.8  1.3  0.9  0.4  0.1  -0.05  -0.01];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-4\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a = \\frac{b}{t}\n\nt=[1  1.2  1.4  1.4  1.5  1.7  1.9  2  2.1  2.2];\nf=[4.2  3.8  3.4  3.3  3.3  3  2.8  2.8  2.75  2.7];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-5\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a\\sin(t)+b\\sin(2t)+c\\sin(3t)\n\nfor the data\nt=[0.1 0.5 1.2 1.5 2 2.1 2.4  3  3.2 3.4  3.8  4  4.2  4.6  5];\nf=[1 4.1 3 1 -1.5 -1.6 -1.7  -0.4  0.1 0.7  1.6  1.8  1.6  0.2  -2.5];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-6\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a+b\\log(t)\n\nfor the data\nt=[0.1  0.5  1.2  1.5  2  2.1  2.4  3  3.2];\nf=[-0.6  1.5  2.5  2.9  3.2  3.3  3.5  3.8  3.9];\nCreate an appropriate plot!"
+  },
+  {
+    "objectID": "optalg/index.html",
+    "href": "optalg/index.html",
+    "title": "optalg",
+    "section": "",
+    "text": "gyök-keresés\n\n\nminimum-keresés\n\n\ngradiens-módszer\n\n\nteszt függvények\n\n\nprogram lista"
+  },
+  {
+    "objectID": "optalg/pelda-programok.html",
+    "href": "optalg/pelda-programok.html",
+    "title": "optalg/programok",
+    "section": "",
+    "text": "felező\nNewton\nszelő\nközelítő derivált (1 változós)\nbrachistochrone\n\nrészletek\n\ngradiens template"
+  },
+  {
+    "objectID": "optalg/root.html",
+    "href": "optalg/root.html",
+    "title": "optalg/gyök-keresés",
+    "section": "",
+    "text": "matlab\n\nfzero\nfsolve\n\n\n\negyszerű módszerek\n\n\n\n\n\n\nNonefelező módszer\n\n\n\n\n\n\nfunction x=bisection(f,a,b,tol)\n   while b-a&gt;tol\n      m=0.5*(a+b);\n      if f(m)*f(a)&lt;0\n         b=m;\n      else\n         a=m;\n      end\n   end\n   x=0.5*(a+b);\nend\n\n\n\n\n\n\n\n\n\n\nNoneNewton_módszer\n\n\n\n\n\n\nfunction x1=newton(f,df,x0,tol)\n   maxit=50;\n   x1=x0-f(x0)/df(x0);\n   for it=1:maxit\n      if abs(x1-x0)&lt;tol, break; end\n      x0=x1;\n      x1=x0-f(x0)/df(x0);\n   end\nend\n\n\n\n\n\n\n\n\n\n\nNoneSzelő_módszer\n\n\n\n\n\n\nfunction x1=secant(f,x0,x1,tol)\n   maxit=50;\n   x2=x1-f(x1)*(x1-x0)/(f(x1)-f(x0));\n   for it=1:maxit\n      if abs(x1-x2)&lt;tol, break; end\n      x0=x1;\n      x1=x2;\n      x2=x1-f(x1)*(x1-x0)/(f(x1)-f(x0));\n   end\nend"
+  },
+  {
+    "objectID": "optalg/programok.html",
+    "href": "optalg/programok.html",
+    "title": "optalg/programok",
+    "section": "",
+    "text": "felező\nNewton\nszelő\nközelítő derivált (1 változós)\n2-valtozós kontúr"
+  },
+  {
+    "objectID": "optalg/tesztfv.html",
+    "href": "optalg/tesztfv.html",
+    "title": "optalg/teszt-függvények",
+    "section": "",
+    "text": "néhány teszt-függvény\n\nBaran tanárnő fóliájából\n\n\n\n\n\n\n\nNonex^3+y^3-3x-3y\n\n\n\n\n\nf=@(x,y) x.^3+y.^3-3*x-3*y;\nfv=@(v) f(v(1),v(2));\ndf=@(x,y) [3*x.^2-3;3*y.^2-3];\ndfv=@(v) df(v(1),v(2));\n\n\n\n\n\n\n\n\n\nNonex^2+10y^2\n\n\n\n\n\nf=@(x,y) x.^2+10*y.^2;\nfv=@(v) f(v(1),v(2));\ndf=@(x,y) [2*x;20*y];\ndfv=@(v) df(v(1),v(2));"
+  },
+  {
+    "objectID": "optalg/program-lista.html",
+    "href": "optalg/program-lista.html",
+    "title": "optalg/program-lista",
+    "section": "",
+    "text": "felező\nNewton\nszelő\nközelítő derivált (1 változós)\nbrachistochrone\n\nrészletek\n\ngradiens template"
+  },
+  {
+    "objectID": "optalg/teszt_fv.html",
+    "href": "optalg/teszt_fv.html",
+    "title": "optalg/teszt függvények",
+    "section": "",
+    "text": "néhány teszt függvény\n\nBaran tanárnő fóliájából\n\n\n\n\n\n\n\nNonex^3+y^3-3x-3y\n\n\n\n\n\nf=@(x,y) x.^3+y.^3-3*x-3*y;\nfv=@(v) f(v(1),v(2));\ndf=@(x,y) [3*x.^2-3;3*y.^2-3];\ndfv=@(v) df(v(1),v(2));\nox=[1;1];\n\n\n\n\n\n\n\n\n\nNonex^2+10y^2\n\n\n\n\n\nf0=@(x,y) x.^2+10*y.^2;\nf=@(v) f(v(1),v(2));\ndf0=@(x,y) [2*x;20*y];\ndf=@(v) df(v(1),v(2));\nox=[0;0];"
+  },
+  {
+    "objectID": "optalg/program_lista.html",
+    "href": "optalg/program_lista.html",
+    "title": "optalg/program-lista",
+    "section": "",
+    "text": "felező\nNewton\nszelő\nközelítő derivált (1 változós)\nbrachistochrone\n\nrészletek\n\ngradiens template"
+  },
+  {
+    "objectID": "optalg/minimum.html",
+    "href": "optalg/minimum.html",
+    "title": "optalg/minimum-keresés",
+    "section": "",
+    "text": "matlab\n\nfminbnd\nfminunc\nfminsearch"
+  },
+  {
+    "objectID": "optalg/gradiens.html",
+    "href": "optalg/gradiens.html",
+    "title": "optalg/gradiens módszer",
+    "section": "",
+    "text": "Nonetemplate\n\n\n\n\n\nclc; clear; clf;\nhold on;\n\nf0=;\nf=;\ndf0=;\ndf=;\nox=;\n\nxx=linspace();\nyy=linspace();\n[X,Y]=meshgrid(xx,yy);\n\nZ=f0(X,Y);\ncontour(X,Y,Z);\n\ntol=1e-6;\nmaxstep=50;\n\nx=;\n\ntrace=[x];\nfor it=1:maxstep\n\n  x1=;\n\n  trace=[trace;x1];\n\n  if norm(x-x1)&lt;tol || norm(df(x1))&lt;tol, break; end\n\nend\n\nplot(trace(1,:),trace(2,:),\"o-\");\nplot(ox(1),ox(2),\"X\");\n\nnorm_df=norm(df(trace(:,end)));\ntitle(sprintf(\"steps: %d df: %.4f\",it,norm_df));\n\nhold off;\n\n\n\n\nvariációk\n\nfix a\nteljes vonalmenti keresés (pl fminbnd)\nlecsengő a"
   }
 ]
