@@ -620,7 +620,7 @@
     "href": "optalg/teszt_fv.html",
     "title": "optalg/teszt függvények",
     "section": "",
-    "text": "néhány teszt függvény\n\nBaran tanárnő fóliájából\n\n\n\n\n\n\n\nNonex^3+y^3-3x-3y\n\n\n\n\n\nf=@(x,y) x.^3+y.^3-3*x-3*y;\nfv=@(v) f(v(1),v(2));\ndf=@(x,y) [3*x.^2-3;3*y.^2-3];\ndfv=@(v) df(v(1),v(2));\nox=[1;1];\n\n\n\n\n\n\n\n\n\nNonex^2+10y^2\n\n\n\n\n\nf0=@(x,y) x.^2+10*y.^2;\nf=@(v) f(v(1),v(2));\ndf0=@(x,y) [2*x;20*y];\ndf=@(v) df(v(1),v(2));\nox=[0;0];"
+    "text": "néhány teszt függvény\n\nBaran tanárnő fóliájából\n\n\n\n\n\n\n\nNonex^3+y^3-3x-3y\n\n\n\n\n\nf=@(x,y) x.^3+y.^3-3*x-3*y;\nfv=@(v) f(v(1),v(2));\ndf=@(x,y) [3*x.^2-3;3*y.^2-3];\ndfv=@(v) df(v(1),v(2));\nox=[1;1];\n\n\n\n\n\n\n\n\n\nNone10x^3+y^3-30x-3y\n\n\n\n\n\nf=@(x,y) 10*x.^3+y.^3-30*x-3*y;\nfv=@(v) f(v(1),v(2));\ndf=@(x,y) [30*x.^2-30;3*y.^2-3];\ndfv=@(v) df(v(1),v(2));\nox=[1;1];\n\n\n\n\n\n\n\n\n\nNonex^2+10y^2\n\n\n\n\n\nf0=@(x,y) x.^2+10*y.^2;\nf=@(v) f(v(1),v(2));\ndf0=@(x,y) [2*x;20*y];\ndf=@(v) df(v(1),v(2));\nox=[0;0];\n\n\n\n\n\n\n\n\n\nNoneRosenbrock 100(y-x^2)^2+(1-x)^2\n\n\n\n\n\nf0=@(x,y) 100*(y-x.^2).^2+(1-x).^2;\nf=@(v) f(v(1),v(2));\ndf0=@(x,y) [-400*(y-x.^2).*x+2*(x-1); 200*(y-x.^2)];\ndf=@(v) df(v(1),v(2));\nox=[1;1];"
   },
   {
     "objectID": "optalg/program_lista.html",
@@ -641,6 +641,6 @@
     "href": "optalg/gradiens.html",
     "title": "optalg/gradiens módszer",
     "section": "",
-    "text": "Nonetemplate\n\n\n\n\n\nclc; clear; clf;\nhold on;\n\nf0=;\nf=;\ndf0=;\ndf=;\nox=;\n\nxx=linspace();\nyy=linspace();\n[X,Y]=meshgrid(xx,yy);\n\nZ=f0(X,Y);\ncontour(X,Y,Z);\n\ntol=1e-6;\nmaxstep=50;\n\nx=;\n\ntrace=[x];\nfor it=1:maxstep\n\n  x1=;\n\n  trace=[trace;x1];\n\n  if norm(x-x1)&lt;tol || norm(df(x1))&lt;tol, break; end\n\nend\n\nplot(trace(1,:),trace(2,:),\"o-\");\nplot(ox(1),ox(2),\"X\");\n\nnorm_df=norm(df(trace(:,end)));\ntitle(sprintf(\"steps: %d df: %.4f\",it,norm_df));\n\nhold off;\n\n\n\n\nvariációk\n\nfix a\nteljes vonalmenti keresés (pl fminbnd)\nlecsengő a"
+    "text": "Nonetemplate\n\n\n\n\n\nclc; clear; clf;\nhold on;\n\nf0=;\nf=;\ndf0=;\ndf=;\nox=;\n\nxx=linspace();\nyy=linspace();\n[X,Y]=meshgrid(xx,yy);\n\nZ=f0(X,Y);\ncontour(X,Y,Z);\n\ntol=1e-6;\nmaxstep=50;\n\nx=;\n\ntrace=[x];\nfor it=1:maxstep\n\n  x1=;\n\n  trace=[trace;x1];\n\n  if norm(x-x1)&lt;tol || norm(df(x1))&lt;tol, break; end\n\nend\n\nplot(trace(1,:),trace(2,:),\"o-\");\nplot(ox(1),ox(2),\"X\");\n\nnorm_df=norm(df(trace(:,end)));\ntitle(sprintf(\"steps: %d df: %.4f\",it,norm_df));\n\nhold off;\n\n\n\n\nvariációk\n\nfix a\nteljes vonalmenti keresés (pl fminbnd)\nlecsengő a\nArmijo\nmomentum\nadagrad\nAdam"
   }
 ]
