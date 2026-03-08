@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-03-03">
+<meta name="dcterms.date" content="2026-03-08">
 
 <title>leastsquares/concepts_draft – eduhub</title>
 <style>
@@ -200,6 +200,7 @@ window.Quarto = {
   <li><a href="#example---watertank---solution" id="toc-example---watertank---solution" class="nav-link" data-scroll-target="#example---watertank---solution">example - watertank - solution</a></li>
   <li><a href="#example---acceleration" id="toc-example---acceleration" class="nav-link" data-scroll-target="#example---acceleration">example - acceleration</a></li>
   <li><a href="#example---mean-temperatures" id="toc-example---mean-temperatures" class="nav-link" data-scroll-target="#example---mean-temperatures">example - mean temperatures</a></li>
+  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application">application</a></li>
   <li><a href="#supporting-scripts" id="toc-supporting-scripts" class="nav-link" data-scroll-target="#supporting-scripts">supporting scripts</a></li>
   </ul>
 </nav>
@@ -220,7 +221,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 3, 2026</p>
+      <p class="date">March 8, 2026</p>
     </div>
   </div>
   
@@ -551,6 +552,100 @@ F(t)=x_1 + x_2 \cos(2\pi\frac{t-14}{365})
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">best</span> <span class="va">parameters</span><span class="op">:</span> <span class="fl">10.1248</span><span class="op">,</span> <span class="op">-</span><span class="fl">11.2577</span><span class="op">*</span><span class="va">t</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="va">the</span> <span class="va">best</span> <span class="va">model</span><span class="op">:</span> <span class="fl">10.1248</span> <span class="op">+</span> (<span class="op">-</span><span class="fl">11.2577</span>) <span class="va">cos</span>(<span class="fl">2</span><span class="op">*</span><span class="va">pi</span><span class="op">*</span>(<span class="va">t</span><span class="op">-</span><span class="fl">14</span>)<span class="op">/</span><span class="fl">365</span>) </span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="application" class="level1">
+<h1>application</h1>
+<ul>
+<li>reconstruct a circle from its noisy points</li>
+</ul>
+<p><img src="circle_data.png" class="img-fluid" style="width:80.0%"></p>
+<p>Let’s imagine the given points as <span class="math inline">x,y</span> column vectors. We are searching for the <span class="math inline">cx,cy,r</span> realnumbers such that <span class="math display">
+\Vert (x-cx)^2 + (y-cy)^2 - r^2 \Vert = (1)
+</span></p>
+<p>is as small as possible (here the elementwise operations are applied where needed). By expanding the squares:</p>
+<p><span class="math display">
+\begin{gather*}
+(1)=\Vert x^2 + cx(-2x) + cx^2 + y^2 + cy(-2y) + cy^2 - r^2 \Vert=\\
+=\Vert x^2 + cx(-2x) + cx^2 + y^2 + cy(-2y) + cy^2 - r^2 \Vert=\\
+=\Vert x^2+y^2 - ((r^2-cx^2-cy^2)+ cx*2x + cy*2y) \Vert=\\
+=\Vert x^2+y^2 - (K + cx*2x + cy*2y) \Vert=\\
+\Vert f - Ax \Vert
+\end{gather*}
+</span> basically where are searching for the linear combination of the column vectors <span class="math inline">1,2x,2y</span> that is closest to the vector <span class="math inline">x^2+y^2</span>. We learned that (for <span class="math inline">\Vert.\Vert_2</span>!) this combination can be obtained by solving the Gauss normal-equation.</p>
+<p><img src="circle_best.png" class="img-fluid" style="width:80.0%"></p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>computing the best circle
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="va">rng</span>(<span class="fl">222</span>)<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="va">axis</span> <span class="va">equal</span><span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">% reconstruct circle from noisy points</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">% random data generation</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="va">r</span><span class="op">=</span><span class="fl">3</span><span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="va">cx</span><span class="op">=</span><span class="fl">2</span><span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="va">cy</span><span class="op">=</span><span class="fl">22</span><span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="va">fi0</span><span class="op">=</span><span class="va">linspace</span>(<span class="fl">0</span><span class="op">,</span><span class="fl">2</span><span class="op">*</span><span class="va">pi</span><span class="op">,</span><span class="fl">100</span>)<span class="op">;</span> <span class="va">fi0</span><span class="op">=</span><span class="va">fi0</span>(<span class="op">:</span>)<span class="op">;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">% some interval of angles is completely missing</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="va">fi1</span><span class="op">=</span><span class="va">datasample</span>(<span class="va">fi0</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">75</span>)<span class="op">,</span><span class="fl">44</span>)<span class="op">;</span> </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="va">r1</span><span class="op">=</span><span class="fl">3</span><span class="op">+</span><span class="fl">0.2</span><span class="op">*</span><span class="va">randn</span>(<span class="va">size</span>(<span class="va">fi1</span>))<span class="op">;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="va">x</span><span class="op">=</span><span class="va">r1</span><span class="op">.*</span><span class="va">cos</span>(<span class="va">fi1</span>)<span class="op">+</span><span class="va">cx</span><span class="op">;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="va">y</span><span class="op">=</span><span class="va">r1</span><span class="op">.*</span><span class="va">sin</span>(<span class="va">fi1</span>)<span class="op">+</span><span class="va">cy</span><span class="op">;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="va">ccx</span><span class="op">=</span><span class="va">mean</span>(<span class="va">x</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="va">ccy</span><span class="op">=</span><span class="va">mean</span>(<span class="va">y</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="va">rr</span><span class="op">=</span><span class="va">mean</span>(<span class="va">sqrt</span>((<span class="va">ccx</span><span class="op">-</span><span class="va">x</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">+</span>(<span class="va">ccy</span><span class="op">-</span><span class="va">y</span>)<span class="op">.^</span><span class="fl">2</span>))</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span><span class="op">,</span><span class="st">"*"</span><span class="op">,</span><span class="st">"MarkerSize"</span><span class="op">,</span><span class="fl">4</span>)<span class="op">;</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co">% title("the noisy circle points");</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co">% saveas(gca(),"circle_data.png","png");</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co">% return;</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="va">A</span><span class="op">=</span>[<span class="va">ones</span>(<span class="va">size</span>(<span class="va">x</span>))<span class="op">,</span><span class="fl">2</span><span class="op">*</span><span class="va">x</span><span class="op">,</span><span class="fl">2</span><span class="op">*</span><span class="va">y</span>]<span class="op">;</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="va">b</span><span class="op">=</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="va">est</span><span class="op">=</span>(<span class="va">A</span><span class="op">'*</span><span class="va">A</span>)<span class="op">\</span>(<span class="va">A</span><span class="op">'*</span><span class="va">b</span>)<span class="op">;</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="va">Cx</span><span class="op">=</span><span class="va">est</span>(<span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="va">Cy</span><span class="op">=</span><span class="va">est</span>(<span class="fl">3</span>)<span class="op">;</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="va">R</span><span class="op">=</span><span class="va">sqrt</span>(<span class="va">est</span>(<span class="fl">1</span>)<span class="op">+</span>(<span class="va">Cx</span><span class="op">^</span><span class="fl">2</span><span class="op">+</span><span class="va">Cy</span><span class="op">^</span><span class="fl">2</span>))<span class="op">;</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="va">X</span><span class="op">=</span><span class="va">R</span><span class="op">*</span><span class="va">cos</span>(<span class="va">fi0</span>)<span class="op">+</span><span class="va">Cx</span><span class="op">;</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="va">Y</span><span class="op">=</span><span class="va">R</span><span class="op">*</span><span class="va">sin</span>(<span class="va">fi0</span>)<span class="op">+</span><span class="va">Cy</span><span class="op">;</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"the best circle\n"</span>)<span class="op">+...</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>   <span class="va">sprintf</span>(<span class="st">"cx cy r\n"</span>)<span class="op">+...</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>   <span class="va">sprintf</span>(<span class="st">"%.3f %.3f %.3f\n%.3f %.3f %.3f\n"</span><span class="op">,</span><span class="va">cx</span><span class="op">,</span><span class="va">cy</span><span class="op">,</span><span class="va">r</span><span class="op">,</span><span class="va">Cx</span><span class="op">,</span><span class="va">Cy</span><span class="op">,</span><span class="va">R</span>))<span class="op">;</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"circle_best.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
