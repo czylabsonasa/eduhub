@@ -347,7 +347,7 @@
     "href": "app-math/index.html",
     "title": "applied mathematics",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares"
+    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares\n\n\ninterpolation"
   },
   {
     "objectID": "app-math/info/index.html",
@@ -361,7 +361,7 @@
     "href": "num-math/index.html",
     "title": "numerical mathematics",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares"
+    "text": "information\n\n\n\nmatlab introduction\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares\n\n\ninterpolation"
   },
   {
     "objectID": "num-math/info/index.html",
@@ -642,5 +642,19 @@
     "title": "optalg/gradiens módszer",
     "section": "",
     "text": "Nonetemplate\n\n\n\n\n\nclc; clear; clf;\nhold on;\n\nf0=;\nf=;\ndf0=;\ndf=;\nox=;\n\nxx=linspace();\nyy=linspace();\n[X,Y]=meshgrid(xx,yy);\n\nZ=f0(X,Y);\ncontour(X,Y,Z);\n\ntol=1e-6;\nmaxstep=50;\n\nx=;\n\ntrace=[x];\nfor it=1:maxstep\n\n  x1=;\n\n  trace=[trace;x1];\n\n  if norm(x-x1)&lt;tol || norm(df(x1))&lt;tol, break; end\n\nend\n\nplot(trace(1,:),trace(2,:),\"o-\");\nplot(ox(1),ox(2),\"X\");\n\nnorm_df=norm(df(trace(:,end)));\ntitle(sprintf(\"steps: %d df: %.4f\",it,norm_df));\n\nhold off;\n\n\n\n\nvariációk\n\nfix a\nteljes vonalmenti keresés (pl fminbnd)\nlecsengő a\nArmijo\nmomentum\nadagrad\nAdam"
+  },
+  {
+    "objectID": "store/interpol/index.html#concepts-draft",
+    "href": "store/interpol/index.html#concepts-draft",
+    "title": "interpolation",
+    "section": "concepts (draft)",
+    "text": "concepts (draft)"
+  },
+  {
+    "objectID": "store/interpol/index.html#exercises-draft",
+    "href": "store/interpol/index.html#exercises-draft",
+    "title": "interpolation",
+    "section": "exercises (draft)",
+    "text": "exercises (draft)"
   }
 ]

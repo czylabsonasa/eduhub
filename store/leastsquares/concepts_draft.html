@@ -244,7 +244,7 @@ window.Quarto = {
 </section>
 <section id="example---watertank" class="level1">
 <h1>example - watertank</h1>
-<p>A cylindrical, <span class="math inline">0.5</span>m height tank is being filled with water at a constant rate. Peter starts to observe the height of water (at <span class="math inline">t=0</span>) in the tank. The measurements are summarized in the table below.</p>
+<p>A c_{y}lindrical, <span class="math inline">0.5</span>m height tank is being filled with water at a constant rate. Peter starts to observe the height of water (at <span class="math inline">t=0</span>) in the tank. The measurements are summarized in the table below.</p>
 <p><span class="math display">
 \begin{array}{c|r|r|r|r|r|r|r}
 t_i\  \texttt{min}\ &amp;0 &amp;2&amp;4&amp; 6&amp; 8 &amp;10&amp; 12\\ \hline
@@ -562,16 +562,16 @@ F(t)=x_1 + x_2 \cos(2\pi\frac{t-14}{365})
 <li>reconstruct a circle from its noisy points</li>
 </ul>
 <p><img src="circle_data.png" class="img-fluid" style="width:80.0%"></p>
-<p>Let’s imagine the given points as <span class="math inline">x,y</span> column vectors. We are searching for the <span class="math inline">cx,cy,r</span> realnumbers such that <span class="math display">
-\Vert (x-cx)^2 + (y-cy)^2 - r^2 \Vert = (1)
+<p>Let’s imagine the given points as <span class="math inline">x,y</span> column vectors. We are searching for the <span class="math inline">c_{x},c_{y},r</span> realnumbers such that <span class="math display">
+\Vert (x-c_{x})^2 + (y-c_{y})^2 - r^2 \Vert = (1)
 </span></p>
 <p>is as small as possible (here the elementwise operations are applied where needed). By expanding the squares:</p>
 <p><span class="math display">
 \begin{gather*}
-(1)=\Vert x^2 + cx(-2x) + cx^2 + y^2 + cy(-2y) + cy^2 - r^2 \Vert=\\
-=\Vert x^2 + cx(-2x) + cx^2 + y^2 + cy(-2y) + cy^2 - r^2 \Vert=\\
-=\Vert x^2+y^2 - ((r^2-cx^2-cy^2)+ cx*2x + cy*2y) \Vert=\\
-=\Vert x^2+y^2 - (K + cx*2x + cy*2y) \Vert=\\
+(1)=\Vert x^2 + c_{x}(-2x) + c_{x}^2 + y^2 + c_{y}(-2y) + c_{y}^2 - r^2 \Vert=\\
+=\Vert x^2 + c_{x}(-2x) + c_{x}^2 + y^2 + c_{y}(-2y) + c_{y}^2 - r^2 \Vert=\\
+=\Vert x^2+y^2 - \left[(r^2-c_{x}^2-c_{y}^2)+ c_{x}*2x + c_{y}*2y\right] \Vert=\\
+=\Vert x^2+y^2 - (K + c_{x}*2x + c_{y}*2y) \Vert=\\
 \Vert f - Ax \Vert
 \end{gather*}
 </span> basically where are searching for the linear combination of the column vectors <span class="math inline">1,2x,2y</span> that is closest to the vector <span class="math inline">x^2+y^2</span>. We learned that (for <span class="math inline">\Vert.\Vert_2</span>!) this combination can be obtained by solving the Gauss normal-equation.</p>
