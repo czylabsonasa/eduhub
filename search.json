@@ -656,5 +656,19 @@
     "title": "interpolation",
     "section": "exercises (draft)",
     "text": "exercises (draft)"
+  },
+  {
+    "objectID": "store/interpol/index.html",
+    "href": "store/interpol/index.html",
+    "title": "interpolation",
+    "section": "",
+    "text": "Lagrange 1\nLagrange 2\nLagrange 3\nHermite 1\nHermite 2"
+  },
+  {
+    "objectID": "store/interpol/index.html#worked-out-examples",
+    "href": "store/interpol/index.html#worked-out-examples",
+    "title": "interpolation",
+    "section": "",
+    "text": "Lagrange 1\nLagrange 2\nLagrange 3\nHermite 1\nHermite 2"
   }
 ]
