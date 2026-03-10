@@ -670,5 +670,54 @@
     "title": "interpolation",
     "section": "",
     "text": "Lagrange 1\nLagrange 2\nLagrange 3\nHermite 1\nHermite 2"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html",
+    "href": "store/interpol/concepts_draft.html",
+    "title": "interpolation/concepts_draft",
+    "section": "",
+    "text": "for a given set of 2d points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}) we are searching the simplest (minimal degree) P polynomial that interpolates the points: P(t_{k})=f_{k}\\ \\ \\ k=1,\\ldots ,n.\nnaturally the point set cannot have two equal first coordinates (t_{i}=t_{j}) with different second coordinates (f_{i}\\neq f_{j}).\nfor 1 points a 0-th order, 2 points an at most 1-st order interpolation is clearly exists - but how to proceed to larger number of points?\nn points n pieces of information. we may expect that these n pieces will determine n real numbers, a polynomial of degree at most n-1, which will be the interpolational polynomial.\nthere are several approaches\n\nsetting up an n\\times n linear system of equations \na_{n-1}t_{k}^{n-1}+\\ldots+a_{1}t_{k}+a_{0}=f_{k}\\ \\ \\ k=1,\\ldots,n\n\napplying least square approximation for \\varphi_{k}(t)=t^k, \\ \\ k=0,\\ldots,n-1, for if it is possible to achieve the zero error, then the Gauss normal equation will give us the appropriate coefficients.\nboth of these (eventually equivalent) approaches has complexity {\\cal O}(n^3) and it is not so straightforward to apply them for a dynamically extending point set.\n\nwe will learn later that there is a more efficient {\\cal O}(n^2) complexity and dynamically extendable approach: the Newton divided difference method.\nfirst we will state a theorem about the existence and uniqueness.\n\n\n\n\n\n\n\nImportantLagrange’s main theorem\n\n\n\nFor a given set of pairwise different points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}), there is a unique polynomial P with: \nP(t_{k})=f_{k}\\ \\ \\ (k=1,\\ldots,n)\\ \\ \\text{and}\\ \\ \\deg(P)\\le n-1\n\n\n\n\nfor more details read this\nat this stage we learned that the least square approach (even without A^{T}A) will give us the unique solution…"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#intro-1",
+    "href": "store/interpol/concepts_draft.html#intro-1",
+    "title": "interpolation/concepts_draft",
+    "section": "intro",
+    "text": "intro\n\nsearch for the polynomial that interpolates the points t=[-1,0,1],\\ \\ f=[2,3,1].\nlet’s imagine the polynomial in the form of p(x)=a_2(x+1)x+a_1x+a_0. here we included some information about the first coordinates into the polynomial.\n\n\n\n\n\n\n\nNonedetails\n\n\n\n\n\n\n\\begin{gather*}\np(-1)=2 \\ \\ \\Longrightarrow \\ \\ a_0=2\\\\\np(x)=a_2(x+1)x+a_1(x+1)+2\\\\\np(0)=3 \\ \\ \\Longrightarrow \\ \\ a_1=1\\\\\np(x)=a_2(x+1)x+(x+1)+2\\\\\np(1)=1 \\ \\ \\Longrightarrow \\ \\ a_2=-\\frac{3}{2}\\\\\np(x)=-\\frac{3}{2}(x+1)x+(x+1)+2\\\\\n\\end{gather*}\n\n\n\n\n\nobserve that at each step we solved a one variable linear equation, as in the case of triangular form linear systems\nthis seemingly ad-hoc approach is transformed to an algorithm"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#the-method-how",
+    "href": "store/interpol/concepts_draft.html#the-method-how",
+    "title": "interpolation/concepts_draft",
+    "section": "the method (how?)",
+    "text": "the method (how?)\n\nthe scheme of the divided difference method\n\n\\begin{array}{c|cccccc}\nt_1 & f^{~(0)}_{1} & & & & & \\\\\n& & f^{~(1)}_{1} & & & & \\\\\nt_2 & f^{~(0)}_{2} && f^{~(2)}_{1} & & & \\\\\n& & f^{~(1)}_{2} & & \\ddots & &\\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & f^{~(n-2)}_{1} & \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & & f^{~(n-1)}_{1} \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & f^{~(n-2)}_{2} & \\\\\n& & f^{~(1)}_{n-2} & & \\mathinner{\\kern{1.2mu}\\raisebox{2mu}{.}\\kern{3mu}\\raisebox{7.4mu}{.}\\kern{3mu}\\raisebox{12.8mu}{.}\\kern{1.2mu}}& & \\\\\nt_{n-1} & f^{~(0)}_{n-1} & & f^{~(2)}_{n-2} & & & \\\\\n& & f^{~(1)}_{n-1} & & & & \\\\\nt_n & f^{~(0)}_{n} & & & & &\n\\end{array}\n\n\n\n\n\n\n\nImportantthe computational rule\n\n\n\nWe start with the t and the f^{~(0)} columns, the the missing entries, for j=1\\ldots n-1 and i=1\\ldots n-j are computed by \nf_{i}^{~(j)}=\\frac{f_{i}^{~(j-1)}-f_{i+1}^{~(j-1)}}{t_i-t_{i+j}} \\ \\ \\ \\ (*)\n\n\n\n\n\n\n\n\n\nImportantthe polynomial(s)\n\n\n\nSuppose that we filled in the table according to the rule (*). Then \n\\begin{align*}\nP(t)&=f^{~(0)}_{1}+f^{~(1)}_{1}(t-t_1)+f^{~(2)}_{1}(t-t_1)(t-t_2)+\\ldots\\\\\n&+f^{~(n-2)}_{1}(t-t_1)\\ldots (t-t_{n-2})+f^{~(n-1)}_{1}(t-t_1)\\ldots (t-t_{n-1})\n\\end{align*}\n and \n\\begin{align*}\nP(t)&=f^{~(0)}_{n}+f^{~(1)}_{n-1}(t-t_n)+f^{~(2)}_{n-2}(t-t_n)(t-t_{n-1})+\\cdots\\\\\n&+f^{~(n-2)}_{2}(t-t_n)\\cdots (t-t_3)+f^{~(n-1)}_{1}(t-t_n)\\cdots (t-t_2)\n\\end{align*}\n are interpolational polynomials for the data t,f."
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#the-method-why",
+    "href": "store/interpol/concepts_draft.html#the-method-why",
+    "title": "interpolation/concepts_draft",
+    "section": "the method (why?)",
+    "text": "the method (why?)\n\nread this"
+  },
+  {
+    "objectID": "store/interpol/Newton-dd.html",
+    "href": "store/interpol/Newton-dd.html",
+    "title": "interpolation/Newton-divided-difference",
+    "section": "",
+    "text": "Neville-formula\n\nit tells us how the P_{1,2,\\ldots,k+1} polynimial depends on the smaller one P_{1,2,\\ldots,k} and P_{2,\\ldots,k+1}.\n\n\nP_{1,2,\\ldots,k+1}(x)=\\frac{1}{x_1-x_{k+1}}\n\\left|\n\\begin{array}{cc}\nP_{1,2,\\ldots,k}(x) & P_{2,3,\\ldots,k+1}(x)\\\\\nx-x_1 & x-x_{k+1}\n\\end{array}\n\\right|"
+  },
+  {
+    "objectID": "store/interpol/Lagrange.html",
+    "href": "store/interpol/Lagrange.html",
+    "title": "interpolation/Lagrange",
+    "section": "",
+    "text": "sketch of the proof\nexistence:\n\nwe will construct polynomials p_k with: \np_{k}(t_j)=\\delta_{kj}\\ \\ \\text{and}\\ \\ \\deg(p_{k})=n-1\n\nlet P_{k}(x)=\\prod_{j\\neq k} (x-t_{j}).\nset p_k(x)=\\frac{P_{k}(x)}{P_{k}(t_{k})}.\nset P=\\sum_{k=1}^n f_{k}p_{k}\n\nuniqueness:\n\nindirect P\\neq Q two interpolational polynomial\nP-Q has n roots and its degree is at most n-1: P-Q must be zero\nat the last step the following fact is used: an n degree real coefficient polynomial has at most n roots. (see euclidean division for polynomials)"
+  },
+  {
+    "objectID": "store/interpol/Newton_dd.html",
+    "href": "store/interpol/Newton_dd.html",
+    "title": "interpolation/Newton-divided-difference",
+    "section": "",
+    "text": "polynom representations\n\nit is the most generic representation\n\n\n\\begin{gather*}\nP(t)=a_n(t-t_{n,1})\\ldots(t-t_{n,n})+a_{n-1}(t-t_{n-1,1})\\ldots(t-t_{n-1,n-1})+\\ldots+\\\\\na_2(t-t_{2,1})(t-t_{2,2})+a_1(t-t_{1,1})+a_0\n\\end{gather*}\n\n\nthe main coefficient is the same for each possible representation (why?)\n\n\n\nNeville-formula\n\nit tells us how the “larger” P_{1,2,\\ldots,k+1} polynomial depends on the “smaller” one P_{1,2,\\ldots,k} and P_{2,\\ldots,k+1}.\n\n\nP_{1,2,\\ldots,k+1}(t)=\\frac{1}{t_1-t_{k+1}}\n\\left|\n\\begin{array}{cc}\nP_{1,2,\\ldots,k}(t) & P_{2,3,\\ldots,k+1}(t)\\\\\nt-t_1 & t-t_{k+1}\n\\end{array}\n\\right|\n\n\nproof: evaluate at t_1 and at t_2,\\ldots,t_{k} and at t_{k+1} and use the Lagrange main theorem.\nit is also valid for [j+1,\\ldots, j+k+1] and [j+1,\\ldots, j+k] and [j+2,\\ldots, j+k+1] for each possible j\nlet A,B,C denote the main coefficient of the polynomials (in order). then\n\n\nA=\\frac{B-C}{t_1-t_{k+1}}\n\n\n\nthe scheme and the rule\n\nlet’s focus on the upper edge\nuse induction\n(base1): the f^{(0)} column contains the coefficients for the sub-problems: [1],[2],\\ldots,[n].\n\nwe could start the induction here\n\n(base2): the first computed column contains the main coefficients for each sub-problems: [1,2],[2,3],\\ldots,[n-1,n]. (these ar the slopes of the lines)\n\nit means that for 2-sized sub-problems the small triangles’ upper edges are the appropriate coefficients\nthe induction could be started from here too\n\n(step): consider the subproblem: [1,\\ldots,k+1] and the two child problems: [1,\\ldots,k] and [2,\\ldots,k+1].\n\non the one hand: P_{1,\\ldots,k+1}(t)=P_{1,\\ldots,k}(t)+A(t-t_1)\\ldots(t-t_k) for some C\non the other hand, from the Neville formula A=\\frac{B-C}{t_1-t_{k+1}} - in accordance with the rule used.\n\nthe lower edge polynomials/relations can be handled by reversing the order of the points."
   }
 ]

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-03-09">
+<meta name="dcterms.date" content="2026-03-10">
 
 <title>interpolation/concepts_draft – eduhub</title>
 <style>
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -70,6 +105,49 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -105,8 +183,28 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">intro</a></li>
+  <li><a href="#newton-divided-difference-method" id="toc-newton-divided-difference-method" class="nav-link" data-scroll-target="#newton-divided-difference-method">Newton divided difference method</a>
+  <ul class="collapse">
+  <li><a href="#intro-1" id="toc-intro-1" class="nav-link" data-scroll-target="#intro-1">intro</a></li>
+  <li><a href="#the-method-how" id="toc-the-method-how" class="nav-link" data-scroll-target="#the-method-how">the method (how?)</a>
+  <ul class="collapse">
+  <li><a href="#the-scheme-of-the-divided-difference-method" id="toc-the-scheme-of-the-divided-difference-method" class="nav-link" data-scroll-target="#the-scheme-of-the-divided-difference-method">the scheme of the divided difference method</a></li>
+  </ul></li>
+  <li><a href="#the-method-why" id="toc-the-method-why" class="nav-link" data-scroll-target="#the-method-why">the method (why?)</a></li>
+  </ul></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">example</a></li>
+  <li><a href="#horner" id="toc-horner" class="nav-link" data-scroll-target="#horner">Horner</a></li>
+  <li><a href="#general-horner" id="toc-general-horner" class="nav-link" data-scroll-target="#general-horner">general Horner</a></li>
+  <li><a href="#matlab" id="toc-matlab" class="nav-link" data-scroll-target="#matlab">matlab</a></li>
+  <li><a href="#runge-phenomenom" id="toc-runge-phenomenom" class="nav-link" data-scroll-target="#runge-phenomenom">Runge phenomenom</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -124,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 9, 2026</p>
+      <p class="date">March 10, 2026</p>
     </div>
   </div>
   
@@ -136,8 +234,559 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="intro" class="level1">
+<h1>intro</h1>
+<ul>
+<li>for a given set of 2d points <span class="math inline">(t_{1},f_{1}),\ldots,(t_{n},f_{n})</span> we are searching the simplest (minimal degree) <span class="math inline">P</span> polynomial that interpolates the points: <span class="math inline">P(t_{k})=f_{k}\ \ \ k=1,\ldots ,n</span>.</li>
+<li>naturally the point set cannot have two equal first coordinates (<span class="math inline">t_{i}=t_{j}</span>) with different second coordinates (<span class="math inline">f_{i}\neq f_{j}</span>).</li>
+<li>for 1 points a 0-th order, 2 points an at most 1-st order interpolation is clearly exists - but how to proceed to larger number of points?</li>
+<li><span class="math inline">n</span> points <span class="math inline">n</span> pieces of information. we may expect that these <span class="math inline">n</span> pieces will determine <span class="math inline">n</span> real numbers, a polynomial of degree at most <span class="math inline">n-1</span>, which will be the interpolational polynomial.</li>
+<li>there are several approaches
+<ul>
+<li><p>setting up an <span class="math inline">n\times n</span> linear system of equations <span class="math display">
+a_{n-1}t_{k}^{n-1}+\ldots+a_{1}t_{k}+a_{0}=f_{k}\ \ \ k=1,\ldots,n
+</span></p></li>
+<li><p>applying least square approximation for <span class="math inline">\varphi_{k}(t)=t^k, \ \ k=0,\ldots,n-1</span>, for if it is possible to achieve the zero error, then the Gauss normal equation will give us the appropriate coefficients.</p></li>
+<li><p>both of these (eventually equivalent) approaches has complexity <span class="math inline">{\cal O}(n^3)</span> and it is not so straightforward to apply them for a dynamically extending point set.</p></li>
+</ul></li>
+<li>we will learn later that there is a more efficient <span class="math inline">{\cal O}(n^2)</span> complexity and dynamically extendable approach: the Newton divided difference method.</li>
+<li>first we will state a theorem about the existence and uniqueness.</li>
+</ul>
+<div class="thm-LAG callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Lagrange’s main theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For a given set of <strong>pairwise different</strong> points <span class="math inline">(t_{1},f_{1}),\ldots,(t_{n},f_{n})</span>, there is a unique polynomial <span class="math inline">P</span> with: <span class="math display">
+P(t_{k})=f_{k}\ \ \ (k=1,\ldots,n)\ \ \text{and}\ \ \deg(P)\le n-1
+</span></p>
+</div>
+</div>
+<ul>
+<li>for more details read <a href="../../store/interpol/Lagrange.html">this</a></li>
+<li>at this stage we learned that the least square approach (even without <span class="math inline">A^{T}A</span>) will give us the unique solution…</li>
+</ul>
+</section>
+<section id="newton-divided-difference-method" class="level1">
+<h1>Newton divided difference method</h1>
+<section id="intro-1" class="level2">
+<h2 class="anchored" data-anchor-id="intro-1">intro</h2>
+<ul>
+<li>search for the polynomial that interpolates the points <span class="math inline">t=[-1,0,1],\ \ f=[2,3,1]</span>.</li>
+<li>let’s imagine the polynomial in the form of <span class="math inline">p(x)=a_2(x+1)x+a_1x+a_0</span>. here we included some information about the first coordinates into the polynomial.</li>
+</ul>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>details
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+\begin{gather*}
+p(-1)=2 \ \ \Longrightarrow \ \ a_0=2\\
+p(x)=a_2(x+1)x+a_1(x+1)+2\\
+p(0)=3 \ \ \Longrightarrow \ \ a_1=1\\
+p(x)=a_2(x+1)x+(x+1)+2\\
+p(1)=1 \ \ \Longrightarrow \ \ a_2=-\frac{3}{2}\\
+p(x)=-\frac{3}{2}(x+1)x+(x+1)+2\\
+\end{gather*}
+</span></p>
+</div>
+</div>
+</div>
+<ul>
+<li>observe that at each step we solved a one variable linear equation, as in the case of triangular form linear systems</li>
+<li>this seemingly ad-hoc approach is transformed to an algorithm</li>
+</ul>
+</section>
+<section id="the-method-how" class="level2">
+<h2 class="anchored" data-anchor-id="the-method-how">the method (how?)</h2>
+<section id="the-scheme-of-the-divided-difference-method" class="level3">
+<h3 class="anchored" data-anchor-id="the-scheme-of-the-divided-difference-method">the scheme of the divided difference method</h3>
+<p><span class="math display">
+\begin{array}{c|cccccc}
+t_1 &amp; f^{~(0)}_{1} &amp; &amp; &amp; &amp; &amp; \\
+&amp; &amp; f^{~(1)}_{1} &amp; &amp; &amp; &amp; \\
+t_2 &amp; f^{~(0)}_{2} &amp;&amp; f^{~(2)}_{1} &amp; &amp; &amp; \\
+&amp; &amp; f^{~(1)}_{2} &amp; &amp; \ddots &amp; &amp;\\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; f^{~(n-2)}_{1} &amp; \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; &amp; f^{~(n-1)}_{1} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; f^{~(n-2)}_{2} &amp; \\
+&amp; &amp; f^{~(1)}_{n-2} &amp; &amp; \mathinner{\kern{1.2mu}\raisebox{2mu}{.}\kern{3mu}\raisebox{7.4mu}{.}\kern{3mu}\raisebox{12.8mu}{.}\kern{1.2mu}}&amp; &amp; \\
+t_{n-1} &amp; f^{~(0)}_{n-1} &amp; &amp; f^{~(2)}_{n-2} &amp; &amp; &amp; \\
+&amp; &amp; f^{~(1)}_{n-1} &amp; &amp; &amp; &amp; \\
+t_n &amp; f^{~(0)}_{n} &amp; &amp; &amp; &amp; &amp;
+\end{array}
+</span></p>
+<div class="thm-RULE callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>the computational rule
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We start with the <span class="math inline">t</span> and the <span class="math inline">f^{~(0)}</span> columns, the the missing entries, for <span class="math inline">j=1\ldots n-1</span> and <span class="math inline">i=1\ldots n-j</span> are computed by <span class="math display">
+f_{i}^{~(j)}=\frac{f_{i}^{~(j-1)}-f_{i+1}^{~(j-1)}}{t_i-t_{i+j}} \ \ \ \ (*)
+</span></p>
+</div>
+</div>
+<div class="thm-POLY callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>the polynomial(s)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose that we filled in the table according to the rule <span class="math inline">(*)</span>. Then <span class="math display">
+\begin{align*}
+P(t)&amp;=f^{~(0)}_{1}+f^{~(1)}_{1}(t-t_1)+f^{~(2)}_{1}(t-t_1)(t-t_2)+\ldots\\
+&amp;+f^{~(n-2)}_{1}(t-t_1)\ldots (t-t_{n-2})+f^{~(n-1)}_{1}(t-t_1)\ldots (t-t_{n-1})
+\end{align*}
+</span> and <span class="math display">
+\begin{align*}
+P(t)&amp;=f^{~(0)}_{n}+f^{~(1)}_{n-1}(t-t_n)+f^{~(2)}_{n-2}(t-t_n)(t-t_{n-1})+\cdots\\
+&amp;+f^{~(n-2)}_{2}(t-t_n)\cdots (t-t_3)+f^{~(n-1)}_{1}(t-t_n)\cdots (t-t_2)
+\end{align*}
+</span> are interpolational polynomials for the data <span class="math inline">t,f</span>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="the-method-why" class="level2">
+<h2 class="anchored" data-anchor-id="the-method-why">the method (why?)</h2>
+<ul>
+<li>read <a href="../../store/interpol/Newton_dd.html">this</a></li>
+</ul>
+</section>
+</section>
+<section id="example" class="level1">
+<h1>example</h1>
+<p>Compute the Lagrange interpolational polynom for the point set:</p>
+<p><span class="math display">
+(-2,-31),(-1,-7),(0,-1),(2,5)
+</span></p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>details
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+\begin{array}{r|rrrr}
+-2 &amp; \color{red} -31 &amp;&amp;&amp;\\
+&amp; &amp;\color{red}24 &amp; &amp;\\
+-1 &amp; -7 &amp; &amp; \color{red} -9 &amp;\\
+&amp; &amp; 6 &amp; &amp; \color{red}2\\
+0&amp; -1 &amp;&amp; -1 &amp;\\
+&amp;&amp; 3 &amp;&amp;\\
+2 &amp; 5 &amp; &amp; &amp;
+\end{array}
+</span></p>
+<p><span class="math display">
+P(t)={\color{red}-31}+{\color{red}24}(t+2){\color{red}-9}(t+2)(t+1)+
+{\color{red}2}(t+2)(t+1)t
+</span></p>
+<p>or reading from the lower edge:</p>
+<p><span class="math display">
+\begin{array}{r|rrrr}
+-2 &amp; -31 &amp;&amp;&amp;\\
+&amp; &amp; 24 &amp; &amp;\\
+-1 &amp; -7 &amp; &amp; -9 &amp;\\
+&amp; &amp; 6 &amp; &amp; \color{red}2\\
+0&amp; -1 &amp;&amp; \color{red}-1 &amp;\\
+&amp;&amp; \color{red}3 &amp;&amp;\\
+2 &amp; \color{red}5 &amp; &amp; &amp;
+\end{array}
+</span></p>
+<p><span class="math display">
+P(t)={\color{red}5}+{\color{red}3}(t-2){\color{red}-1}(t-2)t+
+{\color{red}2}(t-2)t(t+1)
+</span></p>
+<p>the result in classical form is <span class="math display">
+P(t)=2t^{3}-3t^{2}+t-1
+</span> in both cases.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="horner" class="level1">
+<h1>Horner</h1>
+<ul>
+<li>a tiny method to evaluate polynomials</li>
+</ul>
+<p><span class="math display">
+P(t)=a_nt^n+a_{n-1}t^{n-1}+\ldots+a_1t+a_0
+</span></p>
+<ul>
+<li>the prefix polynomials <span class="math inline">(a_n),\ (a_{n},a_{n-1}),\ \ldots, (a_n,a_{n-1},\ldots,a_1,a_0)</span> evaluated subsequently.</li>
+<li>suppose that we need the value at <span class="math inline">s</span></li>
+</ul>
+<p><span class="math display">
+\begin{align*}
+v_0&amp;=a_n\\
+v_1&amp;=v_0s+a_{n-1}\\
+v_2&amp;=v_1s+a_{n-2}\\
+\ldots\\
+v_n&amp;=v_{n-1}s+a_{0}=P(s)\\
+\end{align*}
+</span></p>
+<p>in tabular form:</p>
+<p><span class="math display">
+\begin{array}{r|cccccc}
+&amp;a_n &amp; a_{n-1} &amp; \ldots &amp; a_2 &amp; a_1 &amp; a_0 &amp; \\
+\hline
+s &amp; v_0 &amp; v_1 &amp;         \ldots &amp; v_{n-2} &amp;      v_{n-1} &amp;       v_n &amp; =P(s) \\
+\end{array}
+</span></p>
+</section>
+<section id="general-horner" class="level1">
+<h1>general Horner</h1>
+<p><span class="math display">
+\begin{gather*}
+P(t)=a_{n-1}(t-t_1)\ldots(t-t_{n-1})+a_{n-2}(t-t_1)\ldots(t-t_{n-2})+\\
+\ldots+a_1(t-t_1)+a_0
+\end{gather*}
+</span></p>
+<ul>
+<li>the prefix polynomials <span class="math inline">(a_{n-1}),\ (a_{n-1},a_{n-2}),\ \ldots, (a_{n-1},a_{n-2},\ldots,a_1,a_0)</span> evaluated subsequently.</li>
+<li>suppose that we need the value at <span class="math inline">s</span></li>
+</ul>
+<p><span class="math display">
+\begin{align*}
+v_0&amp;=a_{n-1}\\
+v_1&amp;=v_0(s-t_{n-1})+a_{n-1}\\
+v_2&amp;=v_1(s-t_{n-2})+a_{n-2}\\
+\ldots\\
+v_{n-1}&amp;=v_{n-2}(s-t_{1})+a_{0}=P(s)\\
+\end{align*}
+</span></p>
+<p>in tabular form:</p>
+<p><span class="math display">
+\begin{array}{r|cccccc}
+  &amp; t_{n}     &amp; t_{n-1} &amp; \ldots &amp; t_3 &amp; t_2 &amp; t_1 &amp; \\
+  &amp; a_{n-1}   &amp; a_{n-2} &amp; \ldots &amp; a_2 &amp; a_1 &amp; a_0 &amp; \\
+\hline
+s &amp; v_0       &amp; v_1 &amp;         \ldots &amp;            v_{n-3} &amp;          v_{n-2} &amp;       v_{n-1} &amp; =P(s)\\
+\end{array}
+</span></p>
+<ul>
+<li>note that <span class="math inline">t_n</span> is unused.</li>
+</ul>
+</section>
+<section id="matlab" class="level1">
+<h1>matlab</h1>
+<ul>
+<li><code>polyfit+polyval</code> are our friends for handling interpolation problems</li>
+</ul>
+</section>
+<section id="runge-phenomenom" class="level1">
+<h1>Runge phenomenom</h1>
+<p>it is the Runge test-function <span class="math display">
+f(x)=\frac{1}{1+25x^2}
+</span></p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Runge plot
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="runge.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>the code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">fun</span><span class="op">=@</span>(<span class="va">x</span>) <span class="fl">1</span><span class="op">./</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">25</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">yy</span><span class="op">=</span><span class="va">fun</span>(<span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">yy</span>)<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"runge.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="st">"Runge function"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>let’s interpolate it with uniformly distributed points!</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>uniform plot
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="rungeUNI.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>the code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">% Runge examples - uniform points</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="va">fun</span><span class="op">=@</span>(<span class="va">x</span>) <span class="fl">1</span><span class="op">./</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">25</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">yy</span><span class="op">=</span><span class="va">fun</span>(<span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="va">nsp</span><span class="op">=</span><span class="fl">0</span><span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">np</span><span class="op">=</span>[<span class="fl">3</span><span class="op">,</span><span class="fl">9</span><span class="op">,</span><span class="fl">15</span>]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>   <span class="va">nsp</span><span class="op">=</span><span class="va">nsp</span><span class="op">+</span><span class="fl">1</span><span class="op">;</span><span class="va">subplot</span>(<span class="fl">3</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="va">nsp</span>)<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>   <span class="va">x</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="va">np</span>)<span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>   <span class="va">pol</span><span class="op">=</span><span class="va">polyfit</span>(<span class="va">x</span><span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>)<span class="op">,</span><span class="va">np</span><span class="op">-</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>   <span class="va">yyy</span><span class="op">=</span><span class="va">polyval</span>(<span class="va">pol</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>   <span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">yy</span><span class="op">,</span><span class="va">xx</span><span class="op">,</span><span class="va">yyy</span>)<span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>   <span class="va">maxdiff</span><span class="op">=</span><span class="va">max</span>(<span class="va">abs</span>(<span class="va">yy</span><span class="op">-</span><span class="va">yyy</span>))<span class="op">;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>   <span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"uniform | num of points: %d | max difference: %.2f\n"</span><span class="op">,</span><span class="va">np</span><span class="op">,</span><span class="va">maxdiff</span>))<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"rungeUNI.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>this is <strong>bad</strong></li>
+<li>how can we handle it?</li>
+</ul>
+</div>
+</div>
+<p>by using piecewise linear interpolation:</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>piecewise linear
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="rungePLIN.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>the code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">% Runge example - piecewise linear</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="va">fun</span><span class="op">=@</span>(<span class="va">x</span>) <span class="fl">1</span><span class="op">./</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">25</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">101</span>)<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="va">yy</span><span class="op">=</span><span class="va">fun</span>(<span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="va">nsp</span><span class="op">=</span><span class="fl">0</span><span class="op">;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">np</span><span class="op">=</span>[<span class="fl">3</span><span class="op">,</span><span class="fl">9</span><span class="op">,</span><span class="fl">15</span>]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>   <span class="va">nsp</span><span class="op">=</span><span class="va">nsp</span><span class="op">+</span><span class="fl">1</span><span class="op">;</span><span class="va">subplot</span>(<span class="fl">3</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="va">nsp</span>)<span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>   <span class="va">x</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="va">np</span>)<span class="op">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>   <span class="va">fx</span><span class="op">=</span><span class="va">fun</span>(<span class="va">x</span>)<span class="op">;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>   <span class="va">pl</span><span class="op">=</span><span class="va">mk_plin</span>(<span class="va">x</span><span class="op">,</span><span class="va">fx</span>)<span class="op">;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>   <span class="va">yyy</span><span class="op">=</span><span class="va">arrayfun</span>(<span class="va">pl</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>   <span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">yy</span><span class="op">,</span><span class="va">xx</span><span class="op">,</span><span class="va">yyy</span>)<span class="op">;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>   <span class="va">maxdiff</span><span class="op">=</span><span class="va">max</span>(<span class="va">abs</span>(<span class="va">yy</span><span class="op">-</span><span class="va">yyy</span>))<span class="op">;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>   <span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"piecewise linear | numf of points: %d | max difference: %.2f\n"</span><span class="op">,</span><span class="va">np</span><span class="op">,</span><span class="va">maxdiff</span>))<span class="op">;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"rungePLIN.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">% assumption: t is equidistant (to have O(1) search)</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">% length(t) is at least 2</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">% t is increasing</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="va">plin</span><span class="op">=</span><span class="va">mk_plin</span>(<span class="va">t</span><span class="op">,</span><span class="va">f</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>   <span class="va">d</span><span class="op">=</span><span class="va">t</span>(<span class="fl">2</span>)<span class="op">-</span><span class="va">t</span>(<span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>   <span class="va">a</span><span class="op">=</span><span class="va">t</span>(<span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>   <span class="co">%b=t(end);</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>   <span class="va">n</span><span class="op">=</span><span class="va">length</span>(<span class="va">t</span>)<span class="op">;</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>   <span class="kw">function</span> <span class="va">y</span><span class="op">=</span><span class="va">plin0</span>(<span class="va">x</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>      <span class="va">k</span><span class="op">=</span><span class="va">floor</span>((<span class="va">x</span><span class="op">-</span><span class="va">a</span>)<span class="op">/</span><span class="va">d</span>)<span class="op">+</span><span class="fl">1</span><span class="op">;</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> <span class="va">k</span><span class="op">&gt;=</span><span class="va">n</span><span class="op">;</span> <span class="va">k</span><span class="op">=</span><span class="va">k</span><span class="op">-</span><span class="fl">1</span><span class="op">;</span> <span class="kw">end</span> <span class="co">% handle when x==b</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>      <span class="va">y</span><span class="op">=</span><span class="va">f</span>(<span class="va">k</span>)<span class="op">+</span>(<span class="va">f</span>(<span class="va">k</span>)<span class="op">-</span><span class="va">f</span>(<span class="va">k</span><span class="op">+</span><span class="fl">1</span>))<span class="op">/</span>(<span class="va">t</span>(<span class="va">k</span>)<span class="op">-</span><span class="va">t</span>(<span class="va">k</span><span class="op">+</span><span class="fl">1</span>))<span class="op">*</span>(<span class="va">x</span><span class="op">-</span><span class="va">t</span>(<span class="va">k</span>))<span class="op">;</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>   <span class="kw">end</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>   <span class="va">plin</span><span class="op">=@</span><span class="va">plin0</span><span class="op">;</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>by using non-uniform support points (Chebysev):</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Chebysev
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="rungeCH.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>the code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">% Runge example - Chebysev points</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="va">fun</span><span class="op">=@</span>(<span class="va">x</span>) <span class="fl">1</span><span class="op">./</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">25</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="va">yy</span><span class="op">=</span><span class="va">fun</span>(<span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="va">nsp</span><span class="op">=</span><span class="fl">0</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">np</span><span class="op">=</span>[<span class="fl">3</span><span class="op">,</span><span class="fl">9</span><span class="op">,</span><span class="fl">15</span>]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>   <span class="va">nsp</span><span class="op">=</span><span class="va">nsp</span><span class="op">+</span><span class="fl">1</span><span class="op">;</span><span class="va">subplot</span>(<span class="fl">3</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="va">nsp</span>)<span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>   <span class="va">x</span><span class="op">=</span><span class="va">cos</span>(<span class="va">pi</span><span class="op">*</span>(<span class="fl">2</span><span class="op">*</span>(<span class="fl">1</span><span class="op">:</span><span class="va">np</span>)<span class="op">-</span><span class="fl">1</span>)<span class="op">/</span>(<span class="fl">2</span><span class="op">*</span><span class="va">np</span>))<span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>   <span class="va">pol</span><span class="op">=</span><span class="va">polyfit</span>(<span class="va">x</span><span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>)<span class="op">,</span><span class="va">np</span><span class="op">-</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>   <span class="va">yyy</span><span class="op">=</span><span class="va">polyval</span>(<span class="va">pol</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>   <span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">yy</span><span class="op">,</span><span class="va">xx</span><span class="op">,</span><span class="va">yyy</span>)<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>   <span class="va">maxdiff</span><span class="op">=</span><span class="va">max</span>(<span class="va">abs</span>(<span class="va">yy</span><span class="op">-</span><span class="va">yyy</span>))<span class="op">;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>   <span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"num of Chebysev points: %d | max difference: %.2f\n"</span><span class="op">,</span><span class="va">np</span><span class="op">,</span><span class="va">maxdiff</span>))<span class="op">;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"rungeCH.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>by using spline interpolation:</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>spline
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="rungeSPLINE.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>the code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">% Runge examples - uniform points + spline</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="va">fun</span><span class="op">=@</span>(<span class="va">x</span>) <span class="fl">1</span><span class="op">./</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">25</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="va">yy</span><span class="op">=</span><span class="va">fun</span>(<span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="va">nsp</span><span class="op">=</span><span class="fl">0</span><span class="op">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">np</span><span class="op">=</span>[<span class="fl">3</span><span class="op">,</span><span class="fl">9</span><span class="op">,</span><span class="fl">15</span>]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>   <span class="va">nsp</span><span class="op">=</span><span class="va">nsp</span><span class="op">+</span><span class="fl">1</span><span class="op">;</span><span class="va">subplot</span>(<span class="fl">3</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="va">nsp</span>)<span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>   <span class="va">x</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="va">np</span>)<span class="op">;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>   <span class="va">yyy</span><span class="op">=</span><span class="va">spline</span>(<span class="va">x</span><span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>) <span class="fl">0</span>]<span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>   <span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">yy</span><span class="op">,</span><span class="va">xx</span><span class="op">,</span><span class="va">yyy</span>)<span class="op">;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>   <span class="va">maxdiff</span><span class="op">=</span><span class="va">max</span>(<span class="va">abs</span>(<span class="va">yy</span><span class="op">-</span><span class="va">yyy</span>))<span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>   <span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"cubic spline | num of uniform points: %d | max difference: %.2f\n"</span><span class="op">,</span><span class="va">np</span><span class="op">,</span><span class="va">maxdiff</span>))<span class="op">;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"rungeSPLINE.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
