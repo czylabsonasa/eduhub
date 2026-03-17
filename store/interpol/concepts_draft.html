@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-03-10">
+<meta name="dcterms.date" content="2026-03-17">
 
 <title>interpolation/concepts_draft – eduhub</title>
 <style>
@@ -203,6 +203,31 @@ window.Quarto = {
   <li><a href="#general-horner" id="toc-general-horner" class="nav-link" data-scroll-target="#general-horner">general Horner</a></li>
   <li><a href="#matlab" id="toc-matlab" class="nav-link" data-scroll-target="#matlab">matlab</a></li>
   <li><a href="#runge-phenomenom" id="toc-runge-phenomenom" class="nav-link" data-scroll-target="#runge-phenomenom">Runge phenomenom</a></li>
+  <li><a href="#hermite-interpolation" id="toc-hermite-interpolation" class="nav-link" data-scroll-target="#hermite-interpolation">Hermite-interpolation</a>
+  <ul class="collapse">
+  <li><a href="#problem-description" id="toc-problem-description" class="nav-link" data-scroll-target="#problem-description">problem description</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation">computation</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">example</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">applications</a>
+  <ul class="collapse">
+  <li><a href="#tangent-line-formula" id="toc-tangent-line-formula" class="nav-link" data-scroll-target="#tangent-line-formula">tangent line formula</a></li>
+  </ul></li>
+  <li><a href="#the-runge-function-revisited" id="toc-the-runge-function-revisited" class="nav-link" data-scroll-target="#the-runge-function-revisited">the Runge-function revisited</a></li>
+  </ul></li>
+  <li><a href="#piecewise-interpolation" id="toc-piecewise-interpolation" class="nav-link" data-scroll-target="#piecewise-interpolation">piecewise interpolation</a>
+  <ul class="collapse">
+  <li><a href="#linear-interpolation" id="toc-linear-interpolation" class="nav-link" data-scroll-target="#linear-interpolation">linear interpolation</a>
+  <ul class="collapse">
+  <li><a href="#matlab-1" id="toc-matlab-1" class="nav-link" data-scroll-target="#matlab-1">matlab</a></li>
+  <li><a href="#error-of-the-linear-interpolation" id="toc-error-of-the-linear-interpolation" class="nav-link" data-scroll-target="#error-of-the-linear-interpolation">error of the linear interpolation</a></li>
+  </ul></li>
+  <li><a href="#higher-order-interpolation" id="toc-higher-order-interpolation" class="nav-link" data-scroll-target="#higher-order-interpolation">higher-order interpolation</a></li>
+  <li><a href="#cubic-spline-interpolation" id="toc-cubic-spline-interpolation" class="nav-link" data-scroll-target="#cubic-spline-interpolation">cubic spline interpolation</a>
+  <ul class="collapse">
+  <li><a href="#matlab-2" id="toc-matlab-2" class="nav-link" data-scroll-target="#matlab-2">matlab</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#supporting-scripts" id="toc-supporting-scripts" class="nav-link" data-scroll-target="#supporting-scripts">supporting scripts</a></li>
   </ul>
 </nav>
     </div>
@@ -222,7 +247,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 10, 2026</p>
+      <p class="date">March 17, 2026</p>
     </div>
   </div>
   
@@ -238,6 +263,7 @@ window.Quarto = {
 <h1>intro</h1>
 <ul>
 <li>for a given set of 2d points <span class="math inline">(t_{1},f_{1}),\ldots,(t_{n},f_{n})</span> we are searching the simplest (minimal degree) <span class="math inline">P</span> polynomial that interpolates the points: <span class="math inline">P(t_{k})=f_{k}\ \ \ k=1,\ldots ,n</span>.</li>
+<li>terminology: the elements of <span class="math inline">t</span> are called interpolation nodes/node points, the elements of <span class="math inline">f</span> are called (function) values/node values.</li>
 <li>naturally the point set cannot have two equal first coordinates (<span class="math inline">t_{i}=t_{j}</span>) with different second coordinates (<span class="math inline">f_{i}\neq f_{j}</span>).</li>
 <li>for 1 points a 0-th order, 2 points an at most 1-st order interpolation is clearly exists - but how to proceed to larger number of points?</li>
 <li><span class="math inline">n</span> points <span class="math inline">n</span> pieces of information. we may expect that these <span class="math inline">n</span> pieces will determine <span class="math inline">n</span> real numbers, a polynomial of degree at most <span class="math inline">n-1</span>, which will be the interpolational polynomial.</li>
@@ -784,6 +810,287 @@ Caution
 </div>
 </div>
 </div>
+</section>
+<section id="hermite-interpolation" class="level1">
+<h1>Hermite-interpolation</h1>
+<ul>
+<li>as we realized there are some issues with the “plain” lagrangian interpolation. If one wants more precise approximation then the number supporting points must be increased, but this could result in increasing “largest deviation” scenario, as we saw for the Runge test-function.</li>
+<li>it is natural to expect that controlling the derivative values (possibly higher ones) would lead us to a better approximation: the observed fluctuation at the ends of the interval would disappear.</li>
+</ul>
+<section id="problem-description" class="level2">
+<h2 class="anchored" data-anchor-id="problem-description">problem description</h2>
+<p>We have a set of points and a set of conditions at the points: <span class="math display">
+\begin{array}{rcccccl}
+&amp; t_1            &amp; t_2          &amp; t_3       &amp; \dots &amp; t_n       &amp; \\
+\hline
+&amp; f_{1}^{(0)}      &amp; f_{2}^{(0)}    &amp; f_{3}^{(0)} &amp; \dots &amp; f_{n}^{(0)} &amp;\\
+&amp; f_{1}^{(1)}      &amp; f_{2}^{(1)}    &amp; f_{3}^{(1)} &amp; \dots &amp; f_{n}^{(1)} &amp;\\
+&amp; f_{1}^{(2)}      &amp; f_{2}^{(2)}    &amp; f_{3}^{(2)}  &amp; \dots &amp; f_{n}^{(2)} &amp;\\
+&amp;\vdots          &amp; \vdots           &amp; \vdots       &amp;       &amp; \vdots     &amp;\\
+&amp;f_{1}^{(m_1-1)}     &amp; f_{2}^{(m_2-1)}  &amp; f_{3}^{(m_3-1)} &amp;\dots &amp; f_{n}^{(m_n-1)}&amp;\\
+\end{array}
+</span></p>
+<p>We are looking for a polynomial <span class="math inline">H(t)</span>, for which <span class="math display">
+H^{~(j)}(t_i)=f_{i}^{(j)} \quad \quad i=1,\dots,n, \quad j=0,\dots ,m_i-1.
+</span> Let <span class="math inline">m=\sum_{k=1}^n m_k</span>, the number of conditions.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The problem of Hermite-interpolation can be solved uniquely in the space of at most <span class="math inline">m-1</span> degree polynomials.</p>
+</div>
+</div>
+<p>From the conditions, we can set up a uniquely solvable <span class="math inline">m\times m</span> linear system, for the details see <a href="https://www.inf.elte.hu/dstore/document/360/CsabaJHegedus-NUMERICALMETHODSII.pdf">this</a> at page (around) 18.</p>
+</section>
+<section id="computation" class="level2">
+<h2 class="anchored" data-anchor-id="computation">computation</h2>
+<ul>
+<li>How to compute the coefficients of <span class="math inline">H</span>?</li>
+<li>It is possible to modify the Newton divided difference method for Lagrange polynomials to get them.</li>
+<li>The node points column (t) should contain the <span class="math inline">t_k</span>’s with multiplicity. As many conditions assigned to a specific as many times we should include it. If the first derivative is given, then we must include it <span class="math inline">2</span> times, and so on.</li>
+<li>The corresponding computational formula is modified, in order to handle the “division by zero” case</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Hermite-rule
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+f_{i}^{~(j)}=
+\begin{cases}
+\frac{f_{i}^{~(j-1)}-f_{i+1}^{~(j-1)}}{t_i-t_{i+j}} \ \ \text{if}\ t_i \neq t_{i+j}\\
+\frac{f(t_{i})^{(j)}}{j!} \ \ \text{otherwise}\\
+\end{cases}
+</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If the node points are set up with appropriate multiplicity and the modified computational rule used to fill in the values of the scheme then the polynomial in the final table fulfills the conditions. (The proof is omitted.)</p>
+</div>
+</div>
+</section>
+<section id="example-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-1"><a href="hermite1.pdf">example</a></h2>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>the plot for the example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="hermite1.png" class="img-fluid">(width=“80%”)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="applications" class="level2">
+<h2 class="anchored" data-anchor-id="applications">applications</h2>
+<section id="tangent-line-formula" class="level3">
+<h3 class="anchored" data-anchor-id="tangent-line-formula">tangent line formula</h3>
+<ul>
+<li>For a given real valued, differentiable function find the equation of its tangential line at <span class="math inline">t_0</span>!</li>
+<li>We are looking for a Hermite polynomial of degree at most <span class="math inline">1</span>, for which <span class="math inline">H(t_0)=f(t_0)</span> and <span class="math inline">H~'(t_0)=f~'(t_0)</span></li>
+</ul>
+<p><span class="math display">
+\begin{array}{r|rr}
+t_0 &amp;  f(t_0) \\
+&amp; &amp; f~'(t_0) \\
+t_0 &amp; f(t_0)
+\end{array}
+</span></p>
+<ul>
+<li>then <span class="math inline">H(t)=f(t_0)+f~'(t_0)(t-t_0)</span></li>
+</ul>
+</section>
+</section>
+<section id="the-runge-function-revisited" class="level2">
+<h2 class="anchored" data-anchor-id="the-runge-function-revisited">the Runge-function revisited</h2>
+<ul>
+<li>we will interpolate the function at different node sets, but this time the derivative values will also be used at some nodes.</li>
+</ul>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>the plot
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="rungeHERMITE.png" class="img-fluid">(width=“80%”)</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>the script
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">% Runge examples - uniform Hermite</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="va">fun</span><span class="op">=@</span>(<span class="va">x</span>) <span class="fl">1</span><span class="op">./</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">25</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="va">dfun</span><span class="op">=@</span>(<span class="va">x</span>) <span class="op">-</span><span class="fl">50</span><span class="op">*</span><span class="va">x</span><span class="op">./</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">25</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="va">yy</span><span class="op">=</span><span class="va">fun</span>(<span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="va">nsp</span><span class="op">=</span><span class="fl">0</span><span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">np</span><span class="op">=</span>[<span class="fl">3</span><span class="op">,</span><span class="fl">9</span><span class="op">,</span><span class="fl">15</span>]</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="va">nsp</span><span class="op">=</span><span class="va">nsp</span><span class="op">+</span><span class="fl">1</span><span class="op">;</span><span class="va">subplot</span>(<span class="fl">3</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="va">nsp</span>)<span class="op">;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="va">x</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="va">np</span>)<span class="op">;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="va">data</span><span class="op">=</span><span class="va">cell</span>(<span class="fl">1</span><span class="op">,</span><span class="va">np</span>)<span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">% also control some derivatives at the ends</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="va">data</span>{<span class="fl">1</span>}<span class="op">=</span>[<span class="va">x</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>(<span class="fl">1</span>))<span class="op">,</span><span class="va">dfun</span>(<span class="va">x</span>(<span class="fl">1</span>))]<span class="op">;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="va">data</span>{<span class="fl">2</span>}<span class="op">=</span>[<span class="va">x</span>(<span class="fl">2</span>)<span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>(<span class="fl">2</span>))<span class="op">,</span><span class="va">dfun</span>(<span class="va">x</span>(<span class="fl">2</span>))]<span class="op">;</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">for</span> <span class="va">i</span><span class="op">=</span><span class="fl">3</span><span class="op">:</span><span class="va">np</span><span class="op">-</span><span class="fl">2</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="va">data</span>{<span class="va">i</span>}<span class="op">=</span>[<span class="va">x</span>(<span class="va">i</span>)<span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>(<span class="va">i</span>))]<span class="op">;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="va">data</span>{<span class="va">np</span><span class="op">-</span><span class="fl">1</span>}<span class="op">=</span>[<span class="va">x</span>(<span class="va">np</span><span class="op">-</span><span class="fl">1</span>)<span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>(<span class="va">np</span><span class="op">-</span><span class="fl">1</span>))<span class="op">,</span><span class="va">dfun</span>(<span class="va">x</span>(<span class="va">np</span><span class="op">-</span><span class="fl">1</span>))]<span class="op">;</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="va">data</span>{<span class="va">np</span>}<span class="op">=</span>[<span class="va">x</span>(<span class="va">np</span>)<span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>(<span class="va">np</span>))<span class="op">,</span><span class="va">dfun</span>(<span class="va">x</span>(<span class="va">np</span>))]<span class="op">;</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  [<span class="va">H</span><span class="op">,</span><span class="va">t</span>]<span class="op">=</span><span class="va">hermite_interpolation</span>(<span class="va">data</span>)<span class="op">;</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="va">yyy</span><span class="op">=</span><span class="va">horner_newton</span>(<span class="va">H</span><span class="op">,</span><span class="va">t</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">yy</span><span class="op">,</span><span class="va">xx</span><span class="op">,</span><span class="va">yyy</span>)<span class="op">;</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="va">maxdiff</span><span class="op">=</span><span class="va">max</span>(<span class="va">abs</span>(<span class="va">yy</span><span class="op">-</span><span class="va">yyy</span>))<span class="op">;</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"uniform+Hermite | num of points: %d | max difference: %.2f\n"</span><span class="op">,</span><span class="va">np</span><span class="op">,</span><span class="va">maxdiff</span>))<span class="op">;</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"rungeHERMITE.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<ul>
+<li>as we see the fluctuations can be controlled, but not in straightforward way.</li>
+</ul>
+</section>
+</section>
+<section id="piecewise-interpolation" class="level1">
+<h1>piecewise interpolation</h1>
+<ul>
+<li>fluctuation = high order interpolational polynomials (intuitively it is because of the large number of roots)</li>
+<li>the large interval is divided into smaller pieces and low-order polynomials will be used</li>
+</ul>
+<section id="linear-interpolation" class="level2">
+<h2 class="anchored" data-anchor-id="linear-interpolation">linear interpolation</h2>
+<section id="matlab-1" class="level3">
+<h3 class="anchored" data-anchor-id="matlab-1">matlab</h3>
+<ul>
+<li>no need to implement it by hand</li>
+<li>the <code>interp1</code> function can be used</li>
+</ul>
+</section>
+<section id="error-of-the-linear-interpolation" class="level3">
+<h3 class="anchored" data-anchor-id="error-of-the-linear-interpolation">error of the linear interpolation</h3>
+<ul>
+<li>let <span class="math inline">f\in C^{2}[A,B]</span> and <span class="math inline">M_2=\max_{t\in[A,B]} |f{~''}(t)|</span></li>
+<li>then for the linear interpolation <span class="math inline">P</span> of <span class="math inline">f</span> on <span class="math inline">[a,b]\subset [A,B]</span> we have:</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">
+\vert f(t)-P_{[a,b]}(t)\vert \leq \frac {M_2}{8}(b-a)^2, \quad\quad
+t\in [a,b]
+</span></p>
+</div>
+</div>
+<ul>
+<li>Where .</li>
+<li>increasing the number of subintervals results in smaller error.</li>
+<li>dividing the “large” <span class="math inline">[A,B]</span> interval int <span class="math inline">n</span> equal pieces (and using the same “global” M_2) the error for one <span class="math inline">[a,b]</span> subinterval:</li>
+</ul>
+<p><span class="math display">
+\vert f(t)-P_{[a,b]}\vert \leq \frac {M_2}{8}\frac{(B-A)^2}{n^2}, \quad\quad
+t\in [a,b]
+</span></p>
+<ul>
+<li>doubling the points = halving the length will result 4 times better approximation</li>
+<li>pro: simple</li>
+<li>con: sometimes for very high precision we need large number of points, but at least it works</li>
+</ul>
+</section>
+</section>
+<section id="higher-order-interpolation" class="level2">
+<h2 class="anchored" data-anchor-id="higher-order-interpolation">higher-order interpolation</h2>
+<ul>
+<li>one can use plain Lagrange or Hermite interpolation for the small intervals</li>
+<li>pro: better approximation (worst case)</li>
+<li>con: computationally intensive, harder to implement</li>
+</ul>
+</section>
+<section id="cubic-spline-interpolation" class="level2">
+<h2 class="anchored" data-anchor-id="cubic-spline-interpolation">cubic spline interpolation</h2>
+<ul>
+<li>the most widely used piecewise interpolation method</li>
+<li>given <span class="math inline">[t_1,\ldots,t_n]</span> and <span class="math inline">[f_1,\ldots,f_n]</span> and <span class="math inline">f_1'</span> and <span class="math inline">f'_n</span></li>
+<li>the first derivatives are given only the endpoints</li>
+<li>We search for a function <span class="math inline">S(t)</span> for which
+<ul>
+<li><span class="math inline">S(t_k)=f_k</span></li>
+<li><span class="math inline">S'(t_1)=f_1'</span> and <span class="math inline">S'(t_n)=f'_n</span></li>
+<li><span class="math inline">S|_{[t_{k},t_{k+1}]}=S_k</span> cubic polynomial, <span class="math inline">=1,\dots ,n-1</span></li>
+<li><span class="math inline">S</span> is twice continuously differentiable</li>
+</ul></li>
+<li>the are several approaches to construct the sub-polynomials. We do not discuss them.</li>
+</ul>
+<section id="matlab-2" class="level3">
+<h3 class="anchored" data-anchor-id="matlab-2">matlab</h3>
+<ul>
+<li>the <code>spline</code> function can be used</li>
+<li>not supplying the derivatives some (implementation dependent) defaults will be used</li>
+<li><code>spline(t, [df1 f dfn], x)</code> will evalute the polynomial at <code>x</code></li>
+<li>a Hermite problem <span class="math inline">t_1,t_2,f_1,f_2,f'_1,f'_2</span> is cubic spline problem for one-interval. it can be solved by a simple call of <code>spline</code>. (at least the evaluation part)</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="supporting-scripts" class="level1">
+<h1>supporting <a href="../../store/interpol/scripts.html">scripts</a></h1>
 
 
 </section>

@@ -676,7 +676,7 @@
     "href": "store/interpol/concepts_draft.html",
     "title": "interpolation/concepts_draft",
     "section": "",
-    "text": "for a given set of 2d points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}) we are searching the simplest (minimal degree) P polynomial that interpolates the points: P(t_{k})=f_{k}\\ \\ \\ k=1,\\ldots ,n.\nnaturally the point set cannot have two equal first coordinates (t_{i}=t_{j}) with different second coordinates (f_{i}\\neq f_{j}).\nfor 1 points a 0-th order, 2 points an at most 1-st order interpolation is clearly exists - but how to proceed to larger number of points?\nn points n pieces of information. we may expect that these n pieces will determine n real numbers, a polynomial of degree at most n-1, which will be the interpolational polynomial.\nthere are several approaches\n\nsetting up an n\\times n linear system of equations \na_{n-1}t_{k}^{n-1}+\\ldots+a_{1}t_{k}+a_{0}=f_{k}\\ \\ \\ k=1,\\ldots,n\n\napplying least square approximation for \\varphi_{k}(t)=t^k, \\ \\ k=0,\\ldots,n-1, for if it is possible to achieve the zero error, then the Gauss normal equation will give us the appropriate coefficients.\nboth of these (eventually equivalent) approaches has complexity {\\cal O}(n^3) and it is not so straightforward to apply them for a dynamically extending point set.\n\nwe will learn later that there is a more efficient {\\cal O}(n^2) complexity and dynamically extendable approach: the Newton divided difference method.\nfirst we will state a theorem about the existence and uniqueness.\n\n\n\n\n\n\n\nImportantLagrange’s main theorem\n\n\n\nFor a given set of pairwise different points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}), there is a unique polynomial P with: \nP(t_{k})=f_{k}\\ \\ \\ (k=1,\\ldots,n)\\ \\ \\text{and}\\ \\ \\deg(P)\\le n-1\n\n\n\n\nfor more details read this\nat this stage we learned that the least square approach (even without A^{T}A) will give us the unique solution…"
+    "text": "for a given set of 2d points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}) we are searching the simplest (minimal degree) P polynomial that interpolates the points: P(t_{k})=f_{k}\\ \\ \\ k=1,\\ldots ,n.\nterminology: the elements of t are called interpolation nodes/node points, the elements of f are called (function) values/node values.\nnaturally the point set cannot have two equal first coordinates (t_{i}=t_{j}) with different second coordinates (f_{i}\\neq f_{j}).\nfor 1 points a 0-th order, 2 points an at most 1-st order interpolation is clearly exists - but how to proceed to larger number of points?\nn points n pieces of information. we may expect that these n pieces will determine n real numbers, a polynomial of degree at most n-1, which will be the interpolational polynomial.\nthere are several approaches\n\nsetting up an n\\times n linear system of equations \na_{n-1}t_{k}^{n-1}+\\ldots+a_{1}t_{k}+a_{0}=f_{k}\\ \\ \\ k=1,\\ldots,n\n\napplying least square approximation for \\varphi_{k}(t)=t^k, \\ \\ k=0,\\ldots,n-1, for if it is possible to achieve the zero error, then the Gauss normal equation will give us the appropriate coefficients.\nboth of these (eventually equivalent) approaches has complexity {\\cal O}(n^3) and it is not so straightforward to apply them for a dynamically extending point set.\n\nwe will learn later that there is a more efficient {\\cal O}(n^2) complexity and dynamically extendable approach: the Newton divided difference method.\nfirst we will state a theorem about the existence and uniqueness.\n\n\n\n\n\n\n\nImportantLagrange’s main theorem\n\n\n\nFor a given set of pairwise different points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}), there is a unique polynomial P with: \nP(t_{k})=f_{k}\\ \\ \\ (k=1,\\ldots,n)\\ \\ \\text{and}\\ \\ \\deg(P)\\le n-1\n\n\n\n\nfor more details read this\nat this stage we learned that the least square approach (even without A^{T}A) will give us the unique solution…"
   },
   {
     "objectID": "store/interpol/concepts_draft.html#intro-1",
@@ -719,5 +719,75 @@
     "title": "interpolation/Newton-divided-difference",
     "section": "",
     "text": "polynom representations\n\nit is the most generic representation\n\n\n\\begin{gather*}\nP(t)=a_n(t-t_{n,1})\\ldots(t-t_{n,n})+a_{n-1}(t-t_{n-1,1})\\ldots(t-t_{n-1,n-1})+\\ldots+\\\\\na_2(t-t_{2,1})(t-t_{2,2})+a_1(t-t_{1,1})+a_0\n\\end{gather*}\n\n\nthe main coefficient is the same for each possible representation (why?)\n\n\n\nNeville-formula\n\nit tells us how the “larger” P_{1,2,\\ldots,k+1} polynomial depends on the “smaller” one P_{1,2,\\ldots,k} and P_{2,\\ldots,k+1}.\n\n\nP_{1,2,\\ldots,k+1}(t)=\\frac{1}{t_1-t_{k+1}}\n\\left|\n\\begin{array}{cc}\nP_{1,2,\\ldots,k}(t) & P_{2,3,\\ldots,k+1}(t)\\\\\nt-t_1 & t-t_{k+1}\n\\end{array}\n\\right|\n\n\nproof: evaluate at t_1 and at t_2,\\ldots,t_{k} and at t_{k+1} and use the Lagrange main theorem.\nit is also valid for [j+1,\\ldots, j+k+1] and [j+1,\\ldots, j+k] and [j+2,\\ldots, j+k+1] for each possible j\nlet A,B,C denote the main coefficient of the polynomials (in order). then\n\n\nA=\\frac{B-C}{t_1-t_{k+1}}\n\n\n\nthe scheme and the rule\n\nlet’s focus on the upper edge\nuse induction\n(base1): the f^{(0)} column contains the coefficients for the sub-problems: [1],[2],\\ldots,[n].\n\nwe could start the induction here\n\n(base2): the first computed column contains the main coefficients for each sub-problems: [1,2],[2,3],\\ldots,[n-1,n]. (these ar the slopes of the lines)\n\nit means that for 2-sized sub-problems the small triangles’ upper edges are the appropriate coefficients\nthe induction could be started from here too\n\n(step): consider the subproblem: [1,\\ldots,k+1] and the two child problems: [1,\\ldots,k] and [2,\\ldots,k+1].\n\non the one hand: P_{1,\\ldots,k+1}(t)=P_{1,\\ldots,k}(t)+A(t-t_1)\\ldots(t-t_k) for some C\non the other hand, from the Neville formula A=\\frac{B-C}{t_1-t_{k+1}} - in accordance with the rule used.\n\nthe lower edge polynomials/relations can be handled by reversing the order of the points."
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#problem-description",
+    "href": "store/interpol/concepts_draft.html#problem-description",
+    "title": "interpolation/concepts_draft",
+    "section": "problem description",
+    "text": "problem description\nWe have a set of points and a set of conditions at the points: \n\\begin{array}{rcccccl}\n& t_1            & t_2          & t_3       & \\dots & t_n       & \\\\\n\\hline\n& f_{1}^{(0)}      & f_{2}^{(0)}    & f_{3}^{(0)} & \\dots & f_{n}^{(0)} &\\\\\n& f_{1}^{(1)}      & f_{2}^{(1)}    & f_{3}^{(1)} & \\dots & f_{n}^{(1)} &\\\\\n& f_{1}^{(2)}      & f_{2}^{(2)}    & f_{3}^{(2)}  & \\dots & f_{n}^{(2)} &\\\\\n&\\vdots          & \\vdots           & \\vdots       &       & \\vdots     &\\\\\n&f_{1}^{(m_1-1)}     & f_{2}^{(m_2-1)}  & f_{3}^{(m_3-1)} &\\dots & f_{n}^{(m_n-1)}&\\\\\n\\end{array}\n\nWe are looking for a polynomial H(t), for which \nH^{~(j)}(t_i)=f_{i}^{(j)} \\quad \\quad i=1,\\dots,n, \\quad j=0,\\dots ,m_i-1.\n Let m=\\sum_{k=1}^n m_k, the number of conditions.\n\n\n\n\n\n\nImportant\n\n\n\nThe problem of Hermite-interpolation can be solved uniquely in the space of at most m-1 degree polynomials.\n\n\nFrom the conditions, we can set up a uniquely solvable m\\times m linear system, for the details see this at page (around) 18."
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#computation",
+    "href": "store/interpol/concepts_draft.html#computation",
+    "title": "interpolation/concepts_draft",
+    "section": "computation",
+    "text": "computation\n\nHow to compute the coefficients of H?\nIt is possible to modify the Newton divided difference method for Lagrange polynomials to get them.\nThe node points column (t) should contain the t_k’s with multiplicity. As many conditions assigned to a specific as many times we should include it. If the first derivative is given, then we must include it 2 times, and so on.\nThe corresponding computational formula is modified, in order to handle the “division by zero” case\n\n\n\n\n\n\n\nImportantHermite-rule\n\n\n\n\nf_{i}^{~(j)}=\n\\begin{cases}\n\\frac{f_{i}^{~(j-1)}-f_{i+1}^{~(j-1)}}{t_i-t_{i+j}} \\ \\ \\text{if}\\ t_i \\neq t_{i+j}\\\\\n\\frac{f(t_{i})^{(j)}}{j!} \\ \\ \\text{otherwise}\\\\\n\\end{cases}\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nIf the node points are set up with appropriate multiplicity and the modified computational rule used to fill in the values of the scheme then the polynomial in the final table fulfills the conditions. (The proof is omitted.)"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#example-1",
+    "href": "store/interpol/concepts_draft.html#example-1",
+    "title": "interpolation/concepts_draft",
+    "section": "example",
+    "text": "example\n\n\n\n\n\n\nNonethe plot for the example\n\n\n\n\n\n(width=“80%”)"
+  },
+  {
+    "objectID": "store/interpol/scripts.html",
+    "href": "store/interpol/scripts.html",
+    "title": "interpolation/scripts",
+    "section": "",
+    "text": "NoneHermite-interpolation through Newton dd\n\n\n\n\n\n\n%\n% hermite polinomial computation\n%\n% expects:\n%    data: a cell array of arrays: {[t1,f1,f1',...],...,[tn,fn,fn']}\n% \n%    H: the coefficients, in decreasing order\n%    t: the support points in the appropriate order\n%\nfunction [H,t] = hermite_interpolation(data)\n  m = cellfun(@length,data)-1; % individual numbers of conditions\n  n = length(m); % number of basis points\n  M = sum(m); % total number of conditions (deg(H)&lt;=M-1)\n  lab = repelem((1:n)',m); % labels for identify base points\n  t_orig = zeros(n,1); % original t's\n  f_orig = zeros(n,1); % original f's\n  for k=1:n\n    % get the individual values\n    t_orig(k)=data{k}(1);\n    f_orig(k)=data{k}(2);\n  end\n  t = repelem(t_orig, m); % nodes w/ multiplicity\n  f = repelem(f_orig, m); % values w/ multiplicity\n  table = {f}; % the initial table (the 0-th column is given)\n  for j = 1:M-1\n    table{j+1}=zeros(M-j,1); % j+1 -&gt; one based indexing\n    for i=1:M-j\n      if lab(i)==lab(i+j) % div by zero\n        table{j+1}(i)=data{lab(i)}(j+2)/factorial(j); % j+2 -&gt; t,f is the first 2\n      else\n        table{j+1}(i)=(table{j}(i)-table{j}(i+1))/(t(i)-t(i+j));\n      end\n    end\n  end\n  H=zeros(M,1);\n  for k=1:M\n    H(k)=table{k}(1); % reading from the upper edge\n  end\n  % reverse them to get decreasing order for degrees\n  H=H(end:-1:1);\n  t=t(end:-1:1);\nend\n\n\n\n\n\n\n\n\n\n\nNoneHorner-method for Newton-form polynomials\n\n\n\n\n\n\n% Horner-method for polynomials in Newton form\n% vectorized version\n\nfunction y=horner_newton(p,t,x)\n  y=p(1)+zeros(size(x));\n  for k=2:length(p)\n    y=y.*(x-t(k)) + p(k);\n  end\nend\n\n\n\n\n\n\n\n\n\n\nNonethe script for the example in hermite1.pdf\n\n\n\n\n\n\n% plot of example in hermite1.pdf\n\nclc; clf; clear;\nhold on;\naxis equal;\n\n\nd1=[-1,1,0];\nd2=[1,2];\nd3=[2,1,-1];\n\nplot([d1(1),d2(1),d3(1)],[d1(2),d2(2),d3(2)],\"*\",\"MarkerSize\",5,\"Color\",[0,0,0])\n\n[H,t]=hermite_interpolation({d1,d2,d3});\n\nxx=linspace(-1.2,2.2);\nyy=horner_newton(H,t,xx);\nplot(xx,yy);\n\nsaveas(gca(),\"hermite1.png\",\"png\");\ntitle(\"Hermite example (in hermite1.pdf)\");\n\n\n\n\nhold off;"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#applications",
+    "href": "store/interpol/concepts_draft.html#applications",
+    "title": "interpolation/concepts_draft",
+    "section": "applications",
+    "text": "applications\n\ntangent line formula\n\nFor a given real valued, differentiable function find the equation of its tangential line at t_0!\nWe are looking for a Hermite polynomial of degree at most 1, for which H(t_0)=f(t_0) and H~'(t_0)=f~'(t_0)\n\n\n\\begin{array}{r|rr}\nt_0 &  f(t_0) \\\\\n& & f~'(t_0) \\\\\nt_0 & f(t_0)\n\\end{array}\n\n\nthen H(t)=f(t_0)+f~'(t_0)(t-t_0)"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#the-runge-function-revisited",
+    "href": "store/interpol/concepts_draft.html#the-runge-function-revisited",
+    "title": "interpolation/concepts_draft",
+    "section": "the Runge-function revisited",
+    "text": "the Runge-function revisited\n\nwe will interpolate the function at different node sets, but this time the derivative values will also be used at some nodes.\n\n\n\n\n\n\n\nNonethe plot\n\n\n\n\n\n(width=“80%”)\n\n\n\n\n\n\n\n\n\nNonethe script\n\n\n\n\n\n\nclc; clf; clear;\n% Runge examples - uniform Hermite\n\nfun=@(x) 1./(1+25*x.^2);\ndfun=@(x) -50*x./(1+25*x.^2).^2;\nxx=linspace(-1,1);\nyy=fun(xx);\n\nnsp=0;\nfor np=[3,9,15]\n  nsp=nsp+1;subplot(3,1,nsp);\n  x=linspace(-1,1,np);\n  data=cell(1,np);\n  % also control some derivatives at the ends\n  data{1}=[x(1),fun(x(1)),dfun(x(1))];\n  data{2}=[x(2),fun(x(2)),dfun(x(2))];\n  for i=3:np-2\n    data{i}=[x(i),fun(x(i))];\n  end\n  data{np-1}=[x(np-1),fun(x(np-1)),dfun(x(np-1))];\n  data{np}=[x(np),fun(x(np)),dfun(x(np))];\n  \n  [H,t]=hermite_interpolation(data);\n  yyy=horner_newton(H,t,xx);\n\n  plot(xx,yy,xx,yyy);\n  maxdiff=max(abs(yy-yyy));\n  title(sprintf(\"uniform+Hermite | num of points: %d | max difference: %.2f\\n\",np,maxdiff));\nend\n\nsaveas(gca(),\"rungeHERMITE.png\",\"png\");\n\n\n\n\n\nas we see the fluctuations can be controlled, but not in straightforward way."
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#linear-interpolation",
+    "href": "store/interpol/concepts_draft.html#linear-interpolation",
+    "title": "interpolation/concepts_draft",
+    "section": "linear interpolation",
+    "text": "linear interpolation\n\nmatlab\n\nno need to implement it by hand\nthe interp1 function can be used\n\n\n\nerror of the linear interpolation\n\nlet f\\in C^{2}[A,B] and M_2=\\max_{t\\in[A,B]} |f{~''}(t)|\nthen for the linear interpolation P of f on [a,b]\\subset [A,B] we have:\n\n\n\n\n\n\n\nImportant\n\n\n\n\n\\vert f(t)-P_{[a,b]}(t)\\vert \\leq \\frac {M_2}{8}(b-a)^2, \\quad\\quad\nt\\in [a,b]\n\n\n\n\nWhere .\nincreasing the number of subintervals results in smaller error.\ndividing the “large” [A,B] interval int n equal pieces (and using the same “global” M_2) the error for one [a,b] subinterval:\n\n\n\\vert f(t)-P_{[a,b]}\\vert \\leq \\frac {M_2}{8}\\frac{(B-A)^2}{n^2}, \\quad\\quad\nt\\in [a,b]\n\n\ndoubling the points = halving the length will result 4 times better approximation\npro: simple\ncon: sometimes for very high precision we need large number of points, but at least it works"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#higher-order-interpolation",
+    "href": "store/interpol/concepts_draft.html#higher-order-interpolation",
+    "title": "interpolation/concepts_draft",
+    "section": "higher-order interpolation",
+    "text": "higher-order interpolation\n\none can use plain Lagrange or Hermite interpolation for the small intervals\npro: better approximation (worst case)\ncon: computationally intensive, harder to implement"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#spline-interpolation",
+    "href": "store/interpol/concepts_draft.html#spline-interpolation",
+    "title": "interpolation/concepts_draft",
+    "section": "spline interpolation",
+    "text": "spline interpolation"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#cubic-spline-interpolation",
+    "href": "store/interpol/concepts_draft.html#cubic-spline-interpolation",
+    "title": "interpolation/concepts_draft",
+    "section": "cubic spline interpolation",
+    "text": "cubic spline interpolation\n\nthe most widely used piecewise interpolation method\ngiven [t_1,\\ldots,t_n] and [f_1,\\ldots,f_n] and f_1' and f'_n\nthe first derivatives are given only the endpoints\nWe search for a function S(t) for which\n\nS(t_k)=f_k\nS'(t_1)=f_1' and S'(t_n)=f'_n\nS|_{[t_{k},t_{k+1}]}=S_k cubic polynomial, =1,\\dots ,n-1\nS is twice continuously differentiable\n\nthe are several approaches to construct the sub-polynomials. We do not discuss them.\n\n\nmatlab\n\nthe spline function can be used\nnot supplying the derivatives some (implementation dependent) defaults will be used\nspline(t, [df1 f dfn], x) will evalute the polynomial at x\na Hermite problem t_1,t_2,f_1,f_2,f'_1,f'_2 is cubic spline problem for one-interval. it can be solved by a simple call of spline. (at least the evaluation part)"
   }
 ]
