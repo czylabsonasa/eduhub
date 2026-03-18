@@ -711,7 +711,7 @@
     "href": "store/interpol/Lagrange.html",
     "title": "interpolation/Lagrange",
     "section": "",
-    "text": "sketch of the proof\nexistence:\n\nwe will construct polynomials p_k with: \np_{k}(t_j)=\\delta_{kj}\\ \\ \\text{and}\\ \\ \\deg(p_{k})=n-1\n\nlet P_{k}(x)=\\prod_{j\\neq k} (x-t_{j}).\nset p_k(x)=\\frac{P_{k}(x)}{P_{k}(t_{k})}.\nset P=\\sum_{k=1}^n f_{k}p_{k}\n\nuniqueness:\n\nindirect P\\neq Q two interpolational polynomial\nP-Q has n roots and its degree is at most n-1: P-Q must be zero\nat the last step the following fact is used: an n degree real coefficient polynomial has at most n roots. (see euclidean division for polynomials)"
+    "text": "sketch\nwe will construct polynomials p_k with:\n\n\np_{k}(t_j)=\\delta_{kj}\\ \\ \\text{and}\\ \\ \\deg(p_{k})=n-1\n\n\nlet P_{k}(x)=\\prod_{j\\neq k} (x-t_{j}).\nset p_k(x)=\\frac{P_{k}(x)}{P_{k}(t_{k})}.\nset P=\\sum_{k=1}^n f_{k}p_{k}\n\n\n\n\n\nindirect P\\neq Q two interpolational polynomial\nP-Q has n different roots and its degree is at most n-1: P-Q must be zero"
   },
   {
     "objectID": "store/interpol/Newton_dd.html",
@@ -725,7 +725,7 @@
     "href": "store/interpol/concepts_draft.html#problem-description",
     "title": "interpolation/concepts_draft",
     "section": "problem description",
-    "text": "problem description\nWe have a set of points and a set of conditions at the points: \n\\begin{array}{rcccccl}\n& t_1            & t_2          & t_3       & \\dots & t_n       & \\\\\n\\hline\n& f_{1}^{(0)}      & f_{2}^{(0)}    & f_{3}^{(0)} & \\dots & f_{n}^{(0)} &\\\\\n& f_{1}^{(1)}      & f_{2}^{(1)}    & f_{3}^{(1)} & \\dots & f_{n}^{(1)} &\\\\\n& f_{1}^{(2)}      & f_{2}^{(2)}    & f_{3}^{(2)}  & \\dots & f_{n}^{(2)} &\\\\\n&\\vdots          & \\vdots           & \\vdots       &       & \\vdots     &\\\\\n&f_{1}^{(m_1-1)}     & f_{2}^{(m_2-1)}  & f_{3}^{(m_3-1)} &\\dots & f_{n}^{(m_n-1)}&\\\\\n\\end{array}\n\nWe are looking for a polynomial H(t), for which \nH^{~(j)}(t_i)=f_{i}^{(j)} \\quad \\quad i=1,\\dots,n, \\quad j=0,\\dots ,m_i-1.\n Let m=\\sum_{k=1}^n m_k, the number of conditions.\n\n\n\n\n\n\nImportant\n\n\n\nThe problem of Hermite-interpolation can be solved uniquely in the space of at most m-1 degree polynomials.\n\n\nFrom the conditions, we can set up a uniquely solvable m\\times m linear system, for the details see this at page (around) 18."
+    "text": "problem description\nWe have a set of points and a set of conditions at the points: \n\\begin{array}{rcccccl}\n& t_1            & t_2          & t_3       & \\dots & t_n       & \\\\\n\\hline\n& f_{1}^{(0)}      & f_{2}^{(0)}    & f_{3}^{(0)} & \\dots & f_{n}^{(0)} &\\\\\n& f_{1}^{(1)}      & f_{2}^{(1)}    & f_{3}^{(1)} & \\dots & f_{n}^{(1)} &\\\\\n& f_{1}^{(2)}      & f_{2}^{(2)}    & f_{3}^{(2)}  & \\dots & f_{n}^{(2)} &\\\\\n&\\vdots          & \\vdots           & \\vdots       &       & \\vdots     &\\\\\n&f_{1}^{(m_1-1)}     & f_{2}^{(m_2-1)}  & f_{3}^{(m_3-1)} &\\dots & f_{n}^{(m_n-1)}&\\\\\n\\end{array}\n\nWe are looking for a polynomial H(t), for which \nH^{~(j)}(t_i)=f_{i}^{(j)} \\quad \\quad i=1,\\dots,n, \\quad j=0,\\dots ,m_i-1.\n Let m=\\sum_{k=1}^n m_k, the number of conditions.\n\n\n\n\n\n\nImportant\n\n\n\nThe problem of Hermite-interpolation can be solved uniquely in the space of at most m-1 degree polynomials.\n\n\n\nFrom the conditions, we can set up a uniquely solvable m\\times m linear system, for the details see this at page (around) 18.\nor"
   },
   {
     "objectID": "store/interpol/concepts_draft.html#computation",
@@ -789,5 +789,96 @@
     "title": "interpolation/concepts_draft",
     "section": "cubic spline interpolation",
     "text": "cubic spline interpolation\n\nthe most widely used piecewise interpolation method\ngiven [t_1,\\ldots,t_n] and [f_1,\\ldots,f_n] and f_1' and f'_n\nthe first derivatives are given only the endpoints\nWe search for a function S(t) for which\n\nS(t_k)=f_k\nS'(t_1)=f_1' and S'(t_n)=f'_n\nS|_{[t_{k},t_{k+1}]}=S_k cubic polynomial, =1,\\dots ,n-1\nS is twice continuously differentiable\n\nthe are several approaches to construct the sub-polynomials. We do not discuss them.\n\n\nmatlab\n\nthe spline function can be used\nnot supplying the derivatives some (implementation dependent) defaults will be used\nspline(t, [df1 f dfn], x) will evalute the polynomial at x\na Hermite problem t_1,t_2,f_1,f_2,f'_1,f'_2 is cubic spline problem for one-interval. it can be solved by a simple call of spline. (at least the evaluation part)"
+  },
+  {
+    "objectID": "store/interpol/Lagrange.html#existence",
+    "href": "store/interpol/Lagrange.html#existence",
+    "title": "interpolation/Lagrange",
+    "section": "",
+    "text": "sketch\nwe will construct polynomials p_k with:\n\n\np_{k}(t_j)=\\delta_{kj}\\ \\ \\text{and}\\ \\ \\deg(p_{k})=n-1\n\n\nlet P_{k}(x)=\\prod_{j\\neq k} (x-t_{j}).\nset p_k(x)=\\frac{P_{k}(x)}{P_{k}(t_{k})}.\nset P=\\sum_{k=1}^n f_{k}p_{k}"
+  },
+  {
+    "objectID": "store/interpol/Lagrange.html#uniqueness",
+    "href": "store/interpol/Lagrange.html#uniqueness",
+    "title": "interpolation/Lagrange",
+    "section": "",
+    "text": "indirect P\\neq Q two interpolational polynomial\nP-Q has n different roots and its degree is at most n-1: P-Q must be zero"
+  },
+  {
+    "objectID": "store/interpol/Lagrange.html#existence-1",
+    "href": "store/interpol/Lagrange.html#existence-1",
+    "title": "interpolation/Lagrange",
+    "section": "existence",
+    "text": "existence\n\nlet \\omega_{k}(t)=\\prod_{i=1}^k (t-t_i)\nstart with P_{1}(t)=f_1\nP_{k+1}(t)=P_{k}(t)+b_{k+1}\\omega_{k}(t)\n\nit is ok for the “old” points (as \\omega vanishes at them)\nP_{k+1}(t_{k+1})=f_{k+1}\nb_{k+1}=\\frac{f_{k+1}-P_{k}(t_{k+1})}{\\omega_{k}(t_{k+1})} and it is well defined and \\deg P_{k+1}\\le k"
+  },
+  {
+    "objectID": "store/interpol/Lagrange.html#uniqueness-1",
+    "href": "store/interpol/Lagrange.html#uniqueness-1",
+    "title": "interpolation/Lagrange",
+    "section": "uniqueness",
+    "text": "uniqueness\n\nsame as in the classical proof"
+  },
+  {
+    "objectID": "store/etc.html",
+    "href": "store/etc.html",
+    "title": "mix",
+    "section": "",
+    "text": "mix\n\n\n\n\n\n\nNoneprod-der\n\n\n\n\n(fg)^{(n)}=\\sum_{k=0}^n \\binom{n}{k} f^{(k)}g^{(n-k)}\n\n\nf^{(k)} is the k-th derivative\n\n\n\n\n\n\n\n\n\nNoneder-1\n\n\n\n\nP(t)=(t-a)^n Q(t) \\ \\ \\implies \\begin{cases} P^{(n)}(a)=n!~ Q(a) \\\\ P^{(k)}(a)=0 & k&lt;n \\end{cases}\n\n\nby prod-der\n\n\n\n\n\n\n\n\n\nNonepoly-div\n\n\n\n\nA(t) = Q(t)B(t)+R(t)\\ \\ \\ \\ \\deg R&lt;\\deg B\n\n\nA and B are polynomials \\deg B&gt;0\nit is unique\neuclidean division for polynomials\n\n\n\n\n\n\n\n\n\nNonepoly-root\n\n\n\n\nif a non-zero P polynomial has n different roots then its degree is at least n.\n\nby poly-div, if P(t_1)=0 then P(t)=(t-t_1)P_1(t). (let’s repeat)\nP(t)=(t-t_1)(t-t_2)\\ldots (t-t_{n})P_{n}(t).\n\n(only) the zero polynomial has more roots than its degree."
+  },
+  {
+    "objectID": "store/etc.html#polyroot",
+    "href": "store/etc.html#polyroot",
+    "title": "mix",
+    "section": "",
+    "text": "if a non-zero P polynomial has n different roots then its degree is at least n.\n\nby polydiv, if P(t_1)=0 then P(t)=(t-t_1)P_1(t). (let’s repeat)\nP(t)=(t-t_1)(t-t_2)\\ldots (t-t_{n})P_{n}(t).\n\n(only) the zero polynomial has more roots than its degree."
+  },
+  {
+    "objectID": "store/etc.html#lem-polydiv",
+    "href": "store/etc.html#lem-polydiv",
+    "title": "bbbbb",
+    "section": "polydiv",
+    "text": "polydiv\n\n\n\n\n\n\n\nA(t) = Q(t)B(t)+R(t)\n\n\nwhere \\deg B&gt;0 and \\deg R&lt;\\deg B"
+  },
+  {
+    "objectID": "store/etc.html#sec-polydiv",
+    "href": "store/etc.html#sec-polydiv",
+    "title": "mix",
+    "section": "",
+    "text": "A(t) = Q(t)B(t)+R(t)\n\n\nwhere \\deg B&gt;0 and \\deg R&lt;\\deg B"
+  },
+  {
+    "objectID": "store/etc.html#prodder",
+    "href": "store/etc.html#prodder",
+    "title": "mix",
+    "section": "",
+    "text": "(fg)^{(n)}=\\sum_{k=0}^n \\binom{n}{k} f^{(k)}g^{(n-k)}\n\n\nf^{(k)} is the k-th derivative"
+  },
+  {
+    "objectID": "store/etc.html#polydiv",
+    "href": "store/etc.html#polydiv",
+    "title": "mix",
+    "section": "",
+    "text": "A(t) = Q(t)B(t)+R(t)\n\n\nwhere \\deg B&gt;0 and \\deg R&lt;\\deg B"
+  },
+  {
+    "objectID": "store/etc.html#poly-root",
+    "href": "store/etc.html#poly-root",
+    "title": "mix",
+    "section": "",
+    "text": "if a non-zero P polynomial has n different roots then its degree is at least n.\n\nby poly-div, if P(t_1)=0 then P(t)=(t-t_1)P_1(t). (let’s repeat)\nP(t)=(t-t_1)(t-t_2)\\ldots (t-t_{n})P_{n}(t).\n\n(only) the zero polynomial has more roots than its degree."
+  },
+  {
+    "objectID": "store/etc.html#prod-der",
+    "href": "store/etc.html#prod-der",
+    "title": "mix",
+    "section": "",
+    "text": "(fg)^{(n)}=\\sum_{k=0}^n \\binom{n}{k} f^{(k)}g^{(n-k)}\n\n\nf^{(k)} is the k-th derivative\n\n:::\n\n\n\n\n\n\nNoneder-1\n\n\n\n\nP(t)=(t-a)^n Q(t) \\ \\ \\implies \\begin{cases} P^{(n)}(a)=n!~ Q(a) \\\\ P^{(k)}(a)=0 & k&lt;n \\end{cases}\n\n\nby prod-der\n\n\n\n\n\n\n\n\n\nNonepoly-div\n\n\n\n\nA(t) = Q(t)B(t)+R(t)\\ \\ \\ \\ \\deg R&lt;\\deg B\n\n\nA and B are polynomials \\deg B&gt;0\nit is unique\neuclidean division for polynomials\n\n\n\n\n\n\n\n\n\nNonepoly-root\n\n\n\n\nif a non-zero P polynomial has n different roots then its degree is at least n.\n\nby poly-div, if P(t_1)=0 then P(t)=(t-t_1)P_1(t). (let’s repeat)\nP(t)=(t-t_1)(t-t_2)\\ldots (t-t_{n})P_{n}(t).\n\n(only) the zero polynomial has more roots than its degree."
+  },
+  {
+    "objectID": "store/interpol/Lagrange.html#existence-and-uniqueness",
+    "href": "store/interpol/Lagrange.html#existence-and-uniqueness",
+    "title": "interpolation/Lagrange",
+    "section": "existence and uniqueness",
+    "text": "existence and uniqueness\n\nP(t)=\\sum_{k=0}^{n-1} x_{k} t^k\nP(t_k)=f_k\\ \\ k=1\\ldots n is an n \\times n linear system (Ax=f)\nif Ac=0 for some c, then by setting Q(t)=\\sum_{k=0}^{n-1} c_{k} t^k, Q(t) has n roots (the t’s are different!), but \\deg Q\\le n-1, consequently c=0 (see this).\nit means that A is invertible, that is the system is uniquely solvable."
   }
 ]
