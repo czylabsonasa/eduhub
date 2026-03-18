@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-22">
+<meta name="dcterms.date" content="2026-03-18">
 
 <title>integrálás – eduhub</title>
 <style>
@@ -175,7 +175,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 22, 2026</p>
+      <p class="date">March 18, 2026</p>
     </div>
   </div>
   
@@ -204,12 +204,12 @@ window.Quarto = {
 </ul>
 <p><span class="math display">\begin{gather*}
    \int\left( Cf+g\right) =C\int{f}+\int{g}\\
-   \mint{C}{x} =  Cx+D\\
-   \mint{x^{C}}{x} =  \frac{x^{C+1}}{C+1}+D\hspace{1cm} C\neq-1\\
+   \int C\text{d}x =  Cx+D\\
+   \int x^{C}\text{d}x =  \frac{x^{C+1}}{C+1}+D\hspace{1cm} C\neq-1\\
    \int{\sin}=-\cos+C\\
    \int{\cos}=\sin+C\\
-   \mint{\frac{1}{x}}{x}=\log{|x|}+C\hspace{1cm}x\neq0\\
-   \mint{C^x}{x}=\frac{C^x}{\log{C}}+D\hspace{1cm}C&gt;0,C\neq1\\
+   \int \frac{1}{x}\text{d}x=\log{|x|}+C\hspace{1cm}x\neq0\\
+   \int C^x\text{d}x=\frac{C^x}{\log{C}}+D\hspace{1cm}C&gt;0,C\neq1\\
    \int\left(f'g+fg'\right)=fg+C\\
    \int f(g)g'=\left( \int f \right)(g)+C
 \end{gather*}</span></p>
@@ -218,42 +218,42 @@ window.Quarto = {
 <section id="számoljuk-ki-a-következő-integrálokat" class="level1">
 <h1>számoljuk ki a következő integrálokat</h1>
 <ul>
-<li><span class="math inline">\mint{xe^{x^2}}{x}</span>
+<li><span class="math inline">\int xe^{x^2}\text{d}x</span>
 <ul>
 <li>válasz: <span class="math display">\begin{gather*}
-\mder{e^{x^2}}=2xe^{x^2} \ \ \rightarrow \  \frac{e^{x^2}}{2}+C
+\left(e^{x^2}\right){'}=2xe^{x^2} \ \ \rightarrow \  \frac{e^{x^2}}{2}+C
 \end{gather*}</span></li>
 </ul></li>
-<li><span class="math inline">\mint{\sin(x)e^x}{x}</span>
+<li><span class="math inline">\int \sin(x)e^x\text{d}x</span>
 <ul>
 <li>válasz: <span class="math display">\begin{gather*}
-\text{(1)}\ \ \mint{\sin(x)e^{x}}{x}=-\cos(x)e^{x}-\mint{-\cos(x)e^{x}}{x}=\\
--\cos(x)e^{x}+\mint{\cos(x)e^{x}}{x}\\
-\text{(2)}\ \ \mint{\sin(x)e^{x}}{x}=\sin(x)e^{x}-\mint{\cos(x)e^{x}}{x}\\
+\text{(1)}\ \ \int \sin(x)e^{x}\text{d}x=-\cos(x)e^{x}-\int -\cos(x)e^{x}\text{d}x=\\
+-\cos(x)e^{x}+\int \cos(x)e^{x}\text{d}x\\
+\text{(2)}\ \ \int \sin(x)e^{x}\text{d}x=\sin(x)e^{x}-\int \cos(x)e^{x}\text{d}x\\
 \text{(1)+(2)}\ \rightarrow \\
-\mint{\sin(x)e^{x}}{x}=\frac{\sin(x)-\cos(x)}{2}e^{x}+C
+\int \sin(x)e^{x}\text{d}x=\frac{\sin(x)-\cos(x)}{2}e^{x}+C
 \end{gather*}</span></li>
 </ul></li>
-<li><span class="math inline">\mint{\cos^3(x)}{x}</span>
+<li><span class="math inline">\int \cos^3(x)\text{d}x</span>
 <ul>
 <li>válasz: <span class="math display">\begin{gather*}
 \text{helyettesítés: }\ u=sin(x)\\
-\mint{\cos^3(x)}{x}=\mint{(1-\sin^2(x))\cos(x)}{x}=\\
-\mint{1-u^2}{u}=u-\frac{u^3}{3}+C=\sin(x)-\frac{\sin^3(x)}{3}+C
+\int \cos^3(x)\text{d}x=\int (1-\sin^2(x))\cos(x)\text{d}x=\\
+\int 1-u^2\text{d}u=u-\frac{u^3}{3}+C=\sin(x)-\frac{\sin^3(x)}{3}+C
 \end{gather*}</span></li>
 </ul></li>
-<li><span class="math inline">\mint{e^{au}\sin(u)}{u}\ \ 0\neq a\in\mathbb{R}</span>
+<li><span class="math inline">\int e^{au}\sin(u)\text{d}u\ \ 0\neq a\in\mathbb{R}</span>
 <ul>
 <li>válasz: <span class="math display">\begin{gather*}
 \text{parciális integrálás: }\ f=e^{au},\ \ g'=\sin(u)\\
-\mint{e^{au}\sin(u)}{u}=-e^{au}\cos(u)-\mint{ae^{au}(-\cos(u))}{u}=\\
-=-e^{au}\cos(u)+a\mint{e^{au}\cos(u)}{u}\\
+\int e^{au}\sin(u)\text{d}u=-e^{au}\cos(u)-\int ae^{au}(-\cos(u))\text{d}u=\\
+=-e^{au}\cos(u)+a\int e^{au}\cos(u)\text{d}u\\
 \text{parciális integrálás: }\ f'=e^{au},\ \ g=\sin(u)\\
-\mint{e^{au}\sin(u)}{u}=\frac{e^{au}}{a}\sin(u)-\mint{\frac{e^{au}}{a}\cos(u)}{u}=\\
-\frac{e^{au}}{a}\sin(u)-\frac{1}{a}\mint{e^{au}\cos(u)}{u}\\
+\int e^{au}\sin(u)\text{d}u=\frac{e^{au}}{a}\sin(u)-\int \frac{e^{au}}{a}\cos(u)\text{d}u=\\
+\frac{e^{au}}{a}\sin(u)-\frac{1}{a}\int e^{au}\cos(u)\text{d}u\\
 \text{szorozzuk meg $a^2$-el a másodikat és adjuk össze az elsővel}\\
-(1+a^2)\mint{e^{au}\sin(u)}{u}=ae^{au}\sin(u)-e^{au}\cos(u) \ \ \implies\\
-\mint{e^{au}\sin(u)}{u}=\frac{e^{au}\left({a\sin(u)-\cos(u)}\right)}{1+a^2}
+(1+a^2)\int e^{au}\sin(u)\text{d}u=ae^{au}\sin(u)-e^{au}\cos(u) \ \ \implies\\
+\int e^{au}\sin(u)\text{d}u=\frac{e^{au}\left({a\sin(u)-\cos(u)}\right)}{1+a^2}
 \end{gather*}</span></li>
 </ul></li>
 </ul>

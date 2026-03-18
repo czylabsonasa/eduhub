@@ -257,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -266,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">% plot of example in hermite1.pdf</span></span>
@@ -296,11 +296,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>the script for the revisited Runge
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">% Runge examples - uniform Hermite</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="va">fun</span><span class="op">=@</span>(<span class="va">x</span>) <span class="fl">1</span><span class="op">./</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">25</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="va">dfun</span><span class="op">=@</span>(<span class="va">x</span>) <span class="op">-</span><span class="fl">50</span><span class="op">*</span><span class="va">x</span><span class="op">./</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">25</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="va">yy</span><span class="op">=</span><span class="va">fun</span>(<span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="va">nsp</span><span class="op">=</span><span class="fl">0</span><span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">np</span><span class="op">=</span>[<span class="fl">3</span><span class="op">,</span><span class="fl">9</span><span class="op">,</span><span class="fl">15</span>]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="va">nsp</span><span class="op">=</span><span class="va">nsp</span><span class="op">+</span><span class="fl">1</span><span class="op">;</span><span class="va">subplot</span>(<span class="fl">3</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="va">nsp</span>)<span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="va">x</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="va">np</span>)<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="va">data</span><span class="op">=</span><span class="va">cell</span>(<span class="fl">1</span><span class="op">,</span><span class="va">np</span>)<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">% also control some derivatives at the ends</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="va">data</span>{<span class="fl">1</span>}<span class="op">=</span>[<span class="va">x</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>(<span class="fl">1</span>))<span class="op">,</span><span class="va">dfun</span>(<span class="va">x</span>(<span class="fl">1</span>))]<span class="op">;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="va">data</span>{<span class="fl">2</span>}<span class="op">=</span>[<span class="va">x</span>(<span class="fl">2</span>)<span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>(<span class="fl">2</span>))<span class="op">,</span><span class="va">dfun</span>(<span class="va">x</span>(<span class="fl">2</span>))]<span class="op">;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">for</span> <span class="va">i</span><span class="op">=</span><span class="fl">3</span><span class="op">:</span><span class="va">np</span><span class="op">-</span><span class="fl">2</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="va">data</span>{<span class="va">i</span>}<span class="op">=</span>[<span class="va">x</span>(<span class="va">i</span>)<span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>(<span class="va">i</span>))]<span class="op">;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="va">data</span>{<span class="va">np</span><span class="op">-</span><span class="fl">1</span>}<span class="op">=</span>[<span class="va">x</span>(<span class="va">np</span><span class="op">-</span><span class="fl">1</span>)<span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>(<span class="va">np</span><span class="op">-</span><span class="fl">1</span>))<span class="op">,</span><span class="va">dfun</span>(<span class="va">x</span>(<span class="va">np</span><span class="op">-</span><span class="fl">1</span>))]<span class="op">;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="va">data</span>{<span class="va">np</span>}<span class="op">=</span>[<span class="va">x</span>(<span class="va">np</span>)<span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>(<span class="va">np</span>))<span class="op">,</span><span class="va">dfun</span>(<span class="va">x</span>(<span class="va">np</span>))]<span class="op">;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  [<span class="va">H</span><span class="op">,</span><span class="va">t</span>]<span class="op">=</span><span class="va">hermite_interpolation</span>(<span class="va">data</span>)<span class="op">;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="va">yyy</span><span class="op">=</span><span class="va">horner_newton</span>(<span class="va">H</span><span class="op">,</span><span class="va">t</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">yy</span><span class="op">,</span><span class="va">xx</span><span class="op">,</span><span class="va">yyy</span>)<span class="op">;</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="va">maxdiff</span><span class="op">=</span><span class="va">max</span>(<span class="va">abs</span>(<span class="va">yy</span><span class="op">-</span><span class="va">yyy</span>))<span class="op">;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"uniform+Hermite | num of points: %d | max difference: %.2f\n"</span><span class="op">,</span><span class="va">np</span><span class="op">,</span><span class="va">maxdiff</span>))<span class="op">;</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"rungeHERMITE.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 
 
+</div>
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

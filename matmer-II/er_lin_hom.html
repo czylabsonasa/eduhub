@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-22">
+<meta name="dcterms.date" content="2026-03-18">
 
 <title>elsőrendű lineáris homogén – eduhub</title>
 <style>
@@ -153,7 +153,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#alakja" id="toc-alakja" class="nav-link active" data-scroll-target="#alakja">alakja</a></li>
+  <li><a href="#alakja-explicitre-hozva" id="toc-alakja-explicitre-hozva" class="nav-link active" data-scroll-target="#alakja-explicitre-hozva">alakja (explicitre hozva)</a></li>
   <li><a href="#megoldása" id="toc-megoldása" class="nav-link" data-scroll-target="#megoldása">megoldása</a></li>
   </ul>
 </nav>
@@ -174,7 +174,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 22, 2026</p>
+      <p class="date">March 18, 2026</p>
     </div>
   </div>
   
@@ -186,20 +186,20 @@ window.Quarto = {
 </header>
 
 
-<section id="alakja" class="level1">
-<h1>alakja</h1>
+<section id="alakja-explicitre-hozva" class="level1">
+<h1>alakja (explicitre hozva)</h1>
 <p><span class="math display">
-   y'+A(t)y=0
+   y'=A(t)y
 </span></p>
 </section>
 <section id="megoldása" class="level1">
 <h1>megoldása</h1>
 <p><span class="math display">
-   y=Ce^{-\mint{A(t)}{t}} \hspace{1cm} C\in\mathbb{R}
+   y=Ce^{\int A(t)\text{d}t} \ \ \ \  C\in\mathbb{R}
 </span></p>
 <ul>
 <li>Speciálisan, ha <span class="math inline">A(t)=A</span> konstans <span class="math display">
-y=Ce^{-At} \hspace{1cm} C\in\mathbb{R}
+y=Ce^{At} \ \ \ \ C\in\mathbb{R}
 </span></li>
 </ul>
 
