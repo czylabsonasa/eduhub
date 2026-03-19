@@ -193,6 +193,7 @@ window.Quarto = {
   <li><a href="#másodrendű-lineáris-konstans-együtthatós-homogén" id="toc-másodrendű-lineáris-konstans-együtthatós-homogén" class="nav-link" data-scroll-target="#másodrendű-lineáris-konstans-együtthatós-homogén">másodrendű lineáris konstans-együtthatós homogén</a></li>
   <li><a href="#bernoulli" id="toc-bernoulli" class="nav-link" data-scroll-target="#bernoulli">Bernoulli</a></li>
   <li><a href="#magasabbrendű-egyenlet---első-rendű-egyenletrendszer" id="toc-magasabbrendű-egyenlet---első-rendű-egyenletrendszer" class="nav-link" data-scroll-target="#magasabbrendű-egyenlet---első-rendű-egyenletrendszer">magasabbrendű egyenlet -&gt; első-rendű egyenletrendszer</a></li>
+  <li><a href="#fokozatos-közelítés" id="toc-fokozatos-közelítés" class="nav-link" data-scroll-target="#fokozatos-közelítés">fokozatos közelítés</a></li>
   </ul>
 </nav>
     </div>
@@ -794,6 +795,74 @@ y_1'=&amp;y_2\\
 y_2'=&amp;\frac{-y_0+xy_1+y_2}{x}
 \end{gather*}
 </span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="fokozatos-közelítés" class="level1">
+<h1>fokozatos közelítés</h1>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span><span class="math inline">y'=f(t,y)\ \ \ \Leftrightarrow \ \ y(t)=y(t_0)+\int_{t_0}^t f(s,y(s))\text{d}s</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>a jobboldalba belerakva <span class="math inline">y</span>-t visszakapjuk azt <span class="math inline">\to</span> fixpont</li>
+<li>ha <span class="math inline">f</span> “jó” tulajdonságú akkor a fixpont-iteráció bármilyen kezdő helyről (pont/függvény) indulva a fixponthoz (ami itt egy függvény) kerül egyre közelebb.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>kézimunka
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>TODO</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>matlab
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">% fokozatos kozelites</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">% fixpont, pont=fuggveny</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">% y'(t)=F(t,y)\ + \ y(t0)=y0 -&gt; y(t)=y(t0)+int(F(s,y(s)),t0,t) integral-egyenlet</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">% integralas kezzel vagy geppel</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="va">syms</span> <span class="va">y</span> <span class="va">t</span> <span class="va">f</span> <span class="va">s</span> <span class="va">t0</span> <span class="va">y0</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="va">f</span>(<span class="va">t</span><span class="op">,</span><span class="va">y</span>)<span class="op">=</span><span class="va">t</span><span class="op">+</span><span class="va">y</span><span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="va">y</span>(<span class="va">t</span>)<span class="op">=</span><span class="va">t</span><span class="op">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="va">y0</span><span class="op">=</span><span class="fl">1</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="va">t0</span><span class="op">=</span><span class="fl">0</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">i</span><span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="va">y</span>(<span class="va">t</span>)<span class="op">=</span><span class="va">y0</span><span class="op">+</span><span class="va">int</span>(<span class="va">f</span>(<span class="va">s</span><span class="op">,</span><span class="va">y</span>(<span class="va">s</span>))<span class="op">,</span><span class="va">t0</span><span class="op">,</span><span class="va">t</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
