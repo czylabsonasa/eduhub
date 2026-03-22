@@ -32,7 +32,7 @@
     "href": "index.html",
     "title": "eduhub",
     "section": "",
-    "text": "numerical mathematics\n\n\napplied mathematics\n\n\nmatematika mérnököknek\n\n\noptalg"
+    "text": "numerical mathematics\n\n\napplied mathematics\n\n\nmatematika mérnököknek\n\n\noptalg\n\n\nalkmat/sajátérték"
   },
   {
     "objectID": "store/norms/index.html#concepts-draft",
@@ -1034,5 +1034,12 @@
     "title": "numint/concepts_draft",
     "section": "compound rule",
     "text": "compound rule\n\nn nodes, n-1 intervals, mid-points\na=t_1,t_2,\\ldots,t_n=b\nthe formula is for equally spaced nodes: h=t_2-t_1=\\ldots=t_n-t_{n-1}\n\n\n\n\n\n\n\nImportant\n\n\n\n\nI_{T,n}=\\frac{h}{2}\\left[f(t_1)+2f(t_2)+\\ldots+2f(t_{n-1})+f(t_{n})\\right]\n\n\n\n\n\n\n\n\n\nNoneerror\n\n\n\n\n\n\nn nodes, h=\\frac{b-a}{n-1}\n\n\n\\left\\vert \\int_{a}^{b} f\\text{d}t - I_{T,n}\\right\\vert \\le (b-a)\\frac{M_2}{12}h^2\n\n\nby adding together the small-interval errors\n\n\n\n\n\n\n\n\n\n\nNonematlab\n\n\n\n\n\n\n% using n nodes compute the approx integral \n% of sin(t^2) on [a,b] w/ the trapesoidal method\n\nclc; clear;\nfun=@(t) sin(t.^2);\na=0;\nb=1;\nfor k=1:5\n  n=ceil(3.2^k); % 3.2 sqrt(10)\n  t=linspace(a,b,n);\n  h=(b-a)/(n-1);\n  I=h/2*sum([fun(t(1)),2*fun(t(2:n-1)),fun(t(n))]);\n  E=abs(integral(fun,a,b)-I)\nend"
+  },
+  {
+    "objectID": "alkmat/eigen.html",
+    "href": "alkmat/eigen.html",
+    "title": "alkmat/sajátérték",
+    "section": "",
+    "text": "Noneleslie0\n\n\n\n\n\n\n% leslie0\n\nclf;clear;\n\nL=[ 0,     1,  1;...\n    0.8,   0,  0;...\n    0,  0.25,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nx=[74,80,46]';\nfor k=1:40\n  x=L*x; \n  %x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonepagerank0\n\n\n\n\n\n\n% page-rank\n\nclf;clear;\n\nA=[  0, 0, 1, 1;...\n     1, 0, 1, 1;...\n     1, 1, 0, 0;...\n     0, 0, 1, 0];\n\nA=A./sum(A,2);\nA=A';\nx=ones(4,1);\nfor k=1:30\n  x=A*x;\n  x=x/sum(x);\nend\nx\n\n[vek,ert]=eig(A);\nv=vek(:,1);\nv/sum(v)\n\ng=digraph(A);\nplot(g)\n\n\n\n\n\n\n\n\n\n\nNonekarakterisztikus polinom\n\n\n\n\n\n\nclc; clear;\n\np=charpoly([-1 -5;1 3]);\nroots(p)\n\n\n\n\n\n\n\n\n\n\nNonehalak\n\n\n\n\n\n\n% halak\n\nclf;clear;\n\nL=[ 0,       6,  8;...\n    0.5,     0,  0;...\n    0,     0.5,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonehatvány módszer\n\n\n\n\n\n\n% hatvany\nfunction [x,l,k]=hatvany(A,x,e)\n  x=x/norm(x);\n  l0=dot(A*x,x);\n  l=l0;\n  for k=1:1000\n    x=A*x;\n    x=x/norm(x);\n    l1=l;\n    l=dot(A*x,x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(A*x-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneinverz iteráció\n\n\n\n\n\n\n% inverz iteracio (PLU nelkul)\nfunction [x,l,k]=invit(A,x,e)\n  sol=@(x) A\\x;\n  \n  x=x/norm(x);\n  l0=dot(sol(x),x);\n  l=l0;\n  for k=1:1000\n    x=sol(x);\n    x=x/norm(x);\n    l1=l;\n    l=dot(sol(x),x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(sol(x)-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneleslie-random\n\n\n\n\n\n\n% leslie\n\nclf;clear;\n\nL=[ 0,1,1;...\n    ]\n\nrng(22*2);\nn=10;\nL=zeros(n,n);\nL(1,:)=randi(2,1,n);\nL=L+diag(5+randi(3,1,n-1),-1);\nx=rand(n,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\n\n\n\n\n\n\n\n\n\n\nNonepagerank-random\n\n\n\n\n\n\n% page-rank\n\nclf;\n\nrng(22*2);\nn=10;\nA=randi(2,n,n)-1;\nA=A.*(1-eye(n,n));\nB=A./sum(A,2);\nB=B';\nx=ones(n,1);\nfor k=1:20\n  x=B*x;\nend\nx\n\ng=digraph(A);\nplot(g)"
   }
 ]
