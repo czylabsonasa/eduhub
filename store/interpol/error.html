@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-03-22">
 
-<title>applied mathematics – eduhub</title>
+<title>interpolation/error – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,8 +70,51 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
-<link rel="stylesheet" href="../styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">eduhub</span>
     </a>
   </div>
@@ -91,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -110,14 +153,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#information" id="toc-information" class="nav-link active" data-scroll-target="#information">information</a></li>
-  <li><a href="#matlab-introductionreview" id="toc-matlab-introductionreview" class="nav-link" data-scroll-target="#matlab-introductionreview">matlab introduction/review</a></li>
-  <li><a href="#floating-point-numbers" id="toc-floating-point-numbers" class="nav-link" data-scroll-target="#floating-point-numbers">floating point numbers</a></li>
-  <li><a href="#norms-condition-numbers" id="toc-norms-condition-numbers" class="nav-link" data-scroll-target="#norms-condition-numbers">norms, condition numbers</a></li>
-  <li><a href="#systems-of-linear-equations" id="toc-systems-of-linear-equations" class="nav-link" data-scroll-target="#systems-of-linear-equations">systems of linear equations</a></li>
-  <li><a href="#method-of-least-squares" id="toc-method-of-least-squares" class="nav-link" data-scroll-target="#method-of-least-squares">method of least squares</a></li>
-  <li><a href="#interpolation" id="toc-interpolation" class="nav-link" data-scroll-target="#interpolation">interpolation</a></li>
-  <li><a href="#numerical-integration" id="toc-numerical-integration" class="nav-link" data-scroll-target="#numerical-integration">numerical integration</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">background</a></li>
+  <li><a href="#local-error" id="toc-local-error" class="nav-link" data-scroll-target="#local-error">local error</a></li>
+  <li><a href="#global-error" id="toc-global-error" class="nav-link" data-scroll-target="#global-error">global error</a>
+  <ul class="collapse">
+  <li><a href="#n2" id="toc-n2" class="nav-link" data-scroll-target="#n2"><span class="math inline">n=2</span></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -126,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">applied mathematics</h1>
+<h1 class="title">interpolation/error</h1>
 </div>
 
 
@@ -149,32 +190,68 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="information" class="level1">
-<h1><a href="../app-math/info/index.html" target="_blank">information</a></h1>
-<hr>
+<section id="background" class="level1">
+<h1>background</h1>
+<ul>
+<li><strong>Rolle</strong>: for a differentiable <span class="math inline">f</span> <span class="math display">
+f(A)=f(B)\ \ \implies\ f'(\xi)=0\ \ \ \ \xi\in(A,B)
+</span></li>
+<li><span class="math inline">f</span> is an <span class="math inline">n</span> times continuously differentiable function on an open interval containing <span class="math inline">[A,B]</span>.</li>
+<li><span class="math inline">A=t_1&lt;\ldots &lt;t_n=B</span></li>
+<li><span class="math inline">P</span> is a Lagrange polynomial for <span class="math inline">f</span> and <span class="math inline">t_1,\ldots,t_n</span></li>
+<li><span class="math inline">e(t)=f(t)-P(t)</span></li>
+<li><span class="math inline">M_n=\max_{t\in[A,B]} |f^{n}(t)|</span></li>
+<li><span class="math inline">\omega(t)=\prod_{k=1}^n (t-t_k)</span></li>
+<li><span class="math inline">\Omega=\max_{t\in[A,B]} |\omega(t)|</span></li>
+</ul>
 </section>
-<section id="matlab-introductionreview" class="level1">
-<h1><a href="../store/matlab-basics/index.html" target="_blank">matlab introduction/review</a></h1>
+<section id="local-error" class="level1">
+<h1>local error</h1>
+<p><span class="math display">
+f(t)-P(t)=\frac{f^{(n)}(\xi(t))}{n!}\omega(t)\ \ \ \ \xi(t)\in(A,B)
+</span></p>
+<ul>
+<li><p><span class="math inline">t</span> is fixed <span class="math inline">\omega(t)\neq 0</span></p></li>
+<li><p><span class="math inline">\varphi(u)=e(u)\omega(t)-e(t)\omega(u)</span></p></li>
+<li><p>Rolle: <span class="math display">
+\begin{gather*}
+\varphi&amp; \ \ \text{has} \ \ n+1 \ \ \text{roots}\\
+\varphi'&amp; \ \ \text{has} \ \  n \ \ \text{roots}\\
+\varphi''&amp; \ \ \text{has} \ \  n-1 \ \ \text{roots}\\
+\ldots\\
+\varphi^{(n)}&amp; \ \ \text{has} \ \  1 \ \ \text{root (at least 1)}\\
+\end{gather*}
+</span></p></li>
+<li><p><span class="math inline">\varphi^{(n)}(\xi(t))=0</span> is the statement using that <span class="math inline">P^{(n)}(t)=0</span> and <span class="math inline">\omega^{(n)}(t)=n!</span></p></li>
+<li><p>instead of <span class="math inline">\xi(t)</span> sometimes <span class="math inline">\xi</span> used, but keep in mind the dependence on <span class="math inline">t</span></p></li>
+</ul>
 </section>
-<section id="floating-point-numbers" class="level1">
-<h1><a href="../store/floats/index.html" target="_blank">floating point numbers</a></h1>
-</section>
-<section id="norms-condition-numbers" class="level1">
-<h1><a href="../store/norms/index.html" target="_blank">norms, condition numbers</a></h1>
-</section>
-<section id="systems-of-linear-equations" class="level1">
-<h1><a href="../store/linsys/index.html" target="_blank">systems of linear equations</a></h1>
-</section>
-<section id="method-of-least-squares" class="level1">
-<h1><a href="../store/leastsquares/index.html" target="_blank">method of least squares</a></h1>
-</section>
-<section id="interpolation" class="level1">
-<h1><a href="../store/interpol/index.html" target="_blank">interpolation</a></h1>
-</section>
-<section id="numerical-integration" class="level1">
-<h1><a href="../store/numint/index.html" target="_blank">numerical integration</a></h1>
+<section id="global-error" class="level1">
+<h1>global error</h1>
+<p><span class="math display">
+|f(t)-P(t)|\le \frac{M_n}{n!} ~\Omega
+</span></p>
+<ul>
+<li>apply the local error formula</li>
+</ul>
+<section id="n2" class="level2">
+<h2 class="anchored" data-anchor-id="n2"><span class="math inline">n=2</span></h2>
+<ul>
+<li><p>for one interval <span class="math display">
+|f(t)-P(t)| \le \frac{M_2}{2} \frac{(B-A)^2}{4}=\frac{M_2}{8}(B-A)^2
+</span></p></li>
+<li><p>here <span class="math inline">|\omega(t)|=|(t-A)(t-B)|</span> and its maximal value is <span class="math inline">\frac{(B-A)^2}{4}</span> which is attained at <span class="math inline">\frac{A+B}{2}</span>.</p></li>
+<li><p>if <span class="math inline">Q</span> is a piecewise linear interpolation for <span class="math inline">f</span> and <span class="math inline">A=t_1,\ldots,t_n=B</span>, where the <span class="math inline">t</span> is linearly spaced <span class="math inline">n</span> element vector, <span class="math inline">h=\frac{B-A}{n-1}</span>.</p></li>
+</ul>
+<p><span class="math display">
+|f(t)-Q(t)| \le \frac{M_2}{8} h^2
+</span></p>
+<ul>
+<li>the *same <span class="math inline">M_2</span> is used for each subinterval to get a simpler formula</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

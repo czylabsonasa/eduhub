@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-03-22">
 
-<title>applied mathematics – eduhub</title>
+<title>numint/error – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,8 +70,51 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
-<link rel="stylesheet" href="../styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">eduhub</span>
     </a>
   </div>
@@ -91,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -110,14 +153,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#information" id="toc-information" class="nav-link active" data-scroll-target="#information">information</a></li>
-  <li><a href="#matlab-introductionreview" id="toc-matlab-introductionreview" class="nav-link" data-scroll-target="#matlab-introductionreview">matlab introduction/review</a></li>
-  <li><a href="#floating-point-numbers" id="toc-floating-point-numbers" class="nav-link" data-scroll-target="#floating-point-numbers">floating point numbers</a></li>
-  <li><a href="#norms-condition-numbers" id="toc-norms-condition-numbers" class="nav-link" data-scroll-target="#norms-condition-numbers">norms, condition numbers</a></li>
-  <li><a href="#systems-of-linear-equations" id="toc-systems-of-linear-equations" class="nav-link" data-scroll-target="#systems-of-linear-equations">systems of linear equations</a></li>
-  <li><a href="#method-of-least-squares" id="toc-method-of-least-squares" class="nav-link" data-scroll-target="#method-of-least-squares">method of least squares</a></li>
-  <li><a href="#interpolation" id="toc-interpolation" class="nav-link" data-scroll-target="#interpolation">interpolation</a></li>
-  <li><a href="#numerical-integration" id="toc-numerical-integration" class="nav-link" data-scroll-target="#numerical-integration">numerical integration</a></li>
+  <li><a href="#facts" id="toc-facts" class="nav-link active" data-scroll-target="#facts">facts</a></li>
+  <li><a href="#midpoint" id="toc-midpoint" class="nav-link" data-scroll-target="#midpoint">midpoint</a>
+  <ul class="collapse">
+  <li><a href="#simple" id="toc-simple" class="nav-link" data-scroll-target="#simple">simple</a></li>
+  </ul></li>
+  <li><a href="#trapesoid" id="toc-trapesoid" class="nav-link" data-scroll-target="#trapesoid">trapesoid</a>
+  <ul class="collapse">
+  <li><a href="#simple-1" id="toc-simple-1" class="nav-link" data-scroll-target="#simple-1">simple</a></li>
+  </ul></li>
+  <li><a href="#simpson" id="toc-simpson" class="nav-link" data-scroll-target="#simpson">Simpson</a>
+  <ul class="collapse">
+  <li><a href="#simple-2" id="toc-simple-2" class="nav-link" data-scroll-target="#simple-2">simple</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -126,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">applied mathematics</h1>
+<h1 class="title">numint/error</h1>
 </div>
 
 
@@ -149,32 +197,61 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="information" class="level1">
-<h1><a href="../app-math/info/index.html" target="_blank">information</a></h1>
-<hr>
+<section id="facts" class="level1">
+<h1>facts</h1>
+<ul>
+<li><span class="math inline">\xi(t)</span> depends continously on <span class="math inline">t</span> in <span class="math display">
+f(t)=f(m)+f'(m)(t-m)+\frac{f''(\xi(t))}{2}(t-m)^2
+</span></li>
+<li>if <span class="math inline">f</span> is continuous and <span class="math inline">g</span> does not change sign on <span class="math inline">[a,b]</span> then <span class="math display">
+\int_{a}^{b} f(t)g(t)\text{d}t=f(\eta)\int_{a}^{b} g(t)\text{d}t
+</span></li>
+</ul>
 </section>
-<section id="matlab-introductionreview" class="level1">
-<h1><a href="../store/matlab-basics/index.html" target="_blank">matlab introduction/review</a></h1>
+<section id="midpoint" class="level1">
+<h1>midpoint</h1>
+<section id="simple" class="level2">
+<h2 class="anchored" data-anchor-id="simple">simple</h2>
+<ul>
+<li><span class="math inline">m=\frac{a+b}{2}</span></li>
+<li><span class="math inline">t=m+(t-m)</span></li>
+</ul>
+<p><span class="math display">
+\begin{gather*}
+f(t)=f(m)+f'(m)(t-m)+\frac{f''(\xi(t))}{2}(t-m)^2\\
+f(t)-(f(m)+f'(m)(t-m))=\frac{f''(\xi(t))}{2}(t-m)^2\\
+\int_{a}^{b} f\text{d}t-I_M = \int_{a}^{b} \frac{f''(\xi(t))}{2}(t-m)^2\text{d}t\\
+\left\vert\int_{a}^{b} f\text{d}t-I_M\right\vert \le
+\frac{M_2}{2}\int_{a}^{b} (t-m)^2\text{d}t=\frac{M_2}{2}\frac{(b-a)^3}{12}\\
+\end{gather*}
+</span></p>
 </section>
-<section id="floating-point-numbers" class="level1">
-<h1><a href="../store/floats/index.html" target="_blank">floating point numbers</a></h1>
 </section>
-<section id="norms-condition-numbers" class="level1">
-<h1><a href="../store/norms/index.html" target="_blank">norms, condition numbers</a></h1>
+<section id="trapesoid" class="level1">
+<h1>trapesoid</h1>
+<section id="simple-1" class="level2">
+<h2 class="anchored" data-anchor-id="simple-1">simple</h2>
+<p><span class="math display">
+\begin{gather*}
+f(t)-P(t)=f''(\xi(t))\omega(t)\\
+\int_{a}^{b} f(t)-P(t)\text{d}t=\int_{a}^{b} \frac{f''(\xi(t))}{2}\omega(t)\text{d}t\\
+\int_{a}^{b} f(t)\text{d}t-I_T=\frac{f''(\eta(t))}{2}\int_{a}^{b} \omega(t)\text{d}t=(1)\\
+\int_{a}^{b} \omega(t)\text{d}t=\frac{(a-b)^3}{6} \ \ \text{by integrating it}\\
+|(1)|\le \frac{M_2}{2} \frac{(b-a)^3}{6}
+\end{gather*}
+</span></p>
 </section>
-<section id="systems-of-linear-equations" class="level1">
-<h1><a href="../store/linsys/index.html" target="_blank">systems of linear equations</a></h1>
 </section>
-<section id="method-of-least-squares" class="level1">
-<h1><a href="../store/leastsquares/index.html" target="_blank">method of least squares</a></h1>
-</section>
-<section id="interpolation" class="level1">
-<h1><a href="../store/interpol/index.html" target="_blank">interpolation</a></h1>
-</section>
-<section id="numerical-integration" class="level1">
-<h1><a href="../store/numint/index.html" target="_blank">numerical integration</a></h1>
+<section id="simpson" class="level1">
+<h1>Simpson</h1>
+<section id="simple-2" class="level2">
+<h2 class="anchored" data-anchor-id="simple-2">simple</h2>
+<ul>
+<li>too long…</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-03-22">
 
-<title>applied mathematics – eduhub</title>
+<title>numerical integration – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">eduhub</span>
     </a>
   </div>
@@ -91,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -110,14 +110,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#information" id="toc-information" class="nav-link active" data-scroll-target="#information">information</a></li>
-  <li><a href="#matlab-introductionreview" id="toc-matlab-introductionreview" class="nav-link" data-scroll-target="#matlab-introductionreview">matlab introduction/review</a></li>
-  <li><a href="#floating-point-numbers" id="toc-floating-point-numbers" class="nav-link" data-scroll-target="#floating-point-numbers">floating point numbers</a></li>
-  <li><a href="#norms-condition-numbers" id="toc-norms-condition-numbers" class="nav-link" data-scroll-target="#norms-condition-numbers">norms, condition numbers</a></li>
-  <li><a href="#systems-of-linear-equations" id="toc-systems-of-linear-equations" class="nav-link" data-scroll-target="#systems-of-linear-equations">systems of linear equations</a></li>
-  <li><a href="#method-of-least-squares" id="toc-method-of-least-squares" class="nav-link" data-scroll-target="#method-of-least-squares">method of least squares</a></li>
-  <li><a href="#interpolation" id="toc-interpolation" class="nav-link" data-scroll-target="#interpolation">interpolation</a></li>
-  <li><a href="#numerical-integration" id="toc-numerical-integration" class="nav-link" data-scroll-target="#numerical-integration">numerical integration</a></li>
+  <li><a href="#pdf-versions" id="toc-pdf-versions" class="nav-link active" data-scroll-target="#pdf-versions">pdf versions</a>
+  <ul class="collapse">
+  <li><a href="#conceptsexercises" id="toc-conceptsexercises" class="nav-link" data-scroll-target="#conceptsexercises">concepts+exercises</a></li>
+  </ul></li>
+  <li><a href="#html-versions---wip." id="toc-html-versions---wip." class="nav-link" data-scroll-target="#html-versions---wip.">html versions - wip.</a>
+  <ul class="collapse">
+  <li><a href="#concepts-draft" id="toc-concepts-draft" class="nav-link" data-scroll-target="#concepts-draft">concepts (draft)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -126,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">applied mathematics</h1>
+<h1 class="title">numerical integration</h1>
 </div>
 
 
@@ -149,32 +149,20 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="information" class="level1">
-<h1><a href="../app-math/info/index.html" target="_blank">information</a></h1>
+<section id="pdf-versions" class="level1">
+<h1>pdf versions</h1>
+<section id="conceptsexercises" class="level2">
+<h2 class="anchored" data-anchor-id="conceptsexercises"><a href="numint.pdf" target="_blank">concepts+exercises</a></h2>
 <hr>
 </section>
-<section id="matlab-introductionreview" class="level1">
-<h1><a href="../store/matlab-basics/index.html" target="_blank">matlab introduction/review</a></h1>
 </section>
-<section id="floating-point-numbers" class="level1">
-<h1><a href="../store/floats/index.html" target="_blank">floating point numbers</a></h1>
-</section>
-<section id="norms-condition-numbers" class="level1">
-<h1><a href="../store/norms/index.html" target="_blank">norms, condition numbers</a></h1>
-</section>
-<section id="systems-of-linear-equations" class="level1">
-<h1><a href="../store/linsys/index.html" target="_blank">systems of linear equations</a></h1>
-</section>
-<section id="method-of-least-squares" class="level1">
-<h1><a href="../store/leastsquares/index.html" target="_blank">method of least squares</a></h1>
-</section>
-<section id="interpolation" class="level1">
-<h1><a href="../store/interpol/index.html" target="_blank">interpolation</a></h1>
-</section>
-<section id="numerical-integration" class="level1">
-<h1><a href="../store/numint/index.html" target="_blank">numerical integration</a></h1>
+<section id="html-versions---wip." class="level1">
+<h1>html versions - wip.</h1>
+<section id="concepts-draft" class="level2">
+<h2 class="anchored" data-anchor-id="concepts-draft"><a href="../../store/numint/concepts_draft.html" target="_blank">concepts (draft)</a></h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -347,7 +347,7 @@
     "href": "app-math/index.html",
     "title": "applied mathematics",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares\n\n\ninterpolation"
+    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares\n\n\ninterpolation\n\n\nnumerical integration"
   },
   {
     "objectID": "app-math/info/index.html",
@@ -361,7 +361,7 @@
     "href": "num-math/index.html",
     "title": "numerical mathematics",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares\n\n\ninterpolation"
+    "text": "information\n\n\n\nmatlab introduction\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares\n\n\ninterpolation\n\n\nnumerical integration"
   },
   {
     "objectID": "num-math/info/index.html",
@@ -767,7 +767,7 @@
     "href": "store/interpol/concepts_draft.html#linear-interpolation",
     "title": "interpolation/concepts_draft",
     "section": "linear interpolation",
-    "text": "linear interpolation\n\nmatlab\n\nno need to implement it by hand\nthe interp1 function can be used\n\n\n\nerror of the linear interpolation\n\nlet f\\in C^{2}[A,B] and M_2=\\max_{t\\in[A,B]} |f{~''}(t)|\nthen for the linear interpolation P of f on [a,b]\\subset [A,B] we have:\n\n\n\n\n\n\n\nImportant\n\n\n\n\n\\vert f(t)-P_{[a,b]}(t)\\vert \\leq \\frac {M_2}{8}(b-a)^2, \\quad\\quad\nt\\in [a,b]\n\n\n\n\nWhere .\nincreasing the number of subintervals results in smaller error.\ndividing the “large” [A,B] interval int n equal pieces (and using the same “global” M_2) the error for one [a,b] subinterval:\n\n\n\\vert f(t)-P_{[a,b]}\\vert \\leq \\frac {M_2}{8}\\frac{(B-A)^2}{n^2}, \\quad\\quad\nt\\in [a,b]\n\n\ndoubling the points = halving the length will result 4 times better approximation\npro: simple\ncon: sometimes for very high precision we need large number of points, but at least it works"
+    "text": "linear interpolation\n\nmatlab\n\nno need to implement it by hand\nthe interp1 function can be used\n\n\n\nerror of the linear interpolation\n\nlet f\\in C^{2}[A,B] and M_2=\\max_{t\\in[A,B]} |f{~''}(t)|\nthen for the linear interpolation P of f on [a,b]\\subset [A,B] we have:\n\n\n\n\n\n\n\nImportant\n\n\n\n\n\\vert f(t)-P(t)\\vert \\leq \\frac {M_2}{8}(b-a)^2, \\quad\\quad\nt\\in [a,b]\n\n\n\n\nincreasing the number of subintervals results in smaller error.\ndividing the “large” [A,B] interval int n equal pieces (and using the same “global” M_2) the error for one [a,b] subinterval:\n\n\n\\vert f(t)-P_{[a,b]}\\vert \\leq \\frac {M_2}{8}\\frac{(B-A)^2}{n^2}, \\quad\\quad\nt\\in [a,b]\n\n\ndoubling the points = halving the length will result 4 times better approximation\npro: simple\ncon: sometimes for very high precision we need large number of points, but at least it works\nmore on this"
   },
   {
     "objectID": "store/interpol/concepts_draft.html#higher-order-interpolation",
@@ -788,7 +788,7 @@
     "href": "store/interpol/concepts_draft.html#cubic-spline-interpolation",
     "title": "interpolation/concepts_draft",
     "section": "cubic spline interpolation",
-    "text": "cubic spline interpolation\n\nthe most widely used piecewise interpolation method\ngiven [t_1,\\ldots,t_n] and [f_1,\\ldots,f_n] and f_1' and f'_n\nthe first derivatives are given only the endpoints\nWe search for a function S(t) for which\n\nS(t_k)=f_k\nS'(t_1)=f_1' and S'(t_n)=f'_n\nS|_{[t_{k},t_{k+1}]}=S_k cubic polynomial, =1,\\dots ,n-1\nS is twice continuously differentiable\n\nthe are several approaches to construct the sub-polynomials. We do not discuss them.\n\n\nmatlab\n\nthe spline function can be used\nnot supplying the derivatives some (implementation dependent) defaults will be used\nspline(t, [df1 f dfn], x) will evalute the polynomial at x\na Hermite problem t_1,t_2,f_1,f_2,f'_1,f'_2 is cubic spline problem for one-interval. it can be solved by a simple call of spline. (at least the evaluation part)\n\n\n\n\n\n\n\nNoneapplication\n\n\n\n\n\n\nreconstruct a rotated ellipse from a few regularly sampled points using splines\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear; format;\nhold on;\nrng(22);\n\n% create the initial plot\n% init: rotated ellipse\n\n\nfi=pi/6; % rot angle\nzfun=@(a) (cos(fi)+1i*sin(fi))*(4*cos(a)+1i*sin(a));\nax0=[-5,5,-3,3];\nN0=5;\n\n\nN=100;\nalpha=linspace(0,2*pi,N)';\nz=zfun(alpha);\nx=real(z);\ny=imag(z);\n\nsubplot(3,1,1);\nplot(x,y)\ntitle(sprintf(\"original %d points\",N))\n\naxis(ax0);\naxis equal;\nalpha0=linspace(0,2*pi,N0+1);\nz0=zfun(alpha0);\nx0=real(z0);\ny0=imag(z0);\n\nsubplot(3,1,2);\nplot(x0,y0,'*')\ntitle(sprintf(\"%d points from the original\",N0))\naxis(ax0);\naxis equal;\n\nx1=spline(alpha0,x0,alpha);\ny1=spline(alpha0,y0,alpha);\nsubplot(3,1,3);\nplot(x1,y1)\nav_rel_err=sum(sqrt((x-x1).^2+(y-y1).^2)./sqrt(x.^2+y.^2))/N;\ntit=\"reconstruction from the sample\"+...\n  sprintf(\"\\nmean relative error: %.4f\",av_rel_err);\ntitle(tit);\naxis(ax0);\naxis equal;\n\nsaveas(gca(),\"splineREC0.png\",\"png\");\n\n\n\n\n\n\n\nhold off;\n\n\n\n\n\nreconstruct another parametric curve from randomly sampled points using splines\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear;format;\nhold on;\nrng(22);\n\n% create the initial plot\n% it'll be a circle + sin/cos \"noise\"\n\nN=1000;\nalpha=linspace(0,2*pi,N);\nr=2+0.4*sin(8*alpha)+0.8*cos(4*alpha);\nx=r.*cos(alpha);\ny=r.*sin(alpha);\nsubplot(3,1,1);\nplot(x,y)\ntitle(sprintf(\"original %d points\",N))\naxis([-4,4,-4,4]);\npercent=5;\npart=[1,datasample(2:N,floor(percent/100*N),\"Replace\",false)];\nalpha0=alpha(part);\nr0=r(part);\nx0=r0.*cos(alpha0);\ny0=r0.*sin(alpha0);\nsubplot(3,1,2);\nplot(x0,y0,'*')\ntitle(sprintf(\"%d%% (random)sample of the original\",percent))\naxis([-4,4,-4,4]);\n\nx1=spline(alpha0,x0,alpha);\ny1=spline(alpha0,y0,alpha);\nsubplot(3,1,3);\nplot(x1,y1)\nav_rel_err=sum(sqrt((x-x1).^2+(y-y1).^2)./sqrt(x.^2+y.^2))/N;\ntit=\"reconstruction from the sample\"+...\n  sprintf(\"\\nmean relative error: %.4f\",av_rel_err);\ntitle(tit);\naxis([-4,4,-4,4]);\n\nsaveas(gca(),\"splineREC.png\",\"png\");\n\n\n\n\n\n\n\nhold off;"
+    "text": "cubic spline interpolation\n\nthe most widely used piecewise interpolation method\ngiven [t_1,\\ldots,t_n] and [f_1,\\ldots,f_n] and f_1' and f'_n\nthe first derivatives are given only the endpoints\nWe search for a function S(t) for which\n\nS(t_k)=f_k\nS'(t_1)=f_1' and S'(t_n)=f'_n\nS|_{[t_{k},t_{k+1}]}=S_k cubic polynomial, =1,\\ldots ,n-1\nS is twice continuously differentiable\n\nS'(t_k)=S'(t_{k+1}) and S''(t_k)=S''(t_{k+1}) for k=2,\\ldots,n-1 (at the inner points)\n\n\nthe are several approaches to construct the sub-polynomials. We do not discuss them.\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear; format(\"default\");\n\nt=[1,2,4];\nf=[1,4,2];\ndf1=1;\ndfn=-1;\n\n\nnt=length(t);\npp=spline(t,[df1 f dfn]);\n\ndpp=pp;\ndpp.coefs=zeros(nt-1,3);\ndpp.order=3;\nfor k=1:nt-1\n  dpp.coefs(k,:)=polyder(pp.coefs(k,:));\nend\n\nd2pp=pp;\nd2pp.coefs=zeros(nt-1,2);\nd2pp.order=2;\nfor k=1:nt-1\n  d2pp.coefs(k,:)=polyder(dpp.coefs(k,:));\nend\n\nd3pp=pp;\nd3pp.coefs=zeros(nt-1,1);\nd3pp.order=1;\nfor k=1:nt-1\n  d3pp.coefs(k,:)=polyder(d2pp.coefs(k,:));\nend\n\n\nxx=linspace(t(1),t(end));\ntlims=getlims(xx);\n\nsubplot(2,2,1);\nhold on;\nplot(t,f,\"k*\")\nyy=ppval(pp,xx);\nplot(xx,yy,\"b\")\ntitle(\"S\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,2);\nyy=ppval(dpp,xx);\nplot(xx,yy,\"b\");\ntitle(\"S'\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,3);\nyy=ppval(d2pp,xx);\nplot(xx,yy,\"b\")\ntitle(\"S''\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,4);\nhold on;\nyy=ppval(d3pp,xx);\nw=xx&lt;t(2);\nplot(xx(w),yy(w),\"b\");\nw=xx&gt;t(2);\nplot(xx(w),yy(w),\"b\");\ntitle(\"S'''\");\naxis([tlims,getlims(yy)]);\n\nsgtitle(\"cubic spline properties\")\n\nsaveas(gca(),\"splinePROP.png\",\"png\");\n\nfunction ll=getlims(v)\n  p=0.1;\n  vmin=min(v);\n  vmax=max(v);\n  dv=vmax-vmin;\n  ll=[vmin-p*dv,vmax+p*dv];\nend\n\n\n\n\n\nmatlab\n\nthe spline function can be used\nnot supplying the derivatives some (implementation dependent) defaults will be used\nspline(t, [df1 f dfn], x) will evalute the polynomial at x\nthe Hermite problem t_1,t_2,f_1,f_2,f'_1,f'_2 is a cubic spline problem for one-interval. it can be solved by a simple call of spline. (at least the evaluation part)\n\n\n\n\n\n\n\nNoneapplication\n\n\n\n\n\n\nreconstruct a rotated ellipse from a few regularly sampled points using cubic-spline\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear; format;\nhold on;\nrng(22);\n\n% create the initial plot\n% init: rotated ellipse\n\n\nfi=pi/6; % rot angle\nzfun=@(a) (cos(fi)+1i*sin(fi))*(4*cos(a)+1i*sin(a));\nax0=[-5,5,-3,3];\nN0=5;\n\n\nN=100;\nalpha=linspace(0,2*pi,N)';\nz=zfun(alpha);\nx=real(z);\ny=imag(z);\n\nsubplot(3,1,1);\nplot(x,y)\ntitle(sprintf(\"original %d points\",N))\n\naxis(ax0);\naxis equal;\nalpha0=linspace(0,2*pi,N0+1);\nz0=zfun(alpha0);\nx0=real(z0);\ny0=imag(z0);\n\nsubplot(3,1,2);\nplot(x0,y0,'*')\ntitle(sprintf(\"%d points from the original\",N0))\naxis(ax0);\naxis equal;\n\nx1=spline(alpha0,x0,alpha);\ny1=spline(alpha0,y0,alpha);\nsubplot(3,1,3);\nplot(x1,y1)\nav_rel_err=sum(sqrt((x-x1).^2+(y-y1).^2)./sqrt(x.^2+y.^2))/N;\ntit=\"reconstruction from the sample\"+...\n  sprintf(\"\\nmean relative error: %.4f\",av_rel_err);\ntitle(tit);\naxis(ax0);\naxis equal;\n\nsaveas(gca(),\"splineREC0.png\",\"png\");\n\nhold off;\n\n\n\n\n\nreconstruct another parametric curve from randomly sampled points using cubic-spline\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear;format;\nhold on;\nrng(22);\n\n% create the initial plot\n% it'll be a circle + sin/cos \"noise\"\n\nN=1000;\nalpha=linspace(0,2*pi,N);\nr=2+0.4*sin(8*alpha)+0.8*cos(4*alpha);\nx=r.*cos(alpha);\ny=r.*sin(alpha);\nsubplot(3,1,1);\nplot(x,y)\ntitle(sprintf(\"original %d points\",N))\naxis([-4,4,-4,4]);\npercent=5;\npart=[1,datasample(2:N,floor(percent/100*N),\"Replace\",false)];\nalpha0=alpha(part);\nr0=r(part);\nx0=r0.*cos(alpha0);\ny0=r0.*sin(alpha0);\nsubplot(3,1,2);\nplot(x0,y0,'*')\ntitle(sprintf(\"%d%% (random)sample of the original\",percent))\naxis([-4,4,-4,4]);\n\nx1=spline(alpha0,x0,alpha);\ny1=spline(alpha0,y0,alpha);\nsubplot(3,1,3);\nplot(x1,y1)\nav_rel_err=sum(sqrt((x-x1).^2+(y-y1).^2)./sqrt(x.^2+y.^2))/N;\ntit=\"reconstruction from the sample\"+...\n  sprintf(\"\\nmean relative error: %.4f\",av_rel_err);\ntitle(tit);\naxis([-4,4,-4,4]);\n\nsaveas(gca(),\"splineREC.png\",\"png\");\n\nhold off;"
   },
   {
     "objectID": "store/interpol/Lagrange.html#existence",
@@ -915,5 +915,124 @@
     "title": "egyben",
     "section": "",
     "text": "Noney'+10y=0\n\n\n\n\n\n\ny=Ce^{-10t}\\hspace{1cm} C\\in\\mathbb{R}\n\n\n\n\n\n\n\n\n\n\nNoney'=A(t)y+B(t) elsőrendű lineáris inhomogén"
+  },
+  {
+    "objectID": "store/interpol/error.html",
+    "href": "store/interpol/error.html",
+    "title": "interpolation/error",
+    "section": "",
+    "text": "Rolle: for a differentiable f \nf(A)=f(B)\\ \\ \\implies\\ f'(\\xi)=0\\ \\ \\ \\ \\xi\\in(A,B)\n\nf is an n times continuously differentiable function on an open interval containing [A,B].\nA=t_1&lt;\\ldots &lt;t_n=B\nP is a Lagrange polynomial for f and t_1,\\ldots,t_n\ne(t)=f(t)-P(t)\nM_n=\\max_{t\\in[A,B]} |f^{n}(t)|\n\\omega(t)=\\prod_{k=1}^n (t-t_k)\n\\Omega=\\max_{t\\in[A,B]} |\\omega(t)|"
+  },
+  {
+    "objectID": "store/interpol/error.html#n2",
+    "href": "store/interpol/error.html#n2",
+    "title": "interpolation/error",
+    "section": "n=2",
+    "text": "n=2\n\nfor one interval \n|f(t)-P(t)| \\le \\frac{M_2}{2} \\frac{(B-A)^2}{4}=\\frac{M_2}{8}(B-A)^2\n\nhere |\\omega(t)|=|(t-A)(t-B)| and its maximal value is \\frac{(B-A)^2}{4} which is attained at \\frac{A+B}{2}.\nif Q is a piecewise linear interpolation for f and A=t_1,\\ldots,t_n=B, where the t is linearly spaced n element vector, h=\\frac{B-A}{n-1}.\n\n\n|f(t)-Q(t)| \\le \\frac{M_2}{8} h^2\n\n\nthe *same M_2 is used for each subinterval to get a simpler formula"
+  },
+  {
+    "objectID": "store/interpol/error.html#a-naive-bound-for-general-n",
+    "href": "store/interpol/error.html#a-naive-bound-for-general-n",
+    "title": "interpolation/error",
+    "section": "a naive bound for general n",
+    "text": "a naive bound for general n"
+  },
+  {
+    "objectID": "store/interpol/error.html#general-n",
+    "href": "store/interpol/error.html#general-n",
+    "title": "interpolation/error",
+    "section": "general n",
+    "text": "general n\n\na naive bound for equidistributed t_k’s\nh=t_{k+1}-t_k\nt is fixed"
+  },
+  {
+    "objectID": "store/interpol/error.html#n3",
+    "href": "store/interpol/error.html#n3",
+    "title": "interpolation/error",
+    "section": "n=3",
+    "text": "n=3\n\n…"
+  },
+  {
+    "objectID": "store/numint/concepts_draft.html",
+    "href": "store/numint/concepts_draft.html",
+    "title": "numint/concepts_draft",
+    "section": "",
+    "text": "we want to compute the value of the integral:\n\n\\int_{a}^{b} f(t)\\text{d}t\n\nwhere f:[a,b]\\to {\\mathbb R}.\nwhen do we need to approximate integrals? If\n\nit cannot be expressed in terms of elementary functions (e^{-x^2} for example).\nthe antiderivative (primitive function) is known, but too complex.\nwe should calculate a large number of “similar” type integrals.\nthe value of f is known only at a few points."
+  },
+  {
+    "objectID": "store/numint/index.html#concepts-draft",
+    "href": "store/numint/index.html#concepts-draft",
+    "title": "numerical integration",
+    "section": "concepts (draft)",
+    "text": "concepts (draft)"
+  },
+  {
+    "objectID": "store/numint/concepts_draft.html#midpoint-tangent",
+    "href": "store/numint/concepts_draft.html#midpoint-tangent",
+    "title": "numint/concepts_draft",
+    "section": "midpoint (tangent)",
+    "text": "midpoint (tangent)\n\n\n\n\n\n\nImportantsimple rule\n\n\n\n\nI_M=(b-a)f\\left(\\frac{a+b}{2}\\right)\n\n\n\n\n\n\n\n\n\nNoneplot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoneerror\n\n\n\n\n\n\n\\left\\vert \\int_{a}^{b} f\\text{d}t - I_M\\right\\vert \\le \\frac{M_2}{24}(b-a)^3\n\n\nsome details can be found here"
+  },
+  {
+    "objectID": "store/numint/error.html",
+    "href": "store/numint/error.html",
+    "title": "numint/error",
+    "section": "",
+    "text": "\\xi(t) depends continously on t in \nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\n\nif f is continuous and g does not change sign on [a,b] then \n\\int_{a}^{b} f(t)g(t)\\text{d}t=f(\\eta)\\int_{a}^{b} g(t)\\text{d}t"
+  },
+  {
+    "objectID": "store/numint/error.html#simple",
+    "href": "store/numint/error.html#simple",
+    "title": "numint/error",
+    "section": "simple",
+    "text": "simple\n\nm=\\frac{a+b}{2}\nt=m+(t-m)\n\n\n\\begin{gather*}\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\nf(t)-(f(m)+f'(m)(t-m))=\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\n\\int_{a}^{b} f\\text{d}t-I_M = \\int_{a}^{b} \\frac{f''(\\xi(t))}{2}(t-m)^2\\text{d}t\\\\\n\\left\\vert\\int_{a}^{b} f\\text{d}t-I_M\\right\\vert \\le\n\\frac{M_2}{2}\\int_{a}^{b} (t-m)^2\\text{d}t=\\frac{M_2}{2}\\frac{(b-a)^3}{12}\\\\\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/numint/error.html#simple-1",
+    "href": "store/numint/error.html#simple-1",
+    "title": "numint/error",
+    "section": "simple",
+    "text": "simple\n\n\\begin{gather*}\nf(t)-P(t)=f''(\\xi(t))\\omega(t)\\\\\n\\int_{a}^{b} f(t)-P(t)\\text{d}t=\\int_{a}^{b} \\frac{f''(\\xi(t))}{2}\\omega(t)\\text{d}t\\\\\n\\int_{a}^{b} f(t)\\text{d}t-I_T=\\frac{f''(\\eta(t))}{2}\\int_{a}^{b} \\omega(t)\\text{d}t=(1)\\\\\n\\int_{a}^{b} \\omega(t)\\text{d}t=\\frac{(a-b)^3}{6} \\ \\ \\text{by integrating it}\\\\\n|(1)|\\le \\frac{M_2}{2} \\frac{(b-a)^3}{6}\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/numint/concepts_draft.html#midpoint-tangent-method",
+    "href": "store/numint/concepts_draft.html#midpoint-tangent-method",
+    "title": "numint/concepts_draft",
+    "section": "midpoint (tangent) method",
+    "text": "midpoint (tangent) method\n\n\n\n\n\n\nImportantsimple rule\n\n\n\n\nI_M=(b-a)f\\left(\\frac{a+b}{2}\\right)\n\n\n\n\n\n\n\n\n\nNoneplot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoneerror\n\n\n\n\n\n\n\\left\\vert \\int_{a}^{b} f\\text{d}t - I_M\\right\\vert \\le \\frac{M_2}{24}(b-a)^3\n\n\nsome details can be found here"
+  },
+  {
+    "objectID": "store/numint/concepts_draft.html#trapesoid-method",
+    "href": "store/numint/concepts_draft.html#trapesoid-method",
+    "title": "numint/concepts_draft",
+    "section": "trapesoid method",
+    "text": "trapesoid method\n\n\n\n\n\n\nImportantsimple rule\n\n\n\n\nI_T=(b-a)\\frac{f(a)+f(b)}{2}\n\n\n\n\n\n\n\n\n\nNoneplot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoneerror\n\n\n\n\n\n\n\\left\\vert \\int_{a}^{b} f\\text{d}t - I_T\\right\\vert \\le \\frac{M_2}{12}(b-a)^2\n\n\nsome details can be found here"
+  },
+  {
+    "objectID": "store/numint/error.html#simple-2",
+    "href": "store/numint/error.html#simple-2",
+    "title": "numint/error",
+    "section": "simple",
+    "text": "simple\n\ntoo long…"
+  },
+  {
+    "objectID": "store/numint/concepts_draft.html#interpolational-quadrature-formulas",
+    "href": "store/numint/concepts_draft.html#interpolational-quadrature-formulas",
+    "title": "numint/concepts_draft",
+    "section": "interpolational quadrature formulas",
+    "text": "interpolational quadrature formulas\n\nmore specifically: for a given f and nodes a=t_1,\\ldots ,t_n=b and values f(t_1),\\ldots,f(t_n) we determine the Lagrange interpolational polyinomial P and its exact integral value will be used to approximate \\int_{a}^{b} f(t)\\text{d}t.\n\n\\begin{gather*}\nf(t) \\approx P(t)\\\\\n\\int_{a}^{b} f(t)\\text{d}t \\approx \\int_{a}^{b} P(t)\\text{d}t\n\\end{gather*}\n\nwe will learn what are the weights by using 1,2,3 nodes and how the corresponding quadrature rules are behaving."
+  },
+  {
+    "objectID": "store/numint/concepts_draft.html#compound-rule",
+    "href": "store/numint/concepts_draft.html#compound-rule",
+    "title": "numint/concepts_draft",
+    "section": "compound rule",
+    "text": "compound rule\n\nn nodes, n-1 intervals, mid-points\na=t_1&lt;t_2&lt;\\ldots&lt;t_n=b\nthe formula is for equally spaced nodes: t_k=a+(k-1)h with h=\\frac{b-a}{n-1}\nthe mid-points: m_k=\\frac{t_k+t_{k+1}}{2} for k=1,\\ldots,n-1\n\n\n\n\n\n\n\nImportant\n\n\n\n\nI_{M,n}=h\\left[f(m_1)+f(m_2)+\\ldots+f(m_{k-1})\\right]\n\n\n\n\n\n\n\n\n\nNoneerror\n\n\n\n\n\n\nn nodes, h=\\frac{b-a}{n-1}\n\n\n\\left\\vert \\int_{a}^{b} f\\text{d}t - I_{M,n}\\right\\vert \\le (b-a)\\frac{M_2}{24}h^2\n\n\nby adding together the small-interval errors\n\n\n\n\n\n\n\n\n\n\nNonematlab\n\n\n\n\n\n\n% using n nodes compute the approx integral \n% of sin(t^2) on [a,b] w/ the mid-point method\nclear;\nfun=@(t) sin(t.^2);\na=0;\nb=1;\nn=ceil(3.2^2); % 3.2 sqrt(10)\nt=linspace(a,b,n);\nh=(b-a)/(n-1);\nm=(t(1:n-1)+t(2:n))/2;\nI=h*sum(fun(m))\nE=abs(integral(fun,a,b)-I)"
+  },
+  {
+    "objectID": "store/numint/concepts_draft.html#compound-rule-1",
+    "href": "store/numint/concepts_draft.html#compound-rule-1",
+    "title": "numint/concepts_draft",
+    "section": "compound rule",
+    "text": "compound rule\n\nn nodes, n-1 intervals, mid-points\na=t_1,t_2,\\ldots,t_n=b\nthe formula is for equally spaced nodes: h=t_2-t_1=\\ldots=t_n-t_{n-1}\n\n\n\n\n\n\n\nImportant\n\n\n\n\nI_{T,n}=\\frac{h}{2}\\left[f(t_1)+2f(t_2)+\\ldots+2f(t_{n-1})+f(t_{n})\\right]\n\n\n\n\n\n\n\n\n\nNoneerror\n\n\n\n\n\n\nn nodes, h=\\frac{b-a}{n-1}\n\n\n\\left\\vert \\int_{a}^{b} f\\text{d}t - I_{T,n}\\right\\vert \\le (b-a)\\frac{M_2}{12}h^2\n\n\nby adding together the small-interval errors\n\n\n\n\n\n\n\n\n\n\nNonematlab\n\n\n\n\n\n\n% using n nodes compute the approx integral \n% of sin(t^2) on [a,b] w/ the trapesoidal method\n\nclc; clear;\nfun=@(t) sin(t.^2);\na=0;\nb=1;\nfor k=1:5\n  n=ceil(3.2^k); % 3.2 sqrt(10)\n  t=linspace(a,b,n);\n  h=(b-a)/(n-1);\n  I=h/2*sum([fun(t(1)),2*fun(t(2:n-1)),fun(t(n))]);\n  E=abs(integral(fun,a,b)-I)\nend"
   }
 ]
