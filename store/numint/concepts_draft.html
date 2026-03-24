@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-03-22">
+<meta name="dcterms.date" content="2026-03-24">
 
 <title>numint/concepts_draft – eduhub</title>
 <style>
@@ -196,7 +196,9 @@ window.Quarto = {
   <li><a href="#midpoint-or-tangent-method" id="toc-midpoint-or-tangent-method" class="nav-link" data-scroll-target="#midpoint-or-tangent-method">midpoint (or tangent) method</a></li>
   <li><a href="#trapesoidal-method" id="toc-trapesoidal-method" class="nav-link" data-scroll-target="#trapesoidal-method">trapesoidal method</a></li>
   <li><a href="#simpson-method" id="toc-simpson-method" class="nav-link" data-scroll-target="#simpson-method">Simpson method</a></li>
-  <li><a href="#matlab-3" id="toc-matlab-3" class="nav-link" data-scroll-target="#matlab-3">matlab</a></li>
+  <li><a href="#a-probabilistic-method" id="toc-a-probabilistic-method" class="nav-link" data-scroll-target="#a-probabilistic-method">a probabilistic method</a></li>
+  <li><a href="#adaptive-approach" id="toc-adaptive-approach" class="nav-link" data-scroll-target="#adaptive-approach">adaptive approach</a></li>
+  <li><a href="#matlab-7" id="toc-matlab-7" class="nav-link" data-scroll-target="#matlab-7">matlab</a></li>
   </ul>
 </nav>
     </div>
@@ -216,7 +218,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 22, 2026</p>
+      <p class="date">March 24, 2026</p>
     </div>
   </div>
   
@@ -283,11 +285,15 @@ f(t) \approx P(t)\\
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<ul>
+<li>it is exact for poly’s of degree at most 1.</li>
+</ul>
 <p><span class="math display">
-I_{M}=(b-a)f\left(\frac{a+b}{2}\right)
+I_{M,1}=(b-a)f\left(\frac{a+b}{2}\right)
 </span></p>
 <ul>
 <li>to prove it just examine the plot</li>
+<li><span class="math inline">I_{M,1}</span> means that we are “dividing” the interval <span class="math inline">[a,b]</span> into 1 subintervals…</li>
 </ul>
 </div>
 </div>
@@ -320,10 +326,10 @@ I_{M}=(b-a)f\left(\frac{a+b}{2}\right)
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">
-\left\vert \int_{a}^{b} f\text{d}t - I_{M}\right\vert \le \frac{M_2}{24}(b-a)^3
+\left\vert \int_{a}^{b} f\text{d}t - I_{M,1}\right\vert \le \frac{M_2}{24}(b-a)^3
 </span></p>
 <ul>
-<li>some details can be found <a href="../../store/numint/error.html#midpoint" target="_blank">here</a></li>
+<li>some details can be found <a href="../../store/numint/etc.html#midpoint" target="_blank">here</a></li>
 </ul>
 </div>
 </div>
@@ -339,13 +345,14 @@ I_{M}=(b-a)f\left(\frac{a+b}{2}\right)
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">n</span> nodes, <span class="math inline">n-1</span> intervals, mid-points</li>
-<li><span class="math inline">a=t_1&lt;t_2&lt;\ldots&lt;t_n=b</span></li>
-<li>the formula is for <strong>equally spaced</strong> nodes: <span class="math inline">t_k=a+(k-1)h</span> with <span class="math inline">h=\frac{b-a}{n-1}</span></li>
-<li>the mid-points: <span class="math inline">m_k=\frac{t_k+t_{k+1}}{2}</span> for <span class="math inline">k=1,\ldots,n-1</span></li>
+<li><span class="math inline">n+1</span> nodes, <span class="math inline">n</span> intervals, mid-points</li>
+<li><span class="math inline">a=t_1&lt;t_2&lt;\ldots&lt;t_{n+1}=b</span></li>
+<li>the formula is for <strong>equally spaced</strong> nodes: <span class="math inline">t_k=a+(k-1)h</span> with <span class="math inline">h=\frac{b-a}{n}</span></li>
+<li>the mid-points: <span class="math inline">m_k=\frac{t_k+t_{k+1}}{2}</span> for <span class="math inline">k=1,\ldots,n</span></li>
+<li><span class="math inline">I_{M,n}</span>: using <span class="math inline">n</span> subintervals</li>
 </ul>
 <p><span class="math display">
-I_{Mc}=h\left[f(m_1)+f(m_2)+\ldots+f(m_{k-1})\right]
+I_{M,n}=h\left[f(m_1)+f(m_2)+\ldots+f(m_{n})\right]
 </span></p>
 </div>
 </div>
@@ -362,13 +369,13 @@ I_{Mc}=h\left[f(m_1)+f(m_2)+\ldots+f(m_{k-1})\right]
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">n</span> nodes, <span class="math inline">h=\frac{b-a}{n-1}</span></li>
+<li><span class="math inline">n+1</span> nodes, <span class="math inline">h=\frac{b-a}{n}</span></li>
 </ul>
 <p><span class="math display">
-\left\vert \int_{a}^{b} f\text{d}t - I_{Mc}\right\vert \le (b-a)\frac{M_2}{24}h^2
+\left\vert \int_{a}^{b} f\text{d}t - I_{M,n}\right\vert \le (b-a)\frac{M_2}{24}h^2
 </span></p>
 <ul>
-<li>by adding together the small-interval errors</li>
+<li>add together the small-interval errors</li>
 </ul>
 </div>
 </div>
@@ -407,6 +414,7 @@ I_{Mc}=h\left[f(m_1)+f(m_2)+\ldots+f(m_{k-1})\right]
 <h1>trapesoidal method</h1>
 <ul>
 <li>two nodes interpolation</li>
+<li>it is exact for poly’s of degree at most 1.</li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -419,7 +427,7 @@ I_{Mc}=h\left[f(m_1)+f(m_2)+\ldots+f(m_{k-1})\right]
 </div>
 <div class="callout-body-container callout-body">
 <p><span class="math display">
-I_{T}=(b-a)\frac{f(a)+f(b)}{2}
+I_{T,1}=(b-a)\frac{f(a)+f(b)}{2}
 </span></p>
 </div>
 </div>
@@ -455,10 +463,10 @@ I_{T}=(b-a)\frac{f(a)+f(b)}{2}
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">
-\left\vert \int_{a}^{b} f\text{d}t - I_{T}\right\vert \le \frac{M_2}{12}(b-a)^3
+\left\vert \int_{a}^{b} f\text{d}t - I_{T,1}\right\vert \le \frac{M_2}{12}(b-a)^3
 </span></p>
 <ul>
-<li>some details can be found <a href="../../store/numint/error.html#trapesoid" target="_blank">here</a></li>
+<li>some details can be found <a href="../../store/numint/etc.html#trapesoid" target="_blank">here</a></li>
 </ul>
 </div>
 </div>
@@ -474,12 +482,12 @@ I_{T}=(b-a)\frac{f(a)+f(b)}{2}
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">n</span> nodes, <span class="math inline">n-1</span> intervals</li>
-<li><span class="math inline">a=t_1&lt;t_2&lt;\ldots&lt;t_n=b</span></li>
-<li>the formula is for <strong>equally spaced</strong> nodes: <span class="math inline">t_k=a+(k-1)h</span> with <span class="math inline">h=\frac{b-a}{n-1}</span></li>
+<li><span class="math inline">n+1</span> nodes, <span class="math inline">n</span> (sub-)intervals</li>
+<li><span class="math inline">a=t_1&lt;t_2&lt;\ldots&lt;t_{n+1}=b</span></li>
+<li>the formula is for <strong>equally spaced</strong> nodes: <span class="math inline">t_k=a+(k-1)h</span> with <span class="math inline">h=\frac{b-a}{n}</span></li>
 </ul>
 <p><span class="math display">
-I_{Tc}=\frac{h}{2}\left[f(t_1)+2f(t_2)+\ldots+2f(t_{n-1})+f(t_{n})\right]
+I_{T,n}=\frac{h}{2}\left[f(t_1)+2f(t_2)+\ldots+2f(t_{n})+f(t_{n+1})\right]
 </span></p>
 </div>
 </div>
@@ -496,13 +504,13 @@ I_{Tc}=\frac{h}{2}\left[f(t_1)+2f(t_2)+\ldots+2f(t_{n-1})+f(t_{n})\right]
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">n</span> nodes, <span class="math inline">h=\frac{b-a}{n-1}</span></li>
+<li><span class="math inline">n</span> equally sized intervals, <span class="math inline">h=\frac{b-a}{n}</span></li>
 </ul>
 <p><span class="math display">
-\left\vert \int_{a}^{b} f\text{d}t - I_{Tc}\right\vert \le (b-a)\frac{M_2}{12}h^2
+\left\vert \int_{a}^{b} f\text{d}t - I_{T,n}\right\vert \le (b-a)\frac{M_2}{12}h^2
 </span></p>
 <ul>
-<li>by adding together the small-interval errors</li>
+<li>add together the small-interval errors</li>
 </ul>
 </div>
 </div>
@@ -543,6 +551,7 @@ I_{Tc}=\frac{h}{2}\left[f(t_1)+2f(t_2)+\ldots+2f(t_{n-1})+f(t_{n})\right]
 <h1>Simpson method</h1>
 <ul>
 <li>three nodes interpolation</li>
+<li>it is exact for poly’s of degree at most 3. (do you see the jump?)</li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -555,13 +564,14 @@ I_{Tc}=\frac{h}{2}\left[f(t_1)+2f(t_2)+\ldots+2f(t_{n-1})+f(t_{n})\right]
 </div>
 <div class="callout-body-container callout-body">
 <p><span class="math display">
-I_{S}=(b-a)\frac{f(a)+4f(\frac{a+b}{2})+f(b)}{6}
+I_{S,1}=(b-a)\frac{f(a)+4f(\frac{a+b}{2})+f(b)}{6}
 </span></p>
 </div>
 </div>
 <ul>
 <li>compute the <span class="math inline">P(t)</span> interpolational polynomial for the nodes <span class="math inline">a,\frac{a+b}{2},b</span> and values <span class="math inline">f(a),f\left(\frac{a+b}{2}\right),f(b)</span></li>
 <li>evaluate the integral <span class="math inline">\int_{a}^{b} P(t)\text{d}t</span></li>
+<li>details are <a href="../../store/numint/etc.html#Simpson" target="_blank">here</a></li>
 </ul>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
@@ -614,12 +624,12 @@ I_{S}=(b-a)\frac{f(a)+4f(\frac{a+b}{2})+f(b)}{6}
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">n</span> nodes, <span class="math inline">n-1</span> intervals</li>
-<li><span class="math inline">a=t_1&lt;t_2&lt;\ldots&lt;t_n=b</span></li>
-<li>the formula is for <strong>equally spaced</strong> nodes: <span class="math inline">t_k=a+(k-1)h</span> with <span class="math inline">h=\frac{b-a}{n-1}</span></li>
+<li><span class="math inline">n</span> intervals</li>
+<li><span class="math inline">a=t_1&lt;t_2&lt;\ldots&lt;t_{n+1}=b</span> (the mid-points are taken “automatically”)</li>
+<li>the formula is for <strong>equally spaced</strong> nodes: <span class="math inline">t_k=a+(k-1)h</span> with <span class="math inline">h=\frac{b-a}{n}</span></li>
 </ul>
 <p><span class="math display">
-I_{Sc}=\frac{1}{3}I_{Tc}+\frac{2}{3}I_{Mc}
+I_{S,n}=\frac{1}{3}I_{T,n}+\frac{2}{3}I_{M,n}
 </span></p>
 </div>
 </div>
@@ -636,10 +646,10 @@ I_{Sc}=\frac{1}{3}I_{Tc}+\frac{2}{3}I_{Mc}
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">n</span> nodes, <span class="math inline">h=\frac{b-a}{n-1}</span></li>
+<li><span class="math inline">n</span> nodes, <span class="math inline">h=\frac{b-a}{n}</span></li>
 </ul>
 <p><span class="math display">
-\left\vert \int_{a}^{b} f\text{d}t - I_{Sc}\right\vert \le (b-a)\frac{M_4}{90\cdot 2^5}h^4
+\left\vert \int_{a}^{b} f\text{d}t - I_{S,n}\right\vert \le (b-a)\frac{M_4}{90\cdot 2^5}h^4
 </span></p>
 <ul>
 <li>by adding together the small-interval errors</li>
@@ -681,7 +691,316 @@ I_{Sc}=\frac{1}{3}I_{Tc}+\frac{2}{3}I_{Mc}
 </div>
 </div>
 </section>
-<section id="matlab-3" class="level1">
+<section id="a-probabilistic-method" class="level1">
+<h1>a probabilistic method</h1>
+<ul>
+<li>Monte-carlo integration</li>
+<li><span class="math inline">\xi_1,\ldots,\xi_n \sim \xi \sim U(a,b)</span> iid variables</li>
+<li><span class="math inline">\mathbb{E}(f(\xi_k))=\int_{a}^{b} f(t)\frac{1}{b-a}\text{d}t</span></li>
+<li><span class="math inline">I_{MC,n}=(b-a)\frac{\sum_{k=1}^n f(\xi_k)}{n}</span></li>
+<li><span class="math inline">\mathbb{E}(I_{MC,n})=\int_{a}^{b} f(t)\text{d}t=I</span></li>
+<li>Chebysev inequality:</li>
+</ul>
+<p><span class="math display">
+\begin{gather*}
+\mathbb{P}(|I_{MC,n}-I|\ge\delta)\le \frac{\mathbb{D}^2(I_{MC,n})}{\delta^2}\\
+\mathbb{P}\left(|I_{MC,n}-I|\ge \frac{b-a}{n^{\frac{\alpha}{2}}}\right)\le \frac{\mathbb{D}^2(f(\xi))}{n^{1-\alpha}} \ \ \ (0&lt;\alpha&lt;1)\\
+\mathbb{P}\left(|I_{MC,n}-I|\le \frac{b-a}{n^{\frac{\alpha}{2}}}\right)\ge 1-\frac{\mathbb{D}^2(f(\xi))}{n^{1-\alpha}} \ \ \ (0&lt;\alpha&lt;1)\\
+\end{gather*}
+</span></p>
+<ul>
+<li>by increasing <span class="math inline">n</span> the chance that the estimator will be far from the the mean becomes smaller and smaller (it tends to 0 as <span class="math inline">n\to \infty</span>)</li>
+</ul>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>approximate <span class="math inline">\int_{0}^{1} \sin(t^2)\text{d}t</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="mcINT.png" class="img-fluid"></p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>matlab
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">% approx integral % of sin(t^2) on [a,b] w/ the monte-carlo method</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="va">rng</span>(<span class="fl">22</span>)<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="va">fun</span><span class="op">=@</span>(<span class="va">t</span>) <span class="va">sin</span>(<span class="va">t</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="va">a</span><span class="op">=</span><span class="fl">0</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="va">b</span><span class="op">=</span><span class="fl">1</span><span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="va">I</span><span class="op">=</span><span class="va">integral</span>(<span class="va">fun</span><span class="op">,</span><span class="va">a</span><span class="op">,</span><span class="va">b</span>)<span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="va">n</span><span class="op">=</span><span class="fl">1000</span><span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="va">xi</span><span class="op">=</span><span class="va">a</span><span class="op">+</span>(<span class="va">b</span><span class="op">-</span><span class="va">a</span>)<span class="op">*</span><span class="va">rand</span>(<span class="fl">1</span><span class="op">,</span><span class="va">n</span>)<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="va">X</span><span class="op">=</span><span class="va">fun</span>(<span class="va">xi</span>)<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="va">Y</span><span class="op">=</span>(<span class="va">b</span><span class="op">-</span><span class="va">a</span>)<span class="op">*</span><span class="va">cumsum</span>(<span class="va">X</span>)<span class="op">./</span>(<span class="fl">1</span><span class="op">:</span><span class="va">n</span>)<span class="op">-</span><span class="va">I</span><span class="op">;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>(<span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">,</span><span class="va">Y</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="va">axis</span>([<span class="fl">1</span><span class="op">,</span><span class="va">n</span><span class="op">,-</span><span class="fl">0.5</span><span class="op">,</span><span class="fl">0.5</span>])</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="st">"$\int_0^2 \sin(t^2)dt$ by monte-carlo"</span><span class="op">,</span><span class="st">"Interpreter"</span><span class="op">,</span><span class="st">"latex"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"mcINT.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>useful for higher dimensional integrals</li>
+</ul>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>approximate <span class="math inline">\pi</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="mcPI.png" class="img-fluid"></p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>matlab
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">% approx pi w/ the monte-carlo method</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">% example of 2-d integration</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="va">rng</span>(<span class="fl">2221</span>)<span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">% a 2d indicator of the unit circle</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="va">fun</span><span class="op">=@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) <span class="fl">1</span><span class="op">*</span>(<span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">&lt;</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="va">n</span><span class="op">=</span><span class="fl">1000000</span><span class="op">;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">% the circle is enclosed in a square</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="va">X</span><span class="op">=</span><span class="fl">2</span><span class="op">*</span><span class="va">rand</span>(<span class="fl">1</span><span class="op">,</span><span class="va">n</span>)<span class="op">-</span><span class="fl">1</span><span class="op">;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="va">Y</span><span class="op">=</span><span class="fl">2</span><span class="op">*</span><span class="va">rand</span>(<span class="fl">1</span><span class="op">,</span><span class="va">n</span>)<span class="op">-</span><span class="fl">1</span><span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="va">sample</span><span class="op">=</span><span class="va">fun</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">% we have to multiply by the volume of the enclosing rectangle</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">% it is 2*2 here</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="va">CS</span><span class="op">=</span><span class="fl">4</span><span class="op">*</span><span class="va">cumsum</span>(<span class="va">sample</span>)<span class="op">./</span>(<span class="fl">1</span><span class="op">:</span><span class="va">n</span>)<span class="op">;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>(<span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">,</span><span class="va">CS</span><span class="op">,</span>[<span class="fl">1</span><span class="op">,</span><span class="va">n</span>]<span class="op">,</span>[<span class="va">pi</span><span class="op">,</span><span class="va">pi</span>])</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="va">axis</span>([<span class="fl">1</span><span class="op">,</span><span class="va">n</span><span class="op">,</span><span class="va">pi</span><span class="op">-</span><span class="fl">0.1</span><span class="op">,</span><span class="va">pi</span><span class="op">+</span><span class="fl">0.1</span>])</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="st">"pi:"</span><span class="op">+</span><span class="va">sprintf</span>(<span class="st">" %f"</span><span class="op">,</span><span class="va">CS</span>(<span class="va">n</span>))<span class="op">,</span><span class="st">"Interpreter"</span><span class="op">,</span><span class="st">"latex"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"mcPI.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="adaptive-approach" class="level1">
+<h1>adaptive approach</h1>
+<ul>
+<li>the error formulas provide a theoretical guarantee for the convergence, but in practical software it is not so easy to get the required <span class="math inline">n</span> for the required precision.</li>
+<li>a naive approach can be:
+<ul>
+<li>choose a quadrature method (midpoint,trapesoid,Simpson…)</li>
+<li>choose an increasing sequence <span class="math inline">n_1&lt;n_2&lt;ldots</span> of integers (the numbers of subintervals)</li>
+<li>compute <span class="math inline">I_{method,n_k}</span> for <span class="math inline">k=1,...</span></li>
+<li>stop if <span class="math inline">I_{method,n_{k+1}}</span> and <span class="math inline">I_{method,n_{k}}</span> are close to each other in some sense - no significant improvement by using larger number of intervals.</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>naive “adaptive”
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="adaptNAIVE.png" class="img-fluid"></p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>matlab
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">% naive: trapesoidal + interval doubling (uniform)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">% (large amount of unnecessary computations)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">% with additional effort it can be done in a way</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">% that only N fun evaluations are preformed where</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">% N is n at the final state.</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="va">clear</span><span class="op">;</span> <span class="va">clc</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="va">fun</span><span class="op">=@</span>(<span class="va">x</span>) <span class="fl">22</span> <span class="op">+</span> (<span class="va">x</span><span class="op">+</span><span class="fl">1</span>)<span class="op">.^</span><span class="fl">2</span> <span class="op">.*</span> <span class="va">cos</span>((<span class="fl">2</span><span class="op">*</span><span class="va">x</span><span class="op">+</span><span class="fl">1</span>)<span class="op">./</span>(<span class="va">x</span><span class="op">-</span><span class="fl">4.3</span>))<span class="op">;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="va">a</span><span class="op">=</span><span class="fl">1.5</span><span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="va">b</span><span class="op">=</span><span class="fl">3.6</span><span class="op">;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="va">tol</span><span class="op">=</span><span class="fl">0.5</span><span class="op">*</span><span class="fl">1e-3</span><span class="op">;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="va">trueI</span><span class="op">=</span><span class="va">integral</span>(<span class="va">fun</span><span class="op">,</span><span class="va">a</span><span class="op">,</span><span class="va">b</span>)<span class="op">;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="va">n</span><span class="op">=</span><span class="fl">1</span><span class="op">;</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="va">I</span><span class="op">=</span>(<span class="va">b</span><span class="op">-</span><span class="va">a</span>)<span class="op">/</span><span class="fl">2</span><span class="op">*</span>(<span class="va">fun</span>(<span class="va">a</span>)<span class="op">+</span><span class="va">fun</span>(<span class="va">b</span>))<span class="op">;</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">k</span><span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="va">I0</span><span class="op">=</span><span class="va">I</span><span class="op">;</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="va">n</span><span class="op">=</span><span class="fl">2</span><span class="op">*</span><span class="va">n</span><span class="op">;</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="va">t</span><span class="op">=</span><span class="va">linspace</span>(<span class="va">a</span><span class="op">,</span><span class="va">b</span><span class="op">,</span><span class="va">n</span><span class="op">+</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="va">I</span><span class="op">=</span>(<span class="va">b</span><span class="op">-</span><span class="va">a</span>)<span class="op">/</span>(<span class="fl">2</span><span class="op">*</span><span class="va">n</span>)<span class="op">*</span>(<span class="va">fun</span>(<span class="va">a</span>)<span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">sum</span>(<span class="va">fun</span>(<span class="va">t</span>(<span class="fl">2</span><span class="op">:</span><span class="va">n</span>)))<span class="op">+</span><span class="va">fun</span>(<span class="va">b</span>))<span class="op">;</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="kw">if</span> <span class="va">abs</span>(<span class="va">I</span><span class="op">-</span><span class="va">I0</span>)<span class="op">&lt;</span><span class="va">tol</span><span class="op">*</span>(<span class="fl">1</span><span class="op">+</span><span class="va">abs</span>(<span class="va">I</span>))<span class="op">,</span> <span class="kw">break</span><span class="op">;</span> <span class="kw">end</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="va">n</span><span class="op">+</span><span class="fl">1</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="va">abs</span>(<span class="va">I</span><span class="op">-</span><span class="va">trueI</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co">% tt=t(n+1:-1:1);</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co">% fill([t,tt],[zeros(size(t)),fun(tt)],[0.91,0.92,0.91],"LineWidth",2);</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="va">a</span><span class="op">,</span><span class="va">b</span><span class="op">,</span><span class="fl">400</span>)<span class="op">;</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">fun</span>(<span class="va">xx</span>)<span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">1</span>])<span class="op">;</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">x</span><span class="op">=</span><span class="va">t</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="va">plot</span>([<span class="va">x</span><span class="op">,</span><span class="va">x</span>]<span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>)]<span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0.9</span><span class="op">,</span><span class="fl">0.9</span><span class="op">,</span><span class="fl">0.9</span>])<span class="op">;</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"(naive)\n error: %.4f | funeval: %d"</span><span class="op">,</span><span class="va">abs</span>(<span class="va">I</span><span class="op">-</span><span class="va">trueI</span>)<span class="op">,</span><span class="va">n</span><span class="op">+</span><span class="fl">1</span>))<span class="op">;</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"adaptNAIVE.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>recursively “adaptive”
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="adaptREC.png" class="img-fluid"></p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>matlab
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">% recursive: trapesoidal</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">% (large amount of unnecessary computations again)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">% </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="va">clear</span><span class="op">;</span> <span class="va">clc</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="va">fun</span><span class="op">=@</span>(<span class="va">x</span>) <span class="fl">22</span> <span class="op">+</span> (<span class="va">x</span><span class="op">+</span><span class="fl">1</span>)<span class="op">.^</span><span class="fl">2</span> <span class="op">.*</span> <span class="va">cos</span>((<span class="fl">2</span><span class="op">*</span><span class="va">x</span><span class="op">+</span><span class="fl">1</span>)<span class="op">./</span>(<span class="va">x</span><span class="op">-</span><span class="fl">4.3</span>))<span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="va">a</span><span class="op">=</span><span class="fl">1.5</span><span class="op">;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="va">b</span><span class="op">=</span><span class="fl">3.6</span><span class="op">;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="va">tol</span><span class="op">=</span><span class="fl">1e-3</span><span class="op">;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> [<span class="va">I</span><span class="op">,</span><span class="va">t</span>]<span class="op">=</span><span class="va">adapt</span>(<span class="va">f</span><span class="op">,</span><span class="va">A</span><span class="op">,</span><span class="va">B</span><span class="op">,</span><span class="va">TOL</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="va">t</span><span class="op">=</span>[<span class="va">A</span><span class="op">,</span><span class="va">B</span>]<span class="op">;</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="va">I1</span><span class="op">=</span><span class="va">work</span>(<span class="va">a</span><span class="op">,</span><span class="va">b</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="va">m</span><span class="op">=</span>(<span class="va">a</span><span class="op">+</span><span class="va">b</span>)<span class="op">/</span><span class="fl">2</span><span class="op">;</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="va">I0</span><span class="op">=</span>(<span class="va">b</span><span class="op">-</span><span class="va">a</span>)<span class="op">/</span><span class="fl">2</span><span class="op">*</span>(<span class="va">f</span>(<span class="va">a</span>)<span class="op">+</span><span class="va">f</span>(<span class="va">b</span>))<span class="op">;</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="va">I1</span><span class="op">=</span>(<span class="va">b</span><span class="op">-</span><span class="va">a</span>)<span class="op">/</span><span class="fl">4</span><span class="op">*</span>(<span class="va">f</span>(<span class="va">a</span>)<span class="op">+</span><span class="va">f</span>(<span class="va">m</span>))<span class="op">+</span>(<span class="va">b</span><span class="op">-</span><span class="va">a</span>)<span class="op">/</span><span class="fl">4</span><span class="op">*</span>(<span class="va">f</span>(<span class="va">m</span>)<span class="op">+</span><span class="va">f</span>(<span class="va">b</span>))<span class="op">;</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="op">~</span>(<span class="va">abs</span>(<span class="va">I0</span><span class="op">-</span><span class="va">I1</span>)<span class="op">&lt;</span>(<span class="fl">1</span><span class="op">+</span><span class="va">abs</span>(<span class="va">I1</span>))<span class="op">*</span><span class="va">TOL</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>      <span class="va">t</span><span class="op">=</span>[<span class="va">t</span><span class="op">,</span><span class="va">m</span>]<span class="op">;</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>      <span class="va">I1</span><span class="op">=</span><span class="va">work</span>(<span class="va">a</span><span class="op">,</span><span class="va">m</span>)<span class="op">+</span><span class="va">work</span>(<span class="va">m</span><span class="op">,</span><span class="va">b</span>)<span class="op">;</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="va">I</span><span class="op">=</span><span class="va">work</span>(<span class="va">A</span><span class="op">,</span><span class="va">B</span>)<span class="op">;</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>[<span class="va">I</span><span class="op">,</span><span class="va">t</span>]<span class="op">=</span><span class="va">adapt</span>(<span class="va">fun</span><span class="op">,</span><span class="va">a</span><span class="op">,</span><span class="va">b</span><span class="op">,</span><span class="va">tol</span>)<span class="op">;</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="va">trueI</span><span class="op">=</span><span class="va">integral</span>(<span class="va">fun</span><span class="op">,</span><span class="va">a</span><span class="op">,</span><span class="va">b</span>)<span class="op">;</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="va">abs</span>(<span class="va">I</span><span class="op">-</span><span class="va">trueI</span>)</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="va">t</span><span class="op">=</span><span class="va">sort</span>(<span class="va">t</span>)<span class="op">;</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co">%tt=t(end:-1:1);</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="co">%fill([t,tt],[zeros(size(t)),fun(tt)],[0.91,0.92,0.91],"LineWidth",2);</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">x</span><span class="op">=</span><span class="va">t</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="va">plot</span>([<span class="va">x</span><span class="op">,</span><span class="va">x</span>]<span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="va">fun</span>(<span class="va">x</span>)]<span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0.9</span><span class="op">,</span><span class="fl">0.9</span><span class="op">,</span><span class="fl">0.9</span>])<span class="op">;</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="va">a</span><span class="op">,</span><span class="va">b</span><span class="op">,</span><span class="fl">400</span>)<span class="op">;</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">fun</span>(<span class="va">xx</span>)<span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">1</span>])<span class="op">;</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"(recursive)\n error: %.4f | funeval: %d"</span><span class="op">,</span><span class="va">abs</span>(<span class="va">I</span><span class="op">-</span><span class="va">trueI</span>)<span class="op">,</span><span class="va">length</span>(<span class="va">t</span>)))<span class="op">;</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="va">length</span>(<span class="va">t</span>)</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="va">saveas</span>(<span class="va">gca</span>()<span class="op">,</span><span class="st">"adaptREC.png"</span><span class="op">,</span><span class="st">"png"</span>)<span class="op">;</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="matlab-7" class="level1">
 <h1>matlab</h1>
 <ul>
 <li>built-in: <code>integral(fun,a,b)</code> (with <span class="math inline">\infty</span> and singular endpoints too)</li>

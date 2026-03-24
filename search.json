@@ -975,21 +975,21 @@
   {
     "objectID": "store/numint/error.html",
     "href": "store/numint/error.html",
-    "title": "numint/error",
+    "title": "numint/etc",
     "section": "",
     "text": "\\xi(t) depends continously on t in \nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\n\nif f is continuous and g does not change sign on [a,b] then \n\\int_{a}^{b} f(t)g(t)\\text{d}t=f(\\eta)\\int_{a}^{b} g(t)\\text{d}t"
   },
   {
     "objectID": "store/numint/error.html#simple",
     "href": "store/numint/error.html#simple",
-    "title": "numint/error",
+    "title": "numint/etc",
     "section": "simple",
     "text": "simple\n\nm=\\frac{a+b}{2}\nt=m+(t-m)\n\n\n\\begin{gather*}\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\nf(t)-(f(m)+f'(m)(t-m))=\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\n\\int_{a}^{b} f\\text{d}t-I_M = \\int_{a}^{b} \\frac{f''(\\xi(t))}{2}(t-m)^2\\text{d}t\\\\\n\\left\\vert\\int_{a}^{b} f\\text{d}t-I_M\\right\\vert \\le\n\\frac{M_2}{2}\\int_{a}^{b} (t-m)^2\\text{d}t=\\frac{M_2}{2}\\frac{(b-a)^3}{12}\\\\\n\\end{gather*}"
   },
   {
     "objectID": "store/numint/error.html#simple-1",
     "href": "store/numint/error.html#simple-1",
-    "title": "numint/error",
+    "title": "numint/etc",
     "section": "simple",
     "text": "simple\n\n\\begin{gather*}\nf(t)-P(t)=f''(\\xi(t))\\omega(t)\\\\\n\\int_{a}^{b} f(t)-P(t)\\text{d}t=\\int_{a}^{b} \\frac{f''(\\xi(t))}{2}\\omega(t)\\text{d}t\\\\\n\\int_{a}^{b} f(t)\\text{d}t-I_T=\\frac{f''(\\eta(t))}{2}\\int_{a}^{b} \\omega(t)\\text{d}t=(1)\\\\\n\\int_{a}^{b} \\omega(t)\\text{d}t=\\frac{(a-b)^3}{6} \\ \\ \\text{by integrating it}\\\\\n|(1)|\\le \\frac{M_2}{2} \\frac{(b-a)^3}{6}\n\\end{gather*}"
   },
@@ -1010,7 +1010,7 @@
   {
     "objectID": "store/numint/error.html#simple-2",
     "href": "store/numint/error.html#simple-2",
-    "title": "numint/error",
+    "title": "numint/etc",
     "section": "simple",
     "text": "simple\n\ntoo long…"
   },
@@ -1041,5 +1041,82 @@
     "title": "alkmat/sajátérték",
     "section": "",
     "text": "Noneleslie0\n\n\n\n\n\n\n% leslie0\n\nclf;clear;\n\nL=[ 0,     1,  1;...\n    0.8,   0,  0;...\n    0,  0.25,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nx=[74,80,46]';\nfor k=1:40\n  x=L*x; \n  %x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonepagerank0\n\n\n\n\n\n\n% page-rank\n\nclf;clear;\n\nA=[  0, 0, 1, 1;...\n     1, 0, 1, 1;...\n     1, 1, 0, 0;...\n     0, 0, 1, 0];\n\nA=A./sum(A,2);\nA=A';\nx=ones(4,1);\nfor k=1:30\n  x=A*x;\n  x=x/sum(x);\nend\nx\n\n[vek,ert]=eig(A);\nv=vek(:,1);\nv/sum(v)\n\ng=digraph(A);\nplot(g)\n\n\n\n\n\n\n\n\n\n\nNonekarakterisztikus polinom\n\n\n\n\n\n\nclc; clear;\n\np=charpoly([-1 -5;1 3]);\nroots(p)\n\n\n\n\n\n\n\n\n\n\nNonehalak\n\n\n\n\n\n\n% halak\n\nclf;clear;\n\nL=[ 0,       6,  8;...\n    0.5,     0,  0;...\n    0,     0.5,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonehatvány módszer\n\n\n\n\n\n\n% hatvany\nfunction [x,l,k]=hatvany(A,x,e)\n  x=x/norm(x);\n  l0=dot(A*x,x);\n  l=l0;\n  for k=1:1000\n    x=A*x;\n    x=x/norm(x);\n    l1=l;\n    l=dot(A*x,x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(A*x-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneinverz iteráció\n\n\n\n\n\n\n% inverz iteracio (PLU nelkul)\nfunction [x,l,k]=invit(A,x,e)\n  sol=@(x) A\\x;\n  \n  x=x/norm(x);\n  l0=dot(sol(x),x);\n  l=l0;\n  for k=1:1000\n    x=sol(x);\n    x=x/norm(x);\n    l1=l;\n    l=dot(sol(x),x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(sol(x)-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneleslie-random\n\n\n\n\n\n\n% leslie\n\nclf;clear;\n\nL=[ 0,1,1;...\n    ]\n\nrng(22*2);\nn=10;\nL=zeros(n,n);\nL(1,:)=randi(2,1,n);\nL=L+diag(5+randi(3,1,n-1),-1);\nx=rand(n,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\n\n\n\n\n\n\n\n\n\n\nNonepagerank-random\n\n\n\n\n\n\n% page-rank\n\nclf;\n\nrng(22*2);\nn=10;\nA=randi(2,n,n)-1;\nA=A.*(1-eye(n,n));\nB=A./sum(A,2);\nB=B';\nx=ones(n,1);\nfor k=1:20\n  x=B*x;\nend\nx\n\ng=digraph(A);\nplot(g)"
+  },
+  {
+    "objectID": "store/numint/error.html#formula",
+    "href": "store/numint/error.html#formula",
+    "title": "numint/error",
+    "section": "formula",
+    "text": "formula\n\na,\\ m=\\frac{a+b}{2},\\ b and f_a=f(a),\\ f_m=f(\\frac{a+b}{2}),\\ f_b=f(b)\nh=b-a\ninstead of Newton or classical search the polynomial in the form below\n\n\n\\begin{gather*}\nP(t)=A+B(t-m)+C(t-m)^2\\\\\nP(m)=f_m \\ \\implies \\ A=f_m\\\\\nP(a)=f_mf_a \\ \\implies \\ A=f_m\\\\\nP(b)=f_b \\ \\implies \\ A=f_m\\\\\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/numint/error.html#getting-the-formula",
+    "href": "store/numint/error.html#getting-the-formula",
+    "title": "numint/etc",
+    "section": "getting the formula",
+    "text": "getting the formula\n\na,\\ m=\\frac{a+b}{2},\\ b and f_a=f(a),\\ f_m=f(\\frac{a+b}{2}),\\ f_b=f(b)\nh=b-a\ninstead of Newton or classical search the polynomial in the form below\n\n\n\\begin{gather*}\nP(t)=A+B(t-m)+C(t-m)^2\\\\\nP(m)=f_m \\ \\implies \\ A=f_m\\\\\nP(a)=f_m+B(a-m)+C(a-m)^2 = f_a\\ \\tag*{(1)}\\\\\nP(b)=f_m+B(b-m)+C(b-m)^2 = f_b\\ \\tag*{(2)}\\\\\n(1)+(2): 2f_m + C\\frac{h^2}{2}=f_a+f_b \\ \\implies \\ C=\\frac{2(f_a-2f_m+f_b)}{h^2}\\\\\n(2)-(1): Bh=f_b-f_a\\ \\implies\\ B=\\frac{f_b-f_a}{h}\\\\\n\\int_{a}^{b} P(t)\\text{d}t=\\int_{a}^{b} f_m\\text{d}t+C\\int_{a}^{b} (t-m)^2\\text{d}t\\\\\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/numint/etc.html",
+    "href": "store/numint/etc.html",
+    "title": "numint/etc",
+    "section": "",
+    "text": "Nonefacts\n\n\n\n\n\n\n \\xi(t) depends continously on t in \n\n\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\n - if f is continuous and g does not change sign on [a,b] then \n\\int_{a}^{b} f(t)g(t)\\text{d}t=f(\\eta)\\int_{a}^{b} g(t)\\text{d}t"
+  },
+  {
+    "objectID": "store/numint/etc.html#simple-error",
+    "href": "store/numint/etc.html#simple-error",
+    "title": "numint/etc",
+    "section": "simple error",
+    "text": "simple error\n\nm=\\frac{a+b}{2}\nt=m+(t-m)\n\n\n\\begin{gather*}\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\nf(t)-(f(m)+f'(m)(t-m))=\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\n\\int_{a}^{b} f\\text{d}t-I_{M,1} = \\int_{a}^{b} \\frac{f''(\\xi(t))}{2}(t-m)^2\\text{d}t\\\\\n\\left\\vert\\int_{a}^{b} f\\text{d}t-I_{M,1}\\right\\vert \\le\n\\frac{M_2}{2}\\int_{a}^{b} (t-m)^2\\text{d}t=\\frac{M_2}{2}\\frac{(b-a)^3}{12}\\\\\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/numint/etc.html#simple",
+    "href": "store/numint/etc.html#simple",
+    "title": "numint/etc",
+    "section": "simple",
+    "text": "simple\n\ntoo long…"
+  },
+  {
+    "objectID": "store/numint/etc.html#getting-the-formula",
+    "href": "store/numint/etc.html#getting-the-formula",
+    "title": "numint/etc",
+    "section": "getting the formula",
+    "text": "getting the formula\n\na,\\ m=\\frac{a+b}{2},\\ b and f_a=f(a),\\ f_m=f(\\frac{a+b}{2}),\\ f_b=f(b)\nh=b-a\ninstead of Newton or classical search the polynomial in the form below\n\n\n\\begin{gather*}\nP(t)=A+B(t-m)+C(t-m)^2\\\\\nP(m)=f_m \\ \\implies \\ A=f_m\\\\\nP(a)=f_m+B(a-m)+C(a-m)^2 = f_a\\ \\tag*{(1)}\\\\\nP(b)=f_m+B(b-m)+C(b-m)^2 = f_b\\ \\tag*{(2)}\\\\\n(1)+(2): 2f_m + C\\frac{h^2}{2}=f_a+f_b \\ \\implies \\ C=2\\frac{f_a-2f_m+f_b}{h^2}\\\\\n(2)-(1): Bh=f_b-f_a\\ \\implies\\ B=\\frac{f_b-f_a}{h}\\\\\n\\int_{a}^{b} P(t)\\text{d}t=\\int_{a}^{b} f_m\\text{d}t+C\\int_{a}^{b} (t-m)^2\\text{d}t=\\\\\nhf_m+2\\frac{f_a-2f_m+f_b}{h^2}\\frac{h^3}{12}\\ \\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/numint/etc.html#simple-1",
+    "href": "store/numint/etc.html#simple-1",
+    "title": "numint/etc",
+    "section": "simple",
+    "text": "simple\n\ntoo long…"
+  },
+  {
+    "objectID": "alkmat/index.html",
+    "href": "alkmat/index.html",
+    "title": "alkmat/sajátérték",
+    "section": "",
+    "text": "Noneleslie0\n\n\n\n\n\n\n% leslie0\n\nclf;clear;\n\nL=[ 0,     1,  1;...\n    0.8,   0,  0;...\n    0,  0.25,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nx=[74,80,46]';\nfor k=1:40\n  x=L*x; \n  %x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonepagerank0\n\n\n\n\n\n\n% page-rank\n\nclf;clear;\n\nA=[  0, 0, 1, 1;...\n     1, 0, 1, 1;...\n     1, 1, 0, 0;...\n     0, 0, 1, 0];\n\nA=A./sum(A,2);\nA=A';\nx=ones(4,1);\nfor k=1:30\n  x=A*x;\n  x=x/sum(x);\nend\nx\n\n[vek,ert]=eig(A);\nv=vek(:,1);\nv/sum(v)\n\ng=digraph(A);\nplot(g)\n\n\n\n\n\n\n\n\n\n\nNonekarakterisztikus polinom\n\n\n\n\n\n\nclc; clear;\n\np=charpoly([-1 -5;1 3]);\nroots(p)\n\n\n\n\n\n\n\n\n\n\nNonehalak\n\n\n\n\n\n\n% halak\n\nclf;clear;\n\nL=[ 0,       6,  8;...\n    0.5,     0,  0;...\n    0,     0.5,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonehatvány módszer\n\n\n\n\n\n\n% hatvany\nfunction [x,l,k]=hatvany(A,x,e)\n  x=x/norm(x);\n  l0=dot(A*x,x);\n  l=l0;\n  for k=1:1000\n    x=A*x;\n    x=x/norm(x);\n    l1=l;\n    l=dot(A*x,x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(A*x-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneinverz iteráció\n\n\n\n\n\n\n% inverz iteracio (PLU nelkul)\nfunction [x,l,k]=invit(A,x,e)\n  sol=@(x) A\\x;\n  \n  x=x/norm(x);\n  l0=dot(sol(x),x);\n  l=l0;\n  for k=1:1000\n    x=sol(x);\n    x=x/norm(x);\n    l1=l;\n    l=dot(sol(x),x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(sol(x)-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneleslie-random\n\n\n\n\n\n\n% leslie\n\nclf;clear;\n\nL=[ 0,1,1;...\n    ]\n\nrng(22*2);\nn=10;\nL=zeros(n,n);\nL(1,:)=randi(2,1,n);\nL=L+diag(5+randi(3,1,n-1),-1);\nx=rand(n,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\n\n\n\n\n\n\n\n\n\n\nNonepagerank-random\n\n\n\n\n\n\n% page-rank\n\nclf;\n\nrng(22*2);\nn=10;\nA=randi(2,n,n)-1;\nA=A.*(1-eye(n,n));\nB=A./sum(A,2);\nB=B';\nx=ones(n,1);\nfor k=1:20\n  x=B*x;\nend\nx\n\ng=digraph(A);\nplot(g)"
+  },
+  {
+    "objectID": "store/numint/etc.html#error",
+    "href": "store/numint/etc.html#error",
+    "title": "numint/etc",
+    "section": "error",
+    "text": "error\n\nm=\\frac{a+b}{2}\nt=m+(t-m)\n\n\n\\begin{gather*}\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\nf(t)-(f(m)+f'(m)(t-m))=\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\n\\int_{a}^{b} f\\text{d}t-I_{M,1} = \\int_{a}^{b} \\frac{f''(\\xi(t))}{2}(t-m)^2\\text{d}t\\\\\n\\left\\vert\\int_{a}^{b} f\\text{d}t-I_{M,1}\\right\\vert \\le\n\\frac{M_2}{2}\\int_{a}^{b} (t-m)^2\\text{d}t=\\frac{M_2}{2}\\frac{(b-a)^3}{12}\\ \\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/numint/etc.html#error-1",
+    "href": "store/numint/etc.html#error-1",
+    "title": "numint/etc",
+    "section": "error",
+    "text": "error\n\n\\begin{gather*}\nf(t)-P(t)=f''(\\xi(t))\\omega(t)\\\\\n\\int_{a}^{b} f(t)-P(t)\\text{d}t=\\int_{a}^{b} \\frac{f''(\\xi(t))}{2}\\omega(t)\\text{d}t\\\\\n\\left|\\int_{a}^{b} f(t)\\text{d}t-I_{T,1}\\right|\\le=\\int_{a}^{b} \\frac{|f''(\\xi(t))|}{2}|\\omega(t)|\\text{d}t=(1)\\\\\n\\int_{a}^{b} |\\omega(t)|\\text{d}t=\\frac{(b-a)^3}{6} \\ \\ \\text{by integrating it}\\\\\n|(1)|\\le \\frac{M_2}{2} \\frac{(b-a)^3}{6}\\ \\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/numint/etc.html#why-is-it-exact-for-at-most-3rd-order-polys",
+    "href": "store/numint/etc.html#why-is-it-exact-for-at-most-3rd-order-polys",
+    "title": "numint/etc",
+    "section": "why is it exact for at most 3rd order poly’s",
+    "text": "why is it exact for at most 3rd order poly’s\n\nmatlab symbolics based “proof”:\n\n\nclc; clear;\n\nsyms a b f(x)\n\nfor k=0:3\n  k\n  f(x)=x^k;\n  I1=int(f,a,b)\n  I2=(b-a)*(f(a)+4*f((a+b)/2)+f(b))/6;\n  I2=simplify(I2)\n  assert(I1==I2);\n  disp(\"......................\");\nend"
   }
 ]

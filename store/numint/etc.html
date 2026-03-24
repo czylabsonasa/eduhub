@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-03-23">
+<meta name="dcterms.date" content="2026-03-24">
 
 <title>numint/etc – eduhub</title>
 <style>
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -153,19 +188,19 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#facts" id="toc-facts" class="nav-link active" data-scroll-target="#facts">facts</a></li>
-  <li><a href="#midpoint" id="toc-midpoint" class="nav-link" data-scroll-target="#midpoint">midpoint</a>
+  <li><a href="#midpoint" id="toc-midpoint" class="nav-link active" data-scroll-target="#midpoint">midpoint</a>
   <ul class="collapse">
-  <li><a href="#simple" id="toc-simple" class="nav-link" data-scroll-target="#simple">simple</a></li>
+  <li><a href="#error" id="toc-error" class="nav-link" data-scroll-target="#error">error</a></li>
   </ul></li>
   <li><a href="#trapesoid" id="toc-trapesoid" class="nav-link" data-scroll-target="#trapesoid">trapesoid</a>
   <ul class="collapse">
-  <li><a href="#simple-1" id="toc-simple-1" class="nav-link" data-scroll-target="#simple-1">simple</a></li>
+  <li><a href="#error-1" id="toc-error-1" class="nav-link" data-scroll-target="#error-1">error</a></li>
   </ul></li>
   <li><a href="#Simpson" id="toc-Simpson" class="nav-link" data-scroll-target="#Simpson">Simpson</a>
   <ul class="collapse">
   <li><a href="#getting-the-formula" id="toc-getting-the-formula" class="nav-link" data-scroll-target="#getting-the-formula">getting the formula</a></li>
-  <li><a href="#simple-2" id="toc-simple-2" class="nav-link" data-scroll-target="#simple-2">simple</a></li>
+  <li><a href="#why-is-it-exact-for-at-most-3rd-order-polys" id="toc-why-is-it-exact-for-at-most-3rd-order-polys" class="nav-link" data-scroll-target="#why-is-it-exact-for-at-most-3rd-order-polys">why is it exact for at most 3rd order poly’s</a></li>
+  <li><a href="#simple" id="toc-simple" class="nav-link" data-scroll-target="#simple">simple</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -186,7 +221,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 23, 2026</p>
+      <p class="date">March 24, 2026</p>
     </div>
   </div>
   
@@ -198,21 +233,33 @@ window.Quarto = {
 </header>
 
 
-<section id="facts" class="level1">
-<h1>facts</h1>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>facts
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">\xi(t)</span> depends continously on <span class="math inline">t</span> in <span class="math display">
-f(t)=f(m)+f'(m)(t-m)+\frac{f''(\xi(t))}{2}(t-m)^2
-</span></li>
-<li>if <span class="math inline">f</span> is continuous and <span class="math inline">g</span> does not change sign on <span class="math inline">[a,b]</span> then <span class="math display">
-\int_{a}^{b} f(t)g(t)\text{d}t=f(\eta)\int_{a}^{b} g(t)\text{d}t
-</span></li>
+<li><s> <span class="math inline">\xi(t)</span> depends continously on <span class="math inline">t</span> in </s></li>
 </ul>
-</section>
+<p><span class="math display">
+f(t)=f(m)+f'(m)(t-m)+\frac{f''(\xi(t))}{2}(t-m)^2
+</span> - if <span class="math inline">f</span> is continuous and <span class="math inline">g</span> does not change sign on <span class="math inline">[a,b]</span> then <span class="math display">
+\int_{a}^{b} f(t)g(t)\text{d}t=f(\eta)\int_{a}^{b} g(t)\text{d}t
+</span></p>
+</div>
+</div>
+</div>
 <section id="midpoint" class="level1">
 <h1>midpoint</h1>
-<section id="simple" class="level2">
-<h2 class="anchored" data-anchor-id="simple">simple</h2>
+<section id="error" class="level2">
+<h2 class="anchored" data-anchor-id="error">error</h2>
 <ul>
 <li><span class="math inline">m=\frac{a+b}{2}</span></li>
 <li><span class="math inline">t=m+(t-m)</span></li>
@@ -221,24 +268,24 @@ f(t)=f(m)+f'(m)(t-m)+\frac{f''(\xi(t))}{2}(t-m)^2
 \begin{gather*}
 f(t)=f(m)+f'(m)(t-m)+\frac{f''(\xi(t))}{2}(t-m)^2\\
 f(t)-(f(m)+f'(m)(t-m))=\frac{f''(\xi(t))}{2}(t-m)^2\\
-\int_{a}^{b} f\text{d}t-I_M = \int_{a}^{b} \frac{f''(\xi(t))}{2}(t-m)^2\text{d}t\\
-\left\vert\int_{a}^{b} f\text{d}t-I_M\right\vert \le
-\frac{M_2}{2}\int_{a}^{b} (t-m)^2\text{d}t=\frac{M_2}{2}\frac{(b-a)^3}{12}\\
+\int_{a}^{b} f\text{d}t-I_{M,1} = \int_{a}^{b} \frac{f''(\xi(t))}{2}(t-m)^2\text{d}t\\
+\left\vert\int_{a}^{b} f\text{d}t-I_{M,1}\right\vert \le
+\frac{M_2}{2}\int_{a}^{b} (t-m)^2\text{d}t=\frac{M_2}{2}\frac{(b-a)^3}{12}\ \ \checkmark
 \end{gather*}
 </span></p>
 </section>
 </section>
 <section id="trapesoid" class="level1">
 <h1>trapesoid</h1>
-<section id="simple-1" class="level2">
-<h2 class="anchored" data-anchor-id="simple-1">simple</h2>
+<section id="error-1" class="level2">
+<h2 class="anchored" data-anchor-id="error-1">error</h2>
 <p><span class="math display">
 \begin{gather*}
 f(t)-P(t)=f''(\xi(t))\omega(t)\\
 \int_{a}^{b} f(t)-P(t)\text{d}t=\int_{a}^{b} \frac{f''(\xi(t))}{2}\omega(t)\text{d}t\\
-\int_{a}^{b} f(t)\text{d}t-I_T=\frac{f''(\eta(t))}{2}\int_{a}^{b} \omega(t)\text{d}t=(1)\\
-\int_{a}^{b} \omega(t)\text{d}t=\frac{(a-b)^3}{6} \ \ \text{by integrating it}\\
-|(1)|\le \frac{M_2}{2} \frac{(b-a)^3}{6}
+\left|\int_{a}^{b} f(t)\text{d}t-I_{T,1}\right|\le=\int_{a}^{b} \frac{|f''(\xi(t))|}{2}|\omega(t)|\text{d}t=(1)\\
+\int_{a}^{b} |\omega(t)|\text{d}t=\frac{(b-a)^3}{6} \ \ \text{by integrating it}\\
+|(1)|\le \frac{M_2}{2} \frac{(b-a)^3}{6}\ \ \checkmark
 \end{gather*}
 </span></p>
 </section>
@@ -258,14 +305,36 @@ P(t)=A+B(t-m)+C(t-m)^2\\
 P(m)=f_m \ \implies \ A=f_m\\
 P(a)=f_m+B(a-m)+C(a-m)^2 = f_a\ \tag*{(1)}\\
 P(b)=f_m+B(b-m)+C(b-m)^2 = f_b\ \tag*{(2)}\\
-(1)+(2): 2f_m + C\frac{h^2}{2}=f_a+f_b \ \implies \ C=\frac{2(f_a-2f_m+f_b)}{h^2}\\
+(1)+(2): 2f_m + C\frac{h^2}{2}=f_a+f_b \ \implies \ C=2\frac{f_a-2f_m+f_b}{h^2}\\
 (2)-(1): Bh=f_b-f_a\ \implies\ B=\frac{f_b-f_a}{h}\\
-\int_{a}^{b} P(t)\text{d}t=\int_{a}^{b} f_m\text{d}t+C\int_{a}^{b} (t-m)^2\text{d}t\\
+\int_{a}^{b} P(t)\text{d}t=\int_{a}^{b} f_m\text{d}t+C\int_{a}^{b} (t-m)^2\text{d}t=\\
+hf_m+2\frac{f_a-2f_m+f_b}{h^2}\frac{h^3}{12}\ \ \checkmark
 \end{gather*}
 </span></p>
 </section>
-<section id="simple-2" class="level2">
-<h2 class="anchored" data-anchor-id="simple-2">simple</h2>
+<section id="why-is-it-exact-for-at-most-3rd-order-polys" class="level2">
+<h2 class="anchored" data-anchor-id="why-is-it-exact-for-at-most-3rd-order-polys">why is it exact for at most 3rd order poly’s</h2>
+<ul>
+<li>matlab symbolics based “proof”:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">syms</span> <span class="va">a</span> <span class="va">b</span> <span class="va">f</span>(<span class="va">x</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span> <span class="va">k</span><span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="va">k</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">f</span>(<span class="va">x</span>)<span class="op">=</span><span class="va">x</span><span class="op">^</span><span class="va">k</span><span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="va">I1</span><span class="op">=</span><span class="va">int</span>(<span class="va">f</span><span class="op">,</span><span class="va">a</span><span class="op">,</span><span class="va">b</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="va">I2</span><span class="op">=</span>(<span class="va">b</span><span class="op">-</span><span class="va">a</span>)<span class="op">*</span>(<span class="va">f</span>(<span class="va">a</span>)<span class="op">+</span><span class="fl">4</span><span class="op">*</span><span class="va">f</span>((<span class="va">a</span><span class="op">+</span><span class="va">b</span>)<span class="op">/</span><span class="fl">2</span>)<span class="op">+</span><span class="va">f</span>(<span class="va">b</span>))<span class="op">/</span><span class="fl">6</span><span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="va">I2</span><span class="op">=</span><span class="va">simplify</span>(<span class="va">I2</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="va">assert</span>(<span class="va">I1</span><span class="op">==</span><span class="va">I2</span>)<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="va">disp</span>(<span class="st">"......................"</span>)<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="simple" class="level2">
+<h2 class="anchored" data-anchor-id="simple">simple</h2>
 <ul>
 <li>too long…</li>
 </ul>
