@@ -3,10 +3,15 @@ title: "optalg/egyebek"
 listing:
   id: lista
   contents:
-    - "*.*"
+    - "uj/*"
+    - "regi/*"
     - "task1/*"
-  type: grid # Lehet 'default', 'grid' vagy 'table' is
-  fields: [filename] # Megadhatod, mi jelenjen meg
+    - "task2/*"
+  categories: true
+  type: table # Lehet 'default', 'grid' vagy 'table' is
+  fields: [filename, categories] # Megadhatod, mi jelenjen meg
+  filter-ui: true
+  page-size: 222
 ---
 
 
