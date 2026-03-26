@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-03-26">
+<meta name="dcterms.date" content="2026-03-25">
 
-<title>optalg – eduhub</title>
+<title>etc/index – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +70,49 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -110,12 +153,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#egyebek" id="toc-egyebek" class="nav-link active" data-scroll-target="#egyebek">egyebek</a></li>
-  <li><a href="#gyök-keresés" id="toc-gyök-keresés" class="nav-link" data-scroll-target="#gyök-keresés">gyök-keresés</a></li>
-  <li><a href="#minimum-keresés" id="toc-minimum-keresés" class="nav-link" data-scroll-target="#minimum-keresés">minimum-keresés</a></li>
-  <li><a href="#gradiens-módszer" id="toc-gradiens-módszer" class="nav-link" data-scroll-target="#gradiens-módszer">gradiens-módszer</a></li>
-  <li><a href="#teszt-függvények" id="toc-teszt-függvények" class="nav-link" data-scroll-target="#teszt-függvények">teszt függvények</a></li>
-  <li><a href="#program-lista" id="toc-program-lista" class="nav-link" data-scroll-target="#program-lista">program lista</a></li>
+  <li><a href="#notation" id="toc-notation" class="nav-link active" data-scroll-target="#notation">notation</a></li>
+  <li><a href="#fmathbbrntomathbbr" id="toc-fmathbbrntomathbbr" class="nav-link" data-scroll-target="#fmathbbrntomathbbr"><span class="math inline">f:\mathbb{R}^n\to\mathbb{R}</span></a>
+  <ul class="collapse">
+  <li><a href="#f-is-differentiable-at-x" id="toc-f-is-differentiable-at-x" class="nav-link" data-scroll-target="#f-is-differentiable-at-x"><span class="math inline">f</span> is differentiable at <span class="math inline">x</span></a></li>
+  <li><a href="#partial-derivative" id="toc-partial-derivative" class="nav-link" data-scroll-target="#partial-derivative">partial derivative</a></li>
+  <li><a href="#special-cases" id="toc-special-cases" class="nav-link" data-scroll-target="#special-cases">special cases</a></li>
+  </ul></li>
+  <li><a href="#fmathbbrntomathbbrm" id="toc-fmathbbrntomathbbrm" class="nav-link" data-scroll-target="#fmathbbrntomathbbrm"><span class="math inline">f:\mathbb{R}^n\to\mathbb{R}^m</span></a>
+  <ul class="collapse">
+  <li><a href="#f-is-differentiable-at-x-1" id="toc-f-is-differentiable-at-x-1" class="nav-link" data-scroll-target="#f-is-differentiable-at-x-1"><span class="math inline">f</span> is differentiable at <span class="math inline">x</span></a></li>
+  <li><a href="#special-case" id="toc-special-case" class="nav-link" data-scroll-target="#special-case">special case</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -124,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">optalg</h1>
+<h1 class="title">etc/index</h1>
 </div>
 
 
@@ -135,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 26, 2026</p>
+      <p class="date">March 25, 2026</p>
     </div>
   </div>
   
@@ -147,25 +196,95 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="egyebek" class="level1">
-<h1><a href="egyebek/index.qmd" target="_blank">egyebek</a></h1>
+<section id="notation" class="level1">
+<h1>notation</h1>
+<ul>
+<li><span class="math inline">\delta_{ij}=(i=j)\ ?\ 1\ :\ 0</span></li>
+<li><span class="math inline">x\cdot y := \langle x,y\rangle=\sum x_k y_k=x^{T}y</span>
+<ul>
+<li><span class="math inline">x\cdot y=y\cdot x</span></li>
+<li><span class="math inline">x\cdot Ay = A^{T}x\cdot y</span></li>
+</ul></li>
+<li><span class="math inline">[1,2,3]</span> row</li>
+<li><span class="math inline">[1;2;3]</span> column, the members of <span class="math inline">\mathbb{R}^n</span></li>
+</ul>
 </section>
-<section id="gyök-keresés" class="level1">
-<h1><a href="../optalg/root.html" target="_blank">gyök-keresés</a></h1>
+<section id="fmathbbrntomathbbr" class="level1">
+<h1><span class="math inline">f:\mathbb{R}^n\to\mathbb{R}</span></h1>
+<section id="f-is-differentiable-at-x" class="level2">
+<h2 class="anchored" data-anchor-id="f-is-differentiable-at-x"><span class="math inline">f</span> is differentiable at <span class="math inline">x</span></h2>
+<ul>
+<li>if there is a <span class="math inline">a\in \mathbb{R}^n</span></li>
+</ul>
+<p><span class="math display">
+  \frac{\vert f(x+h)-f(x)-a\cdot h\vert}{\Vert h\Vert} \xrightarrow{h\to 0} 0
+</span></p>
+<ul>
+<li><span class="math inline">a</span> is unique. (by contradiction)</li>
+<li><span class="math inline">a=\nabla f(x)</span> or <span class="math inline">a=f'(x)</span></li>
+</ul>
 </section>
-<section id="minimum-keresés" class="level1">
-<h1><a href="../optalg/minimum.html" target="_blank">minimum-keresés</a></h1>
+<section id="partial-derivative" class="level2">
+<h2 class="anchored" data-anchor-id="partial-derivative">partial derivative</h2>
+<ul>
+<li><span class="math inline">k</span>-th</li>
+<li><span class="math inline">e_k=[\delta_{1k};\ldots;\delta_{nk}]</span> - the <span class="math inline">k</span>-th unit vector</li>
+<li>if there is a <span class="math inline">a_k\in \mathbb{R}</span></li>
+</ul>
+<p><span class="math display">
+  \frac{\vert f(x+e_k h)-f(x)-a_k h \vert}{\vert h\vert} \xrightarrow{h\to 0} 0
+</span></p>
+<ul>
+<li><span class="math inline">f_{k}'(x)</span></li>
+<li><span class="math inline">f</span> is differentiable at <span class="math inline">x</span> then <span class="math inline">\nabla f(x)=[f_{1}';\ldots;f_{k}']</span></li>
+</ul>
 </section>
-<section id="gradiens-módszer" class="level1">
-<h1><a href="../optalg/gradiens.html" target="_blank">gradiens-módszer</a></h1>
+<section id="special-cases" class="level2">
+<h2 class="anchored" data-anchor-id="special-cases">special cases</h2>
+<ul>
+<li><span class="math inline">f(x)=b\cdot x \ \implies f(x)=b</span></li>
+<li><span class="math inline">f(x)=c \ \implies f'(x)=[0;\ldots;0]</span></li>
+<li><span class="math inline">f(x)=x\cdot Ax \ \implies f'(x)=(A+A^{T})x</span></li>
+</ul>
+<p><span class="math display">
+\begin{gather*}
+(x+h)\cdot A(x+h)-x\cdot Ax=\\
+\underline{x\cdot Ax}+x\cdot Ah+h\cdot Ax+h\cdot Ah-\underline{x\cdot Ax}=(*)\\
+x\cdot Ah=A^{T}x\cdot h\\
+h\cdot Ax=Ax\cdot h\\
+|h\cdot Ah|\le \Vert h\Vert_2 \Vert Ah\Vert_2\le \Vert h\Vert_2^2\Vert A\Vert_2 \tag*{(CBS)}\\
+(*)=(A+A^{T})x\cdot h + h\cdot Ah \ \ \checkmark
+\end{gather*}
+</span></p>
 </section>
-<section id="teszt-függvények" class="level1">
-<h1><a href="../optalg/teszt_fv.html" target="_blank">teszt függvények</a></h1>
 </section>
-<section id="program-lista" class="level1">
-<h1><a href="../optalg/program_lista.html" target="_blank">program lista</a></h1>
+<section id="fmathbbrntomathbbrm" class="level1">
+<h1><span class="math inline">f:\mathbb{R}^n\to\mathbb{R}^m</span></h1>
+<section id="f-is-differentiable-at-x-1" class="level2">
+<h2 class="anchored" data-anchor-id="f-is-differentiable-at-x-1"><span class="math inline">f</span> is differentiable at <span class="math inline">x</span></h2>
+<ul>
+<li>if there is a <span class="math inline">A\in {\cal M}_{m\times n}</span></li>
+</ul>
+<p><span class="math display">
+  \frac{\Vert f(x+h)-f(x)-Ah\Vert}{\Vert h\Vert} \xrightarrow{h\to 0} 0
+</span></p>
+<ul>
+<li><span class="math inline">A</span> is unique. (by contradiction)</li>
+<li><span class="math inline">A=J_f(x)</span></li>
+<li><span class="math inline">f=(f_1;\ldots;f_m)</span></li>
+<li><span class="math inline">A=[\nabla f_1(x)^{T};\ldots; \nabla f_m(x)^{T}]</span></li>
+</ul>
+</section>
+<section id="special-case" class="level2">
+<h2 class="anchored" data-anchor-id="special-case">special case</h2>
+<ul>
+<li><span class="math inline">f:\mathbb{R}^n\to \mathbb{R}</span></li>
+<li><span class="math inline">f'(x):\mathbb{R}^n\to \mathbb{R}^n</span></li>
+<li><span class="math inline">f''(x)=H_f(x)=J_{f'}(x)=[f''_{ij}]</span></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

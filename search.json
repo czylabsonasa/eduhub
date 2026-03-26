@@ -1118,5 +1118,61 @@
     "title": "numint/etc",
     "section": "why is it exact for at most 3rd order poly’s",
     "text": "why is it exact for at most 3rd order poly’s\n\nmatlab symbolics based “proof”:\n\n\nclc; clear;\n\nsyms a b f(x)\n\nfor k=0:3\n  k\n  f(x)=x^k;\n  I1=int(f,a,b)\n  I2=(b-a)*(f(a)+4*f((a+b)/2)+f(b))/6;\n  I2=simplify(I2)\n  assert(I1==I2);\n  disp(\"......................\");\nend"
+  },
+  {
+    "objectID": "etc/index.html",
+    "href": "etc/index.html",
+    "title": "etc/index",
+    "section": "",
+    "text": "\\delta_{ij}=(i=j)\\ ?\\ 1\\ :\\ 0\nx\\cdot y := \\langle x,y\\rangle=\\sum x_k y_k=x^{T}y\n\nx\\cdot y=y\\cdot x\nx\\cdot Ay = A^{T}x\\cdot y\n\n[1,2,3] row\n[1;2;3] column, the members of \\mathbb{R}^n"
+  },
+  {
+    "objectID": "etc/index.html#f-is-differentiable-at-x",
+    "href": "etc/index.html#f-is-differentiable-at-x",
+    "title": "etc/index",
+    "section": "f is differentiable at x",
+    "text": "f is differentiable at x\n\nif there is a a\\in \\mathbb{R}^n\n\n\n  \\frac{\\vert f(x+h)-f(x)-a\\cdot h\\vert}{\\Vert h\\Vert} \\xrightarrow{h\\to 0} 0\n\n\na is unique. (by contradiction)\na=\\nabla f(x) or a=f'(x)"
+  },
+  {
+    "objectID": "etc/index.html#partial-derivative",
+    "href": "etc/index.html#partial-derivative",
+    "title": "etc/index",
+    "section": "partial derivative",
+    "text": "partial derivative\n\nk-th\ne_k=[\\delta_{1k};\\ldots;\\delta_{nk}] - the k-th unit vector\nif there is a a_k\\in \\mathbb{R}\n\n\n  \\frac{\\vert f(x+e_k h)-f(x)-a_k h \\vert}{\\vert h\\vert} \\xrightarrow{h\\to 0} 0\n\n\nf_{k}'(x)\nf is differentiable at x then \\nabla f(x)=[f_{1}';\\ldots;f_{k}']"
+  },
+  {
+    "objectID": "etc/index.html#spec-cases",
+    "href": "etc/index.html#spec-cases",
+    "title": "etc/index",
+    "section": "spec cases",
+    "text": "spec cases\n\nf(x)=b^{T}x \\ \\implies f(x)=b\nf(x)=c \\ \\implies f'(x)=(0,\\ldots,0)^{T}\nf(x)=x^{T}Ax \\ \\implies f'(x)=(A+A^{T})x\n\n\n\\begin{gather*}\n(x+h)^{T}A(x+h)-x^{T}Ax=\\underline{x^{T}Ax}+x^{T}Ah+h^{T}Ax+h^{T}Ah-\\underline{x^{T}Ax}\\\\\nx^{T}Ah=(A^{T}x)^{T}h=h^{T}A^{T}x\\\\\nx^{T}Ah+h^{T}Ax=h^{T}(A^{T}+A)x\\\\\n|h^{T}Ah|\\le \\Vert h\\Vert_2 \\Vert Ah\\Vert_2\\le \\Vert h\\Vert_2^2\\Vert A\\Vert_2 \\tag*{(CBS)}\n\\end{gather*}"
+  },
+  {
+    "objectID": "etc/index.html#special-cases",
+    "href": "etc/index.html#special-cases",
+    "title": "etc/index",
+    "section": "special cases",
+    "text": "special cases\n\nf(x)=b\\cdot x \\ \\implies f(x)=b\nf(x)=c \\ \\implies f'(x)=[0;\\ldots;0]\nf(x)=x\\cdot Ax \\ \\implies f'(x)=(A+A^{T})x\n\n\n\\begin{gather*}\n(x+h)\\cdot A(x+h)-x\\cdot Ax=\\\\\n\\underline{x\\cdot Ax}+x\\cdot Ah+h\\cdot Ax+h\\cdot Ah-\\underline{x\\cdot Ax}=(*)\\\\\nx\\cdot Ah=A^{T}x\\cdot h\\\\\nh\\cdot Ax=Ax\\cdot h\\\\\n|h\\cdot Ah|\\le \\Vert h\\Vert_2 \\Vert Ah\\Vert_2\\le \\Vert h\\Vert_2^2\\Vert A\\Vert_2 \\tag*{(CBS)}\\\\\n(*)=(A+A^{T})x\\cdot h + h\\cdot Ah \\ \\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "etc/index.html#f-is-differentiable-at-x-1",
+    "href": "etc/index.html#f-is-differentiable-at-x-1",
+    "title": "etc/index",
+    "section": "f is differentiable at x",
+    "text": "f is differentiable at x\n\nif there is a A\\in {\\cal M}_{m\\times n}\n\n\n  \\frac{\\Vert f(x+h)-f(x)-Ah\\Vert}{\\Vert h\\Vert} \\xrightarrow{h\\to 0} 0\n\n\nA is unique. (by contradiction)\nA=J_f(x)\nf=(f_1;\\ldots;f_m)\nA=[\\nabla f_1(x)^{T};\\ldots; \\nabla f_m(x)^{T}]"
+  },
+  {
+    "objectID": "etc/index.html#special-case",
+    "href": "etc/index.html#special-case",
+    "title": "etc/index",
+    "section": "special case",
+    "text": "special case\n\nf:\\mathbb{R}^n\\to \\mathbb{R}\nf'(x):\\mathbb{R}^n\\to \\mathbb{R}^n\nf''(x)=H_f(x)=J_{f'}(x)=[f''_{ij}]"
+  },
+  {
+    "objectID": "optalg/egyebek/index.html",
+    "href": "optalg/egyebek/index.html",
+    "title": "optalg/egyebek",
+    "section": "",
+    "text": "armijo.m\n\n\n\n\n\n\n\ncircle.txt\n\n\n\n\n\n\n\ndrug.txt\n\n\n\n\n\n\n\ngyakLKN1.pdf\n\n\n\n\n\n\n\nidosor.txt\n\n\n\n\n\n\n\noptalgoritmusR.pdf\n\n\n\n\n\n\n\nLKN.txt\n\n\n\n\n\n\n\nOptgyak1.pdf\n\n\n\n\n\n\n\nautoreg.m\n\n\n\n\n\n\n\ncirc_lkn.m\n\n\n\n\n\n\n\ncirc_non11.m\n\n\n\n\n\n\n\ncirc_non11_lsq.m\n\n\n\n\n\n\n\ndrug.txt\n\n\n\n\n\n\n\nf10.m\n\n\n\n\n\n\n\nf3.m\n\n\n\n\n\n\n\nf4.m\n\n\n\n\n\n\n\nf5.m\n\n\n\n\n\n\n\ngyakLKN1.pdf\n\n\n\n\n\n\n\nhianyzo_jelek.m\n\n\n\n\n\n\n\nhiba12.m\n\n\n\n\n\n\n\nidosor.txt\n\n\n\n\n\n\n\nkepler.m\n\n\n\n\n\n\n\nlena.m\n\n\n\n\n\n\n\nlena512.pgm\n\n\n\n\n\n\n\nlsqnon7.m\n\n\n\n\n\n\n\nlsqnon8.m\n\n\n\n\n\n\n\noptalgoritmusR.pdf\n\n\n\n\n\n\n\npontok.csv\n\n\n\n\n\n\n\ntask01.pdf\n\n\n\n\n\n\n\ntask1.m\n\n\n\n\n\n\n\npontok200E.txt\n\n\n\n\n\n\n\ntask02.pdf\n\n\n\n\nNo matching items"
   }
 ]

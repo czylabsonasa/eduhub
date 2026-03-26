@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-03-26">
 
-<title>optalg – eduhub</title>
+<title>optalg/egyebek – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +24,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,9 +71,82 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-lista .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<link rel="stylesheet" href="../styles.css">
+    const options = {
+      valueNames: ['listing-filename',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      page: 18,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-filename","listing-file-modified"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-lista'] = new List('listing-lista', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">eduhub</span>
     </a>
   </div>
@@ -91,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -105,26 +180,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#egyebek" id="toc-egyebek" class="nav-link active" data-scroll-target="#egyebek">egyebek</a></li>
-  <li><a href="#gyök-keresés" id="toc-gyök-keresés" class="nav-link" data-scroll-target="#gyök-keresés">gyök-keresés</a></li>
-  <li><a href="#minimum-keresés" id="toc-minimum-keresés" class="nav-link" data-scroll-target="#minimum-keresés">minimum-keresés</a></li>
-  <li><a href="#gradiens-módszer" id="toc-gradiens-módszer" class="nav-link" data-scroll-target="#gradiens-módszer">gradiens-módszer</a></li>
-  <li><a href="#teszt-függvények" id="toc-teszt-függvények" class="nav-link" data-scroll-target="#teszt-függvények">teszt függvények</a></li>
-  <li><a href="#program-lista" id="toc-program-lista" class="nav-link" data-scroll-target="#program-lista">program lista</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">optalg</h1>
+<h1 class="title">optalg/egyebek</h1>
 </div>
 
 
@@ -147,26 +211,273 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="egyebek" class="level1">
-<h1><a href="egyebek/index.qmd" target="_blank">egyebek</a></h1>
-</section>
-<section id="gyök-keresés" class="level1">
-<h1><a href="../optalg/root.html" target="_blank">gyök-keresés</a></h1>
-</section>
-<section id="minimum-keresés" class="level1">
-<h1><a href="../optalg/minimum.html" target="_blank">minimum-keresés</a></h1>
-</section>
-<section id="gradiens-módszer" class="level1">
-<h1><a href="../optalg/gradiens.html" target="_blank">gradiens-módszer</a></h1>
-</section>
-<section id="teszt-függvények" class="level1">
-<h1><a href="../optalg/teszt_fv.html" target="_blank">teszt függvények</a></h1>
-</section>
-<section id="program-lista" class="level1">
-<h1><a href="../optalg/program_lista.html" target="_blank">program lista</a></h1>
+<div id="listing-lista" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1773900374000" data-listing-file-modified-sort="1773900374403" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/armijo.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">armijo.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-date-sort="1745306266000" data-listing-file-modified-sort="1745306266943" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/circle.txt" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">circle.txt</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/drug.txt" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">drug.txt</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-date-sort="1745306266000" data-listing-file-modified-sort="1745306266943" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/gyakLKN1.pdf" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">gyakLKN1.pdf</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-listing-date-sort="1745306266000" data-listing-file-modified-sort="1745306266943" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/idosor.txt" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">idosor.txt</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-listing-date-sort="1772654835000" data-listing-file-modified-sort="1772654835848" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/optalgoritmusR.pdf" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">optalgoritmusR.pdf</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/LKN.txt" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">LKN.txt</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="7" data-listing-date-sort="1745306266000" data-listing-file-modified-sort="1745306266771" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/Optgyak1.pdf" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">Optgyak1.pdf</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="8" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/autoreg.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">autoreg.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="9" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/circ_lkn.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">circ_lkn.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="10" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/circ_non11.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">circ_non11.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="11" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/circ_non11_lsq.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">circ_non11_lsq.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="12" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/drug.txt" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">drug.txt</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="13" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/f10.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">f10.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="14" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/f3.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">f3.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="15" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/f4.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">f4.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="16" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/f5.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">f5.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="17" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/gyakLKN1.pdf" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">gyakLKN1.pdf</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="18" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/hianyzo_jelek.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">hianyzo_jelek.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="19" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/hiba12.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">hiba12.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="20" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/idosor.txt" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">idosor.txt</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="21" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/kepler.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">kepler.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="22" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267023" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/lena.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">lena.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="23" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267027" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/lena512.pgm" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">lena512.pgm</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="24" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267027" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/lsqnon7.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">lsqnon7.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="25" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267027" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/lsqnon8.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">lsqnon8.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="26" data-listing-date-sort="1745306267000" data-listing-file-modified-sort="1745306267055" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/regi/optalgoritmusR.pdf" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">optalgoritmusR.pdf</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="27" data-listing-date-sort="1773324248000" data-listing-file-modified-sort="1773324248000" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/task1/pontok.csv" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">pontok.csv</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="28" data-listing-date-sort="1773324248000" data-listing-file-modified-sort="1773324248000" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/task1/task01.pdf" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">task01.pdf</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="29" data-listing-date-sort="1773333500000" data-listing-file-modified-sort="1773333500000" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/task1/task1.m" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">task1.m</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="30" data-listing-date-sort="1741850030000" data-listing-file-modified-sort="1741850030000" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/task2/pontok200E.txt" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">pontok200E.txt</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="31" data-listing-date-sort="1741850030000" data-listing-file-modified-sort="1741850030000" data-listing-date-modified-sort="NaN">
+<a href="../../optalg/egyebek/task2/task02.pdf" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-footer">
+<div class="card-filename listing-filename">task02.pdf</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+<nav id="lista-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
+</div>
 
 
-</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,0 +1,13 @@
+---
+title: "optalg/egyebek"
+listing:
+  id: lista
+  contents:
+    - "*"
+  type: table # Lehet 'default', 'grid' vagy 'table' is
+  fields: [title, filename] # Megadhatod, mi jelenjen meg
+---
+
+
+::: {#lista}
+:::
