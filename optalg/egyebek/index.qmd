@@ -3,9 +3,10 @@ title: "optalg/egyebek"
 listing:
   id: lista
   contents:
-    - "*"
-  type: table # Lehet 'default', 'grid' vagy 'table' is
-  fields: [title, filename] # Megadhatod, mi jelenjen meg
+    - "*.*"
+    - "task1/*"
+  type: grid # Lehet 'default', 'grid' vagy 'table' is
+  fields: [filename] # Megadhatod, mi jelenjen meg
 ---
 
 

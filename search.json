@@ -1,5 +1,47 @@
 [
   {
+    "objectID": "etc/index.html",
+    "href": "etc/index.html",
+    "title": "etc/index",
+    "section": "",
+    "text": "\\delta_{ij}=(i=j)\\ ?\\ 1\\ :\\ 0\nx\\cdot y := \\langle x,y\\rangle=\\sum x_k y_k=x^{T}y\n\nx\\cdot y=y\\cdot x\nx\\cdot Ay = A^{T}x\\cdot y\n\n[1,2,3] row\n[1;2;3] column, the members of \\mathbb{R}^n"
+  },
+  {
+    "objectID": "etc/index.html#f-is-differentiable-at-x",
+    "href": "etc/index.html#f-is-differentiable-at-x",
+    "title": "etc/index",
+    "section": "f is differentiable at x",
+    "text": "f is differentiable at x\n\nif there is a a\\in \\mathbb{R}^n\n\n\n  \\frac{\\vert f(x+h)-f(x)-a\\cdot h\\vert}{\\Vert h\\Vert} \\xrightarrow{h\\to 0} 0\n\n\na is unique. (by contradiction)\na=\\nabla f(x) or a=f'(x)"
+  },
+  {
+    "objectID": "etc/index.html#partial-derivative",
+    "href": "etc/index.html#partial-derivative",
+    "title": "etc/index",
+    "section": "partial derivative",
+    "text": "partial derivative\n\nk-th\ne_k=[\\delta_{1k};\\ldots;\\delta_{nk}] - the k-th unit vector\nif there is a a_k\\in \\mathbb{R}\n\n\n  \\frac{\\vert f(x+e_k h)-f(x)-a_k h \\vert}{\\vert h\\vert} \\xrightarrow{h\\to 0} 0\n\n\nf_{k}'(x)\nf is differentiable at x then \\nabla f(x)=[f_{1}';\\ldots;f_{k}']"
+  },
+  {
+    "objectID": "etc/index.html#special-cases",
+    "href": "etc/index.html#special-cases",
+    "title": "etc/index",
+    "section": "special cases",
+    "text": "special cases\n\nf(x)=b\\cdot x \\ \\implies f(x)=b\nf(x)=c \\ \\implies f'(x)=[0;\\ldots;0]\nf(x)=x\\cdot Ax \\ \\implies f'(x)=(A+A^{T})x\n\n\n\\begin{gather*}\n(x+h)\\cdot A(x+h)-x\\cdot Ax=\\\\\n\\underline{x\\cdot Ax}+x\\cdot Ah+h\\cdot Ax+h\\cdot Ah-\\underline{x\\cdot Ax}=(*)\\\\\nx\\cdot Ah=A^{T}x\\cdot h\\\\\nh\\cdot Ax=Ax\\cdot h\\\\\n|h\\cdot Ah|\\le \\Vert h\\Vert_2 \\Vert Ah\\Vert_2\\le \\Vert h\\Vert_2^2\\Vert A\\Vert_2 \\tag*{(CBS)}\\\\\n(*)=(A+A^{T})x\\cdot h + h\\cdot Ah \\ \\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "etc/index.html#f-is-differentiable-at-x-1",
+    "href": "etc/index.html#f-is-differentiable-at-x-1",
+    "title": "etc/index",
+    "section": "f is differentiable at x",
+    "text": "f is differentiable at x\n\nif there is a A\\in {\\cal M}_{m\\times n}\n\n\n  \\frac{\\Vert f(x+h)-f(x)-Ah\\Vert}{\\Vert h\\Vert} \\xrightarrow{h\\to 0} 0\n\n\nA is unique. (by contradiction)\nA=J_f(x)\nf=(f_1;\\ldots;f_m)\nA=[\\nabla f_1(x)^{T};\\ldots; \\nabla f_m(x)^{T}]"
+  },
+  {
+    "objectID": "etc/index.html#special-case",
+    "href": "etc/index.html#special-case",
+    "title": "etc/index",
+    "section": "special case",
+    "text": "special case\n\nf:\\mathbb{R}^n\\to \\mathbb{R}\nf'(x):\\mathbb{R}^n\\to \\mathbb{R}^n\nf''(x)=H_f(x)=J_{f'}(x)=[f''_{ij}]"
+  },
+  {
     "objectID": "matmer-II/index.html#ismétlés",
     "href": "matmer-II/index.html#ismétlés",
     "title": "matematika mérnököknek II",
@@ -12,6 +54,13 @@
     "title": "matematika mérnököknek II",
     "section": "differenciálegyenletek",
     "text": "differenciálegyenletek\n\nelsőrendű lineáris homogén"
+  },
+  {
+    "objectID": "matmer-II/index.html#egyben",
+    "href": "matmer-II/index.html#egyben",
+    "title": "matematika mérnököknek II",
+    "section": "egyben",
+    "text": "egyben"
   },
   {
     "objectID": "matmer-II/integ.html",
@@ -33,6 +82,48 @@
     "title": "eduhub",
     "section": "",
     "text": "numerical mathematics\n\n\napplied mathematics\n\n\nmatematika mérnököknek\n\n\noptalg\n\n\nalkmat/sajátérték\n\n\n\nliterature\n\nan online book by Tobin A. Driscoll and Richard J. Braun"
+  },
+  {
+    "objectID": "optalg/teszt_fv.html",
+    "href": "optalg/teszt_fv.html",
+    "title": "optalg/teszt függvények",
+    "section": "",
+    "text": "néhány teszt függvény\n\nBaran tanárnő fóliájából\n\n\n\n\n\n\n\nNonex^3+y^3-3x-3y\n\n\n\n\n\nf0=@(x,y) x.^3+y.^3-3*x-3*y;\nf=@(v) f0(v(1),v(2));\ndf0=@(x,y) [3*x.^2-3;3*y.^2-3];\ndf=@(v) df0(v(1),v(2));\nox=[1;1];\n\n\n\n\n\n\n\n\n\nNone10x^3+y^3-30x-3y\n\n\n\n\n\nf0=@(x,y) 10*x.^3+y.^3-30*x-3*y;\nf=@(v) f0(v(1),v(2));\ndf0=@(x,y) [30*x.^2-30;3*y.^2-3];\ndf=@(v) df0(v(1),v(2));\nox=[1;1];\n\n\n\n\n\n\n\n\n\nNonex^2+10y^2\n\n\n\n\n\nf0=@(x,y) x.^2+10*y.^2;\nf=@(v) f(v(1),v(2));\ndf0=@(x,y) [2*x;20*y];\ndf=@(v) df(v(1),v(2));\nox=[0;0];\n\n\n\n\n\n\n\n\n\nNoneRosenbrock 100(y-x^2)^2+(1-x)^2\n\n\n\n\n\nf0=@(x,y) 100*(y-x.^2).^2+(1-x).^2;\nf=@(v) f0(v(1),v(2));\ndf0=@(x,y) [-400*(y-x.^2).*x+2*(x-1); 200*(y-x.^2)];\ndf=@(v) df0(v(1),v(2));\nox=[1;1];"
+  },
+  {
+    "objectID": "optalg/gradiens.html",
+    "href": "optalg/gradiens.html",
+    "title": "optalg/gradiens módszer",
+    "section": "",
+    "text": "Nonetemplate\n\n\n\n\n\nclc; clear; clf;\nhold on;\n\nf0=;\nf=;\ndf0=;\ndf=;\nox=;\n\nxx=linspace();\nyy=linspace();\n[X,Y]=meshgrid(xx,yy);\n\nZ=f0(X,Y);\ncontour(X,Y,Z);\n\ntol=1e-6;\nmaxstep=50;\n\nx=;\n\ntrace=[x];\nfor it=1:maxstep\n\n  x1=;\n\n  trace=[trace;x1];\n\n  if norm(x-x1)&lt;tol || norm(df(x1))&lt;tol, break; end\n\nend\n\nplot(trace(1,:),trace(2,:),\"o-\");\nplot(ox(1),ox(2),\"X\");\n\nnorm_df=norm(df(trace(:,end)));\ntitle(sprintf(\"steps: %d df: %.4f\",it,norm_df));\n\nhold off;\n\n\n\n\nvariációk\n\nfix a\nteljes vonalmenti keresés (pl fminbnd)\nlecsengő a\nArmijo\nmomentum\nadagrad\nAdam"
+  },
+  {
+    "objectID": "optalg/program_lista.html",
+    "href": "optalg/program_lista.html",
+    "title": "optalg/program-lista",
+    "section": "",
+    "text": "felező\nNewton\nszelő\nközelítő derivált (1 változós)\nbrachistochrone\n\nrészletek\n\ngradiens template"
+  },
+  {
+    "objectID": "optalg/minimum.html",
+    "href": "optalg/minimum.html",
+    "title": "optalg/minimum-keresés",
+    "section": "",
+    "text": "matlab\n\nfminbnd\nfminunc\nfminsearch"
+  },
+  {
+    "objectID": "store/numint/index.html#concepts-draft",
+    "href": "store/numint/index.html#concepts-draft",
+    "title": "numerical integration",
+    "section": "concepts (draft)",
+    "text": "concepts (draft)"
+  },
+  {
+    "objectID": "store/etc.html",
+    "href": "store/etc.html",
+    "title": "mix",
+    "section": "",
+    "text": "mix\n\n\n\n\n\n\nNoneprod-der\n\n\n\n\n(fg)^{(n)}=\\sum_{k=0}^n \\binom{n}{k} f^{(k)}g^{(n-k)}\n\n\nf^{(k)} is the k-th derivative\n\n\n\n\n\n\n\n\n\nNoneder-1\n\n\n\n\nP(t)=(t-a)^n Q(t) \\ \\ \\implies \\begin{cases} P^{(n)}(a)=n!~ Q(a) \\\\ P^{(k)}(a)=0 & k&lt;n \\end{cases}\n\n\nby prod-der\n\n\n\n\n\n\n\n\n\nNonepoly-div\n\n\n\n\nA(t) = Q(t)B(t)+R(t)\\ \\ \\ \\ \\deg R&lt;\\deg B\n\n\nA and B are polynomials \\deg B&gt;0\nit is unique\neuclidean division for polynomials\n\n\n\n\n\n\n\n\n\nNonepoly-root\n\n\n\n\nif a non-zero P polynomial has n different roots then its degree is at least n.\n\nby poly-div, if P(t_1)=0 then P(t)=(t-t_1)P_1(t). (let’s repeat)\nP(t)=(t-t_1)(t-t_2)\\ldots (t-t_{n})P_{n}(t).\n\n(only) the zero polynomial has more roots than its degree."
   },
   {
     "objectID": "store/norms/index.html#concepts-draft",
@@ -154,123 +245,81 @@
     "text": "ill-conditioned\n\nif \\text{cond}(A)*b_{\\text{relative error}}\\ge 1 the system is called ill-conditioned\nit means that the absolute error in the solution can be as large as the true solution itself - it is bad."
   },
   {
-    "objectID": "store/linsys/index.html#concepts-draft",
-    "href": "store/linsys/index.html#concepts-draft",
-    "title": "systems of linear equations (SLE)",
-    "section": "concepts (draft)",
-    "text": "concepts (draft)"
-  },
-  {
-    "objectID": "store/linsys/index.html#exercises-draft",
-    "href": "store/linsys/index.html#exercises-draft",
-    "title": "systems of linear equations (SLE)",
-    "section": "exercises (draft)",
-    "text": "exercises (draft)"
-  },
-  {
-    "objectID": "store/linsys/lu_related.html",
-    "href": "store/linsys/lu_related.html",
-    "title": "linsys/lu_related",
+    "objectID": "store/interpol/Lagrange.html",
+    "href": "store/interpol/Lagrange.html",
+    "title": "interpolation/Lagrange",
     "section": "",
-    "text": "here, every mentioned matrix is invertible n\\times n, for a fixed n. (it is not neccessary to assume this everywhere, however)\nLT(UT) is a short lower(upper) triangle\nL(U)’s denote always LT(UT) matrices (with appropriate indexing,labeling)\n\n\n\n\n\ninvertible LT(UT) matrices have nonzeros in their main diagonal\nthe product of two LT(UT) matrices is LT(UT)\nthe i-th diagonal element of\n\nL^{(1)}L^{(2)} is l^{(1)}_{ii}l^{(2)}_{ii}\nU^{(1)}U^{(2)} is u^{(1)}_{ii}u^{(2)}_{ii}\n\nthe inverse of a LT(UT) matrix is a LT(UT) matrix\n\n\n\n\n\nif A is invertible and A=LU with unit-diagonal L then this factorization is unique.\n\nsuppose that we have A=L_{1}U_{1}=L_{2}U_{2}.\nL_{2}^{-1}L_{1}=U_{2}U_{1}^{-1}=D.\nD is a diagonal matrix, for it is LT and UT by lemma 2. and 4.\nd_{ii}=1 by lemma 3."
+    "text": "sketch\nwe will construct polynomials p_k with:\n\n\np_{k}(t_j)=\\delta_{kj}\\ \\ \\text{and}\\ \\ \\deg(p_{k})=n-1\n\n\nlet P_{k}(x)=\\prod_{j\\neq k} (x-t_{j}).\nset p_k(x)=\\frac{P_{k}(x)}{P_{k}(t_{k})}.\nset P=\\sum_{k=1}^n f_{k}p_{k}\n\n\n\n\n\nindirect P\\neq Q two interpolational polynomial\nP-Q has n different roots and its degree is at most n-1: P-Q must be zero"
   },
   {
-    "objectID": "store/linsys/lu_related.html#notes",
-    "href": "store/linsys/lu_related.html#notes",
-    "title": "linsys/lu_related",
+    "objectID": "store/interpol/Lagrange.html#existence",
+    "href": "store/interpol/Lagrange.html#existence",
+    "title": "interpolation/Lagrange",
     "section": "",
-    "text": "here, every mentioned matrix is invertible n\\times n, for a fixed n. (it is not neccessary to assume this everywhere, however)\nLT(UT) is a short lower(upper) triangle\nL(U)’s denote always LT(UT) matrices (with appropriate indexing,labeling)"
+    "text": "sketch\nwe will construct polynomials p_k with:\n\n\np_{k}(t_j)=\\delta_{kj}\\ \\ \\text{and}\\ \\ \\deg(p_{k})=n-1\n\n\nlet P_{k}(x)=\\prod_{j\\neq k} (x-t_{j}).\nset p_k(x)=\\frac{P_{k}(x)}{P_{k}(t_{k})}.\nset P=\\sum_{k=1}^n f_{k}p_{k}"
   },
   {
-    "objectID": "store/linsys/lu_related.html#lemmas",
-    "href": "store/linsys/lu_related.html#lemmas",
-    "title": "linsys/lu_related",
+    "objectID": "store/interpol/Lagrange.html#uniqueness",
+    "href": "store/interpol/Lagrange.html#uniqueness",
+    "title": "interpolation/Lagrange",
     "section": "",
-    "text": "invertible LT(UT) matrices have nonzeros in their main diagonal\nthe product of two LT(UT) matrices is LT(UT)\nthe i-th diagonal element of\n\nL^{(1)}L^{(2)} is l^{(1)}_{ii}l^{(2)}_{ii}\nU^{(1)}U^{(2)} is u^{(1)}_{ii}u^{(2)}_{ii}\n\nthe inverse of a LT(UT) matrix is a LT(UT) matrix"
+    "text": "indirect P\\neq Q two interpolational polynomial\nP-Q has n different roots and its degree is at most n-1: P-Q must be zero"
   },
   {
-    "objectID": "store/linsys/lu_related.html#proposition",
-    "href": "store/linsys/lu_related.html#proposition",
-    "title": "linsys/lu_related",
+    "objectID": "store/interpol/Lagrange.html#existence-1",
+    "href": "store/interpol/Lagrange.html#existence-1",
+    "title": "interpolation/Lagrange",
+    "section": "existence",
+    "text": "existence\n\nlet \\omega_{k}(t)=\\prod_{i=1}^k (t-t_i)\nstart with P_{1}(t)=f_1\nP_{k+1}(t)=P_{k}(t)+b_{k+1}\\omega_{k}(t)\n\nit is ok for the “old” points (as \\omega vanishes at them)\nP_{k+1}(t_{k+1})=f_{k+1}\nb_{k+1}=\\frac{f_{k+1}-P_{k}(t_{k+1})}{\\omega_{k}(t_{k+1})} and it is well defined and \\deg P_{k+1}\\le k"
+  },
+  {
+    "objectID": "store/interpol/Lagrange.html#uniqueness-1",
+    "href": "store/interpol/Lagrange.html#uniqueness-1",
+    "title": "interpolation/Lagrange",
+    "section": "uniqueness",
+    "text": "uniqueness\n\nsame as in the classical proof"
+  },
+  {
+    "objectID": "store/interpol/Lagrange.html#existence-and-uniqueness",
+    "href": "store/interpol/Lagrange.html#existence-and-uniqueness",
+    "title": "interpolation/Lagrange",
+    "section": "existence and uniqueness",
+    "text": "existence and uniqueness\n\nP(t)=\\sum_{k=0}^{n-1} x_{k} t^k\nP(t_k)=f_k\\ \\ k=1\\ldots n is an n \\times n linear system (Ax=f)\nif Ac=0 for some c, then by setting Q(t)=\\sum_{k=0}^{n-1} c_{k} t^k, Q(t) has n roots (the t’s are different!), but \\deg Q\\le n-1, consequently c=0 (see this).\nit means that A is invertible, that is the system is uniquely solvable."
+  },
+  {
+    "objectID": "store/interpol/Newton_dd.html",
+    "href": "store/interpol/Newton_dd.html",
+    "title": "interpolation/Newton-divided-difference",
     "section": "",
-    "text": "if A is invertible and A=LU with unit-diagonal L then this factorization is unique.\n\nsuppose that we have A=L_{1}U_{1}=L_{2}U_{2}.\nL_{2}^{-1}L_{1}=U_{2}U_{1}^{-1}=D.\nD is a diagonal matrix, for it is LT and UT by lemma 2. and 4.\nd_{ii}=1 by lemma 3."
+    "text": "polynom representations\n\nit is the most generic representation\n\n\n\\begin{gather*}\nP(t)=a_n(t-t_{n,1})\\ldots(t-t_{n,n})+a_{n-1}(t-t_{n-1,1})\\ldots(t-t_{n-1,n-1})+\\ldots+\\\\\na_2(t-t_{2,1})(t-t_{2,2})+a_1(t-t_{1,1})+a_0\n\\end{gather*}\n\n\nthe main coefficient is the same for each possible representation (why?)\n\n\n\nNeville-formula\n\nit tells us how the “larger” P_{1,2,\\ldots,k+1} polynomial depends on the “smaller” one P_{1,2,\\ldots,k} and P_{2,\\ldots,k+1}.\n\n\nP_{1,2,\\ldots,k+1}(t)=\\frac{1}{t_1-t_{k+1}}\n\\left|\n\\begin{array}{cc}\nP_{1,2,\\ldots,k}(t) & P_{2,3,\\ldots,k+1}(t)\\\\\nt-t_1 & t-t_{k+1}\n\\end{array}\n\\right|\n\n\nproof: evaluate at t_1 and at t_2,\\ldots,t_{k} and at t_{k+1} and use the Lagrange main theorem.\nit is also valid for [j+1,\\ldots, j+k+1] and [j+1,\\ldots, j+k] and [j+2,\\ldots, j+k+1] for each possible j\nlet A,B,C denote the main coefficient of the polynomials (in order). then\n\n\nA=\\frac{B-C}{t_1-t_{k+1}}\n\n\n\nthe scheme and the rule\n\nlet’s focus on the upper edge\nuse induction\n(base1): the f^{(0)} column contains the coefficients for the sub-problems: [1],[2],\\ldots,[n].\n\nwe could start the induction here\n\n(base2): the first computed column contains the main coefficients for each sub-problems: [1,2],[2,3],\\ldots,[n-1,n]. (these ar the slopes of the lines)\n\nit means that for 2-sized sub-problems the small triangles’ upper edges are the appropriate coefficients\nthe induction could be started from here too\n\n(step): consider the subproblem: [1,\\ldots,k+1] and the two child problems: [1,\\ldots,k] and [2,\\ldots,k+1].\n\non the one hand: P_{1,\\ldots,k+1}(t)=P_{1,\\ldots,k}(t)+A(t-t_1)\\ldots(t-t_k) for some C\non the other hand, from the Neville formula A=\\frac{B-C}{t_1-t_{k+1}} - in accordance with the rule used.\n\nthe lower edge polynomials/relations can be handled by reversing the order of the points."
   },
   {
-    "objectID": "store/linsys/lu_related.html#definition",
-    "href": "store/linsys/lu_related.html#definition",
-    "title": "linsys/lu_related",
-    "section": "definition",
-    "text": "definition\n\nstrictly diagonally dominant\na matrix A is called sdd if for each |a_{ii}| &gt; \\sum_{j\\neq i}|a_{ij}| for each i"
-  },
-  {
-    "objectID": "store/linsys/lu_related.html#proposition-1",
-    "href": "store/linsys/lu_related.html#proposition-1",
-    "title": "linsys/lu_related",
-    "section": "proposition",
-    "text": "proposition\n\nif A is sdd the A=LU\nthe key is to understand how this property is preserved during gaussian elimination.\nit is enough to consider two vectors\n\n\n\\begin{gather*}\nx\\ \\ \\text{with} \\ \\ \\ |x_1|&gt;\\sum_{i&gt;1} |x_{i}| \\\\\ny\\ \\ \\text{with} \\ \\ \\ |y_j|&gt;\\sum_{i\\neq j} |y_{i}| \\ \\ j&gt;i \\\\\n\\end{gather*}\n\n\nwe are going to show that the elimination step preserves the strictly dominant property\n\n\n\\begin{gather*}\n\\vert y_j - y_1 \\frac{x_j}{x_1} \\vert \\ge\n\\vert y_j\\vert - \\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert} = (1)\\\\\n%\n\\sum_{i\\neq j} \\vert y_i - y_1 \\frac{x_i}{x_1}\\vert \\le\n\\sum_{i\\neq j,i\\neq 1} \\vert y_i\\vert  + \\sum_{i\\neq j,i\\neq 1}\\vert y_1\\vert \\frac{\\vert x_i\\vert}{\\vert x_1\\vert} =\\\\\n%\n(2) + (3)+\\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert} - \\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert}=(4)\\\\\n%\n(3)+\\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert}=\n\\vert y_1\\vert \\frac{\\sum_{i\\neq 1} \\vert x_i\\vert}{\\vert x_1\\vert}&lt;\\vert y_1\\vert\\\\\n%\n(4)&lt;(2)+\\vert y_1 \\vert - \\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert}=\\\\\n%\n\\sum_{i\\neq j} \\vert y_i\\vert - \\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert}&lt;(1)\n\\end{gather*}"
-  },
-  {
-    "objectID": "store/linsys/lu_related.html#definition-1",
-    "href": "store/linsys/lu_related.html#definition-1",
-    "title": "linsys/lu_related",
-    "section": "definition",
-    "text": "definition\n\nin general minor is the determinant of a submatrix, where the same rows and columns are removed from the original matrix\nthe k-th leading principal minor of a n\\times n matrix A is det(B) where B is created by removing the last n-k rows and columns from A"
-  },
-  {
-    "objectID": "store/linsys/lu_related.html#proposition-2",
-    "href": "store/linsys/lu_related.html#proposition-2",
-    "title": "linsys/lu_related",
-    "section": "proposition",
-    "text": "proposition\n\nif each of leading principal minor is nonzero then A=LU\nwe cannot encounter zero in the main diagonal during the elimination because of the condition"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html",
-    "href": "store/linsys/concepts_draft.html",
-    "title": "linsys/concepts_draft",
+    "objectID": "store/linsys/lightsout.html",
+    "href": "store/linsys/lightsout.html",
+    "title": "the classic lights out puzzle",
     "section": "",
-    "text": "setting up an appropriate SLE is the hardest part of the problem solving…but here we only deal with the “how to solve it” part.\nour aim is to solve systems of linear equations (SLE’s)\nwe have m equations n variables, a cofficient matrix A and a right hand side b \n\\begin{gather*}\na_{11}x_{1}+\\ldots+a_{1n}x_{n} = b_{1}\\\\\na_{21}x_{1}+\\ldots+a_{2n}x_{n} = b_{2}\\\\\n\\vdots{}\\\\\na_{m1}x_{1}+\\ldots+a_{mn}x_{n} = b_{m}\\\\\n\\text{or}\\\\\nAx=b\\\\\n\\text{or}\\\\\nx_{1}a_{.1}+x_{2}a_{.2}+\\ldots+x_{n}a_{.n}=b\\\\\n\\end{gather*}\n\nhere by a_{.j} we mean the j-th column of A\nthe third form is the most expressive one\n\nit tells us that we are working in vector spaces\nit tells us that we are searching for a linear combination of the column vectors that is b and the solution for the system (if any) is coefficiant set of the combination.\nfrom linear algebra we know that we have three cases:\n\nwe cannot express b by means of the given system (0 solutions)\nwe can express b uniquely (1-solution)\nwe can express b in several different ways (\\infty-solutions)"
+    "text": "intro\n\nthink about the 5\\times 5 classical puzzle\nthe initial state of game is a flattened matrix : a zero-one vector (S)\nthe target state (T) is 25\\times 1 zero vector (but one can control it)\nfor each button we can assign a specific zero-one vector (a_{k})\nby pressing a button: we add a corresponding 25\\times 1 zero-one vector to the current state vector\nit is clear that we don’t need to press a button more than time.\nmod(2) arithmetic used to solve the system: x_k\\in \\{0,1\\}\n\n\\begin{align*}\nS + x_1 a_1 + \\ldots + x_{25} a_{25} &= T\\\\\nx_1 a_1 + \\ldots + x_{25} a_{25} &= S+T\\\\\n\\end{align*}\n\n\nmatlab\n\nwe have mod(2) arithmetic: xor (for logical/boolean values)\n\n\n% lights out puzzle by linear algebra\n% one among several different aproaches\n% it can be shortened by using specific matlab features (true,false)\n% the sizes a wired in constants\n% columnwise flattening used! matrix -&gt; matrix(:)\n% in a mod(2) system the elimination is a simple xor() operation:\n% aj=aj-1*ai is the only possible elimination operation and -1 is 1 (mod(2)).\n\nclc; clear;\n\n% initial state\n% these are puzzles from the applet in the link\n%\n% puzzle 1\n% S=zeros(5,5); \n% S(3,:)=[1,0,1,0,1]; \n% S=logical(S);\n%\n% puzzle 2\n% S=zeros(5,5); \n% S([1,2,4,5],:)=repmat([1,0,1,0,1],4,1); \n% S=logical(S);\n%\n% puzzle 3\nS=zeros(5,5); \nS([2,3,4],:)=repmat([1,1,0,1,1],3,1); \nS([1,5],:)=repmat([0,1,0,1,0],2,1); \nS=logical(S);\n\n\nS\nS=S(:);\n% target state (zero here)\nT=zeros(5,5); T=logical(T);\n%T\nT=T(:);\n\nA=zeros(25,25); A=logical(A);\n\n% the button vectors, that is the coefficient matrix\n% the column-wise flattening is heavily used\nfor j=1:5\n   for i=1:5\n      k=i+(j-1)*5; % column-wise flattening\n      % fprintf(\"%d %d %d\\n\",i,j,k);\n      A(k,k)=1;\n      % neighbours in the column\n      if i&gt;1, A(k-1,k)=1;end\n      if i&lt;5, A(k+1,k)=1;end\n      % neighbours in the row\n      if j&gt;1, A(k-5,k)=1;end\n      if j&lt;5, A(k+5,k)=1;end\n   end\nend\nA\n\n% here comes the actual gaussian elimination\n% for simplicity we'll also use backward elimination (Gauss-Jordan)\n% this way no need to extract the solution separately\n\n% extended matrix:\nA=[A, xor(S,T)];\n% forward elimination\nfor i=1:25\n   nonzeros=find(A(i:end,i));\n   if isempty(nonzeros)\n      continue;\n   else\n      % relative index!!!\n      k=nonzeros(1);\n      if k&gt;1\n         A([i,i+k-1],:)=A([i+k-1,i],:);\n      end\n   end\n   for j=(i+1):25\n      if A(j,i)\n         A(j,:)=xor(A(j,:),A(i,:));\n      end\n   end\nend\nA\n% backward elimination\nfor i=25:-1:1\n   if not(A(i,i)), continue; end\n   for j=(i-1):-1:1\n      if A(j,i)\n         A(j,:)=xor(A(j,:),A(i,:));\n      end\n   end\nend\n\nA\n\n% transforming back the matrix and the right hand side\n% the b became x\nx=A(:,26);\nA=A(1:25,:);\n\n% final check (impossibility)\n% full zero row in A but a non-zero in x (in the same row)\n% the classical is always solvable, but one can set different flipping rules\n% for the buttons...\n\n% we apply here row-wise summation -&gt; look for the 2. parameter in sum call\nif any(x&gt;sum(A,2))\n   disp(\"we failed :-(\");\n   return;\nend\n\n% reshaping to get the human readable locations of the used buttons\nreshape(x,5,5)"
   },
   {
-    "objectID": "store/linsys/concepts_draft.html#matlab",
-    "href": "store/linsys/concepts_draft.html#matlab",
-    "title": "linsys/concepts_draft",
-    "section": "matlab",
-    "text": "matlab\n\nthe function rref can and should be used. it also performs the backward elimination steps and the rows are normalized."
+    "objectID": "store/linsys/exercises_draft.html",
+    "href": "store/linsys/exercises_draft.html",
+    "title": "linsys/exercises_draft",
+    "section": "",
+    "text": "determinant, inverse, conditional\n\ncompute the deterinants for the matrices below!\ncompute the inverses for the matrices below! (if exist)\ncompute the \\text{cond}_{1} and \\text{cond}_{\\infty} for the matrices below!\nverify your result with matlab!\n\nA=\\left[\\begin{array}{ccc}\n-1 &  0 &  0 \\\\\n  1 & -1 &  0 \\\\\n  2 & -2 &  6 \\\\\n\\end{array}\\right]\n\n\nA=\\left[\\begin{array}{ccc}\n  2 &  4 &  2 \\\\\n  0 & -1 & -3 \\\\\n  0 &  0 & -7 \\\\\n\\end{array}\\right]\n\n\nA=\\left[\\begin{array}{ccc}\n  3 &  0 &  0 \\\\\n  0 &  4 &  0 \\\\\n  0 &  0 &  3 \\\\\n\\end{array}\\right]\n\n\nA=\\left[\\begin{array}{ccc}\n  0 &  0 &  3 \\\\\n  0 &  4 &  0 \\\\\n  3 &  0 &  0 \\\\\n\\end{array}\\right]\n\n\n\n\nlinear systems\n\nsolve the Ax=b for the matrices of the previous section, where\n\nb=\\left[\\begin{array}{c}\n  0\\\\\n  0\\\\\n  0\\\\\n\\end{array}\\right]\n\n\nb=\\left[\\begin{array}{c}\n  0\\\\\n  0\\\\\n  \\frac{1}{100}\\\\\n\\end{array}\\right]\n\n\nb=\\left[\\begin{array}{c}\n  -1\\\\\n  2\\\\\n  3\\\\\n\\end{array}\\right]\n\n\n\n\nmixed\n\nif A*X=E then what can we say about X*A?"
   },
   {
-    "objectID": "store/linsys/concepts_draft.html#example",
-    "href": "store/linsys/concepts_draft.html#example",
-    "title": "linsys/concepts_draft",
-    "section": "example",
-    "text": "example\n\nfor the computation below this program is used.\n\n\n\n\n\n\n\nNoneclick to open\n\n\n\n\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];\n&gt;&gt; [L,U]=mylu(A)\n\nphase 0:\n\n   1   0   0   4   1  -1\n   0   1   0  -1   8   0\n   0   0   1   1   1   4\n\npress a key to continue\n\n\nphase 1:\n\n  sub-phase 2:\n\n    subtract -1/4 times the 1. row from the 2. row\n\n     1     0     0     4     1    -1\n  -1/4     1     0     0  33/4  -1/4\n     0     0     1     1     1     4\n\npress a key to continue\n\n\n  sub-phase 3:\n\n    subtract 1/4 times the 1. row from the 3. row\n\n     1     0     0     4     1    -1\n  -1/4     1     0     0  33/4  -1/4\n   1/4     0     1     0   3/4  17/4\n\npress a key to continue\n\n\nphase 2:\n\n  sub-phase 3:\n\n    subtract 1/11 times the 2. row from the 3. row\n\n      1      0      0      4      1     -1\n   -1/4      1      0      0   33/4   -1/4\n    1/4   1/11      1      0      0  47/11\n\npress a key to continue\n\n\nL =\n\n       1              0              0       \n      -1/4            1              0       \n       1/4            1/11           1       \n\n\nU =\n\n       4              1             -1       \n       0             33/4           -1/4     \n       0              0             47/11"
+    "objectID": "store/linsys/linalg.html",
+    "href": "store/linsys/linalg.html",
+    "title": "linsys/linalg_def",
+    "section": "",
+    "text": "lpm\n\nthe k-th leading principal minor of a n\\times n matrix A is det(B) where B is created by removing the last n-k rows and columns from A\n\n\n\ndd\n\ndiagonally dominant\na matrix A is called dd if for each |a_{ii}| \\ge \\sum_{j\\neq q}|a_{ij}| for each i\nstrictly dd: change \\ge to &gt;\nsometimes they define it for column absulte sums"
   },
   {
-    "objectID": "store/linsys/concepts_draft.html#matlab-1",
-    "href": "store/linsys/concepts_draft.html#matlab-1",
-    "title": "linsys/concepts_draft",
-    "section": "matlab",
-    "text": "matlab\n\nthe function call [L,U,P]=lu(A) will create a PLU factorization for the parameter matrix. Almost always row-swaps will be performed.\nthe backslash (\\) operator is a built-in for solving linear systems.\n\n\n\n\n\n\n\nNoneclick to open\n\n\n\n\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];b=[1;2;4];\n&gt;&gt; x=A\\b;\n&gt;&gt; x\n\nx =\n\n    0.3830\n    0.2979\n    0.8298\n\n&gt;&gt; A*x\n\nans =\n\n    1.0000\n    2.0000\n    4.0000\n\n\n\n\nit is important that the \\ can return a non-solution. It tries to find the best possible answer and if there is no solution then it tries to minimize \\Vert Ax - b\\Vert_{2} (least square optimal solution):\n\n\n\n\n\n\n\nNoneclick to open\n\n\n\n\n\n&gt;&gt; A=[1 0; 2 3; 0 1]; b=[6;3;0];\n&gt;&gt; x=A\\b\n\nx =\n\n    4.7143\n   -1.9286\n\n&gt;&gt; A*x\n\nans =\n\n    4.7143\n    3.6429\n   -1.9286\n\n\n&gt;&gt; % we will learn we this form used:\n&gt;&gt; norm(A'*A*x - A'*b)\n\nans =\n\n   5.0243e-15"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#determinant",
-    "href": "store/linsys/concepts_draft.html#determinant",
-    "title": "linsys/concepts_draft",
-    "section": "determinant",
-    "text": "determinant\n\nassuming that no row multiplications were used, just multiply together the diagonal elements of U and take its negative if odd number of row swaps were used.\nfor example the determinant of the coefficient matrix of Listing 1 is : -12 (why?)"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#rank",
-    "href": "store/linsys/concepts_draft.html#rank",
-    "title": "linsys/concepts_draft",
-    "section": "rank",
-    "text": "rank\n\nthat is: the dimension of the subspace generated by the column-vectors of A\ncount the number of non-zero elements in the main diagonal of U\nfor example the rank of the coefficient matrix of Listing 3 is : 3 (why?)"
-  },
-  {
-    "objectID": "store/linsys/concepts_draft.html#classic-lights-out-puzzle",
-    "href": "store/linsys/concepts_draft.html#classic-lights-out-puzzle",
-    "title": "linsys/concepts_draft",
-    "section": "classic lights out puzzle",
-    "text": "classic lights out puzzle\n\nsee here\nlet’s develop a linear algebraic solution!"
+    "objectID": "store/gettingmatlab.html",
+    "href": "store/gettingmatlab.html",
+    "title": "getting matlab",
+    "section": "",
+    "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is or online usage is possible after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
   },
   {
     "objectID": "store/leastsquares/index.html#concepts-draft",
@@ -476,32 +525,270 @@
     "text": "matlab\n\nfor polynomial fitting the polyfit, polyval functions are used.\nthe polynomials in matlab represented by a vector, the main coefficient is the first, the constant is the last element - the are represented by decreasing degree coefficients\nthe form is classical/traditional (as there are other forms too) \n\\begin{align*}\n\\text{vector:}& \\ \\ [p_{n-1},\\ldots,p_0]\\\\\n\\text{polynomial:}& \\ \\ p_{n-1}x^{n-1}+p_{n-2}x^{n-2}+\\ldots+p_{1}x+p_0\\\\\n\\end{align*}"
   },
   {
-    "objectID": "store/gettingmatlab.html",
-    "href": "store/gettingmatlab.html",
-    "title": "getting matlab",
+    "objectID": "store/leastsquares/exercises_draft.html",
+    "href": "store/leastsquares/exercises_draft.html",
+    "title": "leastsquares/exercises_draft",
     "section": "",
-    "text": "matlab is a commercial (non-free) software\nfor the students/staff of our university local installation is or online usage is possible after registration\njust follow this link\nfor the registration you should use your unideb related e-mail!"
+    "text": "Noneex-1\n\n\n\n\n\nDetermine the best fitting quadratic polynomial for the data\nt=[2.1  2.2  2.3  2.3  2.5  2.6  2.8  2.9];\nf=[2.5  2  2.5  2.7  3  4  5.4  7];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-2\n\n\n\n\n\nDetermine the best fitting line for the data\nt=[1  1.2  1.4  1.4  1.5  1.7  1.9  2];\nf=[6.2  7  8  7.9  8.4  9.2  10  10.6];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-3\n\n\n\n\n\nDetermine the best fitting cubic polynomial for the data\nt=[0.5  0.8  1.1  1.3  1.5  1.7  1.9  2.1  2.3];\nf=[2.5  2.3  1.8  1.3  0.9  0.4  0.1  -0.05  -0.01];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-4\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a = \\frac{b}{t}\n\nt=[1  1.2  1.4  1.4  1.5  1.7  1.9  2  2.1  2.2];\nf=[4.2  3.8  3.4  3.3  3.3  3  2.8  2.8  2.75  2.7];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-5\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a\\sin(t)+b\\sin(2t)+c\\sin(3t)\n\nfor the data\nt=[0.1 0.5 1.2 1.5 2 2.1 2.4  3  3.2 3.4  3.8  4  4.2  4.6  5];\nf=[1 4.1 3 1 -1.5 -1.6 -1.7  -0.4  0.1 0.7  1.6  1.8  1.6  0.2  -2.5];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-6\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a+b\\log(t)\n\nfor the data\nt=[0.1  0.5  1.2  1.5  2  2.1  2.4  3  3.2];\nf=[-0.6  1.5  2.5  2.9  3.2  3.3  3.5  3.8  3.9];\nCreate an appropriate plot!"
   },
   {
-    "objectID": "store/linsys/linalg.html",
-    "href": "store/linsys/linalg.html",
-    "title": "linsys/linalg_def",
+    "objectID": "store/leastsquares/scripts.html",
+    "href": "store/leastsquares/scripts.html",
+    "title": "leastsquares/scripts",
     "section": "",
-    "text": "lpm\n\nthe k-th leading principal minor of a n\\times n matrix A is det(B) where B is created by removing the last n-k rows and columns from A\n\n\n\ndd\n\ndiagonally dominant\na matrix A is called dd if for each |a_{ii}| \\ge \\sum_{j\\neq q}|a_{ij}| for each i\nstrictly dd: change \\ge to &gt;\nsometimes they define it for column absulte sums"
+    "text": "Nonepeter watertank\n\n\n\n\n\n\n% Peter - watertank - solution\nclc; clf; clear;\ndelete peter_water_solution.txt;\ndiary peter_water_solution.txt;\n\nhold on;\n\nt=0:2:12;\nf=[3,4,5,5.5,6.5,7,8];\n\n% we are also examine the rref\n% transforming them to a column vector\nt=t(:); f=f(:);\n% build the gaussian equation\nA=[ones(size(t)), t];\nfprintf(\"- the rref of the gaussian normal equation:\\n\\n\")\ndisp(rref([A'*A, A'*f]))\nfprintf(\"\\n\");\n\n\n\np=polyfit(t,f,1);\n% we are searching the line in b+at form\na=p(1); b=p(2);\n\nplot(t,f,\"*\",\"MarkerSize\",8);\n% saveas(gca(),\"peter_water_data.png\",\"png\");\n% return;\n\nplot([-1,13],polyval(p,[-1,13]),\"r\",\"LineWidth\",1);\n\nlegend([\"data points\",\"the best fitting line\"],\"Location\",\"southeast\");\naxis([-1,13,2,9]);\n\nsaveas(gca(),\"peter_water_solution.png\",\"png\");\n\nfprintf(\"- the best line is: %.4f + %.4f*t\\n\",b,a);\nfprintf(\"- at t=20 the height of the water is: %.4f + %.4f*20 = %.4f\\n\",b,a,polyval(p,20));\nfprintf(\"- the tank will be full at t=(50-%.4f)/%.4f = %.4f\\n\",b,a,(50-b)/a);\nfprintf(\"- the tank was empty at t=(0-%.4f)/%.4f = %.4f\\n\",b,a,(0-b)/a);\n\n\nhold off;\n\ndiary off;\n\n\n\n\n\n\n\n\n\n\nNonepeter acceleration\n\n\n\n\n\n\n% Peter - accel - solution\nclc; clf; clear;\n\ndelete peter_acc_solution.txt;\ndiary peter_acc_solution.txt;\n\nhold on;\n\nrng(2*22*22);\n\nt=0:2:12;\nacc=2.22;\nf=acc/2*t.^2+t.*datasample(-10:10,length(t))/12;\nf=round(f,2);\nf(1)=0;\n\n\n% f\n% return\n\n% we are also examine the rref\n% transforming them to a column vector\nt=t(:); f=f(:);\n% build the gaussian equation\nA=[t.^2];\nfprintf(\"- the rref of the gaussian normal equation:\\n\\n\")\ndisp(rref([A'*A, A'*f]))\nfprintf(\"\\n\");\n\n% also using the backslash to solve the system\nx=(A'*A)\\(A'*f);\n\n% we are searching the in s+a/2*t^2 form\na=2*x(1);\n\nplot(t,f,\"*\",\"MarkerSize\",8);\n% we need more points to plot a nice parabola\nxx=linspace(-1,13);\nplot(xx,a/2*xx.^2,\"r\",\"LineWidth\",1);\n\nlegend([\"data points\",\"the best fitting function\"],\"Location\",\"southeast\");\naxis([-1,13,-inf,inf]);\n\nsaveas(gca(),\"peter_acc_solution.png\",\"png\");\n\nfprintf(\"- the best function is: %.4f/2*t^2\\n\",a);\nfprintf(\"- at t=13 the position will be x=%.4f/2*13^2 = %.4f\\n\", a,a/2*13^2);\nfprintf(\"- the position x=1000 will be reached at t=%.4f\\n\",sqrt(2*1000/a));\nfprintf(\"- the acceleration is a=%.4f\\n\",a);\n\n\nhold off;\ndiary off;\n\n\n\n\n\n\n\n\n\n\nNonemean temperature\n\n\n\n\n\n\n% Budapest - temp - solution\nclc; clf; clear;\ndelete mean_temp_solution.txt;\ndiary mean_temp_solution.txt;\n\nhold on;\n\nt=[15 46 74 105 135 166 196 227 258 288 319 349];\nf=[ -1.7 0.1 5.2 10.3 15.8 18.9 21.1 20.3 16.1 10.2 4.2 0.5];\n\n% we are also examine the rref\n% transforming them to a column vector\nt=t(:); f=f(:);\nfprintf(\"- the rref of the gaussian normal equation:\\n\\n\")\n% build the gaussian equation\nA=[ones(size(t)), cos(2*pi*(t-14)/365)];\ndisp(rref([A'*A, A'*f]))\nfprintf(\"\\n\");\n\n\nplot(t,f,\"*\",\"MarkerSize\",8);\n% saveas(gca(),\"mean_temp.png\",\"png\");\n% return;\n\nx=(A'*A)\\(A'*f);\n\nxx=linspace(0,365,200);\nyy=x(1)+x(2)*cos(2*pi*(xx-14)/365);\n\nplot(xx,yy,\"r\",\"LineWidth\",1);\n\nlegend([\"data points\",\"the best fitting function\"],\"Location\",\"south\");\n%axis([-1,13,2,9]);\n\nsaveas(gca(),\"mean_temp_solution.png\",\"png\");\n\nfprintf(\"- the best parameters: %.4f, %.4f*t\\n\",x(1), x(2));\nfprintf(\"- the best model: %.4f + (%.4f) cos(2*pi*(t-14)/365) \",x(1), x(2));\n\n\nhold off;\n\ndiary off;\n\n\n\n\n\n\n\n\n\n\nNonecircle\n\n\n\n\n\n\nclc; clf; clear;\n\nrng(222);\n\nhold on;\naxis equal;\n\n% reconstruct circle from noisy points\n\n% random data generation\nr=3;\ncx=2;\ncy=22;\n\n\nfi0=linspace(0,2*pi,100); fi0=fi0(:);\n% some interval of angles is completely missing\nfi1=datasample(fi0(1:75),44); \nr1=3+0.2*randn(size(fi1));\n\n\nx=r1.*cos(fi1)+cx;\ny=r1.*sin(fi1)+cy;\n\nccx=mean(x)\nccy=mean(y)\nrr=mean(sqrt((ccx-x).^2+(ccy-y).^2))\n\n\nplot(x,y,\"*\",\"MarkerSize\",4);\n% title(\"the noisy circle points\");\n% saveas(gca(),\"circle_data.png\",\"png\");\n% return;\n\n\nA=[ones(size(x)),2*x,2*y];\nb=x.^2+y.^2;\nest=(A'*A)\\(A'*b);\nCx=est(2);\nCy=est(3);\nR=sqrt(est(1)+(Cx^2+Cy^2));\n\nX=R*cos(fi0)+Cx;\nY=R*sin(fi0)+Cy;\nplot(X,Y);\ntitle(sprintf(\"the best circle\\n\")+...\n   sprintf(\"cx cy r\\n\")+...\n   sprintf(\"%.3f %.3f %.3f\\n%.3f %.3f %.3f\\n\",cx,cy,r,Cx,Cy,R));\n\n\nsaveas(gca(),\"circle_best.png\",\"png\");"
   },
   {
-    "objectID": "store/linsys/exercises_draft.html",
-    "href": "store/linsys/exercises_draft.html",
-    "title": "linsys/exercises_draft",
+    "objectID": "store/linsys/concepts_draft.html",
+    "href": "store/linsys/concepts_draft.html",
+    "title": "linsys/concepts_draft",
     "section": "",
-    "text": "determinant, inverse, conditional\n\ncompute the deterinants for the matrices below!\ncompute the inverses for the matrices below! (if exist)\ncompute the \\text{cond}_{1} and \\text{cond}_{\\infty} for the matrices below!\nverify your result with matlab!\n\nA=\\left[\\begin{array}{ccc}\n-1 &  0 &  0 \\\\\n  1 & -1 &  0 \\\\\n  2 & -2 &  6 \\\\\n\\end{array}\\right]\n\n\nA=\\left[\\begin{array}{ccc}\n  2 &  4 &  2 \\\\\n  0 & -1 & -3 \\\\\n  0 &  0 & -7 \\\\\n\\end{array}\\right]\n\n\nA=\\left[\\begin{array}{ccc}\n  3 &  0 &  0 \\\\\n  0 &  4 &  0 \\\\\n  0 &  0 &  3 \\\\\n\\end{array}\\right]\n\n\nA=\\left[\\begin{array}{ccc}\n  0 &  0 &  3 \\\\\n  0 &  4 &  0 \\\\\n  3 &  0 &  0 \\\\\n\\end{array}\\right]\n\n\n\n\nlinear systems\n\nsolve the Ax=b for the matrices of the previous section, where\n\nb=\\left[\\begin{array}{c}\n  0\\\\\n  0\\\\\n  0\\\\\n\\end{array}\\right]\n\n\nb=\\left[\\begin{array}{c}\n  0\\\\\n  0\\\\\n  \\frac{1}{100}\\\\\n\\end{array}\\right]\n\n\nb=\\left[\\begin{array}{c}\n  -1\\\\\n  2\\\\\n  3\\\\\n\\end{array}\\right]\n\n\n\n\nmixed\n\nif A*X=E then what can we say about X*A?"
+    "text": "setting up an appropriate SLE is the hardest part of the problem solving…but here we only deal with the “how to solve it” part.\nour aim is to solve systems of linear equations (SLE’s)\nwe have m equations n variables, a cofficient matrix A and a right hand side b \n\\begin{gather*}\na_{11}x_{1}+\\ldots+a_{1n}x_{n} = b_{1}\\\\\na_{21}x_{1}+\\ldots+a_{2n}x_{n} = b_{2}\\\\\n\\vdots{}\\\\\na_{m1}x_{1}+\\ldots+a_{mn}x_{n} = b_{m}\\\\\n\\text{or}\\\\\nAx=b\\\\\n\\text{or}\\\\\nx_{1}a_{.1}+x_{2}a_{.2}+\\ldots+x_{n}a_{.n}=b\\\\\n\\end{gather*}\n\nhere by a_{.j} we mean the j-th column of A\nthe third form is the most expressive one\n\nit tells us that we are working in vector spaces\nit tells us that we are searching for a linear combination of the column vectors that is b and the solution for the system (if any) is coefficiant set of the combination.\nfrom linear algebra we know that we have three cases:\n\nwe cannot express b by means of the given system (0 solutions)\nwe can express b uniquely (1-solution)\nwe can express b in several different ways (\\infty-solutions)"
   },
   {
-    "objectID": "store/linsys/lightsout.html",
-    "href": "store/linsys/lightsout.html",
-    "title": "the classic lights out puzzle",
+    "objectID": "store/linsys/concepts_draft.html#matlab",
+    "href": "store/linsys/concepts_draft.html#matlab",
+    "title": "linsys/concepts_draft",
+    "section": "matlab",
+    "text": "matlab\n\nthe function rref can and should be used. it also performs the backward elimination steps and the rows are normalized."
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#example",
+    "href": "store/linsys/concepts_draft.html#example",
+    "title": "linsys/concepts_draft",
+    "section": "example",
+    "text": "example\n\nfor the computation below this program is used.\n\n\n\n\n\n\n\nNoneclick to open\n\n\n\n\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];\n&gt;&gt; [L,U]=mylu(A)\n\nphase 0:\n\n   1   0   0   4   1  -1\n   0   1   0  -1   8   0\n   0   0   1   1   1   4\n\npress a key to continue\n\n\nphase 1:\n\n  sub-phase 2:\n\n    subtract -1/4 times the 1. row from the 2. row\n\n     1     0     0     4     1    -1\n  -1/4     1     0     0  33/4  -1/4\n     0     0     1     1     1     4\n\npress a key to continue\n\n\n  sub-phase 3:\n\n    subtract 1/4 times the 1. row from the 3. row\n\n     1     0     0     4     1    -1\n  -1/4     1     0     0  33/4  -1/4\n   1/4     0     1     0   3/4  17/4\n\npress a key to continue\n\n\nphase 2:\n\n  sub-phase 3:\n\n    subtract 1/11 times the 2. row from the 3. row\n\n      1      0      0      4      1     -1\n   -1/4      1      0      0   33/4   -1/4\n    1/4   1/11      1      0      0  47/11\n\npress a key to continue\n\n\nL =\n\n       1              0              0       \n      -1/4            1              0       \n       1/4            1/11           1       \n\n\nU =\n\n       4              1             -1       \n       0             33/4           -1/4     \n       0              0             47/11"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#matlab-1",
+    "href": "store/linsys/concepts_draft.html#matlab-1",
+    "title": "linsys/concepts_draft",
+    "section": "matlab",
+    "text": "matlab\n\nthe function call [L,U,P]=lu(A) will create a PLU factorization for the parameter matrix. Almost always row-swaps will be performed.\nthe backslash (\\) operator is a built-in for solving linear systems.\n\n\n\n\n\n\n\nNoneclick to open\n\n\n\n\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];b=[1;2;4];\n&gt;&gt; x=A\\b;\n&gt;&gt; x\n\nx =\n\n    0.3830\n    0.2979\n    0.8298\n\n&gt;&gt; A*x\n\nans =\n\n    1.0000\n    2.0000\n    4.0000\n\n\n\n\nit is important that the \\ can return a non-solution. It tries to find the best possible answer and if there is no solution then it tries to minimize \\Vert Ax - b\\Vert_{2} (least square optimal solution):\n\n\n\n\n\n\n\nNoneclick to open\n\n\n\n\n\n&gt;&gt; A=[1 0; 2 3; 0 1]; b=[6;3;0];\n&gt;&gt; x=A\\b\n\nx =\n\n    4.7143\n   -1.9286\n\n&gt;&gt; A*x\n\nans =\n\n    4.7143\n    3.6429\n   -1.9286\n\n\n&gt;&gt; % we will learn we this form used:\n&gt;&gt; norm(A'*A*x - A'*b)\n\nans =\n\n   5.0243e-15"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#determinant",
+    "href": "store/linsys/concepts_draft.html#determinant",
+    "title": "linsys/concepts_draft",
+    "section": "determinant",
+    "text": "determinant\n\nassuming that no row multiplications were used, just multiply together the diagonal elements of U and take its negative if odd number of row swaps were used.\nfor example the determinant of the coefficient matrix of Listing 1 is : -12 (why?)"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#rank",
+    "href": "store/linsys/concepts_draft.html#rank",
+    "title": "linsys/concepts_draft",
+    "section": "rank",
+    "text": "rank\n\nthat is: the dimension of the subspace generated by the column-vectors of A\ncount the number of non-zero elements in the main diagonal of U\nfor example the rank of the coefficient matrix of Listing 3 is : 3 (why?)"
+  },
+  {
+    "objectID": "store/linsys/concepts_draft.html#classic-lights-out-puzzle",
+    "href": "store/linsys/concepts_draft.html#classic-lights-out-puzzle",
+    "title": "linsys/concepts_draft",
+    "section": "classic lights out puzzle",
+    "text": "classic lights out puzzle\n\nsee here\nlet’s develop a linear algebraic solution!"
+  },
+  {
+    "objectID": "store/linsys/lu_related.html",
+    "href": "store/linsys/lu_related.html",
+    "title": "linsys/lu_related",
     "section": "",
-    "text": "intro\n\nthink about the 5\\times 5 classical puzzle\nthe initial state of game is a flattened matrix : a zero-one vector (S)\nthe target state (T) is 25\\times 1 zero vector (but one can control it)\nfor each button we can assign a specific zero-one vector (a_{k})\nby pressing a button: we add a corresponding 25\\times 1 zero-one vector to the current state vector\nit is clear that we don’t need to press a button more than time.\nmod(2) arithmetic used to solve the system: x_k\\in \\{0,1\\}\n\n\\begin{align*}\nS + x_1 a_1 + \\ldots + x_{25} a_{25} &= T\\\\\nx_1 a_1 + \\ldots + x_{25} a_{25} &= S+T\\\\\n\\end{align*}\n\n\nmatlab\n\nwe have mod(2) arithmetic: xor (for logical/boolean values)\n\n\n% lights out puzzle by linear algebra\n% one among several different aproaches\n% it can be shortened by using specific matlab features (true,false)\n% the sizes a wired in constants\n% columnwise flattening used! matrix -&gt; matrix(:)\n% in a mod(2) system the elimination is a simple xor() operation:\n% aj=aj-1*ai is the only possible elimination operation and -1 is 1 (mod(2)).\n\nclc; clear;\n\n% initial state\n% these are puzzles from the applet in the link\n%\n% puzzle 1\n% S=zeros(5,5); \n% S(3,:)=[1,0,1,0,1]; \n% S=logical(S);\n%\n% puzzle 2\n% S=zeros(5,5); \n% S([1,2,4,5],:)=repmat([1,0,1,0,1],4,1); \n% S=logical(S);\n%\n% puzzle 3\nS=zeros(5,5); \nS([2,3,4],:)=repmat([1,1,0,1,1],3,1); \nS([1,5],:)=repmat([0,1,0,1,0],2,1); \nS=logical(S);\n\n\nS\nS=S(:);\n% target state (zero here)\nT=zeros(5,5); T=logical(T);\n%T\nT=T(:);\n\nA=zeros(25,25); A=logical(A);\n\n% the button vectors, that is the coefficient matrix\n% the column-wise flattening is heavily used\nfor j=1:5\n   for i=1:5\n      k=i+(j-1)*5; % column-wise flattening\n      % fprintf(\"%d %d %d\\n\",i,j,k);\n      A(k,k)=1;\n      % neighbours in the column\n      if i&gt;1, A(k-1,k)=1;end\n      if i&lt;5, A(k+1,k)=1;end\n      % neighbours in the row\n      if j&gt;1, A(k-5,k)=1;end\n      if j&lt;5, A(k+5,k)=1;end\n   end\nend\nA\n\n% here comes the actual gaussian elimination\n% for simplicity we'll also use backward elimination (Gauss-Jordan)\n% this way no need to extract the solution separately\n\n% extended matrix:\nA=[A, xor(S,T)];\n% forward elimination\nfor i=1:25\n   nonzeros=find(A(i:end,i));\n   if isempty(nonzeros)\n      continue;\n   else\n      % relative index!!!\n      k=nonzeros(1);\n      if k&gt;1\n         A([i,i+k-1],:)=A([i+k-1,i],:);\n      end\n   end\n   for j=(i+1):25\n      if A(j,i)\n         A(j,:)=xor(A(j,:),A(i,:));\n      end\n   end\nend\nA\n% backward elimination\nfor i=25:-1:1\n   if not(A(i,i)), continue; end\n   for j=(i-1):-1:1\n      if A(j,i)\n         A(j,:)=xor(A(j,:),A(i,:));\n      end\n   end\nend\n\nA\n\n% transforming back the matrix and the right hand side\n% the b became x\nx=A(:,26);\nA=A(1:25,:);\n\n% final check (impossibility)\n% full zero row in A but a non-zero in x (in the same row)\n% the classical is always solvable, but one can set different flipping rules\n% for the buttons...\n\n% we apply here row-wise summation -&gt; look for the 2. parameter in sum call\nif any(x&gt;sum(A,2))\n   disp(\"we failed :-(\");\n   return;\nend\n\n% reshaping to get the human readable locations of the used buttons\nreshape(x,5,5)"
+    "text": "here, every mentioned matrix is invertible n\\times n, for a fixed n. (it is not neccessary to assume this everywhere, however)\nLT(UT) is a short lower(upper) triangle\nL(U)’s denote always LT(UT) matrices (with appropriate indexing,labeling)\n\n\n\n\n\ninvertible LT(UT) matrices have nonzeros in their main diagonal\nthe product of two LT(UT) matrices is LT(UT)\nthe i-th diagonal element of\n\nL^{(1)}L^{(2)} is l^{(1)}_{ii}l^{(2)}_{ii}\nU^{(1)}U^{(2)} is u^{(1)}_{ii}u^{(2)}_{ii}\n\nthe inverse of a LT(UT) matrix is a LT(UT) matrix\n\n\n\n\n\nif A is invertible and A=LU with unit-diagonal L then this factorization is unique.\n\nsuppose that we have A=L_{1}U_{1}=L_{2}U_{2}.\nL_{2}^{-1}L_{1}=U_{2}U_{1}^{-1}=D.\nD is a diagonal matrix, for it is LT and UT by lemma 2. and 4.\nd_{ii}=1 by lemma 3."
+  },
+  {
+    "objectID": "store/linsys/lu_related.html#notes",
+    "href": "store/linsys/lu_related.html#notes",
+    "title": "linsys/lu_related",
+    "section": "",
+    "text": "here, every mentioned matrix is invertible n\\times n, for a fixed n. (it is not neccessary to assume this everywhere, however)\nLT(UT) is a short lower(upper) triangle\nL(U)’s denote always LT(UT) matrices (with appropriate indexing,labeling)"
+  },
+  {
+    "objectID": "store/linsys/lu_related.html#lemmas",
+    "href": "store/linsys/lu_related.html#lemmas",
+    "title": "linsys/lu_related",
+    "section": "",
+    "text": "invertible LT(UT) matrices have nonzeros in their main diagonal\nthe product of two LT(UT) matrices is LT(UT)\nthe i-th diagonal element of\n\nL^{(1)}L^{(2)} is l^{(1)}_{ii}l^{(2)}_{ii}\nU^{(1)}U^{(2)} is u^{(1)}_{ii}u^{(2)}_{ii}\n\nthe inverse of a LT(UT) matrix is a LT(UT) matrix"
+  },
+  {
+    "objectID": "store/linsys/lu_related.html#proposition",
+    "href": "store/linsys/lu_related.html#proposition",
+    "title": "linsys/lu_related",
+    "section": "",
+    "text": "if A is invertible and A=LU with unit-diagonal L then this factorization is unique.\n\nsuppose that we have A=L_{1}U_{1}=L_{2}U_{2}.\nL_{2}^{-1}L_{1}=U_{2}U_{1}^{-1}=D.\nD is a diagonal matrix, for it is LT and UT by lemma 2. and 4.\nd_{ii}=1 by lemma 3."
+  },
+  {
+    "objectID": "store/linsys/lu_related.html#definition",
+    "href": "store/linsys/lu_related.html#definition",
+    "title": "linsys/lu_related",
+    "section": "definition",
+    "text": "definition\n\nstrictly diagonally dominant\na matrix A is called sdd if for each |a_{ii}| &gt; \\sum_{j\\neq i}|a_{ij}| for each i"
+  },
+  {
+    "objectID": "store/linsys/lu_related.html#proposition-1",
+    "href": "store/linsys/lu_related.html#proposition-1",
+    "title": "linsys/lu_related",
+    "section": "proposition",
+    "text": "proposition\n\nif A is sdd the A=LU\nthe key is to understand how this property is preserved during gaussian elimination.\nit is enough to consider two vectors\n\n\n\\begin{gather*}\nx\\ \\ \\text{with} \\ \\ \\ |x_1|&gt;\\sum_{i&gt;1} |x_{i}| \\\\\ny\\ \\ \\text{with} \\ \\ \\ |y_j|&gt;\\sum_{i\\neq j} |y_{i}| \\ \\ j&gt;i \\\\\n\\end{gather*}\n\n\nwe are going to show that the elimination step preserves the strictly dominant property\n\n\n\\begin{gather*}\n\\vert y_j - y_1 \\frac{x_j}{x_1} \\vert \\ge\n\\vert y_j\\vert - \\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert} = (1)\\\\\n%\n\\sum_{i\\neq j} \\vert y_i - y_1 \\frac{x_i}{x_1}\\vert \\le\n\\sum_{i\\neq j,i\\neq 1} \\vert y_i\\vert  + \\sum_{i\\neq j,i\\neq 1}\\vert y_1\\vert \\frac{\\vert x_i\\vert}{\\vert x_1\\vert} =\\\\\n%\n(2) + (3)+\\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert} - \\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert}=(4)\\\\\n%\n(3)+\\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert}=\n\\vert y_1\\vert \\frac{\\sum_{i\\neq 1} \\vert x_i\\vert}{\\vert x_1\\vert}&lt;\\vert y_1\\vert\\\\\n%\n(4)&lt;(2)+\\vert y_1 \\vert - \\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert}=\\\\\n%\n\\sum_{i\\neq j} \\vert y_i\\vert - \\vert y_1 \\vert \\frac{\\vert x_j\\vert }{\\vert x_1\\vert}&lt;(1)\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/linsys/lu_related.html#definition-1",
+    "href": "store/linsys/lu_related.html#definition-1",
+    "title": "linsys/lu_related",
+    "section": "definition",
+    "text": "definition\n\nin general minor is the determinant of a submatrix, where the same rows and columns are removed from the original matrix\nthe k-th leading principal minor of a n\\times n matrix A is det(B) where B is created by removing the last n-k rows and columns from A"
+  },
+  {
+    "objectID": "store/linsys/lu_related.html#proposition-2",
+    "href": "store/linsys/lu_related.html#proposition-2",
+    "title": "linsys/lu_related",
+    "section": "proposition",
+    "text": "proposition\n\nif each of leading principal minor is nonzero then A=LU\nwe cannot encounter zero in the main diagonal during the elimination because of the condition"
+  },
+  {
+    "objectID": "store/linsys/index.html#concepts-draft",
+    "href": "store/linsys/index.html#concepts-draft",
+    "title": "systems of linear equations (SLE)",
+    "section": "concepts (draft)",
+    "text": "concepts (draft)"
+  },
+  {
+    "objectID": "store/linsys/index.html#exercises-draft",
+    "href": "store/linsys/index.html#exercises-draft",
+    "title": "systems of linear equations (SLE)",
+    "section": "exercises (draft)",
+    "text": "exercises (draft)"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html",
+    "href": "store/interpol/concepts_draft.html",
+    "title": "interpolation/concepts_draft",
+    "section": "",
+    "text": "for a given set of 2d points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}) we are searching the simplest (minimal degree) P polynomial that interpolates the points: P(t_{k})=f_{k}\\ \\ \\ k=1,\\ldots ,n.\nterminology: the elements of t are called interpolation nodes/node points, the elements of f are called (function) values/node values.\nnaturally the point set cannot have two equal first coordinates (t_{i}=t_{j}) with different second coordinates (f_{i}\\neq f_{j}).\nfor 1 points a 0-th order, 2 points an at most 1-st order interpolation is clearly exists - but how to proceed to larger number of points?\nn points n pieces of information. we may expect that these n pieces will determine n real numbers, a polynomial of degree at most n-1, which will be the interpolational polynomial.\nthere are several approaches\n\nsetting up an n\\times n linear system of equations \na_{n-1}t_{k}^{n-1}+\\ldots+a_{1}t_{k}+a_{0}=f_{k}\\ \\ \\ k=1,\\ldots,n\n\napplying least square approximation for \\varphi_{k}(t)=t^k, \\ \\ k=0,\\ldots,n-1, for if it is possible to achieve the zero error, then the Gauss normal equation will give us the appropriate coefficients.\nboth of these (eventually equivalent) approaches has complexity {\\cal O}(n^3) and it is not so straightforward to apply them for a dynamically extending point set.\n\nwe will learn later that there is a more efficient {\\cal O}(n^2) complexity and dynamically extendable approach: the Newton divided difference method.\nfirst we will state a theorem about the existence and uniqueness.\n\n\n\n\n\n\n\nImportantLagrange’s main theorem\n\n\n\nFor a given set of pairwise different points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}), there is a unique polynomial P with: \nP(t_{k})=f_{k}\\ \\ \\ (k=1,\\ldots,n)\\ \\ \\text{and}\\ \\ \\deg(P)\\le n-1\n\n\n\n\nfor more details read this\nat this stage we learned that the least square approach (even without A^{T}A) will give us the unique solution…"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#intro-1",
+    "href": "store/interpol/concepts_draft.html#intro-1",
+    "title": "interpolation/concepts_draft",
+    "section": "intro",
+    "text": "intro\n\nsearch for the polynomial that interpolates the points t=[-1,0,1],\\ \\ f=[2,3,1].\nlet’s imagine the polynomial in the form of p(x)=a_2(x+1)x+a_1x+a_0. here we included some information about the first coordinates into the polynomial.\n\n\n\n\n\n\n\nNonedetails\n\n\n\n\n\n\n\\begin{gather*}\np(-1)=2 \\ \\ \\Longrightarrow \\ \\ a_0=2\\\\\np(x)=a_2(x+1)x+a_1(x+1)+2\\\\\np(0)=3 \\ \\ \\Longrightarrow \\ \\ a_1=1\\\\\np(x)=a_2(x+1)x+(x+1)+2\\\\\np(1)=1 \\ \\ \\Longrightarrow \\ \\ a_2=-\\frac{3}{2}\\\\\np(x)=-\\frac{3}{2}(x+1)x+(x+1)+2\\\\\n\\end{gather*}\n\n\n\n\n\nobserve that at each step we solved a one variable linear equation, as in the case of triangular form linear systems\nthis seemingly ad-hoc approach is transformed to an algorithm"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#the-method-how",
+    "href": "store/interpol/concepts_draft.html#the-method-how",
+    "title": "interpolation/concepts_draft",
+    "section": "the method (how?)",
+    "text": "the method (how?)\n\nthe scheme of the divided difference method\n\n\\begin{array}{c|cccccc}\nt_1 & f^{~(0)}_{1} & & & & & \\\\\n& & f^{~(1)}_{1} & & & & \\\\\nt_2 & f^{~(0)}_{2} && f^{~(2)}_{1} & & & \\\\\n& & f^{~(1)}_{2} & & \\ddots & &\\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & f^{~(n-2)}_{1} & \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & & f^{~(n-1)}_{1} \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & f^{~(n-2)}_{2} & \\\\\n& & f^{~(1)}_{n-2} & & \\mathinner{\\kern{1.2mu}\\raisebox{2mu}{.}\\kern{3mu}\\raisebox{7.4mu}{.}\\kern{3mu}\\raisebox{12.8mu}{.}\\kern{1.2mu}}& & \\\\\nt_{n-1} & f^{~(0)}_{n-1} & & f^{~(2)}_{n-2} & & & \\\\\n& & f^{~(1)}_{n-1} & & & & \\\\\nt_n & f^{~(0)}_{n} & & & & &\n\\end{array}\n\n\n\n\n\n\n\nImportantthe computational rule\n\n\n\nWe start with the t and the f^{~(0)} columns, the the missing entries, for j=1\\ldots n-1 and i=1\\ldots n-j are computed by \nf_{i}^{~(j)}=\\frac{f_{i}^{~(j-1)}-f_{i+1}^{~(j-1)}}{t_i-t_{i+j}} \\ \\ \\ \\ (*)\n\n\n\n\n\n\n\n\n\nImportantthe polynomial(s)\n\n\n\nSuppose that we filled in the table according to the rule (*). Then \n\\begin{align*}\nP(t)&=f^{~(0)}_{1}+f^{~(1)}_{1}(t-t_1)+f^{~(2)}_{1}(t-t_1)(t-t_2)+\\ldots\\\\\n&+f^{~(n-2)}_{1}(t-t_1)\\ldots (t-t_{n-2})+f^{~(n-1)}_{1}(t-t_1)\\ldots (t-t_{n-1})\n\\end{align*}\n and \n\\begin{align*}\nP(t)&=f^{~(0)}_{n}+f^{~(1)}_{n-1}(t-t_n)+f^{~(2)}_{n-2}(t-t_n)(t-t_{n-1})+\\cdots\\\\\n&+f^{~(n-2)}_{2}(t-t_n)\\cdots (t-t_3)+f^{~(n-1)}_{1}(t-t_n)\\cdots (t-t_2)\n\\end{align*}\n are interpolational polynomials for the data t,f."
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#the-method-why",
+    "href": "store/interpol/concepts_draft.html#the-method-why",
+    "title": "interpolation/concepts_draft",
+    "section": "the method (why?)",
+    "text": "the method (why?)\n\nread this"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#problem-description",
+    "href": "store/interpol/concepts_draft.html#problem-description",
+    "title": "interpolation/concepts_draft",
+    "section": "problem description",
+    "text": "problem description\nWe have a set of points and a set of conditions at the points: \n\\begin{array}{rcccccl}\n& t_1            & t_2          & t_3       & \\dots & t_n       & \\\\\n\\hline\n& f_{1}^{(0)}      & f_{2}^{(0)}    & f_{3}^{(0)} & \\dots & f_{n}^{(0)} &\\\\\n& f_{1}^{(1)}      & f_{2}^{(1)}    & f_{3}^{(1)} & \\dots & f_{n}^{(1)} &\\\\\n& f_{1}^{(2)}      & f_{2}^{(2)}    & f_{3}^{(2)}  & \\dots & f_{n}^{(2)} &\\\\\n&\\vdots          & \\vdots           & \\vdots       &       & \\vdots     &\\\\\n&f_{1}^{(m_1-1)}     & f_{2}^{(m_2-1)}  & f_{3}^{(m_3-1)} &\\dots & f_{n}^{(m_n-1)}&\\\\\n\\end{array}\n\nWe are looking for a polynomial H(t), for which \nH^{~(j)}(t_i)=f_{i}^{(j)} \\quad \\quad i=1,\\dots,n, \\quad j=0,\\dots ,m_i-1.\n Let m=\\sum_{k=1}^n m_k, the number of conditions.\n\n\n\n\n\n\nImportant\n\n\n\nThe problem of Hermite-interpolation can be solved uniquely in the space of at most m-1 degree polynomials.\n\n\n\nFrom the conditions, we can set up a uniquely solvable m\\times m linear system, for the details see this at page (around) 18.\nor"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#computation",
+    "href": "store/interpol/concepts_draft.html#computation",
+    "title": "interpolation/concepts_draft",
+    "section": "computation",
+    "text": "computation\n\nHow to compute the coefficients of H?\nIt is possible to modify the Newton divided difference method for Lagrange polynomials to get them.\nThe node points column (t) should contain the t_k’s with multiplicity. As many conditions assigned to a specific as many times we should include it. If the first derivative is given, then we must include it 2 times, and so on.\nThe corresponding computational formula is modified, in order to handle the “division by zero” case\n\n\n\n\n\n\n\nImportantHermite-rule\n\n\n\n\nf_{i}^{~(j)}=\n\\begin{cases}\n\\frac{f_{i}^{~(j-1)}-f_{i+1}^{~(j-1)}}{t_i-t_{i+j}} \\ \\ \\text{if}\\ t_i \\neq t_{i+j}\\\\\n\\frac{f(t_{i})^{(j)}}{j!} \\ \\ \\text{otherwise}\\\\\n\\end{cases}\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nIf the node points are set up with appropriate multiplicity and the modified computational rule used to fill in the values of the scheme then the polynomial in the final table fulfills the conditions. (The proof is omitted.)"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#example-1",
+    "href": "store/interpol/concepts_draft.html#example-1",
+    "title": "interpolation/concepts_draft",
+    "section": "example",
+    "text": "example\n\n\n\n\n\n\nNonethe plot for the example"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#applications",
+    "href": "store/interpol/concepts_draft.html#applications",
+    "title": "interpolation/concepts_draft",
+    "section": "applications",
+    "text": "applications\n\ntangent line formula\n\nFor a given real valued, differentiable function find the equation of its tangential line at t_0!\nWe are looking for a Hermite polynomial of degree at most 1, for which H(t_0)=f(t_0) and H~'(t_0)=f~'(t_0)\n\n\n\\begin{array}{r|rr}\nt_0 &  f(t_0) \\\\\n& & f~'(t_0) \\\\\nt_0 & f(t_0)\n\\end{array}\n\n\nthen H(t)=f(t_0)+f~'(t_0)(t-t_0)"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#the-runge-function-revisited",
+    "href": "store/interpol/concepts_draft.html#the-runge-function-revisited",
+    "title": "interpolation/concepts_draft",
+    "section": "the Runge-function revisited",
+    "text": "the Runge-function revisited\n\nwe will interpolate the function at different node sets, but this time the derivative values will also be used at some nodes.\n\n\n\n\n\n\n\nNonethe plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNonethe script\n\n\n\n\n\n\nclc; clf; clear;\n% Runge examples - uniform Hermite\n\nfun=@(x) 1./(1+25*x.^2);\ndfun=@(x) -50*x./(1+25*x.^2).^2;\nxx=linspace(-1,1);\nyy=fun(xx);\n\nnsp=0;\nfor np=[3,9,15]\n  nsp=nsp+1;subplot(3,1,nsp);\n  x=linspace(-1,1,np);\n  data=cell(1,np);\n  % also control some derivatives at the ends\n  data{1}=[x(1),fun(x(1)),dfun(x(1))];\n  data{2}=[x(2),fun(x(2)),dfun(x(2))];\n  for i=3:np-2\n    data{i}=[x(i),fun(x(i))];\n  end\n  data{np-1}=[x(np-1),fun(x(np-1)),dfun(x(np-1))];\n  data{np}=[x(np),fun(x(np)),dfun(x(np))];\n  \n  [H,t]=hermite_interpolation(data);\n  yyy=horner_newton(H,t,xx);\n\n  plot(xx,yy,xx,yyy);\n  maxdiff=max(abs(yy-yyy));\n  title(sprintf(\"uniform+Hermite | num of points: %d | max difference: %.2f\\n\",np,maxdiff));\nend\n\nsaveas(gca(),\"rungeHERMITE.png\",\"png\");\n\n\n\n\n\nas we see the fluctuations can be controlled, but not in straightforward way."
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#linear-interpolation",
+    "href": "store/interpol/concepts_draft.html#linear-interpolation",
+    "title": "interpolation/concepts_draft",
+    "section": "linear interpolation",
+    "text": "linear interpolation\n\nmatlab\n\nno need to implement it by hand\nthe interp1 function can be used\n\n\n\nerror of the linear interpolation\n\nlet f\\in C^{2}[A,B] and M_2=\\max_{t\\in[A,B]} |f{~''}(t)|\nthen for the linear interpolation P of f on [a,b]\\subset [A,B] we have:\n\n\n\n\n\n\n\nImportant\n\n\n\n\n\\vert f(t)-P(t)\\vert \\leq \\frac {M_2}{8}(b-a)^2, \\quad\\quad\nt\\in [a,b]\n\n\n\n\nincreasing the number of subintervals results in smaller error.\ndividing the “large” [A,B] interval int n equal pieces (and using the same “global” M_2) the error for one [a,b] subinterval:\n\n\n\\vert f(t)-P_{[a,b]}\\vert \\leq \\frac {M_2}{8}\\frac{(B-A)^2}{n^2}, \\quad\\quad\nt\\in [a,b]\n\n\ndoubling the points = halving the length will result 4 times better approximation\npro: simple\ncon: sometimes for very high precision we need large number of points, but at least it works\nmore on this"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#higher-order-interpolation",
+    "href": "store/interpol/concepts_draft.html#higher-order-interpolation",
+    "title": "interpolation/concepts_draft",
+    "section": "higher-order interpolation",
+    "text": "higher-order interpolation\n\none can use plain Lagrange or Hermite interpolation for the small intervals\npro: better approximation (worst case)\ncon: computationally intensive, harder to implement"
+  },
+  {
+    "objectID": "store/interpol/concepts_draft.html#cubic-spline-interpolation",
+    "href": "store/interpol/concepts_draft.html#cubic-spline-interpolation",
+    "title": "interpolation/concepts_draft",
+    "section": "cubic spline interpolation",
+    "text": "cubic spline interpolation\n\nthe most widely used piecewise interpolation method\ngiven [t_1,\\ldots,t_n] and [f_1,\\ldots,f_n] and f_1' and f'_n\nthe first derivatives are given only the endpoints\nWe search for a function S(t) for which\n\nS(t_k)=f_k\nS'(t_1)=f_1' and S'(t_n)=f'_n\nS|_{[t_{k},t_{k+1}]}=S_k cubic polynomial, =1,\\ldots ,n-1\nS is twice continuously differentiable\n\nS'(t_k)=S'(t_{k+1}) and S''(t_k)=S''(t_{k+1}) for k=2,\\ldots,n-1 (at the inner points)\n\n\nthe are several approaches to construct the sub-polynomials. We do not discuss them.\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear; format(\"default\");\n\nt=[1,2,4];\nf=[1,4,2];\ndf1=1;\ndfn=-1;\n\n\nnt=length(t);\npp=spline(t,[df1 f dfn]);\n\ndpp=pp;\ndpp.coefs=zeros(nt-1,3);\ndpp.order=3;\nfor k=1:nt-1\n  dpp.coefs(k,:)=polyder(pp.coefs(k,:));\nend\n\nd2pp=pp;\nd2pp.coefs=zeros(nt-1,2);\nd2pp.order=2;\nfor k=1:nt-1\n  d2pp.coefs(k,:)=polyder(dpp.coefs(k,:));\nend\n\nd3pp=pp;\nd3pp.coefs=zeros(nt-1,1);\nd3pp.order=1;\nfor k=1:nt-1\n  d3pp.coefs(k,:)=polyder(d2pp.coefs(k,:));\nend\n\n\nxx=linspace(t(1),t(end));\ntlims=getlims(xx);\n\nsubplot(2,2,1);\nhold on;\nplot(t,f,\"k*\")\nyy=ppval(pp,xx);\nplot(xx,yy,\"b\")\ntitle(\"S\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,2);\nyy=ppval(dpp,xx);\nplot(xx,yy,\"b\");\ntitle(\"S'\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,3);\nyy=ppval(d2pp,xx);\nplot(xx,yy,\"b\")\ntitle(\"S''\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,4);\nhold on;\nyy=ppval(d3pp,xx);\nw=xx&lt;t(2);\nplot(xx(w),yy(w),\"b\");\nw=xx&gt;t(2);\nplot(xx(w),yy(w),\"b\");\ntitle(\"S'''\");\naxis([tlims,getlims(yy)]);\n\nsgtitle(\"cubic spline properties\")\n\nsaveas(gca(),\"splinePROP.png\",\"png\");\n\nfunction ll=getlims(v)\n  p=0.1;\n  vmin=min(v);\n  vmax=max(v);\n  dv=vmax-vmin;\n  ll=[vmin-p*dv,vmax+p*dv];\nend\n\n\n\n\n\nmatlab\n\nthe spline function can be used\nnot supplying the derivatives some (implementation dependent) defaults will be used\nspline(t, [df1 f dfn], x) will evalute the polynomial at x\nthe Hermite problem t_1,t_2,f_1,f_2,f'_1,f'_2 is a cubic spline problem for one-interval. it can be solved by a simple call of spline. (at least the evaluation part)\n\n\n\n\n\n\n\nNoneapplication\n\n\n\n\n\n\nreconstruct a rotated ellipse from a few regularly sampled points using cubic-spline\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear; format;\nhold on;\nrng(22);\n\n% create the initial plot\n% init: rotated ellipse\n\n\nfi=pi/6; % rot angle\nzfun=@(a) (cos(fi)+1i*sin(fi))*(4*cos(a)+1i*sin(a));\nax0=[-5,5,-3,3];\nN0=5;\n\n\nN=100;\nalpha=linspace(0,2*pi,N)';\nz=zfun(alpha);\nx=real(z);\ny=imag(z);\n\nsubplot(3,1,1);\nplot(x,y)\ntitle(sprintf(\"original %d points\",N))\n\naxis(ax0);\naxis equal;\nalpha0=linspace(0,2*pi,N0+1);\nz0=zfun(alpha0);\nx0=real(z0);\ny0=imag(z0);\n\nsubplot(3,1,2);\nplot(x0,y0,'*')\ntitle(sprintf(\"%d points from the original\",N0))\naxis(ax0);\naxis equal;\n\nx1=spline(alpha0,x0,alpha);\ny1=spline(alpha0,y0,alpha);\nsubplot(3,1,3);\nplot(x1,y1)\nav_rel_err=sum(sqrt((x-x1).^2+(y-y1).^2)./sqrt(x.^2+y.^2))/N;\ntit=\"reconstruction from the sample\"+...\n  sprintf(\"\\nmean relative error: %.4f\",av_rel_err);\ntitle(tit);\naxis(ax0);\naxis equal;\n\nsaveas(gca(),\"splineREC0.png\",\"png\");\n\nhold off;\n\n\n\n\n\nreconstruct another parametric curve from randomly sampled points using cubic-spline\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear;format;\nhold on;\nrng(22);\n\n% create the initial plot\n% it'll be a circle + sin/cos \"noise\"\n\nN=1000;\nalpha=linspace(0,2*pi,N);\nr=2+0.4*sin(8*alpha)+0.8*cos(4*alpha);\nx=r.*cos(alpha);\ny=r.*sin(alpha);\nsubplot(3,1,1);\nplot(x,y)\ntitle(sprintf(\"original %d points\",N))\naxis([-4,4,-4,4]);\npercent=5;\npart=[1,datasample(2:N,floor(percent/100*N),\"Replace\",false)];\nalpha0=alpha(part);\nr0=r(part);\nx0=r0.*cos(alpha0);\ny0=r0.*sin(alpha0);\nsubplot(3,1,2);\nplot(x0,y0,'*')\ntitle(sprintf(\"%d%% (random)sample of the original\",percent))\naxis([-4,4,-4,4]);\n\nx1=spline(alpha0,x0,alpha);\ny1=spline(alpha0,y0,alpha);\nsubplot(3,1,3);\nplot(x1,y1)\nav_rel_err=sum(sqrt((x-x1).^2+(y-y1).^2)./sqrt(x.^2+y.^2))/N;\ntit=\"reconstruction from the sample\"+...\n  sprintf(\"\\nmean relative error: %.4f\",av_rel_err);\ntitle(tit);\naxis([-4,4,-4,4]);\n\nsaveas(gca(),\"splineREC.png\",\"png\");\n\nhold off;"
+  },
+  {
+    "objectID": "store/interpol/error.html",
+    "href": "store/interpol/error.html",
+    "title": "interpolation/error",
+    "section": "",
+    "text": "Rolle: for a differentiable f \nf(A)=f(B)\\ \\ \\implies\\ f'(\\xi)=0\\ \\ \\ \\ \\xi\\in(A,B)\n\nf is an n times continuously differentiable function on an open interval containing [A,B].\nA=t_1&lt;\\ldots &lt;t_n=B\nP is a Lagrange polynomial for f and t_1,\\ldots,t_n\ne(t)=f(t)-P(t)\nM_n=\\max_{t\\in[A,B]} |f^{n}(t)|\n\\omega(t)=\\prod_{k=1}^n (t-t_k)\n\\Omega=\\max_{t\\in[A,B]} |\\omega(t)|"
+  },
+  {
+    "objectID": "store/interpol/error.html#n2",
+    "href": "store/interpol/error.html#n2",
+    "title": "interpolation/error",
+    "section": "n=2",
+    "text": "n=2\n\nfor one interval \n|f(t)-P(t)| \\le \\frac{M_2}{2} \\frac{(B-A)^2}{4}=\\frac{M_2}{8}(B-A)^2\n\nhere |\\omega(t)|=|(t-A)(t-B)| and its maximal value is \\frac{(B-A)^2}{4} which is attained at \\frac{A+B}{2}.\nif Q is a piecewise linear interpolation for f and A=t_1,\\ldots,t_n=B, where the t is linearly spaced n element vector, h=\\frac{B-A}{n-1}.\n\n\n|f(t)-Q(t)| \\le \\frac{M_2}{8} h^2\n\n\nthe *same M_2 is used for each subinterval to get a simpler formula"
+  },
+  {
+    "objectID": "store/interpol/index.html",
+    "href": "store/interpol/index.html",
+    "title": "interpolation",
+    "section": "",
+    "text": "Lagrange 1\nLagrange 2\nLagrange 3\nHermite 1\nHermite 2"
+  },
+  {
+    "objectID": "store/interpol/index.html#worked-out-examples",
+    "href": "store/interpol/index.html#worked-out-examples",
+    "title": "interpolation",
+    "section": "",
+    "text": "Lagrange 1\nLagrange 2\nLagrange 3\nHermite 1\nHermite 2"
+  },
+  {
+    "objectID": "store/interpol/index.html#concepts-draft",
+    "href": "store/interpol/index.html#concepts-draft",
+    "title": "interpolation",
+    "section": "concepts (draft)",
+    "text": "concepts (draft)"
+  },
+  {
+    "objectID": "store/interpol/index.html#exercises-draft",
+    "href": "store/interpol/index.html#exercises-draft",
+    "title": "interpolation",
+    "section": "exercises (draft)",
+    "text": "exercises (draft)"
+  },
+  {
+    "objectID": "store/interpol/scripts.html",
+    "href": "store/interpol/scripts.html",
+    "title": "interpolation/scripts",
+    "section": "",
+    "text": "NoneHermite-interpolation through Newton dd\n\n\n\n\n\n\n%\n% hermite polinomial computation\n%\n% expects:\n%    data: a cell array of arrays: {[t1,f1,f1',...],...,[tn,fn,fn']}\n% \n% returns:\n%    H: the coefficients, in decreasing order\n%    t: the support points in the appropriate order\n%\n% side effect:\n%    displays the computed table\n%\nfunction [H,t] = hermite_interpolation(data)\n  m = cellfun(@length,data)-1; % individual numbers of conditions\n  n = length(m); % number of basis points\n  M = sum(m); % total number of conditions (deg(H)&lt;=M-1)\n  lab = repelem((1:n)',m); % labels for identify base points\n  t_orig = zeros(n,1); % original t's\n  f_orig = zeros(n,1); % original f's\n  for k=1:n\n    % get the individual values\n    t_orig(k)=data{k}(1);\n    f_orig(k)=data{k}(2);\n  end\n  t = repelem(t_orig, m); % nodes w/ multiplicity\n  f = repelem(f_orig, m); % values w/ multiplicity\n  table = {f}; % the initial table (the 0-th column is given)\n  for j = 1:M-1\n    table{j+1}=zeros(M-j,1); % j+1 -&gt; one based indexing\n    for i=1:M-j\n      if lab(i)==lab(i+j) % div by zero\n        table{j+1}(i)=data{lab(i)}(j+2)/factorial(j); % j+2 -&gt; t,f is the first 2\n      else\n        table{j+1}(i)=(table{j}(i)-table{j}(i+1))/(t(i)-t(i+j));\n      end\n    end\n  end\n  H=zeros(M,1);\n  for k=1:M\n    H(k)=table{k}(1); % reading from the upper edge\n  end\n  % display the table\n  disp(t');\n  for k=1:M\n    disp(table{k}');\n  end\n  \n\n  % reverse them to get decreasing order for degrees\n  H=H(end:-1:1);\n  t=t(end:-1:1);\nend\n\n\n\n\n\n\n\n\n\n\nNoneHorner-method for Newton-form polynomials\n\n\n\n\n\n\n% Horner-method for polynomials in Newton form\n% vectorized version\n\nfunction y=horner_newton(p,t,x)\n  y=p(1)+zeros(size(x));\n  for k=2:length(p)\n    y=y.*(x-t(k)) + p(k);\n  end\nend\n\n\n\n\n\n\n\n\n\n\nNonethe script for the example in hermite1.pdf\n\n\n\n\n\n\n% plot of example in hermite1.pdf\n\nclc; clf; clear;\nhold on;\naxis equal;\n\n\nd1=[-1,1,0];\nd2=[1,2];\nd3=[2,1,-1];\n\nplot([d1(1),d2(1),d3(1)],[d1(2),d2(2),d3(2)],\"*\",\"MarkerSize\",5,\"Color\",[0,0,0])\n\n[H,t]=hermite_interpolation({d1,d2,d3});\n\nxx=linspace(-1.2,2.2);\nyy=horner_newton(H,t,xx);\nplot(xx,yy);\n\nsaveas(gca(),\"hermite1.png\",\"png\");\ntitle(\"Hermite example (in hermite1.pdf)\");\n\nhold off;\n\n\n\n\n\n\n\nNonethe script for the revisited Runge\n\n\n\n\n\n\nclc; clf; clear;\n% Runge examples - uniform Hermite\n\nfun=@(x) 1./(1+25*x.^2);\ndfun=@(x) -50*x./(1+25*x.^2).^2;\nxx=linspace(-1,1);\nyy=fun(xx);\n\nnsp=0;\nfor np=[3,9,15]\n  nsp=nsp+1;subplot(3,1,nsp);\n  x=linspace(-1,1,np);\n  data=cell(1,np);\n  % also control some derivatives at the ends\n  data{1}=[x(1),fun(x(1)),dfun(x(1))];\n  data{2}=[x(2),fun(x(2)),dfun(x(2))];\n  for i=3:np-2\n    data{i}=[x(i),fun(x(i))];\n  end\n  data{np-1}=[x(np-1),fun(x(np-1)),dfun(x(np-1))];\n  data{np}=[x(np),fun(x(np)),dfun(x(np))];\n  \n  [H,t]=hermite_interpolation(data);\n  yyy=horner_newton(H,t,xx);\n\n  plot(xx,yy,xx,yyy);\n  maxdiff=max(abs(yy-yyy));\n  title(sprintf(\"uniform+Hermite | num of points: %d | max difference: %.2f\\n\",np,maxdiff));\nend\n\nsaveas(gca(),\"rungeHERMITE.png\",\"png\");"
   },
   {
     "objectID": "store/norms/exercises_draft.html",
@@ -539,6 +826,90 @@
     "text": "special vectors\nthe computations above provide a way to find a vector x for which \\Vert Ax\\Vert=\\Vert A\\Vert\\Vert x\\Vert in the cases of 1 and \\infty norms."
   },
   {
+    "objectID": "store/numint/concepts_draft.html",
+    "href": "store/numint/concepts_draft.html",
+    "title": "numint/concepts_draft",
+    "section": "",
+    "text": "we want to compute the value of the integral:\n\n\\int_{a}^{b} f(t)\\text{d}t\n\nwhere f:[a,b]\\to {\\mathbb R}.\nwhen do we need to approximate integrals? If\n\nit cannot be expressed in terms of elementary functions (e^{-x^2} for example).\nthe antiderivative (primitive function) is known, but too complex.\nwe should calculate a large number of “similar” type integrals.\nthe value of f is known only at a few points."
+  },
+  {
+    "objectID": "store/numint/concepts_draft.html#interpolational-quadrature-formulas",
+    "href": "store/numint/concepts_draft.html#interpolational-quadrature-formulas",
+    "title": "numint/concepts_draft",
+    "section": "interpolational quadrature formulas",
+    "text": "interpolational quadrature formulas\n\nmore specifically: for a given f and nodes a=t_1,\\ldots ,t_n=b and values f(t_1),\\ldots,f(t_n) we determine the Lagrange interpolational polyinomial P and its exact integral value will be used to approximate \\int_{a}^{b} f(t)\\text{d}t.\n\n\\begin{gather*}\nf(t) \\approx P(t)\\\\\n\\int_{a}^{b} f(t)\\text{d}t \\approx \\int_{a}^{b} P(t)\\text{d}t\n\\end{gather*}\n\nwe will learn what are the weights by using 1,2,3 nodes and how the corresponding quadrature rules are behaving."
+  },
+  {
+    "objectID": "store/numint/etc.html",
+    "href": "store/numint/etc.html",
+    "title": "numint/etc",
+    "section": "",
+    "text": "Nonefacts\n\n\n\n\n\n\n \\xi(t) depends continously on t in \n\n\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\n - if f is continuous and g does not change sign on [a,b] then \n\\int_{a}^{b} f(t)g(t)\\text{d}t=f(\\eta)\\int_{a}^{b} g(t)\\text{d}t"
+  },
+  {
+    "objectID": "store/numint/etc.html#error",
+    "href": "store/numint/etc.html#error",
+    "title": "numint/etc",
+    "section": "error",
+    "text": "error\n\nm=\\frac{a+b}{2}\nt=m+(t-m)\n\n\n\\begin{gather*}\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\nf(t)-(f(m)+f'(m)(t-m))=\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\n\\int_{a}^{b} f\\text{d}t-I_{M,1} = \\int_{a}^{b} \\frac{f''(\\xi(t))}{2}(t-m)^2\\text{d}t\\\\\n\\left\\vert\\int_{a}^{b} f\\text{d}t-I_{M,1}\\right\\vert \\le\n\\frac{M_2}{2}\\int_{a}^{b} (t-m)^2\\text{d}t=\\frac{M_2}{2}\\frac{(b-a)^3}{12}\\ \\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/numint/etc.html#error-1",
+    "href": "store/numint/etc.html#error-1",
+    "title": "numint/etc",
+    "section": "error",
+    "text": "error\n\n\\begin{gather*}\nf(t)-P(t)=f''(\\xi(t))\\omega(t)\\\\\n\\int_{a}^{b} f(t)-P(t)\\text{d}t=\\int_{a}^{b} \\frac{f''(\\xi(t))}{2}\\omega(t)\\text{d}t\\\\\n\\left|\\int_{a}^{b} f(t)\\text{d}t-I_{T,1}\\right|\\le=\\int_{a}^{b} \\frac{|f''(\\xi(t))|}{2}|\\omega(t)|\\text{d}t=(1)\\\\\n\\int_{a}^{b} |\\omega(t)|\\text{d}t=\\frac{(b-a)^3}{6} \\ \\ \\text{by integrating it}\\\\\n|(1)|\\le \\frac{M_2}{2} \\frac{(b-a)^3}{6}\\ \\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/numint/etc.html#getting-the-formula",
+    "href": "store/numint/etc.html#getting-the-formula",
+    "title": "numint/etc",
+    "section": "getting the formula",
+    "text": "getting the formula\n\na,\\ m=\\frac{a+b}{2},\\ b and f_a=f(a),\\ f_m=f(\\frac{a+b}{2}),\\ f_b=f(b)\nh=b-a\ninstead of Newton or classical search the polynomial in the form below\n\n\n\\begin{gather*}\nP(t)=A+B(t-m)+C(t-m)^2\\\\\nP(m)=f_m \\ \\implies \\ A=f_m\\\\\nP(a)=f_m+B(a-m)+C(a-m)^2 = f_a\\ \\tag*{(1)}\\\\\nP(b)=f_m+B(b-m)+C(b-m)^2 = f_b\\ \\tag*{(2)}\\\\\n(1)+(2): 2f_m + C\\frac{h^2}{2}=f_a+f_b \\ \\implies \\ C=2\\frac{f_a-2f_m+f_b}{h^2}\\\\\n(2)-(1): Bh=f_b-f_a\\ \\implies\\ B=\\frac{f_b-f_a}{h}\\\\\n\\int_{a}^{b} P(t)\\text{d}t=\\int_{a}^{b} f_m\\text{d}t+C\\int_{a}^{b} (t-m)^2\\text{d}t=\\\\\nhf_m+2\\frac{f_a-2f_m+f_b}{h^2}\\frac{h^3}{12}\\ \\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "store/numint/etc.html#why-is-it-exact-for-at-most-3rd-order-polys",
+    "href": "store/numint/etc.html#why-is-it-exact-for-at-most-3rd-order-polys",
+    "title": "numint/etc",
+    "section": "why is it exact for at most 3rd order poly’s",
+    "text": "why is it exact for at most 3rd order poly’s\n\nmatlab symbolics based “proof”:\n\n\nclc; clear;\n\nsyms a b f(x)\n\nfor k=0:3\n  k\n  f(x)=x^k;\n  I1=int(f,a,b)\n  I2=(b-a)*(f(a)+4*f((a+b)/2)+f(b))/6;\n  I2=simplify(I2)\n  assert(I1==I2);\n  disp(\"......................\");\nend"
+  },
+  {
+    "objectID": "store/numint/etc.html#simple",
+    "href": "store/numint/etc.html#simple",
+    "title": "numint/etc",
+    "section": "simple",
+    "text": "simple\n\ntoo long…"
+  },
+  {
+    "objectID": "optalg/egyebek/index.html",
+    "href": "optalg/egyebek/index.html",
+    "title": "optalg/egyebek",
+    "section": "",
+    "text": "armijo.m\n\n\n\n\n\n\n\ncircle.txt\n\n\n\n\n\n\n\ndrug.txt\n\n\n\n\n\n\n\ngyakLKN1.pdf\n\n\n\n\n\n\n\nidosor.txt\n\n\n\n\n\n\n\noptalgoritmusR.pdf\n\n\n\n\n\n\n\nLKN.txt\n\n\n\n\n\n\n\nOptgyak1.pdf\n\n\n\n\n\n\n\nautoreg.m\n\n\n\n\n\n\n\ncirc_lkn.m\n\n\n\n\n\n\n\ncirc_non11.m\n\n\n\n\n\n\n\ncirc_non11_lsq.m\n\n\n\n\n\n\n\ndrug.txt\n\n\n\n\n\n\n\nf10.m\n\n\n\n\n\n\n\nf3.m\n\n\n\n\n\n\n\nf4.m\n\n\n\n\n\n\n\nf5.m\n\n\n\n\n\n\n\ngyakLKN1.pdf\n\n\n\n\n\n\n\nhianyzo_jelek.m\n\n\n\n\n\n\n\nhiba12.m\n\n\n\n\n\n\n\nidosor.txt\n\n\n\n\n\n\n\nkepler.m\n\n\n\n\n\n\n\nlena.m\n\n\n\n\n\n\n\nlena512.pgm\n\n\n\n\n\n\n\nlsqnon7.m\n\n\n\n\n\n\n\nlsqnon8.m\n\n\n\n\n\n\n\noptalgoritmusR.pdf\n\n\n\n\n\n\n\npontok.csv\n\n\n\n\n\n\n\ntask01.pdf\n\n\n\n\n\n\n\ntask1.m\n\n\n\n\n\n\n\npontok200E.txt\n\n\n\n\n\n\n\ntask02.pdf\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "optalg/root.html",
+    "href": "optalg/root.html",
+    "title": "optalg/gyök-keresés",
+    "section": "",
+    "text": "matlab\n\nfzero\nfsolve\n\n\n\negyszerű módszerek\n\n\n\n\n\n\nNonefelező módszer\n\n\n\n\n\n\nfunction x=bisection(f,a,b,tol)\n   while b-a&gt;tol\n      m=0.5*(a+b);\n      if f(m)*f(a)&lt;0\n         b=m;\n      else\n         a=m;\n      end\n   end\n   x=0.5*(a+b);\nend\n\n\n\n\n\n\n\n\n\n\nNoneNewton_módszer\n\n\n\n\n\n\nfunction x1=newton(f,df,x0,tol)\n   maxit=50;\n   x1=x0-f(x0)/df(x0);\n   for it=1:maxit\n      if abs(x1-x0)&lt;tol, break; end\n      x0=x1;\n      x1=x0-f(x0)/df(x0);\n   end\nend\n\n\n\n\n\n\n\n\n\n\nNoneSzelő_módszer\n\n\n\n\n\n\nfunction x1=secant(f,x0,x1,tol)\n   maxit=50;\n   x2=x1-f(x1)*(x1-x0)/(f(x1)-f(x0));\n   for it=1:maxit\n      if abs(x1-x2)&lt;tol, break; end\n      x0=x1;\n      x1=x2;\n      x2=x1-f(x1)*(x1-x0)/(f(x1)-f(x0));\n   end\nend"
+  },
+  {
+    "objectID": "optalg/index.html",
+    "href": "optalg/index.html",
+    "title": "optalg",
+    "section": "",
+    "text": "egyebek\n\n\ngyök-keresés\n\n\nminimum-keresés\n\n\ngradiens-módszer\n\n\nteszt függvények\n\n\nprogram lista"
+  },
+  {
+    "objectID": "alkmat/index.html",
+    "href": "alkmat/index.html",
+    "title": "alkmat/sajátérték",
+    "section": "",
+    "text": "Noneleslie0\n\n\n\n\n\n\n% leslie0\n\nclf;clear;\n\nL=[ 0,     1,  1;...\n    0.8,   0,  0;...\n    0,  0.25,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nx=[74,80,46]';\nfor k=1:40\n  x=L*x; \n  %x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonepagerank0\n\n\n\n\n\n\n% page-rank\n\nclf;clear;\n\nA=[  0, 0, 1, 1;...\n     1, 0, 1, 1;...\n     1, 1, 0, 0;...\n     0, 0, 1, 0];\n\nA=A./sum(A,2);\nA=A';\nx=ones(4,1);\nfor k=1:30\n  x=A*x;\n  x=x/sum(x);\nend\nx\n\n[vek,ert]=eig(A);\nv=vek(:,1);\nv/sum(v)\n\ng=digraph(A);\nplot(g)\n\n\n\n\n\n\n\n\n\n\nNonekarakterisztikus polinom\n\n\n\n\n\n\nclc; clear;\n\np=charpoly([-1 -5;1 3]);\nroots(p)\n\n\n\n\n\n\n\n\n\n\nNonehalak\n\n\n\n\n\n\n% halak\n\nclf;clear;\n\nL=[ 0,       6,  8;...\n    0.5,     0,  0;...\n    0,     0.5,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonehatvány módszer\n\n\n\n\n\n\n% hatvany\nfunction [x,l,k]=hatvany(A,x,e)\n  x=x/norm(x);\n  l0=dot(A*x,x);\n  l=l0;\n  for k=1:1000\n    x=A*x;\n    x=x/norm(x);\n    l1=l;\n    l=dot(A*x,x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(A*x-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneinverz iteráció\n\n\n\n\n\n\n% inverz iteracio (PLU nelkul)\nfunction [x,l,k]=invit(A,x,e)\n  sol=@(x) A\\x;\n  \n  x=x/norm(x);\n  l0=dot(sol(x),x);\n  l=l0;\n  for k=1:1000\n    x=sol(x);\n    x=x/norm(x);\n    l1=l;\n    l=dot(sol(x),x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(sol(x)-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneleslie-random\n\n\n\n\n\n\n% leslie\n\nclf;clear;\n\nL=[ 0,1,1;...\n    ]\n\nrng(22*2);\nn=10;\nL=zeros(n,n);\nL(1,:)=randi(2,1,n);\nL=L+diag(5+randi(3,1,n-1),-1);\nx=rand(n,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\n\n\n\n\n\n\n\n\n\n\nNonepagerank-random\n\n\n\n\n\n\n% page-rank\n\nclf;\n\nrng(22*2);\nn=10;\nA=randi(2,n,n)-1;\nA=A.*(1-eye(n,n));\nB=A./sum(A,2);\nB=B';\nx=ones(n,1);\nfor k=1:20\n  x=B*x;\nend\nx\n\ng=digraph(A);\nplot(g)"
+  },
+  {
     "objectID": "matmer-II/vizsga.html",
     "href": "matmer-II/vizsga.html",
     "title": "vizsga",
@@ -560,619 +931,10 @@
     "text": "pillanatnyi változási gyorsaság\n\naz érintő x tengellyel bezárt szögének tangense, meredekség.\n\n\n   f'(x_0)=\\lim_{h\\to 0} \\frac{f(x_0+h)-f(x_0)}{h}\n\n\n\n\nderiválás és műveletek (\n\nlegyen C\\in\\mathbb{R}\n\n\\begin{gather*}\n  (Cf)'=cf'\\hspace{1cm}\\\\\n  (f+g)=f'+g'\\\\\n  (fg)'=f'g+fg'\\\\\n  \\left( \\frac{f}{g}\\right) '=\\frac{f'g-fg'}{g^2}\\hspace{1cm} g\\neq 0\\\\\n  f(g)'=f'(g)g'\\\\\n  (f^{-1})'(x)=\\frac{1}{f'(f^{-1}(x))}\n\\end{gather*}\n\n\n\nelemi függvények deriváltjai\n\\begin{gather*}\n  C' =  0\\\\\n  (x^{C})' = Cx^{C-1}\\\\\n  \\exp(x)'=exp(x)\\\\\n  (C^x)'=\\log(C)C^x\\hspace{1cm}C&gt;0\\\\\n  \\sin(x)'=\\cos(x)\\\\\n  \\cos(x)'=-\\sin(x)\\\\\n  \\tan(x)'=\\frac{1}{\\cos(x)^2}\\\\\n  \\cot(x)'=-\\frac{1}{\\sin(x)^2}\\\\\n  \\log(|x|)'=\\frac{1}{x}\\hspace{1cm}x\\neq0\n\\end{gather*}\n\n\n\nszámoljuk ki f'-t adott f esetén\n\nf(x)=e^{xe^{\\sin(x)}}\n\nválasz: e^{xe^{\\sin(x)}}(e^{\\sin(x)}+xe^{\\sin(x)}\\cos(x))\n\nf(x)=\\frac{\\log(x\\log(x))}{x^2}\n\nválasz: \\frac{\\log(x) + 1}{x^3\\log(x)} - \\frac{2\\log(x\\log(x))}{x^3}\n\n\n\n\n\nmatlab\n\nsyms, diff"
   },
   {
-    "objectID": "store/leastsquares/scripts.html",
-    "href": "store/leastsquares/scripts.html",
-    "title": "leastsquares/scripts",
-    "section": "",
-    "text": "Nonepeter watertank\n\n\n\n\n\n\n% Peter - watertank - solution\nclc; clf; clear;\ndelete peter_water_solution.txt;\ndiary peter_water_solution.txt;\n\nhold on;\n\nt=0:2:12;\nf=[3,4,5,5.5,6.5,7,8];\n\n% we are also examine the rref\n% transforming them to a column vector\nt=t(:); f=f(:);\n% build the gaussian equation\nA=[ones(size(t)), t];\nfprintf(\"- the rref of the gaussian normal equation:\\n\\n\")\ndisp(rref([A'*A, A'*f]))\nfprintf(\"\\n\");\n\n\n\np=polyfit(t,f,1);\n% we are searching the line in b+at form\na=p(1); b=p(2);\n\nplot(t,f,\"*\",\"MarkerSize\",8);\n% saveas(gca(),\"peter_water_data.png\",\"png\");\n% return;\n\nplot([-1,13],polyval(p,[-1,13]),\"r\",\"LineWidth\",1);\n\nlegend([\"data points\",\"the best fitting line\"],\"Location\",\"southeast\");\naxis([-1,13,2,9]);\n\nsaveas(gca(),\"peter_water_solution.png\",\"png\");\n\nfprintf(\"- the best line is: %.4f + %.4f*t\\n\",b,a);\nfprintf(\"- at t=20 the height of the water is: %.4f + %.4f*20 = %.4f\\n\",b,a,polyval(p,20));\nfprintf(\"- the tank will be full at t=(50-%.4f)/%.4f = %.4f\\n\",b,a,(50-b)/a);\nfprintf(\"- the tank was empty at t=(0-%.4f)/%.4f = %.4f\\n\",b,a,(0-b)/a);\n\n\nhold off;\n\ndiary off;\n\n\n\n\n\n\n\n\n\n\nNonepeter acceleration\n\n\n\n\n\n\n% Peter - accel - solution\nclc; clf; clear;\n\ndelete peter_acc_solution.txt;\ndiary peter_acc_solution.txt;\n\nhold on;\n\nrng(2*22*22);\n\nt=0:2:12;\nacc=2.22;\nf=acc/2*t.^2+t.*datasample(-10:10,length(t))/12;\nf=round(f,2);\nf(1)=0;\n\n\n% f\n% return\n\n% we are also examine the rref\n% transforming them to a column vector\nt=t(:); f=f(:);\n% build the gaussian equation\nA=[t.^2];\nfprintf(\"- the rref of the gaussian normal equation:\\n\\n\")\ndisp(rref([A'*A, A'*f]))\nfprintf(\"\\n\");\n\n% also using the backslash to solve the system\nx=(A'*A)\\(A'*f);\n\n% we are searching the in s+a/2*t^2 form\na=2*x(1);\n\nplot(t,f,\"*\",\"MarkerSize\",8);\n% we need more points to plot a nice parabola\nxx=linspace(-1,13);\nplot(xx,a/2*xx.^2,\"r\",\"LineWidth\",1);\n\nlegend([\"data points\",\"the best fitting function\"],\"Location\",\"southeast\");\naxis([-1,13,-inf,inf]);\n\nsaveas(gca(),\"peter_acc_solution.png\",\"png\");\n\nfprintf(\"- the best function is: %.4f/2*t^2\\n\",a);\nfprintf(\"- at t=13 the position will be x=%.4f/2*13^2 = %.4f\\n\", a,a/2*13^2);\nfprintf(\"- the position x=1000 will be reached at t=%.4f\\n\",sqrt(2*1000/a));\nfprintf(\"- the acceleration is a=%.4f\\n\",a);\n\n\nhold off;\ndiary off;\n\n\n\n\n\n\n\n\n\n\nNonemean temperature\n\n\n\n\n\n\n% Budapest - temp - solution\nclc; clf; clear;\ndelete mean_temp_solution.txt;\ndiary mean_temp_solution.txt;\n\nhold on;\n\nt=[15 46 74 105 135 166 196 227 258 288 319 349];\nf=[ -1.7 0.1 5.2 10.3 15.8 18.9 21.1 20.3 16.1 10.2 4.2 0.5];\n\n% we are also examine the rref\n% transforming them to a column vector\nt=t(:); f=f(:);\nfprintf(\"- the rref of the gaussian normal equation:\\n\\n\")\n% build the gaussian equation\nA=[ones(size(t)), cos(2*pi*(t-14)/365)];\ndisp(rref([A'*A, A'*f]))\nfprintf(\"\\n\");\n\n\nplot(t,f,\"*\",\"MarkerSize\",8);\n% saveas(gca(),\"mean_temp.png\",\"png\");\n% return;\n\nx=(A'*A)\\(A'*f);\n\nxx=linspace(0,365,200);\nyy=x(1)+x(2)*cos(2*pi*(xx-14)/365);\n\nplot(xx,yy,\"r\",\"LineWidth\",1);\n\nlegend([\"data points\",\"the best fitting function\"],\"Location\",\"south\");\n%axis([-1,13,2,9]);\n\nsaveas(gca(),\"mean_temp_solution.png\",\"png\");\n\nfprintf(\"- the best parameters: %.4f, %.4f*t\\n\",x(1), x(2));\nfprintf(\"- the best model: %.4f + (%.4f) cos(2*pi*(t-14)/365) \",x(1), x(2));\n\n\nhold off;\n\ndiary off;\n\n\n\n\n\n\n\n\n\n\nNonecircle\n\n\n\n\n\n\nclc; clf; clear;\n\nrng(222);\n\nhold on;\naxis equal;\n\n% reconstruct circle from noisy points\n\n% random data generation\nr=3;\ncx=2;\ncy=22;\n\n\nfi0=linspace(0,2*pi,100); fi0=fi0(:);\n% some interval of angles is completely missing\nfi1=datasample(fi0(1:75),44); \nr1=3+0.2*randn(size(fi1));\n\n\nx=r1.*cos(fi1)+cx;\ny=r1.*sin(fi1)+cy;\n\nccx=mean(x)\nccy=mean(y)\nrr=mean(sqrt((ccx-x).^2+(ccy-y).^2))\n\n\nplot(x,y,\"*\",\"MarkerSize\",4);\n% title(\"the noisy circle points\");\n% saveas(gca(),\"circle_data.png\",\"png\");\n% return;\n\n\nA=[ones(size(x)),2*x,2*y];\nb=x.^2+y.^2;\nest=(A'*A)\\(A'*b);\nCx=est(2);\nCy=est(3);\nR=sqrt(est(1)+(Cx^2+Cy^2));\n\nX=R*cos(fi0)+Cx;\nY=R*sin(fi0)+Cy;\nplot(X,Y);\ntitle(sprintf(\"the best circle\\n\")+...\n   sprintf(\"cx cy r\\n\")+...\n   sprintf(\"%.3f %.3f %.3f\\n%.3f %.3f %.3f\\n\",cx,cy,r,Cx,Cy,R));\n\n\nsaveas(gca(),\"circle_best.png\",\"png\");"
-  },
-  {
-    "objectID": "store/leastsquares/exercises_draft.html",
-    "href": "store/leastsquares/exercises_draft.html",
-    "title": "leastsquares/exercises_draft",
-    "section": "",
-    "text": "Noneex-1\n\n\n\n\n\nDetermine the best fitting quadratic polynomial for the data\nt=[2.1  2.2  2.3  2.3  2.5  2.6  2.8  2.9];\nf=[2.5  2  2.5  2.7  3  4  5.4  7];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-2\n\n\n\n\n\nDetermine the best fitting line for the data\nt=[1  1.2  1.4  1.4  1.5  1.7  1.9  2];\nf=[6.2  7  8  7.9  8.4  9.2  10  10.6];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-3\n\n\n\n\n\nDetermine the best fitting cubic polynomial for the data\nt=[0.5  0.8  1.1  1.3  1.5  1.7  1.9  2.1  2.3];\nf=[2.5  2.3  1.8  1.3  0.9  0.4  0.1  -0.05  -0.01];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-4\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a = \\frac{b}{t}\n\nt=[1  1.2  1.4  1.4  1.5  1.7  1.9  2  2.1  2.2];\nf=[4.2  3.8  3.4  3.3  3.3  3  2.8  2.8  2.75  2.7];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-5\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a\\sin(t)+b\\sin(2t)+c\\sin(3t)\n\nfor the data\nt=[0.1 0.5 1.2 1.5 2 2.1 2.4  3  3.2 3.4  3.8  4  4.2  4.6  5];\nf=[1 4.1 3 1 -1.5 -1.6 -1.7  -0.4  0.1 0.7  1.6  1.8  1.6  0.2  -2.5];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-6\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a+b\\log(t)\n\nfor the data\nt=[0.1  0.5  1.2  1.5  2  2.1  2.4  3  3.2];\nf=[-0.6  1.5  2.5  2.9  3.2  3.3  3.5  3.8  3.9];\nCreate an appropriate plot!"
-  },
-  {
-    "objectID": "optalg/index.html",
-    "href": "optalg/index.html",
-    "title": "optalg",
-    "section": "",
-    "text": "egyebek\n\n\ngyök-keresés\n\n\nminimum-keresés\n\n\ngradiens-módszer\n\n\nteszt függvények\n\n\nprogram lista"
-  },
-  {
-    "objectID": "optalg/pelda-programok.html",
-    "href": "optalg/pelda-programok.html",
-    "title": "optalg/programok",
-    "section": "",
-    "text": "felező\nNewton\nszelő\nközelítő derivált (1 változós)\nbrachistochrone\n\nrészletek\n\ngradiens template"
-  },
-  {
-    "objectID": "optalg/root.html",
-    "href": "optalg/root.html",
-    "title": "optalg/gyök-keresés",
-    "section": "",
-    "text": "matlab\n\nfzero\nfsolve\n\n\n\negyszerű módszerek\n\n\n\n\n\n\nNonefelező módszer\n\n\n\n\n\n\nfunction x=bisection(f,a,b,tol)\n   while b-a&gt;tol\n      m=0.5*(a+b);\n      if f(m)*f(a)&lt;0\n         b=m;\n      else\n         a=m;\n      end\n   end\n   x=0.5*(a+b);\nend\n\n\n\n\n\n\n\n\n\n\nNoneNewton_módszer\n\n\n\n\n\n\nfunction x1=newton(f,df,x0,tol)\n   maxit=50;\n   x1=x0-f(x0)/df(x0);\n   for it=1:maxit\n      if abs(x1-x0)&lt;tol, break; end\n      x0=x1;\n      x1=x0-f(x0)/df(x0);\n   end\nend\n\n\n\n\n\n\n\n\n\n\nNoneSzelő_módszer\n\n\n\n\n\n\nfunction x1=secant(f,x0,x1,tol)\n   maxit=50;\n   x2=x1-f(x1)*(x1-x0)/(f(x1)-f(x0));\n   for it=1:maxit\n      if abs(x1-x2)&lt;tol, break; end\n      x0=x1;\n      x1=x2;\n      x2=x1-f(x1)*(x1-x0)/(f(x1)-f(x0));\n   end\nend"
-  },
-  {
-    "objectID": "optalg/programok.html",
-    "href": "optalg/programok.html",
-    "title": "optalg/programok",
-    "section": "",
-    "text": "felező\nNewton\nszelő\nközelítő derivált (1 változós)\n2-valtozós kontúr"
-  },
-  {
-    "objectID": "optalg/tesztfv.html",
-    "href": "optalg/tesztfv.html",
-    "title": "optalg/teszt-függvények",
-    "section": "",
-    "text": "néhány teszt-függvény\n\nBaran tanárnő fóliájából\n\n\n\n\n\n\n\nNonex^3+y^3-3x-3y\n\n\n\n\n\nf=@(x,y) x.^3+y.^3-3*x-3*y;\nfv=@(v) f(v(1),v(2));\ndf=@(x,y) [3*x.^2-3;3*y.^2-3];\ndfv=@(v) df(v(1),v(2));\n\n\n\n\n\n\n\n\n\nNonex^2+10y^2\n\n\n\n\n\nf=@(x,y) x.^2+10*y.^2;\nfv=@(v) f(v(1),v(2));\ndf=@(x,y) [2*x;20*y];\ndfv=@(v) df(v(1),v(2));"
-  },
-  {
-    "objectID": "optalg/program-lista.html",
-    "href": "optalg/program-lista.html",
-    "title": "optalg/program-lista",
-    "section": "",
-    "text": "felező\nNewton\nszelő\nközelítő derivált (1 változós)\nbrachistochrone\n\nrészletek\n\ngradiens template"
-  },
-  {
-    "objectID": "optalg/teszt_fv.html",
-    "href": "optalg/teszt_fv.html",
-    "title": "optalg/teszt függvények",
-    "section": "",
-    "text": "néhány teszt függvény\n\nBaran tanárnő fóliájából\n\n\n\n\n\n\n\nNonex^3+y^3-3x-3y\n\n\n\n\n\nf0=@(x,y) x.^3+y.^3-3*x-3*y;\nf=@(v) f0(v(1),v(2));\ndf0=@(x,y) [3*x.^2-3;3*y.^2-3];\ndf=@(v) df0(v(1),v(2));\nox=[1;1];\n\n\n\n\n\n\n\n\n\nNone10x^3+y^3-30x-3y\n\n\n\n\n\nf0=@(x,y) 10*x.^3+y.^3-30*x-3*y;\nf=@(v) f0(v(1),v(2));\ndf0=@(x,y) [30*x.^2-30;3*y.^2-3];\ndf=@(v) df0(v(1),v(2));\nox=[1;1];\n\n\n\n\n\n\n\n\n\nNonex^2+10y^2\n\n\n\n\n\nf0=@(x,y) x.^2+10*y.^2;\nf=@(v) f(v(1),v(2));\ndf0=@(x,y) [2*x;20*y];\ndf=@(v) df(v(1),v(2));\nox=[0;0];\n\n\n\n\n\n\n\n\n\nNoneRosenbrock 100(y-x^2)^2+(1-x)^2\n\n\n\n\n\nf0=@(x,y) 100*(y-x.^2).^2+(1-x).^2;\nf=@(v) f0(v(1),v(2));\ndf0=@(x,y) [-400*(y-x.^2).*x+2*(x-1); 200*(y-x.^2)];\ndf=@(v) df0(v(1),v(2));\nox=[1;1];"
-  },
-  {
-    "objectID": "optalg/program_lista.html",
-    "href": "optalg/program_lista.html",
-    "title": "optalg/program-lista",
-    "section": "",
-    "text": "felező\nNewton\nszelő\nközelítő derivált (1 változós)\nbrachistochrone\n\nrészletek\n\ngradiens template"
-  },
-  {
-    "objectID": "optalg/minimum.html",
-    "href": "optalg/minimum.html",
-    "title": "optalg/minimum-keresés",
-    "section": "",
-    "text": "matlab\n\nfminbnd\nfminunc\nfminsearch"
-  },
-  {
-    "objectID": "optalg/gradiens.html",
-    "href": "optalg/gradiens.html",
-    "title": "optalg/gradiens módszer",
-    "section": "",
-    "text": "Nonetemplate\n\n\n\n\n\nclc; clear; clf;\nhold on;\n\nf0=;\nf=;\ndf0=;\ndf=;\nox=;\n\nxx=linspace();\nyy=linspace();\n[X,Y]=meshgrid(xx,yy);\n\nZ=f0(X,Y);\ncontour(X,Y,Z);\n\ntol=1e-6;\nmaxstep=50;\n\nx=;\n\ntrace=[x];\nfor it=1:maxstep\n\n  x1=;\n\n  trace=[trace;x1];\n\n  if norm(x-x1)&lt;tol || norm(df(x1))&lt;tol, break; end\n\nend\n\nplot(trace(1,:),trace(2,:),\"o-\");\nplot(ox(1),ox(2),\"X\");\n\nnorm_df=norm(df(trace(:,end)));\ntitle(sprintf(\"steps: %d df: %.4f\",it,norm_df));\n\nhold off;\n\n\n\n\nvariációk\n\nfix a\nteljes vonalmenti keresés (pl fminbnd)\nlecsengő a\nArmijo\nmomentum\nadagrad\nAdam"
-  },
-  {
-    "objectID": "store/interpol/index.html#concepts-draft",
-    "href": "store/interpol/index.html#concepts-draft",
-    "title": "interpolation",
-    "section": "concepts (draft)",
-    "text": "concepts (draft)"
-  },
-  {
-    "objectID": "store/interpol/index.html#exercises-draft",
-    "href": "store/interpol/index.html#exercises-draft",
-    "title": "interpolation",
-    "section": "exercises (draft)",
-    "text": "exercises (draft)"
-  },
-  {
-    "objectID": "store/interpol/index.html",
-    "href": "store/interpol/index.html",
-    "title": "interpolation",
-    "section": "",
-    "text": "Lagrange 1\nLagrange 2\nLagrange 3\nHermite 1\nHermite 2"
-  },
-  {
-    "objectID": "store/interpol/index.html#worked-out-examples",
-    "href": "store/interpol/index.html#worked-out-examples",
-    "title": "interpolation",
-    "section": "",
-    "text": "Lagrange 1\nLagrange 2\nLagrange 3\nHermite 1\nHermite 2"
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html",
-    "href": "store/interpol/concepts_draft.html",
-    "title": "interpolation/concepts_draft",
-    "section": "",
-    "text": "for a given set of 2d points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}) we are searching the simplest (minimal degree) P polynomial that interpolates the points: P(t_{k})=f_{k}\\ \\ \\ k=1,\\ldots ,n.\nterminology: the elements of t are called interpolation nodes/node points, the elements of f are called (function) values/node values.\nnaturally the point set cannot have two equal first coordinates (t_{i}=t_{j}) with different second coordinates (f_{i}\\neq f_{j}).\nfor 1 points a 0-th order, 2 points an at most 1-st order interpolation is clearly exists - but how to proceed to larger number of points?\nn points n pieces of information. we may expect that these n pieces will determine n real numbers, a polynomial of degree at most n-1, which will be the interpolational polynomial.\nthere are several approaches\n\nsetting up an n\\times n linear system of equations \na_{n-1}t_{k}^{n-1}+\\ldots+a_{1}t_{k}+a_{0}=f_{k}\\ \\ \\ k=1,\\ldots,n\n\napplying least square approximation for \\varphi_{k}(t)=t^k, \\ \\ k=0,\\ldots,n-1, for if it is possible to achieve the zero error, then the Gauss normal equation will give us the appropriate coefficients.\nboth of these (eventually equivalent) approaches has complexity {\\cal O}(n^3) and it is not so straightforward to apply them for a dynamically extending point set.\n\nwe will learn later that there is a more efficient {\\cal O}(n^2) complexity and dynamically extendable approach: the Newton divided difference method.\nfirst we will state a theorem about the existence and uniqueness.\n\n\n\n\n\n\n\nImportantLagrange’s main theorem\n\n\n\nFor a given set of pairwise different points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}), there is a unique polynomial P with: \nP(t_{k})=f_{k}\\ \\ \\ (k=1,\\ldots,n)\\ \\ \\text{and}\\ \\ \\deg(P)\\le n-1\n\n\n\n\nfor more details read this\nat this stage we learned that the least square approach (even without A^{T}A) will give us the unique solution…"
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#intro-1",
-    "href": "store/interpol/concepts_draft.html#intro-1",
-    "title": "interpolation/concepts_draft",
-    "section": "intro",
-    "text": "intro\n\nsearch for the polynomial that interpolates the points t=[-1,0,1],\\ \\ f=[2,3,1].\nlet’s imagine the polynomial in the form of p(x)=a_2(x+1)x+a_1x+a_0. here we included some information about the first coordinates into the polynomial.\n\n\n\n\n\n\n\nNonedetails\n\n\n\n\n\n\n\\begin{gather*}\np(-1)=2 \\ \\ \\Longrightarrow \\ \\ a_0=2\\\\\np(x)=a_2(x+1)x+a_1(x+1)+2\\\\\np(0)=3 \\ \\ \\Longrightarrow \\ \\ a_1=1\\\\\np(x)=a_2(x+1)x+(x+1)+2\\\\\np(1)=1 \\ \\ \\Longrightarrow \\ \\ a_2=-\\frac{3}{2}\\\\\np(x)=-\\frac{3}{2}(x+1)x+(x+1)+2\\\\\n\\end{gather*}\n\n\n\n\n\nobserve that at each step we solved a one variable linear equation, as in the case of triangular form linear systems\nthis seemingly ad-hoc approach is transformed to an algorithm"
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#the-method-how",
-    "href": "store/interpol/concepts_draft.html#the-method-how",
-    "title": "interpolation/concepts_draft",
-    "section": "the method (how?)",
-    "text": "the method (how?)\n\nthe scheme of the divided difference method\n\n\\begin{array}{c|cccccc}\nt_1 & f^{~(0)}_{1} & & & & & \\\\\n& & f^{~(1)}_{1} & & & & \\\\\nt_2 & f^{~(0)}_{2} && f^{~(2)}_{1} & & & \\\\\n& & f^{~(1)}_{2} & & \\ddots & &\\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & f^{~(n-2)}_{1} & \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & & f^{~(n-1)}_{1} \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & f^{~(n-2)}_{2} & \\\\\n& & f^{~(1)}_{n-2} & & \\mathinner{\\kern{1.2mu}\\raisebox{2mu}{.}\\kern{3mu}\\raisebox{7.4mu}{.}\\kern{3mu}\\raisebox{12.8mu}{.}\\kern{1.2mu}}& & \\\\\nt_{n-1} & f^{~(0)}_{n-1} & & f^{~(2)}_{n-2} & & & \\\\\n& & f^{~(1)}_{n-1} & & & & \\\\\nt_n & f^{~(0)}_{n} & & & & &\n\\end{array}\n\n\n\n\n\n\n\nImportantthe computational rule\n\n\n\nWe start with the t and the f^{~(0)} columns, the the missing entries, for j=1\\ldots n-1 and i=1\\ldots n-j are computed by \nf_{i}^{~(j)}=\\frac{f_{i}^{~(j-1)}-f_{i+1}^{~(j-1)}}{t_i-t_{i+j}} \\ \\ \\ \\ (*)\n\n\n\n\n\n\n\n\n\nImportantthe polynomial(s)\n\n\n\nSuppose that we filled in the table according to the rule (*). Then \n\\begin{align*}\nP(t)&=f^{~(0)}_{1}+f^{~(1)}_{1}(t-t_1)+f^{~(2)}_{1}(t-t_1)(t-t_2)+\\ldots\\\\\n&+f^{~(n-2)}_{1}(t-t_1)\\ldots (t-t_{n-2})+f^{~(n-1)}_{1}(t-t_1)\\ldots (t-t_{n-1})\n\\end{align*}\n and \n\\begin{align*}\nP(t)&=f^{~(0)}_{n}+f^{~(1)}_{n-1}(t-t_n)+f^{~(2)}_{n-2}(t-t_n)(t-t_{n-1})+\\cdots\\\\\n&+f^{~(n-2)}_{2}(t-t_n)\\cdots (t-t_3)+f^{~(n-1)}_{1}(t-t_n)\\cdots (t-t_2)\n\\end{align*}\n are interpolational polynomials for the data t,f."
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#the-method-why",
-    "href": "store/interpol/concepts_draft.html#the-method-why",
-    "title": "interpolation/concepts_draft",
-    "section": "the method (why?)",
-    "text": "the method (why?)\n\nread this"
-  },
-  {
-    "objectID": "store/interpol/Newton-dd.html",
-    "href": "store/interpol/Newton-dd.html",
-    "title": "interpolation/Newton-divided-difference",
-    "section": "",
-    "text": "Neville-formula\n\nit tells us how the P_{1,2,\\ldots,k+1} polynimial depends on the smaller one P_{1,2,\\ldots,k} and P_{2,\\ldots,k+1}.\n\n\nP_{1,2,\\ldots,k+1}(x)=\\frac{1}{x_1-x_{k+1}}\n\\left|\n\\begin{array}{cc}\nP_{1,2,\\ldots,k}(x) & P_{2,3,\\ldots,k+1}(x)\\\\\nx-x_1 & x-x_{k+1}\n\\end{array}\n\\right|"
-  },
-  {
-    "objectID": "store/interpol/Lagrange.html",
-    "href": "store/interpol/Lagrange.html",
-    "title": "interpolation/Lagrange",
-    "section": "",
-    "text": "sketch\nwe will construct polynomials p_k with:\n\n\np_{k}(t_j)=\\delta_{kj}\\ \\ \\text{and}\\ \\ \\deg(p_{k})=n-1\n\n\nlet P_{k}(x)=\\prod_{j\\neq k} (x-t_{j}).\nset p_k(x)=\\frac{P_{k}(x)}{P_{k}(t_{k})}.\nset P=\\sum_{k=1}^n f_{k}p_{k}\n\n\n\n\n\nindirect P\\neq Q two interpolational polynomial\nP-Q has n different roots and its degree is at most n-1: P-Q must be zero"
-  },
-  {
-    "objectID": "store/interpol/Newton_dd.html",
-    "href": "store/interpol/Newton_dd.html",
-    "title": "interpolation/Newton-divided-difference",
-    "section": "",
-    "text": "polynom representations\n\nit is the most generic representation\n\n\n\\begin{gather*}\nP(t)=a_n(t-t_{n,1})\\ldots(t-t_{n,n})+a_{n-1}(t-t_{n-1,1})\\ldots(t-t_{n-1,n-1})+\\ldots+\\\\\na_2(t-t_{2,1})(t-t_{2,2})+a_1(t-t_{1,1})+a_0\n\\end{gather*}\n\n\nthe main coefficient is the same for each possible representation (why?)\n\n\n\nNeville-formula\n\nit tells us how the “larger” P_{1,2,\\ldots,k+1} polynomial depends on the “smaller” one P_{1,2,\\ldots,k} and P_{2,\\ldots,k+1}.\n\n\nP_{1,2,\\ldots,k+1}(t)=\\frac{1}{t_1-t_{k+1}}\n\\left|\n\\begin{array}{cc}\nP_{1,2,\\ldots,k}(t) & P_{2,3,\\ldots,k+1}(t)\\\\\nt-t_1 & t-t_{k+1}\n\\end{array}\n\\right|\n\n\nproof: evaluate at t_1 and at t_2,\\ldots,t_{k} and at t_{k+1} and use the Lagrange main theorem.\nit is also valid for [j+1,\\ldots, j+k+1] and [j+1,\\ldots, j+k] and [j+2,\\ldots, j+k+1] for each possible j\nlet A,B,C denote the main coefficient of the polynomials (in order). then\n\n\nA=\\frac{B-C}{t_1-t_{k+1}}\n\n\n\nthe scheme and the rule\n\nlet’s focus on the upper edge\nuse induction\n(base1): the f^{(0)} column contains the coefficients for the sub-problems: [1],[2],\\ldots,[n].\n\nwe could start the induction here\n\n(base2): the first computed column contains the main coefficients for each sub-problems: [1,2],[2,3],\\ldots,[n-1,n]. (these ar the slopes of the lines)\n\nit means that for 2-sized sub-problems the small triangles’ upper edges are the appropriate coefficients\nthe induction could be started from here too\n\n(step): consider the subproblem: [1,\\ldots,k+1] and the two child problems: [1,\\ldots,k] and [2,\\ldots,k+1].\n\non the one hand: P_{1,\\ldots,k+1}(t)=P_{1,\\ldots,k}(t)+A(t-t_1)\\ldots(t-t_k) for some C\non the other hand, from the Neville formula A=\\frac{B-C}{t_1-t_{k+1}} - in accordance with the rule used.\n\nthe lower edge polynomials/relations can be handled by reversing the order of the points."
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#problem-description",
-    "href": "store/interpol/concepts_draft.html#problem-description",
-    "title": "interpolation/concepts_draft",
-    "section": "problem description",
-    "text": "problem description\nWe have a set of points and a set of conditions at the points: \n\\begin{array}{rcccccl}\n& t_1            & t_2          & t_3       & \\dots & t_n       & \\\\\n\\hline\n& f_{1}^{(0)}      & f_{2}^{(0)}    & f_{3}^{(0)} & \\dots & f_{n}^{(0)} &\\\\\n& f_{1}^{(1)}      & f_{2}^{(1)}    & f_{3}^{(1)} & \\dots & f_{n}^{(1)} &\\\\\n& f_{1}^{(2)}      & f_{2}^{(2)}    & f_{3}^{(2)}  & \\dots & f_{n}^{(2)} &\\\\\n&\\vdots          & \\vdots           & \\vdots       &       & \\vdots     &\\\\\n&f_{1}^{(m_1-1)}     & f_{2}^{(m_2-1)}  & f_{3}^{(m_3-1)} &\\dots & f_{n}^{(m_n-1)}&\\\\\n\\end{array}\n\nWe are looking for a polynomial H(t), for which \nH^{~(j)}(t_i)=f_{i}^{(j)} \\quad \\quad i=1,\\dots,n, \\quad j=0,\\dots ,m_i-1.\n Let m=\\sum_{k=1}^n m_k, the number of conditions.\n\n\n\n\n\n\nImportant\n\n\n\nThe problem of Hermite-interpolation can be solved uniquely in the space of at most m-1 degree polynomials.\n\n\n\nFrom the conditions, we can set up a uniquely solvable m\\times m linear system, for the details see this at page (around) 18.\nor"
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#computation",
-    "href": "store/interpol/concepts_draft.html#computation",
-    "title": "interpolation/concepts_draft",
-    "section": "computation",
-    "text": "computation\n\nHow to compute the coefficients of H?\nIt is possible to modify the Newton divided difference method for Lagrange polynomials to get them.\nThe node points column (t) should contain the t_k’s with multiplicity. As many conditions assigned to a specific as many times we should include it. If the first derivative is given, then we must include it 2 times, and so on.\nThe corresponding computational formula is modified, in order to handle the “division by zero” case\n\n\n\n\n\n\n\nImportantHermite-rule\n\n\n\n\nf_{i}^{~(j)}=\n\\begin{cases}\n\\frac{f_{i}^{~(j-1)}-f_{i+1}^{~(j-1)}}{t_i-t_{i+j}} \\ \\ \\text{if}\\ t_i \\neq t_{i+j}\\\\\n\\frac{f(t_{i})^{(j)}}{j!} \\ \\ \\text{otherwise}\\\\\n\\end{cases}\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nIf the node points are set up with appropriate multiplicity and the modified computational rule used to fill in the values of the scheme then the polynomial in the final table fulfills the conditions. (The proof is omitted.)"
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#example-1",
-    "href": "store/interpol/concepts_draft.html#example-1",
-    "title": "interpolation/concepts_draft",
-    "section": "example",
-    "text": "example\n\n\n\n\n\n\nNonethe plot for the example"
-  },
-  {
-    "objectID": "store/interpol/scripts.html",
-    "href": "store/interpol/scripts.html",
-    "title": "interpolation/scripts",
-    "section": "",
-    "text": "NoneHermite-interpolation through Newton dd\n\n\n\n\n\n\n%\n% hermite polinomial computation\n%\n% expects:\n%    data: a cell array of arrays: {[t1,f1,f1',...],...,[tn,fn,fn']}\n% \n%    H: the coefficients, in decreasing order\n%    t: the support points in the appropriate order\n%\nfunction [H,t] = hermite_interpolation(data)\n  m = cellfun(@length,data)-1; % individual numbers of conditions\n  n = length(m); % number of basis points\n  M = sum(m); % total number of conditions (deg(H)&lt;=M-1)\n  lab = repelem((1:n)',m); % labels for identify base points\n  t_orig = zeros(n,1); % original t's\n  f_orig = zeros(n,1); % original f's\n  for k=1:n\n    % get the individual values\n    t_orig(k)=data{k}(1);\n    f_orig(k)=data{k}(2);\n  end\n  t = repelem(t_orig, m); % nodes w/ multiplicity\n  f = repelem(f_orig, m); % values w/ multiplicity\n  table = {f}; % the initial table (the 0-th column is given)\n  for j = 1:M-1\n    table{j+1}=zeros(M-j,1); % j+1 -&gt; one based indexing\n    for i=1:M-j\n      if lab(i)==lab(i+j) % div by zero\n        table{j+1}(i)=data{lab(i)}(j+2)/factorial(j); % j+2 -&gt; t,f is the first 2\n      else\n        table{j+1}(i)=(table{j}(i)-table{j}(i+1))/(t(i)-t(i+j));\n      end\n    end\n  end\n  H=zeros(M,1);\n  for k=1:M\n    H(k)=table{k}(1); % reading from the upper edge\n  end\n  % reverse them to get decreasing order for degrees\n  H=H(end:-1:1);\n  t=t(end:-1:1);\nend\n\n\n\n\n\n\n\n\n\n\nNoneHorner-method for Newton-form polynomials\n\n\n\n\n\n\n% Horner-method for polynomials in Newton form\n% vectorized version\n\nfunction y=horner_newton(p,t,x)\n  y=p(1)+zeros(size(x));\n  for k=2:length(p)\n    y=y.*(x-t(k)) + p(k);\n  end\nend\n\n\n\n\n\n\n\n\n\n\nNonethe script for the example in hermite1.pdf\n\n\n\n\n\n\n% plot of example in hermite1.pdf\n\nclc; clf; clear;\nhold on;\naxis equal;\n\n\nd1=[-1,1,0];\nd2=[1,2];\nd3=[2,1,-1];\n\nplot([d1(1),d2(1),d3(1)],[d1(2),d2(2),d3(2)],\"*\",\"MarkerSize\",5,\"Color\",[0,0,0])\n\n[H,t]=hermite_interpolation({d1,d2,d3});\n\nxx=linspace(-1.2,2.2);\nyy=horner_newton(H,t,xx);\nplot(xx,yy);\n\nsaveas(gca(),\"hermite1.png\",\"png\");\ntitle(\"Hermite example (in hermite1.pdf)\");\n\n\n\n\nhold off;\n\n\n\n\n\n\n\nNonethe script for the revisited Runge\n\n\n\n\n\n\nclc; clf; clear;\n% Runge examples - uniform Hermite\n\nfun=@(x) 1./(1+25*x.^2);\ndfun=@(x) -50*x./(1+25*x.^2).^2;\nxx=linspace(-1,1);\nyy=fun(xx);\n\nnsp=0;\nfor np=[3,9,15]\n  nsp=nsp+1;subplot(3,1,nsp);\n  x=linspace(-1,1,np);\n  data=cell(1,np);\n  % also control some derivatives at the ends\n  data{1}=[x(1),fun(x(1)),dfun(x(1))];\n  data{2}=[x(2),fun(x(2)),dfun(x(2))];\n  for i=3:np-2\n    data{i}=[x(i),fun(x(i))];\n  end\n  data{np-1}=[x(np-1),fun(x(np-1)),dfun(x(np-1))];\n  data{np}=[x(np),fun(x(np)),dfun(x(np))];\n  \n  [H,t]=hermite_interpolation(data);\n  yyy=horner_newton(H,t,xx);\n\n  plot(xx,yy,xx,yyy);\n  maxdiff=max(abs(yy-yyy));\n  title(sprintf(\"uniform+Hermite | num of points: %d | max difference: %.2f\\n\",np,maxdiff));\nend\n\nsaveas(gca(),\"rungeHERMITE.png\",\"png\");"
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#applications",
-    "href": "store/interpol/concepts_draft.html#applications",
-    "title": "interpolation/concepts_draft",
-    "section": "applications",
-    "text": "applications\n\ntangent line formula\n\nFor a given real valued, differentiable function find the equation of its tangential line at t_0!\nWe are looking for a Hermite polynomial of degree at most 1, for which H(t_0)=f(t_0) and H~'(t_0)=f~'(t_0)\n\n\n\\begin{array}{r|rr}\nt_0 &  f(t_0) \\\\\n& & f~'(t_0) \\\\\nt_0 & f(t_0)\n\\end{array}\n\n\nthen H(t)=f(t_0)+f~'(t_0)(t-t_0)"
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#the-runge-function-revisited",
-    "href": "store/interpol/concepts_draft.html#the-runge-function-revisited",
-    "title": "interpolation/concepts_draft",
-    "section": "the Runge-function revisited",
-    "text": "the Runge-function revisited\n\nwe will interpolate the function at different node sets, but this time the derivative values will also be used at some nodes.\n\n\n\n\n\n\n\nNonethe plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNonethe script\n\n\n\n\n\n\nclc; clf; clear;\n% Runge examples - uniform Hermite\n\nfun=@(x) 1./(1+25*x.^2);\ndfun=@(x) -50*x./(1+25*x.^2).^2;\nxx=linspace(-1,1);\nyy=fun(xx);\n\nnsp=0;\nfor np=[3,9,15]\n  nsp=nsp+1;subplot(3,1,nsp);\n  x=linspace(-1,1,np);\n  data=cell(1,np);\n  % also control some derivatives at the ends\n  data{1}=[x(1),fun(x(1)),dfun(x(1))];\n  data{2}=[x(2),fun(x(2)),dfun(x(2))];\n  for i=3:np-2\n    data{i}=[x(i),fun(x(i))];\n  end\n  data{np-1}=[x(np-1),fun(x(np-1)),dfun(x(np-1))];\n  data{np}=[x(np),fun(x(np)),dfun(x(np))];\n  \n  [H,t]=hermite_interpolation(data);\n  yyy=horner_newton(H,t,xx);\n\n  plot(xx,yy,xx,yyy);\n  maxdiff=max(abs(yy-yyy));\n  title(sprintf(\"uniform+Hermite | num of points: %d | max difference: %.2f\\n\",np,maxdiff));\nend\n\nsaveas(gca(),\"rungeHERMITE.png\",\"png\");\n\n\n\n\n\nas we see the fluctuations can be controlled, but not in straightforward way."
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#linear-interpolation",
-    "href": "store/interpol/concepts_draft.html#linear-interpolation",
-    "title": "interpolation/concepts_draft",
-    "section": "linear interpolation",
-    "text": "linear interpolation\n\nmatlab\n\nno need to implement it by hand\nthe interp1 function can be used\n\n\n\nerror of the linear interpolation\n\nlet f\\in C^{2}[A,B] and M_2=\\max_{t\\in[A,B]} |f{~''}(t)|\nthen for the linear interpolation P of f on [a,b]\\subset [A,B] we have:\n\n\n\n\n\n\n\nImportant\n\n\n\n\n\\vert f(t)-P(t)\\vert \\leq \\frac {M_2}{8}(b-a)^2, \\quad\\quad\nt\\in [a,b]\n\n\n\n\nincreasing the number of subintervals results in smaller error.\ndividing the “large” [A,B] interval int n equal pieces (and using the same “global” M_2) the error for one [a,b] subinterval:\n\n\n\\vert f(t)-P_{[a,b]}\\vert \\leq \\frac {M_2}{8}\\frac{(B-A)^2}{n^2}, \\quad\\quad\nt\\in [a,b]\n\n\ndoubling the points = halving the length will result 4 times better approximation\npro: simple\ncon: sometimes for very high precision we need large number of points, but at least it works\nmore on this"
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#higher-order-interpolation",
-    "href": "store/interpol/concepts_draft.html#higher-order-interpolation",
-    "title": "interpolation/concepts_draft",
-    "section": "higher-order interpolation",
-    "text": "higher-order interpolation\n\none can use plain Lagrange or Hermite interpolation for the small intervals\npro: better approximation (worst case)\ncon: computationally intensive, harder to implement"
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#spline-interpolation",
-    "href": "store/interpol/concepts_draft.html#spline-interpolation",
-    "title": "interpolation/concepts_draft",
-    "section": "spline interpolation",
-    "text": "spline interpolation"
-  },
-  {
-    "objectID": "store/interpol/concepts_draft.html#cubic-spline-interpolation",
-    "href": "store/interpol/concepts_draft.html#cubic-spline-interpolation",
-    "title": "interpolation/concepts_draft",
-    "section": "cubic spline interpolation",
-    "text": "cubic spline interpolation\n\nthe most widely used piecewise interpolation method\ngiven [t_1,\\ldots,t_n] and [f_1,\\ldots,f_n] and f_1' and f'_n\nthe first derivatives are given only the endpoints\nWe search for a function S(t) for which\n\nS(t_k)=f_k\nS'(t_1)=f_1' and S'(t_n)=f'_n\nS|_{[t_{k},t_{k+1}]}=S_k cubic polynomial, =1,\\ldots ,n-1\nS is twice continuously differentiable\n\nS'(t_k)=S'(t_{k+1}) and S''(t_k)=S''(t_{k+1}) for k=2,\\ldots,n-1 (at the inner points)\n\n\nthe are several approaches to construct the sub-polynomials. We do not discuss them.\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear; format(\"default\");\n\nt=[1,2,4];\nf=[1,4,2];\ndf1=1;\ndfn=-1;\n\n\nnt=length(t);\npp=spline(t,[df1 f dfn]);\n\ndpp=pp;\ndpp.coefs=zeros(nt-1,3);\ndpp.order=3;\nfor k=1:nt-1\n  dpp.coefs(k,:)=polyder(pp.coefs(k,:));\nend\n\nd2pp=pp;\nd2pp.coefs=zeros(nt-1,2);\nd2pp.order=2;\nfor k=1:nt-1\n  d2pp.coefs(k,:)=polyder(dpp.coefs(k,:));\nend\n\nd3pp=pp;\nd3pp.coefs=zeros(nt-1,1);\nd3pp.order=1;\nfor k=1:nt-1\n  d3pp.coefs(k,:)=polyder(d2pp.coefs(k,:));\nend\n\n\nxx=linspace(t(1),t(end));\ntlims=getlims(xx);\n\nsubplot(2,2,1);\nhold on;\nplot(t,f,\"k*\")\nyy=ppval(pp,xx);\nplot(xx,yy,\"b\")\ntitle(\"S\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,2);\nyy=ppval(dpp,xx);\nplot(xx,yy,\"b\");\ntitle(\"S'\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,3);\nyy=ppval(d2pp,xx);\nplot(xx,yy,\"b\")\ntitle(\"S''\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,4);\nhold on;\nyy=ppval(d3pp,xx);\nw=xx&lt;t(2);\nplot(xx(w),yy(w),\"b\");\nw=xx&gt;t(2);\nplot(xx(w),yy(w),\"b\");\ntitle(\"S'''\");\naxis([tlims,getlims(yy)]);\n\nsgtitle(\"cubic spline properties\")\n\nsaveas(gca(),\"splinePROP.png\",\"png\");\n\nfunction ll=getlims(v)\n  p=0.1;\n  vmin=min(v);\n  vmax=max(v);\n  dv=vmax-vmin;\n  ll=[vmin-p*dv,vmax+p*dv];\nend\n\n\n\n\n\nmatlab\n\nthe spline function can be used\nnot supplying the derivatives some (implementation dependent) defaults will be used\nspline(t, [df1 f dfn], x) will evalute the polynomial at x\nthe Hermite problem t_1,t_2,f_1,f_2,f'_1,f'_2 is a cubic spline problem for one-interval. it can be solved by a simple call of spline. (at least the evaluation part)\n\n\n\n\n\n\n\nNoneapplication\n\n\n\n\n\n\nreconstruct a rotated ellipse from a few regularly sampled points using cubic-spline\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear; format;\nhold on;\nrng(22);\n\n% create the initial plot\n% init: rotated ellipse\n\n\nfi=pi/6; % rot angle\nzfun=@(a) (cos(fi)+1i*sin(fi))*(4*cos(a)+1i*sin(a));\nax0=[-5,5,-3,3];\nN0=5;\n\n\nN=100;\nalpha=linspace(0,2*pi,N)';\nz=zfun(alpha);\nx=real(z);\ny=imag(z);\n\nsubplot(3,1,1);\nplot(x,y)\ntitle(sprintf(\"original %d points\",N))\n\naxis(ax0);\naxis equal;\nalpha0=linspace(0,2*pi,N0+1);\nz0=zfun(alpha0);\nx0=real(z0);\ny0=imag(z0);\n\nsubplot(3,1,2);\nplot(x0,y0,'*')\ntitle(sprintf(\"%d points from the original\",N0))\naxis(ax0);\naxis equal;\n\nx1=spline(alpha0,x0,alpha);\ny1=spline(alpha0,y0,alpha);\nsubplot(3,1,3);\nplot(x1,y1)\nav_rel_err=sum(sqrt((x-x1).^2+(y-y1).^2)./sqrt(x.^2+y.^2))/N;\ntit=\"reconstruction from the sample\"+...\n  sprintf(\"\\nmean relative error: %.4f\",av_rel_err);\ntitle(tit);\naxis(ax0);\naxis equal;\n\nsaveas(gca(),\"splineREC0.png\",\"png\");\n\nhold off;\n\n\n\n\n\nreconstruct another parametric curve from randomly sampled points using cubic-spline\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear;format;\nhold on;\nrng(22);\n\n% create the initial plot\n% it'll be a circle + sin/cos \"noise\"\n\nN=1000;\nalpha=linspace(0,2*pi,N);\nr=2+0.4*sin(8*alpha)+0.8*cos(4*alpha);\nx=r.*cos(alpha);\ny=r.*sin(alpha);\nsubplot(3,1,1);\nplot(x,y)\ntitle(sprintf(\"original %d points\",N))\naxis([-4,4,-4,4]);\npercent=5;\npart=[1,datasample(2:N,floor(percent/100*N),\"Replace\",false)];\nalpha0=alpha(part);\nr0=r(part);\nx0=r0.*cos(alpha0);\ny0=r0.*sin(alpha0);\nsubplot(3,1,2);\nplot(x0,y0,'*')\ntitle(sprintf(\"%d%% (random)sample of the original\",percent))\naxis([-4,4,-4,4]);\n\nx1=spline(alpha0,x0,alpha);\ny1=spline(alpha0,y0,alpha);\nsubplot(3,1,3);\nplot(x1,y1)\nav_rel_err=sum(sqrt((x-x1).^2+(y-y1).^2)./sqrt(x.^2+y.^2))/N;\ntit=\"reconstruction from the sample\"+...\n  sprintf(\"\\nmean relative error: %.4f\",av_rel_err);\ntitle(tit);\naxis([-4,4,-4,4]);\n\nsaveas(gca(),\"splineREC.png\",\"png\");\n\nhold off;"
-  },
-  {
-    "objectID": "store/interpol/Lagrange.html#existence",
-    "href": "store/interpol/Lagrange.html#existence",
-    "title": "interpolation/Lagrange",
-    "section": "",
-    "text": "sketch\nwe will construct polynomials p_k with:\n\n\np_{k}(t_j)=\\delta_{kj}\\ \\ \\text{and}\\ \\ \\deg(p_{k})=n-1\n\n\nlet P_{k}(x)=\\prod_{j\\neq k} (x-t_{j}).\nset p_k(x)=\\frac{P_{k}(x)}{P_{k}(t_{k})}.\nset P=\\sum_{k=1}^n f_{k}p_{k}"
-  },
-  {
-    "objectID": "store/interpol/Lagrange.html#uniqueness",
-    "href": "store/interpol/Lagrange.html#uniqueness",
-    "title": "interpolation/Lagrange",
-    "section": "",
-    "text": "indirect P\\neq Q two interpolational polynomial\nP-Q has n different roots and its degree is at most n-1: P-Q must be zero"
-  },
-  {
-    "objectID": "store/interpol/Lagrange.html#existence-1",
-    "href": "store/interpol/Lagrange.html#existence-1",
-    "title": "interpolation/Lagrange",
-    "section": "existence",
-    "text": "existence\n\nlet \\omega_{k}(t)=\\prod_{i=1}^k (t-t_i)\nstart with P_{1}(t)=f_1\nP_{k+1}(t)=P_{k}(t)+b_{k+1}\\omega_{k}(t)\n\nit is ok for the “old” points (as \\omega vanishes at them)\nP_{k+1}(t_{k+1})=f_{k+1}\nb_{k+1}=\\frac{f_{k+1}-P_{k}(t_{k+1})}{\\omega_{k}(t_{k+1})} and it is well defined and \\deg P_{k+1}\\le k"
-  },
-  {
-    "objectID": "store/interpol/Lagrange.html#uniqueness-1",
-    "href": "store/interpol/Lagrange.html#uniqueness-1",
-    "title": "interpolation/Lagrange",
-    "section": "uniqueness",
-    "text": "uniqueness\n\nsame as in the classical proof"
-  },
-  {
-    "objectID": "store/etc.html",
-    "href": "store/etc.html",
-    "title": "mix",
-    "section": "",
-    "text": "mix\n\n\n\n\n\n\nNoneprod-der\n\n\n\n\n(fg)^{(n)}=\\sum_{k=0}^n \\binom{n}{k} f^{(k)}g^{(n-k)}\n\n\nf^{(k)} is the k-th derivative\n\n\n\n\n\n\n\n\n\nNoneder-1\n\n\n\n\nP(t)=(t-a)^n Q(t) \\ \\ \\implies \\begin{cases} P^{(n)}(a)=n!~ Q(a) \\\\ P^{(k)}(a)=0 & k&lt;n \\end{cases}\n\n\nby prod-der\n\n\n\n\n\n\n\n\n\nNonepoly-div\n\n\n\n\nA(t) = Q(t)B(t)+R(t)\\ \\ \\ \\ \\deg R&lt;\\deg B\n\n\nA and B are polynomials \\deg B&gt;0\nit is unique\neuclidean division for polynomials\n\n\n\n\n\n\n\n\n\nNonepoly-root\n\n\n\n\nif a non-zero P polynomial has n different roots then its degree is at least n.\n\nby poly-div, if P(t_1)=0 then P(t)=(t-t_1)P_1(t). (let’s repeat)\nP(t)=(t-t_1)(t-t_2)\\ldots (t-t_{n})P_{n}(t).\n\n(only) the zero polynomial has more roots than its degree."
-  },
-  {
-    "objectID": "store/etc.html#polyroot",
-    "href": "store/etc.html#polyroot",
-    "title": "mix",
-    "section": "",
-    "text": "if a non-zero P polynomial has n different roots then its degree is at least n.\n\nby polydiv, if P(t_1)=0 then P(t)=(t-t_1)P_1(t). (let’s repeat)\nP(t)=(t-t_1)(t-t_2)\\ldots (t-t_{n})P_{n}(t).\n\n(only) the zero polynomial has more roots than its degree."
-  },
-  {
-    "objectID": "store/etc.html#lem-polydiv",
-    "href": "store/etc.html#lem-polydiv",
-    "title": "bbbbb",
-    "section": "polydiv",
-    "text": "polydiv\n\n\n\n\n\n\n\nA(t) = Q(t)B(t)+R(t)\n\n\nwhere \\deg B&gt;0 and \\deg R&lt;\\deg B"
-  },
-  {
-    "objectID": "store/etc.html#sec-polydiv",
-    "href": "store/etc.html#sec-polydiv",
-    "title": "mix",
-    "section": "",
-    "text": "A(t) = Q(t)B(t)+R(t)\n\n\nwhere \\deg B&gt;0 and \\deg R&lt;\\deg B"
-  },
-  {
-    "objectID": "store/etc.html#prodder",
-    "href": "store/etc.html#prodder",
-    "title": "mix",
-    "section": "",
-    "text": "(fg)^{(n)}=\\sum_{k=0}^n \\binom{n}{k} f^{(k)}g^{(n-k)}\n\n\nf^{(k)} is the k-th derivative"
-  },
-  {
-    "objectID": "store/etc.html#polydiv",
-    "href": "store/etc.html#polydiv",
-    "title": "mix",
-    "section": "",
-    "text": "A(t) = Q(t)B(t)+R(t)\n\n\nwhere \\deg B&gt;0 and \\deg R&lt;\\deg B"
-  },
-  {
-    "objectID": "store/etc.html#poly-root",
-    "href": "store/etc.html#poly-root",
-    "title": "mix",
-    "section": "",
-    "text": "if a non-zero P polynomial has n different roots then its degree is at least n.\n\nby poly-div, if P(t_1)=0 then P(t)=(t-t_1)P_1(t). (let’s repeat)\nP(t)=(t-t_1)(t-t_2)\\ldots (t-t_{n})P_{n}(t).\n\n(only) the zero polynomial has more roots than its degree."
-  },
-  {
-    "objectID": "store/etc.html#prod-der",
-    "href": "store/etc.html#prod-der",
-    "title": "mix",
-    "section": "",
-    "text": "(fg)^{(n)}=\\sum_{k=0}^n \\binom{n}{k} f^{(k)}g^{(n-k)}\n\n\nf^{(k)} is the k-th derivative\n\n:::\n\n\n\n\n\n\nNoneder-1\n\n\n\n\nP(t)=(t-a)^n Q(t) \\ \\ \\implies \\begin{cases} P^{(n)}(a)=n!~ Q(a) \\\\ P^{(k)}(a)=0 & k&lt;n \\end{cases}\n\n\nby prod-der\n\n\n\n\n\n\n\n\n\nNonepoly-div\n\n\n\n\nA(t) = Q(t)B(t)+R(t)\\ \\ \\ \\ \\deg R&lt;\\deg B\n\n\nA and B are polynomials \\deg B&gt;0\nit is unique\neuclidean division for polynomials\n\n\n\n\n\n\n\n\n\nNonepoly-root\n\n\n\n\nif a non-zero P polynomial has n different roots then its degree is at least n.\n\nby poly-div, if P(t_1)=0 then P(t)=(t-t_1)P_1(t). (let’s repeat)\nP(t)=(t-t_1)(t-t_2)\\ldots (t-t_{n})P_{n}(t).\n\n(only) the zero polynomial has more roots than its degree."
-  },
-  {
-    "objectID": "store/interpol/Lagrange.html#existence-and-uniqueness",
-    "href": "store/interpol/Lagrange.html#existence-and-uniqueness",
-    "title": "interpolation/Lagrange",
-    "section": "existence and uniqueness",
-    "text": "existence and uniqueness\n\nP(t)=\\sum_{k=0}^{n-1} x_{k} t^k\nP(t_k)=f_k\\ \\ k=1\\ldots n is an n \\times n linear system (Ax=f)\nif Ac=0 for some c, then by setting Q(t)=\\sum_{k=0}^{n-1} c_{k} t^k, Q(t) has n roots (the t’s are different!), but \\deg Q\\le n-1, consequently c=0 (see this).\nit means that A is invertible, that is the system is uniquely solvable."
-  },
-  {
-    "objectID": "matmer-II/index.html#egyben",
-    "href": "matmer-II/index.html#egyben",
-    "title": "matematika mérnököknek II",
-    "section": "egyben",
-    "text": "egyben"
-  },
-  {
     "objectID": "matmer-II/egyben.html",
     "href": "matmer-II/egyben.html",
     "title": "egyben",
     "section": "",
     "text": "elsőrendű lineáris homogén\n\n\n\n\n\n\nNoney'=A(t)y\n\n\n\n\n\n\n   y=Ce^{\\int A(t)\\text{d}t} \\ \\ \\ \\  C\\in\\mathbb{R}\n\n\nspeciálisan, ha A(t)=A konstans:\n\n\n   y=Ce^{At} \\ \\ \\ \\ C\\in\\mathbb{R}\n\n\n\n\n\n\n\n\n\n\nNoney'+10y=0\n\n\n\n\n\n\ny=Ce^{-10t}\\hspace{1cm} C\\in\\mathbb{R}\n\n\n\n\n\n\n\n\n\n\nNoney'=\\log(t)y\n\n\n\n\n\n\n\\begin{gather*}\n   \\int \\log(t)\\text{d}t=\\log(t)t-\\int 1\\text{d}t=\\\\\n   =\\log(t)t-t+C \\ \\ \\ \\  C\\in\\mathbb{R}\\\\\n   y=Ce^{t(\\log(t)-1)} \\ \\ \\ \\  C\\in\\mathbb{R}\n\\end{gather*}\n\n\n\n\n\n\n\nNonematlab\n\n\n\n\n\n&gt;&gt; syms y(t)\n&gt;&gt; disp(int(log(t)))\nt*(log(t) - 1)\n \n&gt;&gt; disp(dsolve(diff(y)==y(t)*log(t)))\nC1*exp(t*(log(t) - 1))\n\n\n\n\n\n\n\n\nelsőrendű lineáris inhomogén\n\n\n\n\n\n\nNoney'=A(t)y+B(t)\n\n\n\n\n\n\nkonstans variálása\na homogén általános megoldása: Ce^{\\int A(t)\\text{d}t}\n\nez konkrét feladatnál már nem integrálos alakban van\n\nebben a C-t egy ismeretlen C(t) függvénynek tekintjük és behelyettesítjük az inhomogénbe:\n\n\n\\begin{gather*}\nC'(t)e^{\\int A(t)\\text{d}t} + {\\color{blue}C(t)e^{\\int A(t)\\text{d}t}A(t)} = {\\color{blue}A(t)C(t)e^{\\int A(t)\\text{d}t}}+B(t)\\\\\nC'(t) = B(t)e^{-\\int A(t)\\text{d}t}\\\\\n\\end{gather*}\n\n\na végén egy sima integrálás marad\n\n\n\n\n\n\n\n\n\n\nNoney'=y+x+2\n\n\n\n\n\n\n\\begin{gather*}\ny=Ce^{x}\\ \\ \\ \\text{a homogén megoldása}\\\\\nC=C(x)\\ \\ \\ \\text{konstans variálása}\\\\\nC'(x)e^{x}+C(x)e^{x}=C(x)e^{x}+x+2\\\\\nC'(x)=(x+2)e^{-x}\\ \\ \\ \\text{parciálisan integráljuk}\\\\\nC(x)=-(x+2)e^{-x}+\\int e^{-x}\\text{d}x=-(x+3)e^{-x}+K\\\\\ny=\\left(-(x+3)e^{-x}+K\\right)e^x\\\\\n\\end{gather*}\n\n\n\n\n\n\n\nNonematlab\n\n\n\n\n\n&gt;&gt; syms y(x)\n&gt;&gt; disp(int((x+2)*exp(-x)))\n-exp(-x)*(x + 3)\n \n&gt;&gt; disp(dsolve(diff(y)==y(x)+x+2))\nC1*exp(x) - x - 3\n\n\n\n\n\n\n\n\n\n\n\n\nNonexy'-2y=2x^4\n\n\n\n\n\n\n\\begin{gather*}\ny'=\\frac{2}{x}y+2x^3\\\\\ny=Ce^{\\int \\frac{2}{x}\\text{d}x}=Ce^{2\\log(x)}=Cx^2\\ \\ \\ \\text{a homogén megoldása}\\\\\nC=C(x)\\ \\ \\ \\text{konstans variálása}\\\\\nC'(x)x^2+C(x)2x=\\frac{2}{x}C(x)x^2+2x^3\\\\\nC'(x)=2x\\\\\nC(x)=x^2+K\\\\\ny=(x^2+K)x^2\\\\\n\\end{gather*}\n\n\n\n\n\n\n\nNonematlab\n\n\n\n\n\nsyms y(x)\n&gt;&gt; disp(dsolve(diff(y)==2/x*y+2*x^3))\nx^4 + C1*x^2\n\n\n\n\n\n\n\n\nmásodrendű lineáris konstans-együtthatós homogén\n\n\n\n\n\n\nNoneAy''+By'+Cy=0\n\n\n\n\n\n\nkarakterisztikus polinom: Ax^2+Bx+C gyökei szerint osztályozva:\n\\lambda_1\\neq \\lambda_2 valósak \ny(t)=K_1 e^{\\lambda_1 t}+K_2 e^{\\lambda_2 t}\n\n\\lambda_1=\\lambda_2=\\lambda\n\n\ny(t)=K_1 e^{\\lambda t}+K_2te^{\\lambda t}\n\n\n\\lambda_{1,2}=a\\pm bi komplex\n\n\ny(t)=e^{at}\\left(K_1 \\cos(bt)+K_2 \\sin(bt)\\right)\n\n\nK_1,K_2\\in \\mathbb{R} mindenhol\n\n\n\n\n\n\n\n\n\n\nNoney''-y'-2y=0\n\n\n\n\n\n&gt;&gt; syms y(x)\nsolve(x^2-x-2)\n \nans =\n \n-1\n 2\n \n&gt;&gt; dsolve(diff(y,2)==diff(y,1)+2*y)\n \nans =\n \nC1*exp(-x) + C2*exp(2*x)\n\n\n\n\n\n\n\n\n\nNoney''-2y'+y=0\n\n\n\n\n\n&gt;&gt; syms y(x)\n&gt;&gt; solve(x^2-2*x+1)\n \nans =\n \n1\n1\n \n&gt;&gt; dsolve(diff(y,2)==2*diff(y,1)-y)\n \nans =\n \nC1*exp(x) + C2*x*exp(x)\n\n\n\n\n\n\n\n\n\nNoney''+y'+y=0\n\n\n\n\n\n&gt;&gt; syms y(x)\n&gt;&gt; solve(x^2+x+1)\n \nans =\n \n- (3^(1/2)*1i)/2 - 1/2\n  (3^(1/2)*1i)/2 - 1/2\n \n&gt;&gt; dsolve(diff(y,2)==-diff(y,1)-y)\n \nans =\n \nC1*exp(-x/2)*cos((3^(1/2)*x)/2) - C2*exp(-x/2)*sin((3^(1/2)*x)/2)\n\n\n\n\n\n\n\n\n\nNoney''+6y'+9y=0,\\ \\ y(0)=1,\\ y'(0)=1\n\n\n\n\n\n\n\n\n\n\n\nNonematlab\n\n\n\n\n\n&gt;&gt; syms y(x)\n&gt;&gt; solve(x^2+6*x+9)\n \nans =\n \n-3\n-3\n\n&gt;&gt; dsolve(diff(y,2)==-6*diff(y,1)-9*y)\n \nans =\n \nC1*exp(-3*x) + C2*x*exp(-3*x) \n\n&gt;&gt; dy=diff(y)\n \ndy(x) =\n \ndiff(y(x), x)\n \n&gt;&gt; dsolve(diff(y,2)==-6*diff(y,1)-9*y,y(0)==1,dy(0)==1)\n \nans =\n \nexp(-3*x)*(4*x + 1)\n\n\n\n\n\\begin{gather*}\ny(0)=1\\ \\ \\implies K_1=1\\\\\ny'(0)=1\\ \\ \\implies -3K_1+K_2=1 \\ \\ \\implies K_2=4\\\\\ny(t)=e^{-3x}+4xe^{-3x}\n\\end{gather*}\n\n\n\n\n\n\nBernoulli\n\n\n\n\n\n\nNoney'+g(x)y+h(x)y^a=0\\ \\ a\\neq 1\n\n\n\n\n\n\nelsőrendű lineárisra vezetjük vissza\n\n\n\\begin{gather*}\ny'+g(x)y+h(x)y^a=0 \\ \\ \\ \\ \\ [*(1-a)y^{-a}]\\\\\n(1-a)y'y^{-a}+(1-a)g(x)y^{1-a}+(1-a)h(x)=0\\ \\ \\ \\ \\ [z=y^{1-a}]\\\\\nz'+(1-a)g(x)z+(1-a)h(x)\n\\end{gather*}\n\n\n\n\n\n\n\n\n\n\nNonexy^2y'=x^2+y^3\n\n\n\n\n\n\n\\begin{gather*}\nxy^2y'-y^3-x^2=0\\\\\ny'-\\frac{1}{x}y-xy^{-2}=0\\ \\ \\ \\ a=-2,\\ z=y^3\\\\\nz'-\\frac{3}{x}z-3x=0\n\\end{gather*}\n\n\nkonstans variálással\n\n\n\\begin{gather*}\nz'=\\frac{3}{x}z+3x\\\\\nz=Ce^{\\int \\frac{3}{x}\\text{d}x}=Ce^{3\\log(x)}=Cx^3\\ \\ \\ \\text{a homogén megoldása}\\\\\nC=C(x)\\ \\ \\ \\text{konstans variálása}\\\\\nC'(x)x^3+C(x)3x^2=\\frac{3}{x}C(x)x^3+3x\\\\\nC'(x)=\\frac{3}{x^2}\\\\\nC(x)=-\\frac{3}{x}+K\\\\\nz=(-\\frac{3}{x}+K)x^3\\\\\ny=\\left((-\\frac{3}{x}+K)x^3\\right)^{\\frac{1}{3}}\n\\end{gather*}\n\n\n\n\n\n\n\nNonematlab\n\n\n\n\n\n\nelőször az eredetit nézzük meg (a komplex-szel ne foglalkozzunk)\nmajd a lineárisat is\n\n&gt;&gt; syms y(x)\n&gt;&gt; dsolve(diff(y)==y/x + x/y^2)\n \nans =\n \n-3^(1/3)*x^(2/3)*((3^(1/2)*1i)/2 + 1/2)*(C1*x - 1)^(1/3)\n 3^(1/3)*x^(2/3)*((3^(1/2)*1i)/2 - 1/2)*(C1*x - 1)^(1/3)\n                        3^(1/3)*x^(2/3)*(C1*x - 1)^(1/3)\n \n&gt;&gt; dsolve(diff(y)==3/x*y + 3*x)\n \nans =\n \nC1*x^3 - 3*x^2\n\n\n\n\n\n\n\n\nmagasabbrendű egyenlet -&gt; első-rendű egyenletrendszer\n\n\n\n\n\n\nNoney^{(4)}-y'=0\n\n\n\n\n\n\n\\begin{gather*}\ny_0=y\\\\\ny_1=y'\\\\\ny_2=y''\\\\\ny_3=y'''\\\\\ny_0'=y_1\\\\\ny_1'=y_2\\\\\ny_2'=y_3\\\\\ny_3'=y_1\\\\\n\\end{gather*}\n\n\n\n\n\n\n\n\n\n\nNone2xy''+y'=0\n\n\n\n\n\n\n\\begin{gather*}\ny_0=y\\\\\ny_1=y'\\\\\n\\hline{}\ny_0'=y_1\\\\\ny_1'=-\\frac{y_1}{2x}\\\\\n\\end{gather*}\n\n\n\n\n\n\n\n\n\n\nNonexy'''-y''-xy'+y=0\n\n\n\n\n\n\n\\begin{gather*}\ny_0=&y\\\\\ny_1=&y'\\\\\ny_2=&y''\\\\\n\\hline{}\ny_0'=&y_1\\\\\ny_1'=&y_2\\\\\ny_2'=&\\frac{-y_0+xy_1+y_2}{x}\n\\end{gather*}\n\n\n\n\n\n\nfokozatos közelítés\n\n\n\n\n\n\nNoney'=f(t,y)\\ \\ \\ \\Leftrightarrow \\ \\ y(t)=y(t_0)+\\int_{t_0}^t f(s,y(s))\\text{d}s\n\n\n\n\n\n\na jobboldalba belerakva y-t visszakapjuk azt \\to fixpont\nha f “jó” tulajdonságú akkor a fixpont-iteráció bármilyen kezdő helyről (pont/függvény) indulva a fixponthoz (ami itt egy függvény) kerül egyre közelebb.\n\n\n\n\n\n\n\n\n\n\nNonekézimunka\n\n\n\n\n\n\nTODO\n\n\n\n\n\n\n\n\n\n\nNonematlab\n\n\n\n\n\n% fokozatos kozelites\n% fixpont, pont=fuggveny\n% y'(t)=F(t,y)\\ + \\ y(t0)=y0 -&gt; y(t)=y(t0)+int(F(s,y(s)),t0,t) integral-egyenlet\n% integralas kezzel vagy geppel\nclc; clear;\nsyms y t f s t0 y0\nf(t,y)=t+y;\ny(t)=t;\ny0=1\nt0=0\nfor i=1:4\n  y(t)=y0+int(f(s,y(s)),t0,t)\nend"
-  },
-  {
-    "objectID": "matmer-II/egyben.html#megoldása",
-    "href": "matmer-II/egyben.html#megoldása",
-    "title": "egyben",
-    "section": "",
-    "text": "y=Ce^{\\int A(t)\\text{d}t} \\ \\ \\ \\  C\\in\\mathbb{R}\n\n\nSpeciálisan, ha A(t)=A konstans \ny=Ce^{At} \\ \\ \\ \\ C\\in\\mathbb{R}"
-  },
-  {
-    "objectID": "matmer-II/egyben.html#asd",
-    "href": "matmer-II/egyben.html#asd",
-    "title": "egyben",
-    "section": "",
-    "text": "Nonemegoldása\n\n\n\n\n\n\n   y=Ce^{\\int A(t)\\text{d}t} \\ \\ \\ \\  C\\in\\mathbb{R}\n\n\nspeciálisan, ha A(t)=A konstans: \ny=Ce^{At} \\ \\ \\ \\ C\\in\\mathbb{R}\n\n\n\n\n\n\n\n\n\n\n\nNonepéldák\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoney'=A(t)y+B(t) elsőrendű lineáris inhomogén"
-  },
-  {
-    "objectID": "matmer-II/egyben.html#példák",
-    "href": "matmer-II/egyben.html#példák",
-    "title": "egyben",
-    "section": "",
-    "text": "Noney'+10y=0\n\n\n\n\n\n\ny=Ce^{-10t}\\hspace{1cm} C\\in\\mathbb{R}\n\n\n\n\n\n\n\n\n\n\nNoney'=A(t)y+B(t) elsőrendű lineáris inhomogén"
-  },
-  {
-    "objectID": "store/interpol/error.html",
-    "href": "store/interpol/error.html",
-    "title": "interpolation/error",
-    "section": "",
-    "text": "Rolle: for a differentiable f \nf(A)=f(B)\\ \\ \\implies\\ f'(\\xi)=0\\ \\ \\ \\ \\xi\\in(A,B)\n\nf is an n times continuously differentiable function on an open interval containing [A,B].\nA=t_1&lt;\\ldots &lt;t_n=B\nP is a Lagrange polynomial for f and t_1,\\ldots,t_n\ne(t)=f(t)-P(t)\nM_n=\\max_{t\\in[A,B]} |f^{n}(t)|\n\\omega(t)=\\prod_{k=1}^n (t-t_k)\n\\Omega=\\max_{t\\in[A,B]} |\\omega(t)|"
-  },
-  {
-    "objectID": "store/interpol/error.html#n2",
-    "href": "store/interpol/error.html#n2",
-    "title": "interpolation/error",
-    "section": "n=2",
-    "text": "n=2\n\nfor one interval \n|f(t)-P(t)| \\le \\frac{M_2}{2} \\frac{(B-A)^2}{4}=\\frac{M_2}{8}(B-A)^2\n\nhere |\\omega(t)|=|(t-A)(t-B)| and its maximal value is \\frac{(B-A)^2}{4} which is attained at \\frac{A+B}{2}.\nif Q is a piecewise linear interpolation for f and A=t_1,\\ldots,t_n=B, where the t is linearly spaced n element vector, h=\\frac{B-A}{n-1}.\n\n\n|f(t)-Q(t)| \\le \\frac{M_2}{8} h^2\n\n\nthe *same M_2 is used for each subinterval to get a simpler formula"
-  },
-  {
-    "objectID": "store/interpol/error.html#a-naive-bound-for-general-n",
-    "href": "store/interpol/error.html#a-naive-bound-for-general-n",
-    "title": "interpolation/error",
-    "section": "a naive bound for general n",
-    "text": "a naive bound for general n"
-  },
-  {
-    "objectID": "store/interpol/error.html#general-n",
-    "href": "store/interpol/error.html#general-n",
-    "title": "interpolation/error",
-    "section": "general n",
-    "text": "general n\n\na naive bound for equidistributed t_k’s\nh=t_{k+1}-t_k\nt is fixed"
-  },
-  {
-    "objectID": "store/interpol/error.html#n3",
-    "href": "store/interpol/error.html#n3",
-    "title": "interpolation/error",
-    "section": "n=3",
-    "text": "n=3\n\n…"
-  },
-  {
-    "objectID": "store/numint/concepts_draft.html",
-    "href": "store/numint/concepts_draft.html",
-    "title": "numint/concepts_draft",
-    "section": "",
-    "text": "we want to compute the value of the integral:\n\n\\int_{a}^{b} f(t)\\text{d}t\n\nwhere f:[a,b]\\to {\\mathbb R}.\nwhen do we need to approximate integrals? If\n\nit cannot be expressed in terms of elementary functions (e^{-x^2} for example).\nthe antiderivative (primitive function) is known, but too complex.\nwe should calculate a large number of “similar” type integrals.\nthe value of f is known only at a few points."
-  },
-  {
-    "objectID": "store/numint/index.html#concepts-draft",
-    "href": "store/numint/index.html#concepts-draft",
-    "title": "numerical integration",
-    "section": "concepts (draft)",
-    "text": "concepts (draft)"
-  },
-  {
-    "objectID": "store/numint/concepts_draft.html#midpoint-tangent",
-    "href": "store/numint/concepts_draft.html#midpoint-tangent",
-    "title": "numint/concepts_draft",
-    "section": "midpoint (tangent)",
-    "text": "midpoint (tangent)\n\n\n\n\n\n\nImportantsimple rule\n\n\n\n\nI_M=(b-a)f\\left(\\frac{a+b}{2}\\right)\n\n\n\n\n\n\n\n\n\nNoneplot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoneerror\n\n\n\n\n\n\n\\left\\vert \\int_{a}^{b} f\\text{d}t - I_M\\right\\vert \\le \\frac{M_2}{24}(b-a)^3\n\n\nsome details can be found here"
-  },
-  {
-    "objectID": "store/numint/error.html",
-    "href": "store/numint/error.html",
-    "title": "numint/etc",
-    "section": "",
-    "text": "\\xi(t) depends continously on t in \nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\n\nif f is continuous and g does not change sign on [a,b] then \n\\int_{a}^{b} f(t)g(t)\\text{d}t=f(\\eta)\\int_{a}^{b} g(t)\\text{d}t"
-  },
-  {
-    "objectID": "store/numint/error.html#simple",
-    "href": "store/numint/error.html#simple",
-    "title": "numint/etc",
-    "section": "simple",
-    "text": "simple\n\nm=\\frac{a+b}{2}\nt=m+(t-m)\n\n\n\\begin{gather*}\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\nf(t)-(f(m)+f'(m)(t-m))=\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\n\\int_{a}^{b} f\\text{d}t-I_M = \\int_{a}^{b} \\frac{f''(\\xi(t))}{2}(t-m)^2\\text{d}t\\\\\n\\left\\vert\\int_{a}^{b} f\\text{d}t-I_M\\right\\vert \\le\n\\frac{M_2}{2}\\int_{a}^{b} (t-m)^2\\text{d}t=\\frac{M_2}{2}\\frac{(b-a)^3}{12}\\\\\n\\end{gather*}"
-  },
-  {
-    "objectID": "store/numint/error.html#simple-1",
-    "href": "store/numint/error.html#simple-1",
-    "title": "numint/etc",
-    "section": "simple",
-    "text": "simple\n\n\\begin{gather*}\nf(t)-P(t)=f''(\\xi(t))\\omega(t)\\\\\n\\int_{a}^{b} f(t)-P(t)\\text{d}t=\\int_{a}^{b} \\frac{f''(\\xi(t))}{2}\\omega(t)\\text{d}t\\\\\n\\int_{a}^{b} f(t)\\text{d}t-I_T=\\frac{f''(\\eta(t))}{2}\\int_{a}^{b} \\omega(t)\\text{d}t=(1)\\\\\n\\int_{a}^{b} \\omega(t)\\text{d}t=\\frac{(a-b)^3}{6} \\ \\ \\text{by integrating it}\\\\\n|(1)|\\le \\frac{M_2}{2} \\frac{(b-a)^3}{6}\n\\end{gather*}"
-  },
-  {
-    "objectID": "store/numint/concepts_draft.html#midpoint-tangent-method",
-    "href": "store/numint/concepts_draft.html#midpoint-tangent-method",
-    "title": "numint/concepts_draft",
-    "section": "midpoint (tangent) method",
-    "text": "midpoint (tangent) method\n\n\n\n\n\n\nImportantsimple rule\n\n\n\n\nI_M=(b-a)f\\left(\\frac{a+b}{2}\\right)\n\n\n\n\n\n\n\n\n\nNoneplot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoneerror\n\n\n\n\n\n\n\\left\\vert \\int_{a}^{b} f\\text{d}t - I_M\\right\\vert \\le \\frac{M_2}{24}(b-a)^3\n\n\nsome details can be found here"
-  },
-  {
-    "objectID": "store/numint/concepts_draft.html#trapesoid-method",
-    "href": "store/numint/concepts_draft.html#trapesoid-method",
-    "title": "numint/concepts_draft",
-    "section": "trapesoid method",
-    "text": "trapesoid method\n\n\n\n\n\n\nImportantsimple rule\n\n\n\n\nI_T=(b-a)\\frac{f(a)+f(b)}{2}\n\n\n\n\n\n\n\n\n\nNoneplot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoneerror\n\n\n\n\n\n\n\\left\\vert \\int_{a}^{b} f\\text{d}t - I_T\\right\\vert \\le \\frac{M_2}{12}(b-a)^2\n\n\nsome details can be found here"
-  },
-  {
-    "objectID": "store/numint/error.html#simple-2",
-    "href": "store/numint/error.html#simple-2",
-    "title": "numint/etc",
-    "section": "simple",
-    "text": "simple\n\ntoo long…"
-  },
-  {
-    "objectID": "store/numint/concepts_draft.html#interpolational-quadrature-formulas",
-    "href": "store/numint/concepts_draft.html#interpolational-quadrature-formulas",
-    "title": "numint/concepts_draft",
-    "section": "interpolational quadrature formulas",
-    "text": "interpolational quadrature formulas\n\nmore specifically: for a given f and nodes a=t_1,\\ldots ,t_n=b and values f(t_1),\\ldots,f(t_n) we determine the Lagrange interpolational polyinomial P and its exact integral value will be used to approximate \\int_{a}^{b} f(t)\\text{d}t.\n\n\\begin{gather*}\nf(t) \\approx P(t)\\\\\n\\int_{a}^{b} f(t)\\text{d}t \\approx \\int_{a}^{b} P(t)\\text{d}t\n\\end{gather*}\n\nwe will learn what are the weights by using 1,2,3 nodes and how the corresponding quadrature rules are behaving."
-  },
-  {
-    "objectID": "store/numint/concepts_draft.html#compound-rule",
-    "href": "store/numint/concepts_draft.html#compound-rule",
-    "title": "numint/concepts_draft",
-    "section": "compound rule",
-    "text": "compound rule\n\nn nodes, n-1 intervals, mid-points\na=t_1&lt;t_2&lt;\\ldots&lt;t_n=b\nthe formula is for equally spaced nodes: t_k=a+(k-1)h with h=\\frac{b-a}{n-1}\nthe mid-points: m_k=\\frac{t_k+t_{k+1}}{2} for k=1,\\ldots,n-1\n\n\n\n\n\n\n\nImportant\n\n\n\n\nI_{M,n}=h\\left[f(m_1)+f(m_2)+\\ldots+f(m_{k-1})\\right]\n\n\n\n\n\n\n\n\n\nNoneerror\n\n\n\n\n\n\nn nodes, h=\\frac{b-a}{n-1}\n\n\n\\left\\vert \\int_{a}^{b} f\\text{d}t - I_{M,n}\\right\\vert \\le (b-a)\\frac{M_2}{24}h^2\n\n\nby adding together the small-interval errors\n\n\n\n\n\n\n\n\n\n\nNonematlab\n\n\n\n\n\n\n% using n nodes compute the approx integral \n% of sin(t^2) on [a,b] w/ the mid-point method\nclear;\nfun=@(t) sin(t.^2);\na=0;\nb=1;\nn=ceil(3.2^2); % 3.2 sqrt(10)\nt=linspace(a,b,n);\nh=(b-a)/(n-1);\nm=(t(1:n-1)+t(2:n))/2;\nI=h*sum(fun(m))\nE=abs(integral(fun,a,b)-I)"
-  },
-  {
-    "objectID": "store/numint/concepts_draft.html#compound-rule-1",
-    "href": "store/numint/concepts_draft.html#compound-rule-1",
-    "title": "numint/concepts_draft",
-    "section": "compound rule",
-    "text": "compound rule\n\nn nodes, n-1 intervals, mid-points\na=t_1,t_2,\\ldots,t_n=b\nthe formula is for equally spaced nodes: h=t_2-t_1=\\ldots=t_n-t_{n-1}\n\n\n\n\n\n\n\nImportant\n\n\n\n\nI_{T,n}=\\frac{h}{2}\\left[f(t_1)+2f(t_2)+\\ldots+2f(t_{n-1})+f(t_{n})\\right]\n\n\n\n\n\n\n\n\n\nNoneerror\n\n\n\n\n\n\nn nodes, h=\\frac{b-a}{n-1}\n\n\n\\left\\vert \\int_{a}^{b} f\\text{d}t - I_{T,n}\\right\\vert \\le (b-a)\\frac{M_2}{12}h^2\n\n\nby adding together the small-interval errors\n\n\n\n\n\n\n\n\n\n\nNonematlab\n\n\n\n\n\n\n% using n nodes compute the approx integral \n% of sin(t^2) on [a,b] w/ the trapesoidal method\n\nclc; clear;\nfun=@(t) sin(t.^2);\na=0;\nb=1;\nfor k=1:5\n  n=ceil(3.2^k); % 3.2 sqrt(10)\n  t=linspace(a,b,n);\n  h=(b-a)/(n-1);\n  I=h/2*sum([fun(t(1)),2*fun(t(2:n-1)),fun(t(n))]);\n  E=abs(integral(fun,a,b)-I)\nend"
-  },
-  {
-    "objectID": "alkmat/eigen.html",
-    "href": "alkmat/eigen.html",
-    "title": "alkmat/sajátérték",
-    "section": "",
-    "text": "Noneleslie0\n\n\n\n\n\n\n% leslie0\n\nclf;clear;\n\nL=[ 0,     1,  1;...\n    0.8,   0,  0;...\n    0,  0.25,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nx=[74,80,46]';\nfor k=1:40\n  x=L*x; \n  %x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonepagerank0\n\n\n\n\n\n\n% page-rank\n\nclf;clear;\n\nA=[  0, 0, 1, 1;...\n     1, 0, 1, 1;...\n     1, 1, 0, 0;...\n     0, 0, 1, 0];\n\nA=A./sum(A,2);\nA=A';\nx=ones(4,1);\nfor k=1:30\n  x=A*x;\n  x=x/sum(x);\nend\nx\n\n[vek,ert]=eig(A);\nv=vek(:,1);\nv/sum(v)\n\ng=digraph(A);\nplot(g)\n\n\n\n\n\n\n\n\n\n\nNonekarakterisztikus polinom\n\n\n\n\n\n\nclc; clear;\n\np=charpoly([-1 -5;1 3]);\nroots(p)\n\n\n\n\n\n\n\n\n\n\nNonehalak\n\n\n\n\n\n\n% halak\n\nclf;clear;\n\nL=[ 0,       6,  8;...\n    0.5,     0,  0;...\n    0,     0.5,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonehatvány módszer\n\n\n\n\n\n\n% hatvany\nfunction [x,l,k]=hatvany(A,x,e)\n  x=x/norm(x);\n  l0=dot(A*x,x);\n  l=l0;\n  for k=1:1000\n    x=A*x;\n    x=x/norm(x);\n    l1=l;\n    l=dot(A*x,x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(A*x-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneinverz iteráció\n\n\n\n\n\n\n% inverz iteracio (PLU nelkul)\nfunction [x,l,k]=invit(A,x,e)\n  sol=@(x) A\\x;\n  \n  x=x/norm(x);\n  l0=dot(sol(x),x);\n  l=l0;\n  for k=1:1000\n    x=sol(x);\n    x=x/norm(x);\n    l1=l;\n    l=dot(sol(x),x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(sol(x)-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneleslie-random\n\n\n\n\n\n\n% leslie\n\nclf;clear;\n\nL=[ 0,1,1;...\n    ]\n\nrng(22*2);\nn=10;\nL=zeros(n,n);\nL(1,:)=randi(2,1,n);\nL=L+diag(5+randi(3,1,n-1),-1);\nx=rand(n,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\n\n\n\n\n\n\n\n\n\n\nNonepagerank-random\n\n\n\n\n\n\n% page-rank\n\nclf;\n\nrng(22*2);\nn=10;\nA=randi(2,n,n)-1;\nA=A.*(1-eye(n,n));\nB=A./sum(A,2);\nB=B';\nx=ones(n,1);\nfor k=1:20\n  x=B*x;\nend\nx\n\ng=digraph(A);\nplot(g)"
-  },
-  {
-    "objectID": "store/numint/error.html#formula",
-    "href": "store/numint/error.html#formula",
-    "title": "numint/error",
-    "section": "formula",
-    "text": "formula\n\na,\\ m=\\frac{a+b}{2},\\ b and f_a=f(a),\\ f_m=f(\\frac{a+b}{2}),\\ f_b=f(b)\nh=b-a\ninstead of Newton or classical search the polynomial in the form below\n\n\n\\begin{gather*}\nP(t)=A+B(t-m)+C(t-m)^2\\\\\nP(m)=f_m \\ \\implies \\ A=f_m\\\\\nP(a)=f_mf_a \\ \\implies \\ A=f_m\\\\\nP(b)=f_b \\ \\implies \\ A=f_m\\\\\n\\end{gather*}"
-  },
-  {
-    "objectID": "store/numint/error.html#getting-the-formula",
-    "href": "store/numint/error.html#getting-the-formula",
-    "title": "numint/etc",
-    "section": "getting the formula",
-    "text": "getting the formula\n\na,\\ m=\\frac{a+b}{2},\\ b and f_a=f(a),\\ f_m=f(\\frac{a+b}{2}),\\ f_b=f(b)\nh=b-a\ninstead of Newton or classical search the polynomial in the form below\n\n\n\\begin{gather*}\nP(t)=A+B(t-m)+C(t-m)^2\\\\\nP(m)=f_m \\ \\implies \\ A=f_m\\\\\nP(a)=f_m+B(a-m)+C(a-m)^2 = f_a\\ \\tag*{(1)}\\\\\nP(b)=f_m+B(b-m)+C(b-m)^2 = f_b\\ \\tag*{(2)}\\\\\n(1)+(2): 2f_m + C\\frac{h^2}{2}=f_a+f_b \\ \\implies \\ C=\\frac{2(f_a-2f_m+f_b)}{h^2}\\\\\n(2)-(1): Bh=f_b-f_a\\ \\implies\\ B=\\frac{f_b-f_a}{h}\\\\\n\\int_{a}^{b} P(t)\\text{d}t=\\int_{a}^{b} f_m\\text{d}t+C\\int_{a}^{b} (t-m)^2\\text{d}t\\\\\n\\end{gather*}"
-  },
-  {
-    "objectID": "store/numint/etc.html",
-    "href": "store/numint/etc.html",
-    "title": "numint/etc",
-    "section": "",
-    "text": "Nonefacts\n\n\n\n\n\n\n \\xi(t) depends continously on t in \n\n\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\n - if f is continuous and g does not change sign on [a,b] then \n\\int_{a}^{b} f(t)g(t)\\text{d}t=f(\\eta)\\int_{a}^{b} g(t)\\text{d}t"
-  },
-  {
-    "objectID": "store/numint/etc.html#simple-error",
-    "href": "store/numint/etc.html#simple-error",
-    "title": "numint/etc",
-    "section": "simple error",
-    "text": "simple error\n\nm=\\frac{a+b}{2}\nt=m+(t-m)\n\n\n\\begin{gather*}\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\nf(t)-(f(m)+f'(m)(t-m))=\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\n\\int_{a}^{b} f\\text{d}t-I_{M,1} = \\int_{a}^{b} \\frac{f''(\\xi(t))}{2}(t-m)^2\\text{d}t\\\\\n\\left\\vert\\int_{a}^{b} f\\text{d}t-I_{M,1}\\right\\vert \\le\n\\frac{M_2}{2}\\int_{a}^{b} (t-m)^2\\text{d}t=\\frac{M_2}{2}\\frac{(b-a)^3}{12}\\\\\n\\end{gather*}"
-  },
-  {
-    "objectID": "store/numint/etc.html#simple",
-    "href": "store/numint/etc.html#simple",
-    "title": "numint/etc",
-    "section": "simple",
-    "text": "simple\n\ntoo long…"
-  },
-  {
-    "objectID": "store/numint/etc.html#getting-the-formula",
-    "href": "store/numint/etc.html#getting-the-formula",
-    "title": "numint/etc",
-    "section": "getting the formula",
-    "text": "getting the formula\n\na,\\ m=\\frac{a+b}{2},\\ b and f_a=f(a),\\ f_m=f(\\frac{a+b}{2}),\\ f_b=f(b)\nh=b-a\ninstead of Newton or classical search the polynomial in the form below\n\n\n\\begin{gather*}\nP(t)=A+B(t-m)+C(t-m)^2\\\\\nP(m)=f_m \\ \\implies \\ A=f_m\\\\\nP(a)=f_m+B(a-m)+C(a-m)^2 = f_a\\ \\tag*{(1)}\\\\\nP(b)=f_m+B(b-m)+C(b-m)^2 = f_b\\ \\tag*{(2)}\\\\\n(1)+(2): 2f_m + C\\frac{h^2}{2}=f_a+f_b \\ \\implies \\ C=2\\frac{f_a-2f_m+f_b}{h^2}\\\\\n(2)-(1): Bh=f_b-f_a\\ \\implies\\ B=\\frac{f_b-f_a}{h}\\\\\n\\int_{a}^{b} P(t)\\text{d}t=\\int_{a}^{b} f_m\\text{d}t+C\\int_{a}^{b} (t-m)^2\\text{d}t=\\\\\nhf_m+2\\frac{f_a-2f_m+f_b}{h^2}\\frac{h^3}{12}\\ \\ \\checkmark\n\\end{gather*}"
-  },
-  {
-    "objectID": "store/numint/etc.html#simple-1",
-    "href": "store/numint/etc.html#simple-1",
-    "title": "numint/etc",
-    "section": "simple",
-    "text": "simple\n\ntoo long…"
-  },
-  {
-    "objectID": "alkmat/index.html",
-    "href": "alkmat/index.html",
-    "title": "alkmat/sajátérték",
-    "section": "",
-    "text": "Noneleslie0\n\n\n\n\n\n\n% leslie0\n\nclf;clear;\n\nL=[ 0,     1,  1;...\n    0.8,   0,  0;...\n    0,  0.25,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nx=[74,80,46]';\nfor k=1:40\n  x=L*x; \n  %x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonepagerank0\n\n\n\n\n\n\n% page-rank\n\nclf;clear;\n\nA=[  0, 0, 1, 1;...\n     1, 0, 1, 1;...\n     1, 1, 0, 0;...\n     0, 0, 1, 0];\n\nA=A./sum(A,2);\nA=A';\nx=ones(4,1);\nfor k=1:30\n  x=A*x;\n  x=x/sum(x);\nend\nx\n\n[vek,ert]=eig(A);\nv=vek(:,1);\nv/sum(v)\n\ng=digraph(A);\nplot(g)\n\n\n\n\n\n\n\n\n\n\nNonekarakterisztikus polinom\n\n\n\n\n\n\nclc; clear;\n\np=charpoly([-1 -5;1 3]);\nroots(p)\n\n\n\n\n\n\n\n\n\n\nNonehalak\n\n\n\n\n\n\n% halak\n\nclf;clear;\n\nL=[ 0,       6,  8;...\n    0.5,     0,  0;...\n    0,     0.5,  0];\n\n[vek,ert]=eig(L)\n\n\nx=rand(3,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\nv=vek(:,1);\nv/sum(v)\n\n\n\n\n\n\n\n\n\n\nNonehatvány módszer\n\n\n\n\n\n\n% hatvany\nfunction [x,l,k]=hatvany(A,x,e)\n  x=x/norm(x);\n  l0=dot(A*x,x);\n  l=l0;\n  for k=1:1000\n    x=A*x;\n    x=x/norm(x);\n    l1=l;\n    l=dot(A*x,x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(A*x-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneinverz iteráció\n\n\n\n\n\n\n% inverz iteracio (PLU nelkul)\nfunction [x,l,k]=invit(A,x,e)\n  sol=@(x) A\\x;\n  \n  x=x/norm(x);\n  l0=dot(sol(x),x);\n  l=l0;\n  for k=1:1000\n    x=sol(x);\n    x=x/norm(x);\n    l1=l;\n    l=dot(sol(x),x);\n    if abs(l1-l)&lt;=e*(1+l0), break; end\n  end\n  if norm(sol(x)-l*x)^2&gt;e, k=-k; end\nend\n\n\n\n\n\n\n\n\n\n\nNoneleslie-random\n\n\n\n\n\n\n% leslie\n\nclf;clear;\n\nL=[ 0,1,1;...\n    ]\n\nrng(22*2);\nn=10;\nL=zeros(n,n);\nL(1,:)=randi(2,1,n);\nL=L+diag(5+randi(3,1,n-1),-1);\nx=rand(n,1);\nfor k=1:30\n  x=L*x; x=x/sum(x);\nend\nx\n\n\n\n\n\n\n\n\n\n\nNonepagerank-random\n\n\n\n\n\n\n% page-rank\n\nclf;\n\nrng(22*2);\nn=10;\nA=randi(2,n,n)-1;\nA=A.*(1-eye(n,n));\nB=A./sum(A,2);\nB=B';\nx=ones(n,1);\nfor k=1:20\n  x=B*x;\nend\nx\n\ng=digraph(A);\nplot(g)"
-  },
-  {
-    "objectID": "store/numint/etc.html#error",
-    "href": "store/numint/etc.html#error",
-    "title": "numint/etc",
-    "section": "error",
-    "text": "error\n\nm=\\frac{a+b}{2}\nt=m+(t-m)\n\n\n\\begin{gather*}\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\nf(t)-(f(m)+f'(m)(t-m))=\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\n\\int_{a}^{b} f\\text{d}t-I_{M,1} = \\int_{a}^{b} \\frac{f''(\\xi(t))}{2}(t-m)^2\\text{d}t\\\\\n\\left\\vert\\int_{a}^{b} f\\text{d}t-I_{M,1}\\right\\vert \\le\n\\frac{M_2}{2}\\int_{a}^{b} (t-m)^2\\text{d}t=\\frac{M_2}{2}\\frac{(b-a)^3}{12}\\ \\ \\checkmark\n\\end{gather*}"
-  },
-  {
-    "objectID": "store/numint/etc.html#error-1",
-    "href": "store/numint/etc.html#error-1",
-    "title": "numint/etc",
-    "section": "error",
-    "text": "error\n\n\\begin{gather*}\nf(t)-P(t)=f''(\\xi(t))\\omega(t)\\\\\n\\int_{a}^{b} f(t)-P(t)\\text{d}t=\\int_{a}^{b} \\frac{f''(\\xi(t))}{2}\\omega(t)\\text{d}t\\\\\n\\left|\\int_{a}^{b} f(t)\\text{d}t-I_{T,1}\\right|\\le=\\int_{a}^{b} \\frac{|f''(\\xi(t))|}{2}|\\omega(t)|\\text{d}t=(1)\\\\\n\\int_{a}^{b} |\\omega(t)|\\text{d}t=\\frac{(b-a)^3}{6} \\ \\ \\text{by integrating it}\\\\\n|(1)|\\le \\frac{M_2}{2} \\frac{(b-a)^3}{6}\\ \\ \\checkmark\n\\end{gather*}"
-  },
-  {
-    "objectID": "store/numint/etc.html#why-is-it-exact-for-at-most-3rd-order-polys",
-    "href": "store/numint/etc.html#why-is-it-exact-for-at-most-3rd-order-polys",
-    "title": "numint/etc",
-    "section": "why is it exact for at most 3rd order poly’s",
-    "text": "why is it exact for at most 3rd order poly’s\n\nmatlab symbolics based “proof”:\n\n\nclc; clear;\n\nsyms a b f(x)\n\nfor k=0:3\n  k\n  f(x)=x^k;\n  I1=int(f,a,b)\n  I2=(b-a)*(f(a)+4*f((a+b)/2)+f(b))/6;\n  I2=simplify(I2)\n  assert(I1==I2);\n  disp(\"......................\");\nend"
-  },
-  {
-    "objectID": "etc/index.html",
-    "href": "etc/index.html",
-    "title": "etc/index",
-    "section": "",
-    "text": "\\delta_{ij}=(i=j)\\ ?\\ 1\\ :\\ 0\nx\\cdot y := \\langle x,y\\rangle=\\sum x_k y_k=x^{T}y\n\nx\\cdot y=y\\cdot x\nx\\cdot Ay = A^{T}x\\cdot y\n\n[1,2,3] row\n[1;2;3] column, the members of \\mathbb{R}^n"
-  },
-  {
-    "objectID": "etc/index.html#f-is-differentiable-at-x",
-    "href": "etc/index.html#f-is-differentiable-at-x",
-    "title": "etc/index",
-    "section": "f is differentiable at x",
-    "text": "f is differentiable at x\n\nif there is a a\\in \\mathbb{R}^n\n\n\n  \\frac{\\vert f(x+h)-f(x)-a\\cdot h\\vert}{\\Vert h\\Vert} \\xrightarrow{h\\to 0} 0\n\n\na is unique. (by contradiction)\na=\\nabla f(x) or a=f'(x)"
-  },
-  {
-    "objectID": "etc/index.html#partial-derivative",
-    "href": "etc/index.html#partial-derivative",
-    "title": "etc/index",
-    "section": "partial derivative",
-    "text": "partial derivative\n\nk-th\ne_k=[\\delta_{1k};\\ldots;\\delta_{nk}] - the k-th unit vector\nif there is a a_k\\in \\mathbb{R}\n\n\n  \\frac{\\vert f(x+e_k h)-f(x)-a_k h \\vert}{\\vert h\\vert} \\xrightarrow{h\\to 0} 0\n\n\nf_{k}'(x)\nf is differentiable at x then \\nabla f(x)=[f_{1}';\\ldots;f_{k}']"
-  },
-  {
-    "objectID": "etc/index.html#spec-cases",
-    "href": "etc/index.html#spec-cases",
-    "title": "etc/index",
-    "section": "spec cases",
-    "text": "spec cases\n\nf(x)=b^{T}x \\ \\implies f(x)=b\nf(x)=c \\ \\implies f'(x)=(0,\\ldots,0)^{T}\nf(x)=x^{T}Ax \\ \\implies f'(x)=(A+A^{T})x\n\n\n\\begin{gather*}\n(x+h)^{T}A(x+h)-x^{T}Ax=\\underline{x^{T}Ax}+x^{T}Ah+h^{T}Ax+h^{T}Ah-\\underline{x^{T}Ax}\\\\\nx^{T}Ah=(A^{T}x)^{T}h=h^{T}A^{T}x\\\\\nx^{T}Ah+h^{T}Ax=h^{T}(A^{T}+A)x\\\\\n|h^{T}Ah|\\le \\Vert h\\Vert_2 \\Vert Ah\\Vert_2\\le \\Vert h\\Vert_2^2\\Vert A\\Vert_2 \\tag*{(CBS)}\n\\end{gather*}"
-  },
-  {
-    "objectID": "etc/index.html#special-cases",
-    "href": "etc/index.html#special-cases",
-    "title": "etc/index",
-    "section": "special cases",
-    "text": "special cases\n\nf(x)=b\\cdot x \\ \\implies f(x)=b\nf(x)=c \\ \\implies f'(x)=[0;\\ldots;0]\nf(x)=x\\cdot Ax \\ \\implies f'(x)=(A+A^{T})x\n\n\n\\begin{gather*}\n(x+h)\\cdot A(x+h)-x\\cdot Ax=\\\\\n\\underline{x\\cdot Ax}+x\\cdot Ah+h\\cdot Ax+h\\cdot Ah-\\underline{x\\cdot Ax}=(*)\\\\\nx\\cdot Ah=A^{T}x\\cdot h\\\\\nh\\cdot Ax=Ax\\cdot h\\\\\n|h\\cdot Ah|\\le \\Vert h\\Vert_2 \\Vert Ah\\Vert_2\\le \\Vert h\\Vert_2^2\\Vert A\\Vert_2 \\tag*{(CBS)}\\\\\n(*)=(A+A^{T})x\\cdot h + h\\cdot Ah \\ \\ \\checkmark\n\\end{gather*}"
-  },
-  {
-    "objectID": "etc/index.html#f-is-differentiable-at-x-1",
-    "href": "etc/index.html#f-is-differentiable-at-x-1",
-    "title": "etc/index",
-    "section": "f is differentiable at x",
-    "text": "f is differentiable at x\n\nif there is a A\\in {\\cal M}_{m\\times n}\n\n\n  \\frac{\\Vert f(x+h)-f(x)-Ah\\Vert}{\\Vert h\\Vert} \\xrightarrow{h\\to 0} 0\n\n\nA is unique. (by contradiction)\nA=J_f(x)\nf=(f_1;\\ldots;f_m)\nA=[\\nabla f_1(x)^{T};\\ldots; \\nabla f_m(x)^{T}]"
-  },
-  {
-    "objectID": "etc/index.html#special-case",
-    "href": "etc/index.html#special-case",
-    "title": "etc/index",
-    "section": "special case",
-    "text": "special case\n\nf:\\mathbb{R}^n\\to \\mathbb{R}\nf'(x):\\mathbb{R}^n\\to \\mathbb{R}^n\nf''(x)=H_f(x)=J_{f'}(x)=[f''_{ij}]"
-  },
-  {
-    "objectID": "optalg/egyebek/index.html",
-    "href": "optalg/egyebek/index.html",
-    "title": "optalg/egyebek",
-    "section": "",
-    "text": "armijo.m\n\n\n\n\n\n\n\ncircle.txt\n\n\n\n\n\n\n\ndrug.txt\n\n\n\n\n\n\n\ngyakLKN1.pdf\n\n\n\n\n\n\n\nidosor.txt\n\n\n\n\n\n\n\noptalgoritmusR.pdf\n\n\n\n\n\n\n\nLKN.txt\n\n\n\n\n\n\n\nOptgyak1.pdf\n\n\n\n\n\n\n\nautoreg.m\n\n\n\n\n\n\n\ncirc_lkn.m\n\n\n\n\n\n\n\ncirc_non11.m\n\n\n\n\n\n\n\ncirc_non11_lsq.m\n\n\n\n\n\n\n\ndrug.txt\n\n\n\n\n\n\n\nf10.m\n\n\n\n\n\n\n\nf3.m\n\n\n\n\n\n\n\nf4.m\n\n\n\n\n\n\n\nf5.m\n\n\n\n\n\n\n\ngyakLKN1.pdf\n\n\n\n\n\n\n\nhianyzo_jelek.m\n\n\n\n\n\n\n\nhiba12.m\n\n\n\n\n\n\n\nidosor.txt\n\n\n\n\n\n\n\nkepler.m\n\n\n\n\n\n\n\nlena.m\n\n\n\n\n\n\n\nlena512.pgm\n\n\n\n\n\n\n\nlsqnon7.m\n\n\n\n\n\n\n\nlsqnon8.m\n\n\n\n\n\n\n\noptalgoritmusR.pdf\n\n\n\n\n\n\n\npontok.csv\n\n\n\n\n\n\n\ntask01.pdf\n\n\n\n\n\n\n\ntask1.m\n\n\n\n\n\n\n\npontok200E.txt\n\n\n\n\n\n\n\ntask02.pdf\n\n\n\n\nNo matching items"
   }
 ]

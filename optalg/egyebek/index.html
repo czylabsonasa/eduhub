@@ -82,8 +82,7 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-filename',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      page: 18,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      
       searchColumns: ["listing-filename","listing-file-modified"],
     };
 
@@ -471,9 +470,6 @@ window.Quarto = {
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
-<nav id="lista-pagination" class="listing-pagination" aria-label="Page Navigation">
-  <ul class="pagination"></ul>
-</nav>
 </div>
 
 
