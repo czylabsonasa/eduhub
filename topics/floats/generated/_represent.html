@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>representing numbers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+</style>
+
+
+
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<style type="text/css">
+body {
+background-color: rgb(241, 244, 245);
+}
+table.short-q, td.short-q {
+border: 1em solid white;
+border-collapse: collapse;
+}
+summary.short-q {
+background-color: rgb(214, 214, 209);
+}
+details.short-q {
+background-color: rgb(166, 236, 36);
+}
+</style>
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">representing numbers</h1>
+
+</header>
+
+
+<div id="exr-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-6,k_{+}=6,t=4\}</span><br> what is the regularly rounded normalized representation of <code>0.210</code> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<pre>0.210
+-----
+0.420
+0.840
+1.680
+1.360
+0.720
+1.440
+0.880
+</pre>
+fl(0.210)=<span class="math inline">2^{-2}\cdot 0.1101|0=2^{-2}\cdot 0.1101</span>
+</details>
+</div>
+<hr>
+<div id="exr-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-8,k_{+}=8,t=5\}</span><br> what is the regularly rounded normalized representation of <code>0.661</code> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<pre>0.661
+-----
+1.322
+0.644
+1.288
+0.576
+1.152
+0.304
+</pre>
+fl(0.661)=<span class="math inline">2^{0}\cdot 0.10101|0=2^{0}\cdot 0.10101</span>
+</details>
+</div>
+<hr>
+<div id="exr-3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-7,k_{+}=7,t=4\}</span><br> what is the regularly rounded normalized representation of <code>0.786</code> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<pre>0.786
+-----
+1.572
+1.144
+0.288
+0.576
+1.152
+</pre>
+fl(0.786)=<span class="math inline">2^{0}\cdot 0.1100|1=2^{0}\cdot 0.1101</span>
+</details>
+</div>
+<hr>
+<div id="exr-4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-8,k_{+}=8,t=3\}</span><br> what is the regularly rounded normalized representation of <code>0.251</code> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<pre>0.251
+-----
+0.502
+1.004
+0.008
+0.016
+0.032
+</pre>
+fl(0.251)=<span class="math inline">2^{-1}\cdot 0.100|0=2^{-1}\cdot 0.100</span>
+</details>
+</div>
+<hr>
+<div id="exr-5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-6,k_{+}=6,t=3\}</span><br> what is the regularly rounded normalized representation of <code>0.582</code> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<pre>0.582
+-----
+1.164
+0.328
+0.656
+1.312
+</pre>
+fl(0.582)=<span class="math inline">2^{0}\cdot 0.100|1=2^{0}\cdot 0.101</span>
+</details>
+</div>
+<hr>
+<div id="exr-6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-7,k_{+}=7,t=3\}</span><br> what is the regularly rounded normalized representation of <code>0.387</code> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<pre>0.387
+-----
+0.774
+1.548
+1.096
+0.192
+0.384
+</pre>
+fl(0.387)=<span class="math inline">2^{-1}\cdot 0.110|0=2^{-1}\cdot 0.110</span>
+</details>
+</div>
+<hr>
+<div id="exr-7" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-6,k_{+}=6,t=5\}</span><br> what is the regularly rounded normalized representation of <code>0.684</code> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<pre>0.684
+-----
+1.368
+0.736
+1.472
+0.944
+1.888
+1.776
+</pre>
+fl(0.684)=<span class="math inline">2^{0}\cdot 0.10101|1=2^{0}\cdot 0.10110</span>
+</details>
+</div>
+<hr>
+<div id="exr-8" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-7,k_{+}=7,t=4\}</span><br> what is the regularly rounded normalized representation of <code>0.890</code> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<pre>0.890
+-----
+1.780
+1.560
+1.120
+0.240
+0.480
+</pre>
+fl(0.890)=<span class="math inline">2^{0}\cdot 0.1110|0=2^{0}\cdot 0.1110</span>
+</details>
+</div>
+<hr>
+<div id="exr-9" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-8,k_{+}=8,t=3\}</span><br> what is the regularly rounded normalized representation of <code>0.187</code> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<pre>0.187
+-----
+0.374
+0.748
+1.496
+0.992
+1.984
+1.968
+</pre>
+fl(0.187)=<span class="math inline">2^{-2}\cdot 0.101|1=2^{-2}\cdot 0.110</span>
+</details>
+</div>
+<hr>
+<div id="exr-10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 10</strong></span>  </p>
+<p>
+given the system <span class="math inline">\{a=2,k_{-}=-8,k_{+}=8,t=5\}</span><br> what is the regularly rounded normalized representation of <code>0.838</code> in it?
+</p>
+<details>
+<summary>
+solution
+</summary>
+<pre>0.838
+-----
+1.676
+1.352
+0.704
+1.408
+0.816
+1.632
+</pre>
+fl(0.838)=<span class="math inline">2^{0}\cdot 0.11010|1=2^{0}\cdot 0.11011</span>
+</details>
+</div>
+
+
+
+
+
+</body></html>

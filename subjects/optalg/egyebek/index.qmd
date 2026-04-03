@@ -1,0 +1,19 @@
+---
+title: "optalg/egyebek"
+listing:
+  id: lista
+  contents:
+    - "uj/*"
+    - "regi/*"
+    - "task1/*"
+    - "task2/*"
+  categories: true
+  type: table # Lehet 'default', 'grid' vagy 'table' is
+  fields: [filename, categories] # Megadhatod, mi jelenjen meg
+  filter-ui: [filename, categories]
+  page-size: 222
+---
+
+
+::: {#lista}
+:::
