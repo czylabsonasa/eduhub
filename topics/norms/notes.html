@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-04-05">
 
-<title>method of least squares – eduhub</title>
+<title>norms/notes_norm – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +70,49 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -110,16 +153,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#pdf-versions" id="toc-pdf-versions" class="nav-link active" data-scroll-target="#pdf-versions">pdf versions</a>
+  <li><a href="#triangle-inequality" id="toc-triangle-inequality" class="nav-link active" data-scroll-target="#triangle-inequality">triangle-inequality</a></li>
+  <li><a href="#induced-norm-definition" id="toc-induced-norm-definition" class="nav-link" data-scroll-target="#induced-norm-definition">induced-norm-definition</a></li>
+  <li><a href="#cond-inequality" id="toc-cond-inequality" class="nav-link" data-scroll-target="#cond-inequality">cond-inequality</a></li>
+  <li><a href="#comp-rules" id="toc-comp-rules" class="nav-link" data-scroll-target="#comp-rules">comp-rules</a>
   <ul class="collapse">
-  <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts">concepts</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">exercises</a></li>
+  <li><a href="#infty-norm" id="toc-infty-norm" class="nav-link" data-scroll-target="#infty-norm"><span class="math inline">\infty</span>-norm</a></li>
+  <li><a href="#norm" id="toc-norm" class="nav-link" data-scroll-target="#norm"><span class="math inline">1</span>-norm</a></li>
+  <li><a href="#special-vectors" id="toc-special-vectors" class="nav-link" data-scroll-target="#special-vectors">special vectors</a></li>
   </ul></li>
-  <li><a href="#html-versions" id="toc-html-versions" class="nav-link" data-scroll-target="#html-versions">html versions</a>
-  <ul class="collapse">
-  <li><a href="#concepts-1" id="toc-concepts-1" class="nav-link" data-scroll-target="#concepts-1">concepts</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">exercises</a></li>
-  </ul></li>
+  <li><a href="#cond-property" id="toc-cond-property" class="nav-link" data-scroll-target="#cond-property">cond-property</a></li>
   </ul>
 </nav>
     </div>
@@ -128,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">method of least squares</h1>
+<h1 class="title">norms/notes_norm</h1>
 </div>
 
 
@@ -151,26 +194,79 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="pdf-versions" class="level1">
-<h1>pdf versions</h1>
-<section id="concepts" class="level2">
-<h2 class="anchored" data-anchor-id="concepts"><a href="04_lsa_noQ.pdf">concepts</a></h2>
+<section id="triangle-inequality" class="level1">
+<h1>triangle-inequality</h1>
+<ul>
+<li><span class="math inline">\Vert x+y\Vert_{2} \le \Vert x\Vert_{2}+\Vert y\Vert_{2}</span></li>
+<li>inner/scalar/dot product: <span class="math inline">\langle x,y\rangle=\sum_{i=1}^{n} x_{k}y_{k}</span></li>
+<li><span class="math inline">\Vert x\Vert_{2}=\sqrt{\langle x,y\rangle}</span></li>
+<li>an important inequality related to the scalar product: <a href="https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality">CBS-inequality</a></li>
+<li>the triangle inequality for <span class="math inline">\Vert . \Vert_{2}</span> is the consequence of the CBS-inequality</li>
+<li>equality holds iff. <span class="math inline">x=0 \ \text{ or }\  y=0 \ \text{ or }\  x=\lambda y \text{ for some } \lambda&gt;0</span></li>
+<li>the two inequalities in <span class="math inline">\mathbb{R}^{n}</span> are the same (equivalent)</li>
+</ul>
 </section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises"><a href="04_lsa_Q.pdf">exercises</a></h2>
-<hr>
+<section id="induced-norm-definition" class="level1">
+<h1>induced-norm-definition</h1>
+<ul>
+<li>the two sets below are equal. why? <span class="math display">\begin{gather*}
+S_1 = \left\{ \frac{\Vert Ax\Vert}{\Vert x\Vert} \ :\  x\neq 0 \right\}\\
+S_2 = \left\{ \Vert Ax\Vert \ :\  \Vert x\Vert = 1 \right\}
+\end{gather*}</span></li>
+<li><span class="math inline">x\rightarrow \Vert x\Vert</span> is continous</li>
+<li><span class="math inline">S_2</span> is a closed, bounded set of <span class="math inline">\mathbb{R}^n</span></li>
+<li>the maximum in the definition of the induced matrix norm is well defined because of the multivariable form of <a href="https://en.wikipedia.org/wiki/Extreme_value_theorem">EVT</a></li>
+</ul>
+</section>
+<section id="cond-inequality" class="level1">
+<h1>cond-inequality</h1>
+<p><span class="math display">\begin{gather*}
+A\Delta x =\Delta b\ \ \longrightarrow\ \ \Delta x =A^{-1}\Delta b\\
+\frac{\Vert \Delta x\Vert}{\Vert x\Vert} =
+\frac{\Vert A^{-1}\Delta b\Vert}{\Vert x\Vert} \le
+\frac{\Vert A^{-1}\Vert \Vert\Delta b\Vert}{\Vert x\Vert}\le\ \  (*)\\
+Ax =b\ \ \longrightarrow\ \ \ \frac{1}{\Vert x\Vert}\le \frac{\Vert A\Vert}{\Vert b\Vert}\\
+(*) = \Vert A\Vert \Vert A^{-1}\Vert \frac{\Vert \Delta b\Vert}{\Vert b\Vert}
+\end{gather*}</span> if <span class="math inline">\Vert Ax\Vert \approx \Vert A\Vert\Vert x\Vert</span> and <span class="math inline">\Vert A^{-1}\Delta b\Vert \approx \Vert A^{-1}\Vert\Vert \Delta b\Vert</span> then the two sides are also close to each other - <strong>worst case scenario</strong>.</p>
+</section>
+<section id="comp-rules" class="level1">
+<h1>comp-rules</h1>
+<section id="infty-norm" class="level2">
+<h2 class="anchored" data-anchor-id="infty-norm"><span class="math inline">\infty</span>-norm</h2>
+<p><span class="math display">\begin{gather*}
+\vert(Ax)_{i}\vert=
+\vert\sum_{j} a_{ij} x_{j}\vert\le
+\sum_{j} \vert a_{ij}\vert \vert x_{j}\vert\le
+\sum_{j} \vert a_{ij}\vert \Vert x\Vert_{\infty}\le
+\Vert A\Vert_{\infty} \vert \Vert x\Vert_{\infty}
+\end{gather*}</span> if the maximum is attained in the <span class="math inline">i</span>-th row then for the <strong>sign</strong> vector of that row equality holds.</p>
+</section>
+<section id="norm" class="level2">
+<h2 class="anchored" data-anchor-id="norm"><span class="math inline">1</span>-norm</h2>
+<p><span class="math display">\begin{gather*}
+\sum_{i}\vert(Ax)_{i}\vert\le
+\sum_{i}\sum_{j} \vert a_{ij}\vert \vert x_{j}\vert=
+\sum_{j} \vert x_{j}\vert \sum_{i} \vert a_{ij}\vert \le
+\sum_{j} \vert x_{j}\vert \Vert A\Vert_{1} \le
+\Vert x\Vert_{1} \Vert A\Vert_{1}
+\end{gather*}</span> if the maximum is attained in the <span class="math inline">j</span>-th column then for the vector <span class="math inline">e_{j}</span> the two sides are equal.</p>
+</section>
+<section id="special-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="special-vectors">special vectors</h2>
+<p>the computations above provide a way to find a vector <span class="math inline">x</span> for which <span class="math inline">\Vert Ax\Vert=\Vert A\Vert\Vert x\Vert</span> in the cases of <span class="math inline">1</span> and <span class="math inline">\infty</span> norms.</p>
 </section>
 </section>
-<section id="html-versions" class="level1">
-<h1>html versions</h1>
-<section id="concepts-1" class="level2">
-<h2 class="anchored" data-anchor-id="concepts-1"><a href="../../topics/leastsquares/concepts.html">concepts</a></h2>
-</section>
-<section id="exercises-1" class="level2">
-<h2 class="anchored" data-anchor-id="exercises-1"><a href="../../topics/leastsquares/exercises.html">exercises</a></h2>
+<section id="cond-property" class="level1">
+<h1>cond-property</h1>
+<ul>
+<li>if <span class="math inline">A</span> is orthogonal (<span class="math inline">A^{T}A=E</span>), then <span class="math inline">\text{cond}_{2}(A)=1</span></li>
+<li><span class="math display">
+\left\vert\frac{\lambda_{\max}}{\lambda_{\min}}\right\vert\leq \text{cond}(A)
+</span></li>
+<li>here <span class="math inline">\lambda_{\max}</span> and <span class="math inline">\lambda_{\min}</span> are the largest and smallest eigenvalues in absolute value of <span class="math inline">A</span></li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

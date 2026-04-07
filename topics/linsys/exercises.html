@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-04-05">
 
-<title>method of least squares – eduhub</title>
+<title>linsys/exercises – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +70,49 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -110,16 +153,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#pdf-versions" id="toc-pdf-versions" class="nav-link active" data-scroll-target="#pdf-versions">pdf versions</a>
-  <ul class="collapse">
-  <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts">concepts</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">exercises</a></li>
-  </ul></li>
-  <li><a href="#html-versions" id="toc-html-versions" class="nav-link" data-scroll-target="#html-versions">html versions</a>
-  <ul class="collapse">
-  <li><a href="#concepts-1" id="toc-concepts-1" class="nav-link" data-scroll-target="#concepts-1">concepts</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">exercises</a></li>
-  </ul></li>
+  <li><a href="#determinant-inverse-conditional" id="toc-determinant-inverse-conditional" class="nav-link active" data-scroll-target="#determinant-inverse-conditional">determinant, inverse, conditional</a></li>
+  <li><a href="#linear-systems" id="toc-linear-systems" class="nav-link" data-scroll-target="#linear-systems">linear systems</a></li>
+  <li><a href="#mixed" id="toc-mixed" class="nav-link" data-scroll-target="#mixed">mixed</a></li>
   </ul>
 </nav>
     </div>
@@ -128,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">method of least squares</h1>
+<h1 class="title">linsys/exercises</h1>
 </div>
 
 
@@ -151,26 +187,77 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="pdf-versions" class="level1">
-<h1>pdf versions</h1>
-<section id="concepts" class="level2">
-<h2 class="anchored" data-anchor-id="concepts"><a href="04_lsa_noQ.pdf">concepts</a></h2>
+<section id="determinant-inverse-conditional" class="level1">
+<h1>determinant, inverse, conditional</h1>
+<ul>
+<li>compute the deterinants for the matrices below!</li>
+<li>compute the inverses for the matrices below! (if exist)</li>
+<li>compute the <span class="math inline">\text{cond}_{1}</span> and <span class="math inline">\text{cond}_{\infty}</span> for the matrices below!</li>
+<li>verify your result with matlab!</li>
+<li><span class="math display">
+A=\left[\begin{array}{ccc}
+-1 &amp;  0 &amp;  0 \\
+  1 &amp; -1 &amp;  0 \\
+  2 &amp; -2 &amp;  6 \\
+\end{array}\right]
+</span></li>
+<li><span class="math display">
+A=\left[\begin{array}{ccc}
+  2 &amp;  4 &amp;  2 \\
+  0 &amp; -1 &amp; -3 \\
+  0 &amp;  0 &amp; -7 \\
+\end{array}\right]
+</span></li>
+<li><span class="math display">
+A=\left[\begin{array}{ccc}
+  3 &amp;  0 &amp;  0 \\
+  0 &amp;  4 &amp;  0 \\
+  0 &amp;  0 &amp;  3 \\
+\end{array}\right]
+</span></li>
+<li><span class="math display">
+A=\left[\begin{array}{ccc}
+  0 &amp;  0 &amp;  3 \\
+  0 &amp;  4 &amp;  0 \\
+  3 &amp;  0 &amp;  0 \\
+\end{array}\right]
+</span></li>
+</ul>
 </section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises"><a href="04_lsa_Q.pdf">exercises</a></h2>
-<hr>
+<section id="linear-systems" class="level1">
+<h1>linear systems</h1>
+<ul>
+<li>solve the <span class="math inline">Ax=b</span> for the matrices of the previous section, where</li>
+<li><span class="math display">
+b=\left[\begin{array}{c}
+  0\\
+  0\\
+  0\\
+\end{array}\right]
+</span></li>
+<li><span class="math display">
+b=\left[\begin{array}{c}
+  0\\
+  0\\
+  \frac{1}{100}\\
+\end{array}\right]
+</span></li>
+<li><span class="math display">
+b=\left[\begin{array}{c}
+  -1\\
+  2\\
+  3\\
+\end{array}\right]
+</span></li>
+</ul>
 </section>
-</section>
-<section id="html-versions" class="level1">
-<h1>html versions</h1>
-<section id="concepts-1" class="level2">
-<h2 class="anchored" data-anchor-id="concepts-1"><a href="../../topics/leastsquares/concepts.html">concepts</a></h2>
-</section>
-<section id="exercises-1" class="level2">
-<h2 class="anchored" data-anchor-id="exercises-1"><a href="../../topics/leastsquares/exercises.html">exercises</a></h2>
+<section id="mixed" class="level1">
+<h1>mixed</h1>
+<ul>
+<li>if <span class="math inline">A*X=E</span> then what can we say about <span class="math inline">X*A</span>?</li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

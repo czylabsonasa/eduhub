@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-04-05">
 
-<title>etc/index – eduhub</title>
+<title>norms/concepts – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -153,17 +188,39 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#notation" id="toc-notation" class="nav-link active" data-scroll-target="#notation">notation</a></li>
-  <li><a href="#fmathbbrntomathbbr" id="toc-fmathbbrntomathbbr" class="nav-link" data-scroll-target="#fmathbbrntomathbbr"><span class="math inline">f:\mathbb{R}^n\to\mathbb{R}</span></a>
+  <li><a href="#absolute-value" id="toc-absolute-value" class="nav-link active" data-scroll-target="#absolute-value">absolute-value</a>
   <ul class="collapse">
-  <li><a href="#f-is-differentiable-at-x" id="toc-f-is-differentiable-at-x" class="nav-link" data-scroll-target="#f-is-differentiable-at-x"><span class="math inline">f</span> is differentiable at <span class="math inline">x</span></a></li>
-  <li><a href="#partial-derivative" id="toc-partial-derivative" class="nav-link" data-scroll-target="#partial-derivative">partial derivative</a></li>
-  <li><a href="#special-cases" id="toc-special-cases" class="nav-link" data-scroll-target="#special-cases">special cases</a></li>
+  <li><a href="#review" id="toc-review" class="nav-link" data-scroll-target="#review">review</a></li>
   </ul></li>
-  <li><a href="#fmathbbrntomathbbrm" id="toc-fmathbbrntomathbbrm" class="nav-link" data-scroll-target="#fmathbbrntomathbbrm"><span class="math inline">f:\mathbb{R}^n\to\mathbb{R}^m</span></a>
+  <li><a href="#vector-norm" id="toc-vector-norm" class="nav-link" data-scroll-target="#vector-norm">vector-norm</a>
   <ul class="collapse">
-  <li><a href="#f-is-differentiable-at-x-1" id="toc-f-is-differentiable-at-x-1" class="nav-link" data-scroll-target="#f-is-differentiable-at-x-1"><span class="math inline">f</span> is differentiable at <span class="math inline">x</span></a></li>
-  <li><a href="#special-case" id="toc-special-case" class="nav-link" data-scroll-target="#special-case">special case</a></li>
+  <li><a href="#review-1" id="toc-review-1" class="nav-link" data-scroll-target="#review-1">review</a></li>
+  <li><a href="#additional-properties" id="toc-additional-properties" class="nav-link" data-scroll-target="#additional-properties">additional-properties</a></li>
+  <li><a href="#matlab" id="toc-matlab" class="nav-link" data-scroll-target="#matlab">matlab</a></li>
+  </ul></li>
+  <li><a href="#matrix-norm" id="toc-matrix-norm" class="nav-link" data-scroll-target="#matrix-norm">matrix-norm</a>
+  <ul class="collapse">
+  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties">properties</a></li>
+  <li><a href="#additional-properties-1" id="toc-additional-properties-1" class="nav-link" data-scroll-target="#additional-properties-1">additional properties</a></li>
+  <li><a href="#computational-rules" id="toc-computational-rules" class="nav-link" data-scroll-target="#computational-rules">computational rules</a>
+  <ul class="collapse">
+  <li><a href="#norm" id="toc-norm" class="nav-link" data-scroll-target="#norm">1-norm</a></li>
+  <li><a href="#norm-1" id="toc-norm-1" class="nav-link" data-scroll-target="#norm-1">2 norm</a></li>
+  <li><a href="#infty-norm" id="toc-infty-norm" class="nav-link" data-scroll-target="#infty-norm"><span class="math inline">\infty</span> norm</a></li>
+  </ul></li>
+  <li><a href="#numerical-example" id="toc-numerical-example" class="nav-link" data-scroll-target="#numerical-example">numerical-example</a></li>
+  <li><a href="#matlab-1" id="toc-matlab-1" class="nav-link" data-scroll-target="#matlab-1">matlab</a></li>
+  </ul></li>
+  <li><a href="#matrix-conditional" id="toc-matrix-conditional" class="nav-link" data-scroll-target="#matrix-conditional">matrix-conditional</a>
+  <ul class="collapse">
+  <li><a href="#example-linsys" id="toc-example-linsys" class="nav-link" data-scroll-target="#example-linsys">example (linsys)</a></li>
+  </ul></li>
+  <li><a href="#an-inequality" id="toc-an-inequality" class="nav-link" data-scroll-target="#an-inequality">an inequality</a>
+  <ul class="collapse">
+  <li><a href="#matlab-2" id="toc-matlab-2" class="nav-link" data-scroll-target="#matlab-2">matlab</a></li>
+  <li><a href="#example-linsys-continued" id="toc-example-linsys-continued" class="nav-link" data-scroll-target="#example-linsys-continued">example (linsys, continued)</a></li>
+  <li><a href="#properties-1" id="toc-properties-1" class="nav-link" data-scroll-target="#properties-1">properties</a></li>
+  <li><a href="#ill-conditioned" id="toc-ill-conditioned" class="nav-link" data-scroll-target="#ill-conditioned">ill-conditioned</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -173,7 +230,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">etc/index</h1>
+<h1 class="title">norms/concepts</h1>
 </div>
 
 
@@ -196,91 +253,331 @@ window.Quarto = {
 </header>
 
 
-<section id="notation" class="level1">
-<h1>notation</h1>
+<section id="absolute-value" class="level1">
+<h1>absolute-value</h1>
+<section id="review" class="level2">
+<h2 class="anchored" data-anchor-id="review">review</h2>
 <ul>
-<li><span class="math inline">\delta_{ij}=(i=j)\ ?\ 1\ :\ 0</span></li>
-<li><span class="math inline">x\cdot y := \langle x,y\rangle=\sum x_k y_k=x^{T}y</span>
+<li>in this section <span class="math inline">x,y \in \mathbb{R}</span></li>
+<li>how large is a real number?</li>
+<li>absolute value, distance from zero</li>
+</ul>
+<p><span class="math display">
+\vert x \vert =
+\begin{cases}
+  x &amp; \text{ if }\ \ x\ge 0\\
+  -x &amp; \text{ otherwise }
+\end{cases}
+</span></p>
 <ul>
-<li><span class="math inline">x\cdot y=y\cdot x</span></li>
-<li><span class="math inline">x\cdot Ay = A^{T}x\cdot y</span></li>
+<li>properties:
+<ul>
+<li><span class="math inline">\vert x\vert\ge 0</span> and <span class="math inline">\vert x\vert=0\ \text{ iff }\ x=0</span></li>
+<li><span class="math inline">\vert x+y \vert \le \vert x\vert + \vert y \vert</span></li>
+<li><span class="math inline">\vert x\cdot y \vert = \vert x\vert \cdot \vert y \vert</span></li>
 </ul></li>
-<li><span class="math inline">[1,2,3]</span> row</li>
-<li><span class="math inline">[1;2;3]</span> column, the members of <span class="math inline">\mathbb{R}^n</span></li>
 </ul>
 </section>
-<section id="fmathbbrntomathbbr" class="level1">
-<h1><span class="math inline">f:\mathbb{R}^n\to\mathbb{R}</span></h1>
-<section id="f-is-differentiable-at-x" class="level2">
-<h2 class="anchored" data-anchor-id="f-is-differentiable-at-x"><span class="math inline">f</span> is differentiable at <span class="math inline">x</span></h2>
+</section>
+<section id="vector-norm" class="level1">
+<h1>vector-norm</h1>
+<section id="review-1" class="level2">
+<h2 class="anchored" data-anchor-id="review-1">review</h2>
 <ul>
-<li>if there is a <span class="math inline">a\in \mathbb{R}^n</span></li>
+<li>in this section <span class="math inline">x,y \in \mathbb{R}^n</span> and <span class="math inline">\alpha \in \mathbb{R}</span></li>
+<li>how large is a vector?</li>
+<li>it is denoted by <span class="math inline">\Vert x \Vert</span></li>
+<li>requirements (axioms):
+<ul>
+<li><span class="math inline">\Vert x\Vert\ge 0</span> and <span class="math inline">\Vert x\Vert=0\ \text{ iff }\ x=0</span></li>
+<li><span class="math inline">\Vert x+y \Vert \le \Vert x\Vert + \Vert y \Vert</span>
+<ul>
+<li>it is the triangle inequality</li>
+</ul></li>
+<li><span class="math inline">\Vert \alpha \cdot x \Vert = \vert \alpha\vert \cdot \Vert x \Vert</span></li>
+</ul></li>
+<li>the following vector norms are important
+<ul>
+<li><span class="math inline">\Vert x \Vert_{2} = \sqrt{\vert x_1\vert^2 + \ldots + \vert x_n\vert^2}\ \ </span> (euclidean or 2-norm)</li>
+<li><span class="math inline">\Vert x \Vert_{1} = \vert x_1\vert + \ldots + \vert x_n\vert\ \ </span> (manhattan or 1-norm)</li>
+<li><span class="math inline">\Vert x \Vert_{\infty} = \max_{i=k\ldots n}\vert x_k\vert\ \ </span> (<span class="math inline">\infty</span>-norm)</li>
+</ul></li>
+<li>the <strong>distance</strong> between vectors: <span class="math inline">\Vert x-y\Vert</span>
+<ul>
+<li>small: close to each other</li>
+<li>large: far from each other</li>
+</ul></li>
+<li>read <a href="../../topics/norms/notes.html#triangle-inequality">this</a> for more details</li>
+</ul>
+</section>
+<section id="additional-properties" class="level2">
+<h2 class="anchored" data-anchor-id="additional-properties">additional-properties</h2>
+<ul>
+<li>for all <span class="math inline">x \in \mathbb{R}^{n}</span> <span class="math display">
+\Vert x\Vert_{\infty} \le \Vert x\Vert_{2} \le \Vert x\Vert_{1}
+</span></li>
+</ul>
+</section>
+<section id="matlab" class="level2">
+<h2 class="anchored" data-anchor-id="matlab">matlab</h2>
+<ul>
+<li><code>norm(x,1), norm(x,2), norm(x,inf)</code></li>
+</ul>
+</section>
+</section>
+<section id="matrix-norm" class="level1">
+<h1>matrix-norm</h1>
+<ul>
+<li>in this section <span class="math inline">A,B \in {\cal M}_{n\times n}</span> and <span class="math inline">x \in \mathbb{R}^n</span> and <span class="math inline">\alpha \in \mathbb{R}</span></li>
+<li>how large is a matrix?</li>
+<li>it is denoted by <span class="math inline">\Vert A \Vert</span></li>
+<li>requirements (axioms):
+<ul>
+<li><span class="math inline">\Vert A\Vert\ge 0</span> and <span class="math inline">\Vert A\Vert=0\ \text{ iff }\ A=0</span></li>
+<li><span class="math inline">\Vert A+B \Vert \le \Vert A\Vert + \Vert B \Vert\ \ </span> (the triangle inequality)</li>
+<li><span class="math inline">\Vert \alpha \cdot A \Vert = \vert \alpha\vert \cdot \Vert A \Vert</span></li>
+</ul></li>
+<li>how can we define a matrix norm?
+<ul>
+<li>induced matrix norm, it is induced (determined) by a <strong>fixed</strong> vector norm (read <a href="../../topics/norms/notes.html#induced-norm-definition">this</a> for more details)</li>
+</ul></li>
 </ul>
 <p><span class="math display">
-  \frac{\vert f(x+h)-f(x)-a\cdot h\vert}{\Vert h\Vert} \xrightarrow{h\to 0} 0
+\Vert A \Vert = \max_{x\neq 0} \frac{\Vert Ax\Vert}{\Vert x\Vert}
 </span></p>
 <ul>
-<li><span class="math inline">a</span> is unique. (by contradiction)</li>
-<li><span class="math inline">a=\nabla f(x)</span> or <span class="math inline">a=f'(x)</span></li>
+<li>one can read it: what is the largest relative change that is caused for a vector <span class="math inline">x</span> multiplying it by <span class="math inline">A</span></li>
+<li>it can be proved that the right hand side is well defined and the requirements are fulfilled</li>
+<li>there are infinitely many different vector norms</li>
+<li>the following matrix norms are important
+<ul>
+<li><span class="math inline">\Vert . \Vert_{1}\ \ </span> 1-norm, column norm</li>
+<li><span class="math inline">\Vert . \Vert_{2}\ \ </span> 2-norm, euclidean norm, spectral norm</li>
+<li><span class="math inline">\Vert . \Vert_{\infty}\ \ </span> <span class="math inline">\infty</span>-norm, row norm</li>
+</ul></li>
+<li>the <strong>distance</strong> between matrices: <span class="math inline">\Vert A-B\Vert</span>
+<ul>
+<li>small: close to each other</li>
+<li>large: far from each other</li>
+</ul></li>
+</ul>
+<section id="properties" class="level2">
+<h2 class="anchored" data-anchor-id="properties">properties</h2>
+<ul>
+<li>the following properties are also valid</li>
+</ul>
+<p><span class="math display">\begin{gather*}
+\Vert E \Vert = 1\\
+\Vert A\cdot x\Vert \le \Vert A\Vert \cdot \Vert x \Vert\\
+\Vert A\cdot B \Vert \le \Vert A\Vert \cdot \Vert B \Vert\\
+\end{gather*}</span></p>
+</section>
+<section id="additional-properties-1" class="level2">
+<h2 class="anchored" data-anchor-id="additional-properties-1">additional properties</h2>
+<ul>
+<li>for all <span class="math inline">A \in {\cal M}_{n\times n}</span>: <span class="math display">
+\Vert A\Vert_{\infty} \le \Vert A\Vert_{2} \le \Vert A\Vert_{1}
+</span></li>
 </ul>
 </section>
-<section id="partial-derivative" class="level2">
-<h2 class="anchored" data-anchor-id="partial-derivative">partial derivative</h2>
+<section id="computational-rules" class="level2">
+<h2 class="anchored" data-anchor-id="computational-rules">computational rules</h2>
 <ul>
-<li><span class="math inline">k</span>-th</li>
-<li><span class="math inline">e_k=[\delta_{1k};\ldots;\delta_{nk}]</span> - the <span class="math inline">k</span>-th unit vector</li>
-<li>if there is a <span class="math inline">a_k\in \mathbb{R}</span></li>
+<li><span class="math inline">a_{ij}</span> is <span class="math inline">j</span>-th element of the <span class="math inline">i</span>-th row for a matrix <span class="math inline">A</span></li>
 </ul>
+<section id="norm" class="level3">
+<h3 class="anchored" data-anchor-id="norm">1-norm</h3>
 <p><span class="math display">
-  \frac{\vert f(x+e_k h)-f(x)-a_k h \vert}{\vert h\vert} \xrightarrow{h\to 0} 0
+\Vert A\Vert _1=\max\limits_{1\leq j\leq n}\sum\limits_{i=1}^n\vert
+a_{ij}\vert
 </span></p>
 <ul>
-<li><span class="math inline">f_{k}'(x)</span></li>
-<li><span class="math inline">f</span> is differentiable at <span class="math inline">x</span> then <span class="math inline">\nabla f(x)=[f_{1}';\ldots;f_{k}']</span></li>
+<li>for each <strong>column</strong> compute the sum of absolute values and take the maximal one</li>
 </ul>
 </section>
-<section id="special-cases" class="level2">
-<h2 class="anchored" data-anchor-id="special-cases">special cases</h2>
+<section id="norm-1" class="level3">
+<h3 class="anchored" data-anchor-id="norm-1">2 norm</h3>
+<p><span class="math display">
+\Vert A\Vert _2=\sqrt{\lambda _{\max} (A^{T}A)}
+</span></p>
 <ul>
-<li><span class="math inline">f(x)=b\cdot x \ \implies f(x)=b</span></li>
-<li><span class="math inline">f(x)=c \ \implies f'(x)=[0;\ldots;0]</span></li>
-<li><span class="math inline">f(x)=x\cdot Ax \ \implies f'(x)=(A+A^{T})x</span></li>
+<li>take the square root of the maximal absolute value <strong>eigenvalue</strong> of the matrix <span class="math inline">(A^{T}A)</span></li>
 </ul>
+</section>
+<section id="infty-norm" class="level3">
+<h3 class="anchored" data-anchor-id="infty-norm"><span class="math inline">\infty</span> norm</h3>
+<p><span class="math display">
+\Vert A\Vert _\infty=\max_{1\leq i\leq n}\sum_{j=1}^n\vert a_{ij}\vert
+</span></p>
+<ul>
+<li>for each <strong>row</strong> compute the sum of absolute values and take the maximal one</li>
+</ul>
+<p>read <a href="../../topics/norms/notes.html#comp-rules">this</a> for details</p>
+</section>
+</section>
+<section id="numerical-example" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-example">numerical-example</h2>
+<p><span class="math display">
+A=\left[\begin{array}{rrr}
+-3&amp;0&amp;4\\
+1&amp;-1&amp;2\\
+-2&amp;1&amp;-2
+\end{array}\right]
+</span></p>
+<ul>
+<li><span class="math inline">\Vert A\Vert_{1}= 8</span></li>
+<li><span class="math inline">\Vert A\Vert_{\infty}= 7</span></li>
+</ul>
+</section>
+<section id="matlab-1" class="level2">
+<h2 class="anchored" data-anchor-id="matlab-1">matlab</h2>
+<ul>
+<li><code>norm(A,1), norm(A,2), norm(A,inf)</code></li>
+</ul>
+</section>
+</section>
+<section id="matrix-conditional" class="level1">
+<h1>matrix-conditional</h1>
+<section id="example-linsys" class="level2">
+<h2 class="anchored" data-anchor-id="example-linsys">example (linsys)</h2>
+<ul>
+<li>compare the solutions of the linear systems below <span class="math display">
+\left[
+\begin{array}{rr}
+1&amp;1\\
+1&amp;1.0001
+\end{array}
+\right]
+\left[\begin{array}{r}
+x_1\\
+x_2
+\end{array}\right] =
+\left[\begin{array}{r}
+2\\
+2
+\end{array}\right]
+</span>
+<ul>
+<li><span class="math inline">x=[2,0]^{T}</span> <span class="math display">
+\left[
+\begin{array}{rr}
+1&amp;1\\
+1&amp;1.0001
+\end{array}
+\right]
+\left[\begin{array}{r}
+y_1\\
+y_2
+\end{array}\right] =
+\left[\begin{array}{r}
+2\\
+2.0001
+\end{array}\right]
+</span></li>
+<li><span class="math inline">y=[1,1]^{T}</span></li>
+</ul></li>
+<li>large difference, despite the matrix is the same and the right hand sides are very close to each other (in vector norm!)</li>
+<li>how can we explain this behavior?</li>
+</ul>
+</section>
+</section>
+<section id="an-inequality" class="level1">
+<h1>an inequality</h1>
+<ul>
+<li>this is the <strong>error in the right hand side</strong> inequality</li>
+<li>let the matrix <span class="math inline">A</span> be invertible and fix a vector norm and the corresponding matrix norm</li>
+<li>consider the linear systems: <span class="math display">\begin{align*}
+Ax &amp;= b \\
+A(x+\Delta{x}) &amp;= b+\Delta{b}
+\end{align*}</span></li>
+<li>we’ll have different solutions for the systems, but how far they are from each other?</li>
+<li>the following inequality holds:</li>
+</ul>
+<div class="thm-CI callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>the conditional inequality (CI)
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><span class="math display">
 \begin{gather*}
-(x+h)\cdot A(x+h)-x\cdot Ax=\\
-\underline{x\cdot Ax}+x\cdot Ah+h\cdot Ax+h\cdot Ah-\underline{x\cdot Ax}=(*)\\
-x\cdot Ah=A^{T}x\cdot h\\
-h\cdot Ax=Ax\cdot h\\
-|h\cdot Ah|\le \Vert h\Vert_2 \Vert Ah\Vert_2\le \Vert h\Vert_2^2\Vert A\Vert_2 \tag*{(CBS)}\\
-(*)=(A+A^{T})x\cdot h + h\cdot Ah \ \ \checkmark
+\frac{\Vert \Delta{x}\Vert}{\Vert x\Vert} \le \Vert A\Vert \Vert A^{-1}\Vert \frac{\Vert \Delta{b}\Vert}{\Vert b\Vert}\\
+\\
+\text{cond}(A):=\Vert A\Vert \Vert A^{-1}\Vert\\
+\\
+\frac{\Vert \Delta{x}\Vert}{\Vert x\Vert} \le \text{cond}(A) \frac{\Vert \Delta{b}\Vert}{\Vert b\Vert}\\
+\\
+x_{\text{relative error}} \le \text{cond}(A)~ b_{\text{relative error}}
 \end{gather*}
 </span></p>
-</section>
-</section>
-<section id="fmathbbrntomathbbrm" class="level1">
-<h1><span class="math inline">f:\mathbb{R}^n\to\mathbb{R}^m</span></h1>
-<section id="f-is-differentiable-at-x-1" class="level2">
-<h2 class="anchored" data-anchor-id="f-is-differentiable-at-x-1"><span class="math inline">f</span> is differentiable at <span class="math inline">x</span></h2>
+</div>
+</div>
+<div class="thm-CI-PROP callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>properties of CI
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
-<li>if there is a <span class="math inline">A\in {\cal M}_{m\times n}</span></li>
+<li>the inequality is tight, no gap between the sides</li>
+<li>read it: the relative error in the solution is in the worst case is <span class="math inline">\Vert A\Vert \Vert A^{-1}\Vert</span> times the relative error in the right hand side</li>
+<li>the quantity <span class="math inline">\Vert A\Vert \Vert A^{-1}\Vert</span> is called the <strong>conditional</strong> number of <span class="math inline">A</span>
+<ul>
+<li><span class="math inline">\text{cond}(A)=\Vert A\Vert \Vert A^{-1}\Vert</span></li>
+</ul></li>
+<li><strong>important</strong>: this kind of error propagation has nothing to do with floating point computational errors.</li>
+<li>read <a href="../../topics/norms/notes.html#cond-inequality">this</a> for more details</li>
 </ul>
-<p><span class="math display">
-  \frac{\Vert f(x+h)-f(x)-Ah\Vert}{\Vert h\Vert} \xrightarrow{h\to 0} 0
-</span></p>
+</div>
+</div>
+<section id="matlab-2" class="level2">
+<h2 class="anchored" data-anchor-id="matlab-2">matlab</h2>
 <ul>
-<li><span class="math inline">A</span> is unique. (by contradiction)</li>
-<li><span class="math inline">A=J_f(x)</span></li>
-<li><span class="math inline">f=(f_1;\ldots;f_m)</span></li>
-<li><span class="math inline">A=[\nabla f_1(x)^{T};\ldots; \nabla f_m(x)^{T}]</span></li>
+<li><code>cond(A,1), cond(A,2), cond(A,inf)</code></li>
 </ul>
 </section>
-<section id="special-case" class="level2">
-<h2 class="anchored" data-anchor-id="special-case">special case</h2>
+<section id="example-linsys-continued" class="level2">
+<h2 class="anchored" data-anchor-id="example-linsys-continued">example (linsys, continued)</h2>
 <ul>
-<li><span class="math inline">f:\mathbb{R}^n\to \mathbb{R}</span></li>
-<li><span class="math inline">f'(x):\mathbb{R}^n\to \mathbb{R}^n</span></li>
-<li><span class="math inline">f''(x)=H_f(x)=J_{f'}(x)=[f''_{ij}]</span></li>
+<li>examine the output of the script below</li>
+<li>play with different <span class="math inline">p</span> values!</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">p</span><span class="op">=</span><span class="fl">1</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">nrm</span><span class="op">=@</span>(<span class="va">x</span>)<span class="va">norm</span>(<span class="va">x</span><span class="op">,</span><span class="va">p</span>)<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">cnd</span><span class="op">=@</span>(<span class="va">x</span>)<span class="va">cond</span>(<span class="va">x</span><span class="op">,</span><span class="va">p</span>)<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">A</span><span class="op">=</span>[<span class="fl">1</span><span class="op">,</span><span class="fl">1</span><span class="op">;</span><span class="fl">1</span><span class="op">,</span><span class="fl">1.0001</span>]<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="va">b0</span><span class="op">=</span>[<span class="fl">2</span><span class="op">;</span><span class="fl">2</span>]<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="va">b1</span><span class="op">=</span>[<span class="fl">2</span><span class="op">;</span><span class="fl">2.0001</span>]<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="va">x0</span><span class="op">=</span><span class="va">A</span><span class="op">\</span><span class="va">b0</span><span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="va">x1</span><span class="op">=</span><span class="va">A</span><span class="op">\</span><span class="va">b1</span><span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="va">xrel</span><span class="op">=</span><span class="va">nrm</span>(<span class="va">x0</span><span class="op">-</span><span class="va">x1</span>)<span class="op">/</span><span class="va">nrm</span>(<span class="va">x0</span>)<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="va">brel</span><span class="op">=</span><span class="va">nrm</span>(<span class="va">b0</span><span class="op">-</span><span class="va">b1</span>)<span class="op">/</span><span class="va">nrm</span>(<span class="va">b0</span>)<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="va">disp</span>(<span class="st">"observed: "</span><span class="op">+</span><span class="va">string</span>(<span class="va">xrel</span><span class="op">/</span><span class="va">brel</span>))<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="va">disp</span>(<span class="st">"theory  : "</span><span class="op">+</span><span class="va">string</span>(<span class="va">cnd</span>(<span class="va">A</span>)))<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="properties-1" class="level2">
+<h2 class="anchored" data-anchor-id="properties-1">properties</h2>
+<ul>
+<li>its value <strong>does</strong> depend on the norm used</li>
+<li><span class="math inline">\text{cond}(A) \geq 1</span></li>
+<li>for <span class="math inline">c\neq 0</span>, <span class="math inline">\text{cond}(cA)=\text{cond}(A)</span></li>
+</ul>
+<p>read <a href="../../topics/norms/notes.html#cond-property">this</a> for more details</p>
+</section>
+<section id="ill-conditioned" class="level2">
+<h2 class="anchored" data-anchor-id="ill-conditioned">ill-conditioned</h2>
+<ul>
+<li>if <span class="math inline">\text{cond}(A)*b_{\text{relative error}}\ge 1</span> the system is called <strong>ill-conditioned</strong></li>
+<li>it means that the absolute error in the solution can be as large as the true solution itself - it is bad.</li>
 </ul>
 
 

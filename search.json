@@ -109,7 +109,7 @@
     "href": "subjects/app-math/index.html",
     "title": "applied mathematics",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares\n\n\ninterpolation\n\n\nnumerical integration"
+    "text": "information\n\n\n\nmatlab introduction/review\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares\n\n\ninterpolation\n\n\nnumerical integration\n\n\nnonlinear equations"
   },
   {
     "objectID": "subjects/app-math/info/index.html",
@@ -872,7 +872,7 @@
     "href": "subjects/num-math/index.html",
     "title": "numerical mathematics",
     "section": "",
-    "text": "information\n\n\n\nmatlab introduction\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares\n\n\ninterpolation\n\n\nnumerical integration"
+    "text": "information\n\n\n\nmatlab introduction\n\n\nfloating point numbers\n\n\nnorms, condition numbers\n\n\nsystems of linear equations\n\n\nmethod of least squares\n\n\ninterpolation\n\n\nnumerical integration\n\n\nnonlinear equations"
   },
   {
     "objectID": "subjects/app-math/info/appsyll.html",
@@ -985,5 +985,600 @@
     "title": "concepts_draft",
     "section": "for regular rounding",
     "text": "for regular rounding\n\n\n\n\n\n\nImportant\n\n\n\n\n\\vert \\text{fl}(x\\triangle y)-x\\triangle y\\vert \\leq\n\\begin{cases}\n\\varepsilon_0 & \\text{ if }\\vert x\\triangle y\\vert &lt; \\varepsilon_0\\\\\n\\frac{1}{2}\\varepsilon_1\\vert x\\triangle y\\vert & \\text{ if }\\vert x\\triangle y\\vert \\geq \\varepsilon_0\n\\end{cases}"
+  },
+  {
+    "objectID": "topics/norms/index.html#concepts-1",
+    "href": "topics/norms/index.html#concepts-1",
+    "title": "norms, condition numbers",
+    "section": "concepts",
+    "text": "concepts"
+  },
+  {
+    "objectID": "topics/norms/index.html#exercises-1",
+    "href": "topics/norms/index.html#exercises-1",
+    "title": "norms, condition numbers",
+    "section": "exercises",
+    "text": "exercises"
+  },
+  {
+    "objectID": "topics/linsys/index.html#concepts-1",
+    "href": "topics/linsys/index.html#concepts-1",
+    "title": "systems of linear equations (SLE)",
+    "section": "concepts",
+    "text": "concepts"
+  },
+  {
+    "objectID": "topics/linsys/index.html#exercises-1",
+    "href": "topics/linsys/index.html#exercises-1",
+    "title": "systems of linear equations (SLE)",
+    "section": "exercises",
+    "text": "exercises"
+  },
+  {
+    "objectID": "topics/leastsquares/index.html#concepts-1",
+    "href": "topics/leastsquares/index.html#concepts-1",
+    "title": "method of least squares",
+    "section": "concepts",
+    "text": "concepts"
+  },
+  {
+    "objectID": "topics/leastsquares/index.html#exercises-1",
+    "href": "topics/leastsquares/index.html#exercises-1",
+    "title": "method of least squares",
+    "section": "exercises",
+    "text": "exercises"
+  },
+  {
+    "objectID": "topics/interpol/index.html#concepts",
+    "href": "topics/interpol/index.html#concepts",
+    "title": "interpolation",
+    "section": "concepts",
+    "text": "concepts"
+  },
+  {
+    "objectID": "topics/interpol/index.html#exercises-1",
+    "href": "topics/interpol/index.html#exercises-1",
+    "title": "interpolation",
+    "section": "exercises",
+    "text": "exercises"
+  },
+  {
+    "objectID": "topics/floats/index.html#concepts-1",
+    "href": "topics/floats/index.html#concepts-1",
+    "title": "floating point numbers",
+    "section": "concepts",
+    "text": "concepts"
+  },
+  {
+    "objectID": "topics/floats/index.html#exercises-1",
+    "href": "topics/floats/index.html#exercises-1",
+    "title": "floating point numbers",
+    "section": "exercises",
+    "text": "exercises"
+  },
+  {
+    "objectID": "topics/numint/index.html#concepts",
+    "href": "topics/numint/index.html#concepts",
+    "title": "numerical integration",
+    "section": "concepts",
+    "text": "concepts"
+  },
+  {
+    "objectID": "topics/numint/concepts.html",
+    "href": "topics/numint/concepts.html",
+    "title": "numint/concepts",
+    "section": "",
+    "text": "we want to compute the value of the integral:\n\n\\int_{a}^{b} f(t)\\text{d}t\n\nwhere f:[a,b]\\to {\\mathbb R}.\nwhen do we need to approximate integrals? If\n\nit cannot be expressed in terms of elementary functions (e^{-x^2} for example).\nthe antiderivative (primitive function) is known, but too complex.\nwe should calculate a large number of “similar” type integrals.\nthe value of f is known only at a few points."
+  },
+  {
+    "objectID": "topics/numint/concepts.html#interpolational-quadrature-formulas",
+    "href": "topics/numint/concepts.html#interpolational-quadrature-formulas",
+    "title": "numint/concepts",
+    "section": "interpolational quadrature formulas",
+    "text": "interpolational quadrature formulas\n\nmore specifically: for a given f and nodes a=t_1,\\ldots ,t_n=b and values f(t_1),\\ldots,f(t_n) we determine the Lagrange interpolational polynomial P and its exact integral value will be used to approximate \\int_{a}^{b} f(t)\\text{d}t.\n\n\\begin{gather*}\nf(t) \\approx P(t)\\\\\n\\int_{a}^{b} f(t)\\text{d}t \\approx \\int_{a}^{b} P(t)\\text{d}t\n\\end{gather*}\n\nwe will learn what are the weights by using 1,2,3 nodes and how the corresponding quadrature rules are behaving."
+  },
+  {
+    "objectID": "topics/norms/notes.html",
+    "href": "topics/norms/notes.html",
+    "title": "norms/notes_norm",
+    "section": "",
+    "text": "\\Vert x+y\\Vert_{2} \\le \\Vert x\\Vert_{2}+\\Vert y\\Vert_{2}\ninner/scalar/dot product: \\langle x,y\\rangle=\\sum_{i=1}^{n} x_{k}y_{k}\n\\Vert x\\Vert_{2}=\\sqrt{\\langle x,y\\rangle}\nan important inequality related to the scalar product: CBS-inequality\nthe triangle inequality for \\Vert . \\Vert_{2} is the consequence of the CBS-inequality\nequality holds iff. x=0 \\ \\text{ or }\\  y=0 \\ \\text{ or }\\  x=\\lambda y \\text{ for some } \\lambda&gt;0\nthe two inequalities in \\mathbb{R}^{n} are the same (equivalent)"
+  },
+  {
+    "objectID": "topics/norms/notes.html#infty-norm",
+    "href": "topics/norms/notes.html#infty-norm",
+    "title": "norms/notes_norm",
+    "section": "\\infty-norm",
+    "text": "\\infty-norm\n\\begin{gather*}\n\\vert(Ax)_{i}\\vert=\n\\vert\\sum_{j} a_{ij} x_{j}\\vert\\le\n\\sum_{j} \\vert a_{ij}\\vert \\vert x_{j}\\vert\\le\n\\sum_{j} \\vert a_{ij}\\vert \\Vert x\\Vert_{\\infty}\\le\n\\Vert A\\Vert_{\\infty} \\vert \\Vert x\\Vert_{\\infty}\n\\end{gather*} if the maximum is attained in the i-th row then for the sign vector of that row equality holds."
+  },
+  {
+    "objectID": "topics/norms/notes.html#norm",
+    "href": "topics/norms/notes.html#norm",
+    "title": "norms/notes_norm",
+    "section": "1-norm",
+    "text": "1-norm\n\\begin{gather*}\n\\sum_{i}\\vert(Ax)_{i}\\vert\\le\n\\sum_{i}\\sum_{j} \\vert a_{ij}\\vert \\vert x_{j}\\vert=\n\\sum_{j} \\vert x_{j}\\vert \\sum_{i} \\vert a_{ij}\\vert \\le\n\\sum_{j} \\vert x_{j}\\vert \\Vert A\\Vert_{1} \\le\n\\Vert x\\Vert_{1} \\Vert A\\Vert_{1}\n\\end{gather*} if the maximum is attained in the j-th column then for the vector e_{j} the two sides are equal."
+  },
+  {
+    "objectID": "topics/norms/notes.html#special-vectors",
+    "href": "topics/norms/notes.html#special-vectors",
+    "title": "norms/notes_norm",
+    "section": "special vectors",
+    "text": "special vectors\nthe computations above provide a way to find a vector x for which \\Vert Ax\\Vert=\\Vert A\\Vert\\Vert x\\Vert in the cases of 1 and \\infty norms."
+  },
+  {
+    "objectID": "topics/linsys/exercises.html",
+    "href": "topics/linsys/exercises.html",
+    "title": "linsys/exercises",
+    "section": "",
+    "text": "determinant, inverse, conditional\n\ncompute the deterinants for the matrices below!\ncompute the inverses for the matrices below! (if exist)\ncompute the \\text{cond}_{1} and \\text{cond}_{\\infty} for the matrices below!\nverify your result with matlab!\n\nA=\\left[\\begin{array}{ccc}\n-1 &  0 &  0 \\\\\n  1 & -1 &  0 \\\\\n  2 & -2 &  6 \\\\\n\\end{array}\\right]\n\n\nA=\\left[\\begin{array}{ccc}\n  2 &  4 &  2 \\\\\n  0 & -1 & -3 \\\\\n  0 &  0 & -7 \\\\\n\\end{array}\\right]\n\n\nA=\\left[\\begin{array}{ccc}\n  3 &  0 &  0 \\\\\n  0 &  4 &  0 \\\\\n  0 &  0 &  3 \\\\\n\\end{array}\\right]\n\n\nA=\\left[\\begin{array}{ccc}\n  0 &  0 &  3 \\\\\n  0 &  4 &  0 \\\\\n  3 &  0 &  0 \\\\\n\\end{array}\\right]\n\n\n\n\nlinear systems\n\nsolve the Ax=b for the matrices of the previous section, where\n\nb=\\left[\\begin{array}{c}\n  0\\\\\n  0\\\\\n  0\\\\\n\\end{array}\\right]\n\n\nb=\\left[\\begin{array}{c}\n  0\\\\\n  0\\\\\n  \\frac{1}{100}\\\\\n\\end{array}\\right]\n\n\nb=\\left[\\begin{array}{c}\n  -1\\\\\n  2\\\\\n  3\\\\\n\\end{array}\\right]\n\n\n\n\nmixed\n\nif A*X=E then what can we say about X*A?"
+  },
+  {
+    "objectID": "topics/leastsquares/exercises.html",
+    "href": "topics/leastsquares/exercises.html",
+    "title": "leastsquares/exercises",
+    "section": "",
+    "text": "Noneex-1\n\n\n\n\n\nDetermine the best fitting quadratic polynomial for the data\nt=[2.1  2.2  2.3  2.3  2.5  2.6  2.8  2.9];\nf=[2.5  2  2.5  2.7  3  4  5.4  7];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-2\n\n\n\n\n\nDetermine the best fitting line for the data\nt=[1  1.2  1.4  1.4  1.5  1.7  1.9  2];\nf=[6.2  7  8  7.9  8.4  9.2  10  10.6];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-3\n\n\n\n\n\nDetermine the best fitting cubic polynomial for the data\nt=[0.5  0.8  1.1  1.3  1.5  1.7  1.9  2.1  2.3];\nf=[2.5  2.3  1.8  1.3  0.9  0.4  0.1  -0.05  -0.01];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-4\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a = \\frac{b}{t}\n\nt=[1  1.2  1.4  1.4  1.5  1.7  1.9  2  2.1  2.2];\nf=[4.2  3.8  3.4  3.3  3.3  3  2.8  2.8  2.75  2.7];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-5\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a\\sin(t)+b\\sin(2t)+c\\sin(3t)\n\nfor the data\nt=[0.1 0.5 1.2 1.5 2 2.1 2.4  3  3.2 3.4  3.8  4  4.2  4.6  5];\nf=[1 4.1 3 1 -1.5 -1.6 -1.7  -0.4  0.1 0.7  1.6  1.8  1.6  0.2  -2.5];\nCreate an appropriate plot!\n\n\n\n\n\n\n\n\n\nNoneex-6\n\n\n\n\n\nDetermine the best fitting instance of the model\n\nF(t)=a+b\\log(t)\n\nfor the data\nt=[0.1  0.5  1.2  1.5  2  2.1  2.4  3  3.2];\nf=[-0.6  1.5  2.5  2.9  3.2  3.3  3.5  3.8  3.9];\nCreate an appropriate plot!"
+  },
+  {
+    "objectID": "topics/floats/exercises.html",
+    "href": "topics/floats/exercises.html",
+    "title": "floats/exercises",
+    "section": "",
+    "text": ":, ==,&lt;,&gt;,x(I),repmat\nmath functions\nrandi,rand for generate test vectors\nfunction y=f(x)\n  ...\n  y=...\nend\nf=@(x) ...\nfor i=...\n  ...\nend\nwhile ...\n  ...\nend"
+  },
+  {
+    "objectID": "topics/floats/exercises.html#representing-numbers",
+    "href": "topics/floats/exercises.html#representing-numbers",
+    "title": "floats/exercises",
+    "section": "representing numbers",
+    "text": "representing numbers"
+  },
+  {
+    "objectID": "topics/floats/exercises.html#important-numbers",
+    "href": "topics/floats/exercises.html#important-numbers",
+    "title": "floats/exercises",
+    "section": "important numbers",
+    "text": "important numbers\n\nlet {\\cal F}=\\{a=2, k_{-}=-3, k_{+}=3, t=4\\}\n\ncompute the (normalized) representations for 0.2,\\ 1.45,\\ \\pi in \\cal F using regular rounding\nwhat is \\varepsilon_{0},\\ \\varepsilon_{1},\\ M_{\\infty},\\ 1_{+},\\ 1_{-} in \\cal F\nhow many positive numbers \\cal F has?\nwhat is the smallest positive integer that is not in \\cal F?\n\nthese are double system related exercises\n\nwrite a function that returns \\varepsilon_{0}!\nwrite a function that returns \\varepsilon_{1}!\nwrite a function that returns x_{+}, given x!\nverify, that (x+y)+z \\neq x+(y+z) for x=0.4,\\ y=-0.5, z=0.1\n\ndoes it occur frequently?\n\nlet x=\\frac{1}{3}. iterate n=10,50,100 times the assignment: x=4x-1. what can be observed?"
+  },
+  {
+    "objectID": "topics/nonlin/index.html#concepts-draft",
+    "href": "topics/nonlin/index.html#concepts-draft",
+    "title": "nonlinear equations",
+    "section": "concepts (draft)",
+    "text": "concepts (draft)"
+  },
+  {
+    "objectID": "topics/nonlin/concepts.html",
+    "href": "topics/nonlin/concepts.html",
+    "title": "nonlin/concepts",
+    "section": "",
+    "text": "Nonethe problem\n\n\n\n\n\n\nwe search for the solutions of the f(x)=0 equation, where f:{\\mathbb R}\\to {\\mathbb R} is a nonlinear function.\nthe solutions called roots or zeroes of f\nusually we are focusing to some [a,b]\\subset \\mathbb{R}\nexamples:\n\n\n\n\n\\begin{gather*}\n\\cos(x)-x=0\\\\\nx^5-3x^4+x^3-5x^2+3=0\\\\\ne^x-4x^2=0\\\\\n\\log(x)-x+2=0\\\\\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/floats/concepts.html",
+    "href": "topics/floats/concepts.html",
+    "title": "floats/concepts",
+    "section": "",
+    "text": "\\begin{align*}\n0.3721 &= 10^{0}\\cdot \\left(\n   \\frac{3}{10}+\\frac{7}{10^2}+\\frac{2}{10^3}+\\frac{1}{10^4}\\right)\n\\\\\n21.65 &= 10^2 \\cdot 0.2165\n=10^2 \\cdot \\left( \\frac{2}{10}+\\frac{1}{10^2}+\\frac{6}{10^3}+\\frac{5}{10^4}\\right)\n\\\\\n\\frac{1}{3} &= 0.3333333\\ldots = 10^{0}\\cdot 0.\\overline{3}\n\\\\\n\\pi &= 3.141592\\ldots=10^{1}\\cdot 0.3141592\\ldots\n\\\\\n\\end{align*}\n\n\n\n\n\n\\begin{align*}\n0.1101 &= 2^{0} \\cdot \\left( \\frac{1}{2}+\\frac{1}{2^2}+\\frac {0}{2^3}+\\frac{1}{2^4}\\right)\n\\\\\n0.001011 &= 2^{-2} \\cdot 0.1011\n\\\\\n\\frac{1}{3} &= 0.010101\\ldots = 2^{-1}\\cdot 0.\\overline{10}\n\\\\\n\\pi &= 11.0010010000\\ldots=2^{2}\\cdot 0.110010010000\\ldots\n\\\\\n\\end{align*}"
+  },
+  {
+    "objectID": "topics/floats/concepts.html#decimal",
+    "href": "topics/floats/concepts.html#decimal",
+    "title": "floats/concepts",
+    "section": "",
+    "text": "\\begin{align*}\n0.3721 &= 10^{0}\\cdot \\left(\n   \\frac{3}{10}+\\frac{7}{10^2}+\\frac{2}{10^3}+\\frac{1}{10^4}\\right)\n\\\\\n21.65 &= 10^2 \\cdot 0.2165\n=10^2 \\cdot \\left( \\frac{2}{10}+\\frac{1}{10^2}+\\frac{6}{10^3}+\\frac{5}{10^4}\\right)\n\\\\\n\\frac{1}{3} &= 0.3333333\\ldots = 10^{0}\\cdot 0.\\overline{3}\n\\\\\n\\pi &= 3.141592\\ldots=10^{1}\\cdot 0.3141592\\ldots\n\\\\\n\\end{align*}"
+  },
+  {
+    "objectID": "topics/floats/concepts.html#binary",
+    "href": "topics/floats/concepts.html#binary",
+    "title": "floats/concepts",
+    "section": "",
+    "text": "\\begin{align*}\n0.1101 &= 2^{0} \\cdot \\left( \\frac{1}{2}+\\frac{1}{2^2}+\\frac {0}{2^3}+\\frac{1}{2^4}\\right)\n\\\\\n0.001011 &= 2^{-2} \\cdot 0.1011\n\\\\\n\\frac{1}{3} &= 0.010101\\ldots = 2^{-1}\\cdot 0.\\overline{10}\n\\\\\n\\pi &= 11.0010010000\\ldots=2^{2}\\cdot 0.110010010000\\ldots\n\\\\\n\\end{align*}"
+  },
+  {
+    "objectID": "topics/floats/concepts.html#for-choping",
+    "href": "topics/floats/concepts.html#for-choping",
+    "title": "floats/concepts",
+    "section": "for choping",
+    "text": "for choping\n\n\n\n\n\n\nImportant\n\n\n\n\n\\vert \\text{fl}(x\\triangle y)-x\\triangle y\\vert \\leq\n\\begin{cases}\n\\varepsilon _0 & \\text{ if }\\vert x\\triangle y\\vert &lt; \\varepsilon_0\\\\\n\\varepsilon_1\\vert x\\triangle y\\vert & \\text{ if }\\vert x\\triangle y\\vert \\geq \\varepsilon_0\n\\end{cases}"
+  },
+  {
+    "objectID": "topics/floats/concepts.html#for-regular-rounding",
+    "href": "topics/floats/concepts.html#for-regular-rounding",
+    "title": "floats/concepts",
+    "section": "for regular rounding",
+    "text": "for regular rounding\n\n\n\n\n\n\nImportant\n\n\n\n\n\\vert \\text{fl}(x\\triangle y)-x\\triangle y\\vert \\leq\n\\begin{cases}\n\\varepsilon_0 & \\text{ if }\\vert x\\triangle y\\vert &lt; \\varepsilon_0\\\\\n\\frac{1}{2}\\varepsilon_1\\vert x\\triangle y\\vert & \\text{ if }\\vert x\\triangle y\\vert \\geq \\varepsilon_0\n\\end{cases}"
+  },
+  {
+    "objectID": "topics/leastsquares/concepts.html",
+    "href": "topics/leastsquares/concepts.html",
+    "title": "leastsquares/concepts",
+    "section": "",
+    "text": "Collect the data.\nSelect the most appropriate model.\nCompute the best instance of the chosen model\nUse the model (predicting future values of the process)"
+  },
+  {
+    "objectID": "topics/leastsquares/concepts.html#fitting-a-line",
+    "href": "topics/leastsquares/concepts.html#fitting-a-line",
+    "title": "leastsquares/concepts",
+    "section": "fitting a line",
+    "text": "fitting a line\n\n\\begin{gather*}\n\\varphi_{1}(t)=1\\ \\ \\varphi_{2}(t)=t\\\\\n\\\\\nA=\\left[\n\\begin{array}{cc}\n1 & t_1\\\\\n1 & t_2\\\\\n\\vdots & \\vdots\\\\\n1 & t_{m-1}\\\\\n1 & t_{m}\\\\\n\\end{array}\n\\right]\\\\\n\\\\\n\\text{the GN:}\\ \\\n\\left[\n\\begin{array}{cc}\nm & \\sum t\\\\\n\\sum t & \\sum t^2\\\\\n\\end{array}\n\\right]=\n\\left[\n\\begin{array}{c}\n\\sum f\\\\\n\\sum tf\\\\\n\\end{array}\n\\right]\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/leastsquares/concepts.html#fitting-a-parabola",
+    "href": "topics/leastsquares/concepts.html#fitting-a-parabola",
+    "title": "leastsquares/concepts",
+    "section": "fitting a parabola",
+    "text": "fitting a parabola\n\n\\begin{gather*}\n\\varphi_{1}(t)=1\\ \\ \\varphi_{2}(t)=t \\ \\ \\varphi_{3}(t)=t^2\\\\\n\\\\\nA=\\left[\n\\begin{array}{ccc}\n1 & t_1 & t_1^2\\\\\n1 & t_2 & t_1^2\\\\\n\\vdots & \\vdots & \\vdots\\\\\n1 & t_{m-1} & t_{m-1}^2\\\\\n1 & t_{m} & t_{m}^2\\\\\n\\end{array}\n\\right]\\\\\n\\\\\n\\text{the GN:}\\ \\\n\\left[\n\\begin{array}{ccc}\nm & \\sum t & \\sum t^2\\\\\n\\sum t & \\sum t^2 & \\sum t^3\\\\\n\\sum t^2 & \\sum t^3 & \\sum t^4\\\\\n\\end{array}\n\\right]=\n\\left[\n\\begin{array}{c}\n\\sum f\\\\\n\\sum tf\\\\\n\\sum t^2 f\\\\\n\\end{array}\n\\right]\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/leastsquares/concepts.html#matlab",
+    "href": "topics/leastsquares/concepts.html#matlab",
+    "title": "leastsquares/concepts",
+    "section": "matlab",
+    "text": "matlab\n\nfor polynomial fitting the polyfit, polyval functions are used.\nthe polynomials in matlab represented by a vector, the main coefficient is the first, the constant is the last element - the are represented by decreasing degree coefficients\nthe form is classical/traditional (as there are other forms too) \n\\begin{align*}\n\\text{vector:}& \\ \\ [p_{n-1},\\ldots,p_0]\\\\\n\\text{polynomial:}& \\ \\ p_{n-1}x^{n-1}+p_{n-2}x^{n-2}+\\ldots+p_{1}x+p_0\\\\\n\\end{align*}"
+  },
+  {
+    "objectID": "topics/linsys/concepts.html",
+    "href": "topics/linsys/concepts.html",
+    "title": "linsys/concepts",
+    "section": "",
+    "text": "setting up an appropriate SLE is the hardest part of the problem solving…but here we only deal with the “how to solve it” part.\nour aim is to solve systems of linear equations (SLE’s)\nwe have m equations n variables, a cofficient matrix A and a right hand side b \n\\begin{gather*}\na_{11}x_{1}+\\ldots+a_{1n}x_{n} = b_{1}\\\\\na_{21}x_{1}+\\ldots+a_{2n}x_{n} = b_{2}\\\\\n\\vdots{}\\\\\na_{m1}x_{1}+\\ldots+a_{mn}x_{n} = b_{m}\\\\\n\\text{or}\\\\\nAx=b\\\\\n\\text{or}\\\\\nx_{1}a_{.1}+x_{2}a_{.2}+\\ldots+x_{n}a_{.n}=b\\\\\n\\end{gather*}\n\nhere by a_{.j} we mean the j-th column of A\nthe third form is the most expressive one\n\nit tells us that we are working in vector spaces\nit tells us that we are searching for a linear combination of the column vectors that is b and the solution for the system (if any) is coefficiant set of the combination.\nfrom linear algebra we know that we have three cases:\n\nwe cannot express b by means of the given system (0 solutions)\nwe can express b uniquely (1-solution)\nwe can express b in several different ways (\\infty-solutions)"
+  },
+  {
+    "objectID": "topics/linsys/concepts.html#matlab",
+    "href": "topics/linsys/concepts.html#matlab",
+    "title": "linsys/concepts",
+    "section": "matlab",
+    "text": "matlab\n\nthe function rref can and should be used. it also performs the backward elimination steps and the rows are normalized."
+  },
+  {
+    "objectID": "topics/linsys/concepts.html#example",
+    "href": "topics/linsys/concepts.html#example",
+    "title": "linsys/concepts",
+    "section": "example",
+    "text": "example\n\nfor the computation below this program is used.\n\n\n\n\n\n\n\nNoneclick to open\n\n\n\n\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];\n&gt;&gt; [L,U]=mylu(A)\n\nphase 0:\n\n   1   0   0   4   1  -1\n   0   1   0  -1   8   0\n   0   0   1   1   1   4\n\npress a key to continue\n\n\nphase 1:\n\n  sub-phase 2:\n\n    subtract -1/4 times the 1. row from the 2. row\n\n     1     0     0     4     1    -1\n  -1/4     1     0     0  33/4  -1/4\n     0     0     1     1     1     4\n\npress a key to continue\n\n\n  sub-phase 3:\n\n    subtract 1/4 times the 1. row from the 3. row\n\n     1     0     0     4     1    -1\n  -1/4     1     0     0  33/4  -1/4\n   1/4     0     1     0   3/4  17/4\n\npress a key to continue\n\n\nphase 2:\n\n  sub-phase 3:\n\n    subtract 1/11 times the 2. row from the 3. row\n\n      1      0      0      4      1     -1\n   -1/4      1      0      0   33/4   -1/4\n    1/4   1/11      1      0      0  47/11\n\npress a key to continue\n\n\nL =\n\n       1              0              0       \n      -1/4            1              0       \n       1/4            1/11           1       \n\n\nU =\n\n       4              1             -1       \n       0             33/4           -1/4     \n       0              0             47/11"
+  },
+  {
+    "objectID": "topics/linsys/concepts.html#matlab-1",
+    "href": "topics/linsys/concepts.html#matlab-1",
+    "title": "linsys/concepts",
+    "section": "matlab",
+    "text": "matlab\n\nthe function call [L,U,P]=lu(A) will create a PLU factorization for the parameter matrix. Almost always row-swaps will be performed.\nthe backslash (\\) operator is a built-in for solving linear systems.\n\n\n\n\n\n\n\nNoneclick to open\n\n\n\n\n\n&gt;&gt; A=[4,1,-1;-1,8,0;1,1,4];b=[1;2;4];\n&gt;&gt; x=A\\b;\n&gt;&gt; x\n\nx =\n\n    0.3830\n    0.2979\n    0.8298\n\n&gt;&gt; A*x\n\nans =\n\n    1.0000\n    2.0000\n    4.0000\n\n\n\n\nit is important that the \\ can return a non-solution. It tries to find the best possible answer and if there is no solution then it tries to minimize \\Vert Ax - b\\Vert_{2} (least square optimal solution):\n\n\n\n\n\n\n\nNoneclick to open\n\n\n\n\n\n&gt;&gt; A=[1 0; 2 3; 0 1]; b=[6;3;0];\n&gt;&gt; x=A\\b\n\nx =\n\n    4.7143\n   -1.9286\n\n&gt;&gt; A*x\n\nans =\n\n    4.7143\n    3.6429\n   -1.9286\n\n\n&gt;&gt; % we will learn we this form used:\n&gt;&gt; norm(A'*A*x - A'*b)\n\nans =\n\n   5.0243e-15"
+  },
+  {
+    "objectID": "topics/linsys/concepts.html#determinant",
+    "href": "topics/linsys/concepts.html#determinant",
+    "title": "linsys/concepts",
+    "section": "determinant",
+    "text": "determinant\n\nassuming that no row multiplications were used, just multiply together the diagonal elements of U and take its negative if odd number of row swaps were used.\nfor example the determinant of the coefficient matrix of Listing 1 is : -12 (why?)"
+  },
+  {
+    "objectID": "topics/linsys/concepts.html#rank",
+    "href": "topics/linsys/concepts.html#rank",
+    "title": "linsys/concepts",
+    "section": "rank",
+    "text": "rank\n\nthat is: the dimension of the subspace generated by the column-vectors of A\ncount the number of non-zero elements in the main diagonal of U\nfor example the rank of the coefficient matrix of Listing 3 is : 3 (why?)"
+  },
+  {
+    "objectID": "topics/linsys/concepts.html#classic-lights-out-puzzle",
+    "href": "topics/linsys/concepts.html#classic-lights-out-puzzle",
+    "title": "linsys/concepts",
+    "section": "classic lights out puzzle",
+    "text": "classic lights out puzzle\n\nsee here\nlet’s develop a linear algebraic solution!"
+  },
+  {
+    "objectID": "topics/interpol/concepts.html",
+    "href": "topics/interpol/concepts.html",
+    "title": "interpolation/concepts",
+    "section": "",
+    "text": "for a given set of 2d points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}) we are searching the simplest (minimal degree) P polynomial that interpolates the points: P(t_{k})=f_{k}\\ \\ \\ k=1,\\ldots ,n.\nterminology: the elements of t are called interpolation nodes/node points, the elements of f are called (function) values/node values.\nnaturally the point set cannot have two equal first coordinates (t_{i}=t_{j}) with different second coordinates (f_{i}\\neq f_{j}).\nfor 1 points a 0-th order, 2 points an at most 1-st order interpolation is clearly exists - but how to proceed to larger number of points?\nn points n pieces of information. we may expect that these n pieces will determine n real numbers, a polynomial of degree at most n-1, which will be the interpolational polynomial.\nthere are several approaches\n\nsetting up an n\\times n linear system of equations \na_{n-1}t_{k}^{n-1}+\\ldots+a_{1}t_{k}+a_{0}=f_{k}\\ \\ \\ k=1,\\ldots,n\n\napplying least square approximation for \\varphi_{k}(t)=t^k, \\ \\ k=0,\\ldots,n-1, for if it is possible to achieve the zero error, then the Gauss normal equation will give us the appropriate coefficients.\nboth of these (eventually equivalent) approaches has complexity {\\cal O}(n^3) and it is not so straightforward to apply them for a dynamically extending point set.\n\nwe will learn later that there is a more efficient {\\cal O}(n^2) complexity and dynamically extendable approach: the Newton divided difference method.\nfirst we will state a theorem about the existence and uniqueness.\n\n\n\n\n\n\n\nImportantLagrange’s main theorem\n\n\n\nFor a given set of pairwise different points (t_{1},f_{1}),\\ldots,(t_{n},f_{n}), there is a unique polynomial P with: \nP(t_{k})=f_{k}\\ \\ \\ (k=1,\\ldots,n)\\ \\ \\text{and}\\ \\ \\deg(P)\\le n-1\n\n\n\n\nfor more details read this\nat this stage we learned that the least square approach (even without A^{T}A) will give us the unique solution…"
+  },
+  {
+    "objectID": "topics/interpol/concepts.html#intro-1",
+    "href": "topics/interpol/concepts.html#intro-1",
+    "title": "interpolation/concepts",
+    "section": "intro",
+    "text": "intro\n\nsearch for the polynomial that interpolates the points t=[-1,0,1],\\ \\ f=[2,3,1].\nlet’s imagine the polynomial in the form of p(x)=a_2(x+1)x+a_1x+a_0. here we included some information about the first coordinates into the polynomial.\n\n\n\n\n\n\n\nNonedetails\n\n\n\n\n\n\n\\begin{gather*}\np(-1)=2 \\ \\ \\Longrightarrow \\ \\ a_0=2\\\\\np(x)=a_2(x+1)x+a_1(x+1)+2\\\\\np(0)=3 \\ \\ \\Longrightarrow \\ \\ a_1=1\\\\\np(x)=a_2(x+1)x+(x+1)+2\\\\\np(1)=1 \\ \\ \\Longrightarrow \\ \\ a_2=-\\frac{3}{2}\\\\\np(x)=-\\frac{3}{2}(x+1)x+(x+1)+2\\\\\n\\end{gather*}\n\n\n\n\n\nobserve that at each step we solved a one variable linear equation, as in the case of triangular form linear systems\nthis seemingly ad-hoc approach is transformed to an algorithm"
+  },
+  {
+    "objectID": "topics/interpol/concepts.html#the-method-how",
+    "href": "topics/interpol/concepts.html#the-method-how",
+    "title": "interpolation/concepts",
+    "section": "the method (how?)",
+    "text": "the method (how?)\n\nthe scheme of the divided difference method\n\n\\begin{array}{c|cccccc}\nt_1 & f^{~(0)}_{1} & & & & & \\\\\n& & f^{~(1)}_{1} & & & & \\\\\nt_2 & f^{~(0)}_{2} && f^{~(2)}_{1} & & & \\\\\n& & f^{~(1)}_{2} & & \\ddots & &\\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & f^{~(n-2)}_{1} & \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & & f^{~(n-1)}_{1} \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & f^{~(n-2)}_{2} & \\\\\n& & f^{~(1)}_{n-2} & & \\mathinner{\\kern{1.2mu}\\raisebox{2mu}{.}\\kern{3mu}\\raisebox{7.4mu}{.}\\kern{3mu}\\raisebox{12.8mu}{.}\\kern{1.2mu}}& & \\\\\nt_{n-1} & f^{~(0)}_{n-1} & & f^{~(2)}_{n-2} & & & \\\\\n& & f^{~(1)}_{n-1} & & & & \\\\\nt_n & f^{~(0)}_{n} & & & & &\n\\end{array}\n\n\n\n\n\n\n\nImportantthe computational rule\n\n\n\nWe start with the t and the f^{~(0)} columns, the the missing entries, for j=1\\ldots n-1 and i=1\\ldots n-j are computed by \nf_{i}^{~(j)}=\\frac{f_{i}^{~(j-1)}-f_{i+1}^{~(j-1)}}{t_i-t_{i+j}} \\ \\ \\ \\ (*)\n\n\n\n\n\n\n\n\n\nImportantthe polynomial(s)\n\n\n\nSuppose that we filled in the table according to the rule (*). Then \n\\begin{align*}\nP(t)&=f^{~(0)}_{1}+f^{~(1)}_{1}(t-t_1)+f^{~(2)}_{1}(t-t_1)(t-t_2)+\\ldots\\\\\n&+f^{~(n-2)}_{1}(t-t_1)\\ldots (t-t_{n-2})+f^{~(n-1)}_{1}(t-t_1)\\ldots (t-t_{n-1})\n\\end{align*}\n and \n\\begin{align*}\nP(t)&=f^{~(0)}_{n}+f^{~(1)}_{n-1}(t-t_n)+f^{~(2)}_{n-2}(t-t_n)(t-t_{n-1})+\\cdots\\\\\n&+f^{~(n-2)}_{2}(t-t_n)\\cdots (t-t_3)+f^{~(n-1)}_{1}(t-t_n)\\cdots (t-t_2)\n\\end{align*}\n are interpolational polynomials for the data t,f."
+  },
+  {
+    "objectID": "topics/interpol/concepts.html#the-method-why",
+    "href": "topics/interpol/concepts.html#the-method-why",
+    "title": "interpolation/concepts",
+    "section": "the method (why?)",
+    "text": "the method (why?)\n\nread this"
+  },
+  {
+    "objectID": "topics/interpol/concepts.html#problem-description",
+    "href": "topics/interpol/concepts.html#problem-description",
+    "title": "interpolation/concepts",
+    "section": "problem description",
+    "text": "problem description\nWe have a set of points and a set of conditions at the points: \n\\begin{array}{rcccccl}\n& t_1            & t_2          & t_3       & \\dots & t_n       & \\\\\n\\hline\n& f_{1}^{(0)}      & f_{2}^{(0)}    & f_{3}^{(0)} & \\dots & f_{n}^{(0)} &\\\\\n& f_{1}^{(1)}      & f_{2}^{(1)}    & f_{3}^{(1)} & \\dots & f_{n}^{(1)} &\\\\\n& f_{1}^{(2)}      & f_{2}^{(2)}    & f_{3}^{(2)}  & \\dots & f_{n}^{(2)} &\\\\\n&\\vdots          & \\vdots           & \\vdots       &       & \\vdots     &\\\\\n&f_{1}^{(m_1-1)}     & f_{2}^{(m_2-1)}  & f_{3}^{(m_3-1)} &\\dots & f_{n}^{(m_n-1)}&\\\\\n\\end{array}\n\nWe are looking for a polynomial H(t), for which \nH^{~(j)}(t_i)=f_{i}^{(j)} \\quad \\quad i=1,\\dots,n, \\quad j=0,\\dots ,m_i-1.\n Let m=\\sum_{k=1}^n m_k, the number of conditions.\n\n\n\n\n\n\nImportant\n\n\n\nThe problem of Hermite-interpolation can be solved uniquely in the space of at most m-1 degree polynomials.\n\n\n\nFrom the conditions, we can set up a uniquely solvable m\\times m linear system, for the details see this at page (around) 18.\nor"
+  },
+  {
+    "objectID": "topics/interpol/concepts.html#computation",
+    "href": "topics/interpol/concepts.html#computation",
+    "title": "interpolation/concepts",
+    "section": "computation",
+    "text": "computation\n\nHow to compute the coefficients of H?\nIt is possible to modify the Newton divided difference method for Lagrange polynomials to get them.\nThe node points column (t) should contain the t_k’s with multiplicity. As many conditions assigned to a specific as many times we should include it. If the first derivative is given, then we must include it 2 times, and so on.\nThe corresponding computational formula is modified, in order to handle the “division by zero” case\n\n\n\n\n\n\n\nImportantHermite-rule\n\n\n\n\nf_{i}^{~(j)}=\n\\begin{cases}\n\\frac{f_{i}^{~(j-1)}-f_{i+1}^{~(j-1)}}{t_i-t_{i+j}} \\ \\ \\text{if}\\ t_i \\neq t_{i+j}\\\\\n\\frac{f(t_{i})^{(j)}}{j!} \\ \\ \\text{otherwise}\\\\\n\\end{cases}\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nIf the node points are set up with appropriate multiplicity and the modified computational rule used to fill in the values of the scheme then the polynomial in the final table fulfills the conditions. (The proof is omitted.)"
+  },
+  {
+    "objectID": "topics/interpol/concepts.html#example-1",
+    "href": "topics/interpol/concepts.html#example-1",
+    "title": "interpolation/concepts",
+    "section": "example",
+    "text": "example\n\n\n\n\n\n\nNonethe plot for the example"
+  },
+  {
+    "objectID": "topics/interpol/concepts.html#applications",
+    "href": "topics/interpol/concepts.html#applications",
+    "title": "interpolation/concepts",
+    "section": "applications",
+    "text": "applications\n\ntangent line formula\n\nFor a given real valued, differentiable function find the equation of its tangential line at t_0!\nWe are looking for a Hermite polynomial of degree at most 1, for which H(t_0)=f(t_0) and H~'(t_0)=f~'(t_0)\n\n\n\\begin{array}{r|rr}\nt_0 &  f(t_0) \\\\\n& & f~'(t_0) \\\\\nt_0 & f(t_0)\n\\end{array}\n\n\nthen H(t)=f(t_0)+f~'(t_0)(t-t_0)"
+  },
+  {
+    "objectID": "topics/interpol/concepts.html#the-runge-function-revisited",
+    "href": "topics/interpol/concepts.html#the-runge-function-revisited",
+    "title": "interpolation/concepts",
+    "section": "the Runge-function revisited",
+    "text": "the Runge-function revisited\n\nwe will interpolate the function at different node sets, but this time the derivative values will also be used at some nodes.\n\n\n\n\n\n\n\nNonethe plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNonethe script\n\n\n\n\n\n\nclc; clf; clear;\n% Runge examples - uniform Hermite\n\nfun=@(x) 1./(1+25*x.^2);\ndfun=@(x) -50*x./(1+25*x.^2).^2;\nxx=linspace(-1,1);\nyy=fun(xx);\n\nnsp=0;\nfor np=[3,9,15]\n  nsp=nsp+1;subplot(3,1,nsp);\n  x=linspace(-1,1,np);\n  data=cell(1,np);\n  % also control some derivatives at the ends\n  data{1}=[x(1),fun(x(1)),dfun(x(1))];\n  data{2}=[x(2),fun(x(2)),dfun(x(2))];\n  for i=3:np-2\n    data{i}=[x(i),fun(x(i))];\n  end\n  data{np-1}=[x(np-1),fun(x(np-1)),dfun(x(np-1))];\n  data{np}=[x(np),fun(x(np)),dfun(x(np))];\n  \n  [H,t]=hermite_interpolation(data);\n  yyy=horner_newton(H,t,xx);\n\n  plot(xx,yy,xx,yyy);\n  maxdiff=max(abs(yy-yyy));\n  title(sprintf(\"uniform+Hermite | num of points: %d | max difference: %.2f\\n\",np,maxdiff));\nend\n\nsaveas(gca(),\"rungeHERMITE.png\",\"png\");\n\n\n\n\n\nas we see the fluctuations can be controlled, but not in straightforward way."
+  },
+  {
+    "objectID": "topics/interpol/concepts.html#linear-interpolation",
+    "href": "topics/interpol/concepts.html#linear-interpolation",
+    "title": "interpolation/concepts",
+    "section": "linear interpolation",
+    "text": "linear interpolation\n\nmatlab\n\nno need to implement it by hand\nthe interp1 function can be used\n\n\n\nerror of the linear interpolation\n\nlet f\\in C^{2}[A,B] and M_2=\\max_{t\\in[A,B]} |f{~''}(t)|\nthen for the linear interpolation P of f on [a,b]\\subset [A,B] we have:\n\n\n\n\n\n\n\nImportant\n\n\n\n\n\\vert f(t)-P(t)\\vert \\leq \\frac {M_2}{8}(b-a)^2, \\quad\\quad\nt\\in [a,b]\n\n\n\n\nincreasing the number of subintervals results in smaller error.\ndividing the “large” [A,B] interval int n equal pieces (and using the same “global” M_2) the error for one [a,b] subinterval:\n\n\n\\vert f(t)-P_{[a,b]}\\vert \\leq \\frac {M_2}{8}\\frac{(B-A)^2}{n^2}, \\quad\\quad\nt\\in [a,b]\n\n\ndoubling the points = halving the length will result 4 times better approximation\npro: simple\ncon: sometimes for very high precision we need large number of points, but at least it works\nmore on this"
+  },
+  {
+    "objectID": "topics/interpol/concepts.html#higher-order-interpolation",
+    "href": "topics/interpol/concepts.html#higher-order-interpolation",
+    "title": "interpolation/concepts",
+    "section": "higher-order interpolation",
+    "text": "higher-order interpolation\n\none can use plain Lagrange or Hermite interpolation for the small intervals\npro: better approximation (worst case)\ncon: computationally intensive, harder to implement"
+  },
+  {
+    "objectID": "topics/interpol/concepts.html#cubic-spline-interpolation",
+    "href": "topics/interpol/concepts.html#cubic-spline-interpolation",
+    "title": "interpolation/concepts",
+    "section": "cubic spline interpolation",
+    "text": "cubic spline interpolation\n\nthe most widely used piecewise interpolation method\ngiven [t_1,\\ldots,t_n] and [f_1,\\ldots,f_n] and f_1' and f'_n\nthe first derivatives are given only the endpoints\nWe search for a function S(t) for which\n\nS(t_k)=f_k\nS'(t_1)=f_1' and S'(t_n)=f'_n\nS|_{[t_{k},t_{k+1}]}=S_k cubic polynomial, =1,\\ldots ,n-1\nS is twice continuously differentiable\n\nS'(t_k)=S'(t_{k+1}) and S''(t_k)=S''(t_{k+1}) for k=2,\\ldots,n-1 (at the inner points)\n\n\nthe are several approaches to construct the sub-polynomials. We do not discuss them.\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear; format(\"default\");\n\nt=[1,2,4];\nf=[1,4,2];\ndf1=1;\ndfn=-1;\n\n\nnt=length(t);\npp=spline(t,[df1 f dfn]);\n\ndpp=pp;\ndpp.coefs=zeros(nt-1,3);\ndpp.order=3;\nfor k=1:nt-1\n  dpp.coefs(k,:)=polyder(pp.coefs(k,:));\nend\n\nd2pp=pp;\nd2pp.coefs=zeros(nt-1,2);\nd2pp.order=2;\nfor k=1:nt-1\n  d2pp.coefs(k,:)=polyder(dpp.coefs(k,:));\nend\n\nd3pp=pp;\nd3pp.coefs=zeros(nt-1,1);\nd3pp.order=1;\nfor k=1:nt-1\n  d3pp.coefs(k,:)=polyder(d2pp.coefs(k,:));\nend\n\n\nxx=linspace(t(1),t(end));\ntlims=getlims(xx);\n\nsubplot(2,2,1);\nhold on;\nplot(t,f,\"k*\")\nyy=ppval(pp,xx);\nplot(xx,yy,\"b\")\ntitle(\"S\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,2);\nyy=ppval(dpp,xx);\nplot(xx,yy,\"b\");\ntitle(\"S'\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,3);\nyy=ppval(d2pp,xx);\nplot(xx,yy,\"b\")\ntitle(\"S''\");\naxis([tlims,getlims(yy)]);\n\nsubplot(2,2,4);\nhold on;\nyy=ppval(d3pp,xx);\nw=xx&lt;t(2);\nplot(xx(w),yy(w),\"b\");\nw=xx&gt;t(2);\nplot(xx(w),yy(w),\"b\");\ntitle(\"S'''\");\naxis([tlims,getlims(yy)]);\n\nsgtitle(\"cubic spline properties\")\n\nsaveas(gca(),\"splinePROP.png\",\"png\");\n\nfunction ll=getlims(v)\n  p=0.1;\n  vmin=min(v);\n  vmax=max(v);\n  dv=vmax-vmin;\n  ll=[vmin-p*dv,vmax+p*dv];\nend\n\n\n\n\n\nmatlab\n\nthe spline function can be used\nnot supplying the derivatives some (implementation dependent) defaults will be used\nspline(t, [df1 f dfn], x) will evalute the polynomial at x\nthe Hermite problem t_1,t_2,f_1,f_2,f'_1,f'_2 is a cubic spline problem for one-interval. it can be solved by a simple call of spline. (at least the evaluation part)\n\n\n\n\n\n\n\nNoneapplication\n\n\n\n\n\n\nreconstruct a rotated ellipse from a few regularly sampled points using cubic-spline\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear; format;\nhold on;\nrng(22);\n\n% create the initial plot\n% init: rotated ellipse\n\n\nfi=pi/6; % rot angle\nzfun=@(a) (cos(fi)+1i*sin(fi))*(4*cos(a)+1i*sin(a));\nax0=[-5,5,-3,3];\nN0=5;\n\n\nN=100;\nalpha=linspace(0,2*pi,N)';\nz=zfun(alpha);\nx=real(z);\ny=imag(z);\n\nsubplot(3,1,1);\nplot(x,y)\ntitle(sprintf(\"original %d points\",N))\n\naxis(ax0);\naxis equal;\nalpha0=linspace(0,2*pi,N0+1);\nz0=zfun(alpha0);\nx0=real(z0);\ny0=imag(z0);\n\nsubplot(3,1,2);\nplot(x0,y0,'*')\ntitle(sprintf(\"%d points from the original\",N0))\naxis(ax0);\naxis equal;\n\nx1=spline(alpha0,x0,alpha);\ny1=spline(alpha0,y0,alpha);\nsubplot(3,1,3);\nplot(x1,y1)\nav_rel_err=sum(sqrt((x-x1).^2+(y-y1).^2)./sqrt(x.^2+y.^2))/N;\ntit=\"reconstruction from the sample\"+...\n  sprintf(\"\\nmean relative error: %.4f\",av_rel_err);\ntitle(tit);\naxis(ax0);\naxis equal;\n\nsaveas(gca(),\"splineREC0.png\",\"png\");\n\nhold off;\n\n\n\n\n\nreconstruct another parametric curve from randomly sampled points using cubic-spline\n\n\n\n\n\n\n\n\nNonecode\n\n\n\n\n\n\nclc; clf; clear;format;\nhold on;\nrng(22);\n\n% create the initial plot\n% it'll be a circle + sin/cos \"noise\"\n\nN=1000;\nalpha=linspace(0,2*pi,N);\nr=2+0.4*sin(8*alpha)+0.8*cos(4*alpha);\nx=r.*cos(alpha);\ny=r.*sin(alpha);\nsubplot(3,1,1);\nplot(x,y)\ntitle(sprintf(\"original %d points\",N))\naxis([-4,4,-4,4]);\npercent=5;\npart=[1,datasample(2:N,floor(percent/100*N),\"Replace\",false)];\nalpha0=alpha(part);\nr0=r(part);\nx0=r0.*cos(alpha0);\ny0=r0.*sin(alpha0);\nsubplot(3,1,2);\nplot(x0,y0,'*')\ntitle(sprintf(\"%d%% (random)sample of the original\",percent))\naxis([-4,4,-4,4]);\n\nx1=spline(alpha0,x0,alpha);\ny1=spline(alpha0,y0,alpha);\nsubplot(3,1,3);\nplot(x1,y1)\nav_rel_err=sum(sqrt((x-x1).^2+(y-y1).^2)./sqrt(x.^2+y.^2))/N;\ntit=\"reconstruction from the sample\"+...\n  sprintf(\"\\nmean relative error: %.4f\",av_rel_err);\ntitle(tit);\naxis([-4,4,-4,4]);\n\nsaveas(gca(),\"splineREC.png\",\"png\");\n\nhold off;"
+  },
+  {
+    "objectID": "topics/norms/concepts.html",
+    "href": "topics/norms/concepts.html",
+    "title": "norms/concepts",
+    "section": "",
+    "text": "in this section x,y \\in \\mathbb{R}\nhow large is a real number?\nabsolute value, distance from zero\n\n\n\\vert x \\vert =\n\\begin{cases}\n  x & \\text{ if }\\ \\ x\\ge 0\\\\\n  -x & \\text{ otherwise }\n\\end{cases}\n\n\nproperties:\n\n\\vert x\\vert\\ge 0 and \\vert x\\vert=0\\ \\text{ iff }\\ x=0\n\\vert x+y \\vert \\le \\vert x\\vert + \\vert y \\vert\n\\vert x\\cdot y \\vert = \\vert x\\vert \\cdot \\vert y \\vert"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#review",
+    "href": "topics/norms/concepts.html#review",
+    "title": "norms/concepts",
+    "section": "",
+    "text": "in this section x,y \\in \\mathbb{R}\nhow large is a real number?\nabsolute value, distance from zero\n\n\n\\vert x \\vert =\n\\begin{cases}\n  x & \\text{ if }\\ \\ x\\ge 0\\\\\n  -x & \\text{ otherwise }\n\\end{cases}\n\n\nproperties:\n\n\\vert x\\vert\\ge 0 and \\vert x\\vert=0\\ \\text{ iff }\\ x=0\n\\vert x+y \\vert \\le \\vert x\\vert + \\vert y \\vert\n\\vert x\\cdot y \\vert = \\vert x\\vert \\cdot \\vert y \\vert"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#review-1",
+    "href": "topics/norms/concepts.html#review-1",
+    "title": "norms/concepts",
+    "section": "review",
+    "text": "review\n\nin this section x,y \\in \\mathbb{R}^n and \\alpha \\in \\mathbb{R}\nhow large is a vector?\nit is denoted by \\Vert x \\Vert\nrequirements (axioms):\n\n\\Vert x\\Vert\\ge 0 and \\Vert x\\Vert=0\\ \\text{ iff }\\ x=0\n\\Vert x+y \\Vert \\le \\Vert x\\Vert + \\Vert y \\Vert\n\nit is the triangle inequality\n\n\\Vert \\alpha \\cdot x \\Vert = \\vert \\alpha\\vert \\cdot \\Vert x \\Vert\n\nthe following vector norms are important\n\n\\Vert x \\Vert_{2} = \\sqrt{\\vert x_1\\vert^2 + \\ldots + \\vert x_n\\vert^2}\\ \\  (euclidean or 2-norm)\n\\Vert x \\Vert_{1} = \\vert x_1\\vert + \\ldots + \\vert x_n\\vert\\ \\  (manhattan or 1-norm)\n\\Vert x \\Vert_{\\infty} = \\max_{i=k\\ldots n}\\vert x_k\\vert\\ \\  (\\infty-norm)\n\nthe distance between vectors: \\Vert x-y\\Vert\n\nsmall: close to each other\nlarge: far from each other\n\nread this for more details"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#additional-properties",
+    "href": "topics/norms/concepts.html#additional-properties",
+    "title": "norms/concepts",
+    "section": "additional-properties",
+    "text": "additional-properties\n\nfor all x \\in \\mathbb{R}^{n} \n\\Vert x\\Vert_{\\infty} \\le \\Vert x\\Vert_{2} \\le \\Vert x\\Vert_{1}"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#matlab",
+    "href": "topics/norms/concepts.html#matlab",
+    "title": "norms/concepts",
+    "section": "matlab",
+    "text": "matlab\n\nnorm(x,1), norm(x,2), norm(x,inf)"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#properties",
+    "href": "topics/norms/concepts.html#properties",
+    "title": "norms/concepts",
+    "section": "properties",
+    "text": "properties\n\nthe following properties are also valid\n\n\\begin{gather*}\n\\Vert E \\Vert = 1\\\\\n\\Vert A\\cdot x\\Vert \\le \\Vert A\\Vert \\cdot \\Vert x \\Vert\\\\\n\\Vert A\\cdot B \\Vert \\le \\Vert A\\Vert \\cdot \\Vert B \\Vert\\\\\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#additional-properties-1",
+    "href": "topics/norms/concepts.html#additional-properties-1",
+    "title": "norms/concepts",
+    "section": "additional properties",
+    "text": "additional properties\n\nfor all A \\in {\\cal M}_{n\\times n}: \n\\Vert A\\Vert_{\\infty} \\le \\Vert A\\Vert_{2} \\le \\Vert A\\Vert_{1}"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#computational-rules",
+    "href": "topics/norms/concepts.html#computational-rules",
+    "title": "norms/concepts",
+    "section": "computational rules",
+    "text": "computational rules\n\na_{ij} is j-th element of the i-th row for a matrix A\n\n\n1-norm\n\n\\Vert A\\Vert _1=\\max\\limits_{1\\leq j\\leq n}\\sum\\limits_{i=1}^n\\vert\na_{ij}\\vert\n\n\nfor each column compute the sum of absolute values and take the maximal one\n\n\n\n2 norm\n\n\\Vert A\\Vert _2=\\sqrt{\\lambda _{\\max} (A^{T}A)}\n\n\ntake the square root of the maximal absolute value eigenvalue of the matrix (A^{T}A)\n\n\n\n\\infty norm\n\n\\Vert A\\Vert _\\infty=\\max_{1\\leq i\\leq n}\\sum_{j=1}^n\\vert a_{ij}\\vert\n\n\nfor each row compute the sum of absolute values and take the maximal one\n\nread this for details"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#numerical-example",
+    "href": "topics/norms/concepts.html#numerical-example",
+    "title": "norms/concepts",
+    "section": "numerical-example",
+    "text": "numerical-example\n\nA=\\left[\\begin{array}{rrr}\n-3&0&4\\\\\n1&-1&2\\\\\n-2&1&-2\n\\end{array}\\right]\n\n\n\\Vert A\\Vert_{1}= 8\n\\Vert A\\Vert_{\\infty}= 7"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#matlab-1",
+    "href": "topics/norms/concepts.html#matlab-1",
+    "title": "norms/concepts",
+    "section": "matlab",
+    "text": "matlab\n\nnorm(A,1), norm(A,2), norm(A,inf)"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#example-linsys",
+    "href": "topics/norms/concepts.html#example-linsys",
+    "title": "norms/concepts",
+    "section": "example (linsys)",
+    "text": "example (linsys)\n\ncompare the solutions of the linear systems below \n\\left[\n\\begin{array}{rr}\n1&1\\\\\n1&1.0001\n\\end{array}\n\\right]\n\\left[\\begin{array}{r}\nx_1\\\\\nx_2\n\\end{array}\\right] =\n\\left[\\begin{array}{r}\n2\\\\\n2\n\\end{array}\\right]\n\n\nx=[2,0]^{T} \n\\left[\n\\begin{array}{rr}\n1&1\\\\\n1&1.0001\n\\end{array}\n\\right]\n\\left[\\begin{array}{r}\ny_1\\\\\ny_2\n\\end{array}\\right] =\n\\left[\\begin{array}{r}\n2\\\\\n2.0001\n\\end{array}\\right]\n\ny=[1,1]^{T}\n\nlarge difference, despite the matrix is the same and the right hand sides are very close to each other (in vector norm!)\nhow can we explain this behavior?"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#matlab-2",
+    "href": "topics/norms/concepts.html#matlab-2",
+    "title": "norms/concepts",
+    "section": "matlab",
+    "text": "matlab\n\ncond(A,1), cond(A,2), cond(A,inf)"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#example-linsys-continued",
+    "href": "topics/norms/concepts.html#example-linsys-continued",
+    "title": "norms/concepts",
+    "section": "example (linsys, continued)",
+    "text": "example (linsys, continued)\n\nexamine the output of the script below\nplay with different p values!\n\nclc;\np=1;\nnrm=@(x)norm(x,p);\ncnd=@(x)cond(x,p);\nA=[1,1;1,1.0001];\nb0=[2;2];\nb1=[2;2.0001];\nx0=A\\b0;\nx1=A\\b1;\nxrel=nrm(x0-x1)/nrm(x0);\nbrel=nrm(b0-b1)/nrm(b0);\ndisp(\"observed: \"+string(xrel/brel));\ndisp(\"theory  : \"+string(cnd(A)));"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#properties-1",
+    "href": "topics/norms/concepts.html#properties-1",
+    "title": "norms/concepts",
+    "section": "properties",
+    "text": "properties\n\nits value does depend on the norm used\n\\text{cond}(A) \\geq 1\nfor c\\neq 0, \\text{cond}(cA)=\\text{cond}(A)\n\nread this for more details"
+  },
+  {
+    "objectID": "topics/norms/concepts.html#ill-conditioned",
+    "href": "topics/norms/concepts.html#ill-conditioned",
+    "title": "norms/concepts",
+    "section": "ill-conditioned",
+    "text": "ill-conditioned\n\nif \\text{cond}(A)*b_{\\text{relative error}}\\ge 1 the system is called ill-conditioned\nit means that the absolute error in the solution can be as large as the true solution itself - it is bad."
+  },
+  {
+    "objectID": "topics/norms/exercises.html",
+    "href": "topics/norms/exercises.html",
+    "title": "norms/exercises",
+    "section": "",
+    "text": "tools\n\nones, zeros, repmat, diag, imshow\nalso read this\nexpectation: avoid loops. use builtin features instead.\n\n\n\ncreate the matrix …\n\n\n\\left[\n\\begin{array}{ccc}\n1 & 0 & 1\\\\\n0 & 1 & 0\\\\\n1 & 0 & 1\\\\\n\\end{array}\n\\right]\n\nthat is the 100\\times 100 version of the previous one\n\n\\left[\n\\begin{array}{ccc}\n3 & 0 & 0\\\\\n0 & 4 & 0\\\\\n0 & 0 & 5\\\\\n\\end{array}\n\\right]\n\nwhose main diagonal (downward) is [3,4,\\ldots,101,102] and every other elements are zero\nwhose anti-diagonal (downward) is [3,4,\\ldots,101,102] and every other elements are zero\n\n\\left[\n\\begin{array}{ccc}\n1 & 1 & 1\\\\\n1 & 0 & 1\\\\\n1 & 1 & 1\\\\\n\\end{array}\n\\right]\n\nof size 10\\times 10 whose border elements are 1’s and every other elements are zero\n\n\\left[\n\\begin{array}{ccc}\n0 & 1 & 0\\\\\n1 & 1 & 1\\\\\n0 & 1 & 0\\\\\n\\end{array}\n\\right]\n\nthat is the 11\\times 11 version of the previous one. (middle row+middle column=1’s and 0’s otherwise)\n\n\\left[\n\\begin{array}{cccc}\n0 & 0 & 1 & 1\\\\\n0 & 0 & 1 & 1\\\\\n1 & 1 & 0 & 0\\\\\n1 & 1 & 0 & 0\\\\\n\\end{array}\n\\right]\n\nthat is the 20\\times 20 version of the previous one: its 10\\times 10 corners are 0’s and 1’s \nof size 20\\times 20 whose imshow is: \n\n\\left[\n\\begin{array}{cccc}\n1 & 2 & 3 & 4\\\\\n2 & 1 & 2 & 3\\\\\n3 & 2 & 1 & 2\\\\\n4 & 3 & 2 & 1\\\\\n\\end{array}\n\\right]\n\nof size 10\\times 10 whose imshow is: \n\nuse the numbers [1,2,\\ldots,9,10]/11 as colors starting from the main diagonal)\n\n\n\n\nwrite a function …\n\nthat returns the 1-norm of a given matrix!\nthat returns the \\infty-norm of a given matrix!\nthat returns the n\\times n Hilbert matrix!\n\nwhat is the condition number for n=10 ?\n\n\n\n\nwrite a program/script …\n\nthat plots the unit circle of \\Vert . \\Vert_{1}\nthat plots the unit circle of \\Vert . \\Vert_{2}\nthat plots the unit circle of \\Vert . \\Vert_{\\infty}"
+  },
+  {
+    "objectID": "topics/numint/notes.html",
+    "href": "topics/numint/notes.html",
+    "title": "numint/etc",
+    "section": "",
+    "text": "Nonefacts\n\n\n\n\n\n\n \\xi(t) depends continously on t in \n\n\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\n - if f is continuous and g does not change sign on [a,b] then \n\\int_{a}^{b} f(t)g(t)\\text{d}t=f(\\eta)\\int_{a}^{b} g(t)\\text{d}t"
+  },
+  {
+    "objectID": "topics/numint/notes.html#error",
+    "href": "topics/numint/notes.html#error",
+    "title": "numint/etc",
+    "section": "error",
+    "text": "error\n\nm=\\frac{a+b}{2}\nt=m+(t-m)\n\n\n\\begin{gather*}\nf(t)=f(m)+f'(m)(t-m)+\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\nf(t)-(f(m)+f'(m)(t-m))=\\frac{f''(\\xi(t))}{2}(t-m)^2\\\\\n\\int_{a}^{b} f\\text{d}t-I_{M,1} = \\int_{a}^{b} \\frac{f''(\\xi(t))}{2}(t-m)^2\\text{d}t\\\\\n\\left\\vert\\int_{a}^{b} f\\text{d}t-I_{M,1}\\right\\vert \\le\n\\frac{M_2}{2}\\int_{a}^{b} (t-m)^2\\text{d}t=\\frac{M_2}{2}\\frac{(b-a)^3}{12}\\ \\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/numint/notes.html#error-1",
+    "href": "topics/numint/notes.html#error-1",
+    "title": "numint/etc",
+    "section": "error",
+    "text": "error\n\n\\begin{gather*}\nf(t)-P(t)=f''(\\xi(t))\\omega(t)\\\\\n\\int_{a}^{b} f(t)-P(t)\\text{d}t=\\int_{a}^{b} \\frac{f''(\\xi(t))}{2}\\omega(t)\\text{d}t\\\\\n\\left|\\int_{a}^{b} f(t)\\text{d}t-I_{T,1}\\right|\\le=\\int_{a}^{b} \\frac{|f''(\\xi(t))|}{2}|\\omega(t)|\\text{d}t=(1)\\\\\n\\int_{a}^{b} |\\omega(t)|\\text{d}t=\\frac{(b-a)^3}{6} \\ \\ \\text{by integrating it}\\\\\n|(1)|\\le \\frac{M_2}{2} \\frac{(b-a)^3}{6}\\ \\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/numint/notes.html#getting-the-formula",
+    "href": "topics/numint/notes.html#getting-the-formula",
+    "title": "numint/etc",
+    "section": "getting the formula",
+    "text": "getting the formula\n\na,\\ m=\\frac{a+b}{2},\\ b and f_a=f(a),\\ f_m=f(\\frac{a+b}{2}),\\ f_b=f(b)\nh=b-a\ninstead of Newton or classical search the polynomial in the form below\n\n\n\\begin{gather*}\nP(t)=A+B(t-m)+C(t-m)^2\\\\\nP(m)=f_m \\ \\implies \\ A=f_m\\\\\nP(a)=f_m+B(a-m)+C(a-m)^2 = f_a\\ \\tag*{(1)}\\\\\nP(b)=f_m+B(b-m)+C(b-m)^2 = f_b\\ \\tag*{(2)}\\\\\n(1)+(2): 2f_m + C\\frac{h^2}{2}=f_a+f_b \\ \\implies \\ C=2\\frac{f_a-2f_m+f_b}{h^2}\\\\\n(2)-(1): Bh=f_b-f_a\\ \\implies\\ B=\\frac{f_b-f_a}{h}\\\\\n\\int_{a}^{b} P(t)\\text{d}t=\\int_{a}^{b} f_m\\text{d}t+C\\int_{a}^{b} (t-m)^2\\text{d}t=\\\\\nhf_m+2\\frac{f_a-2f_m+f_b}{h^2}\\frac{h^3}{12}\\ \\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/numint/notes.html#why-is-it-exact-for-at-most-3rd-order-polys",
+    "href": "topics/numint/notes.html#why-is-it-exact-for-at-most-3rd-order-polys",
+    "title": "numint/etc",
+    "section": "why is it exact for at most 3rd order poly’s",
+    "text": "why is it exact for at most 3rd order poly’s\n\nmatlab symbolics based “proof”:\n\n\nclc; clear;\n\nsyms a b f(x)\n\nfor k=0:3\n  k\n  f(x)=x^k;\n  I1=int(f,a,b)\n  I2=(b-a)*(f(a)+4*f((a+b)/2)+f(b))/6;\n  I2=simplify(I2)\n  assert(I1==I2);\n  disp(\"......................\");\nend"
+  },
+  {
+    "objectID": "topics/numint/notes.html#simple",
+    "href": "topics/numint/notes.html#simple",
+    "title": "numint/etc",
+    "section": "simple",
+    "text": "simple\n\ntoo long…"
+  },
+  {
+    "objectID": "topics/nonlin/index.html#concepts",
+    "href": "topics/nonlin/index.html#concepts",
+    "title": "nonlinear equations",
+    "section": "concepts",
+    "text": "concepts"
+  },
+  {
+    "objectID": "topics/nonlin/concepts.html#assumptions",
+    "href": "topics/nonlin/concepts.html#assumptions",
+    "title": "nonlin/concepts",
+    "section": "assumptions",
+    "text": "assumptions\n\nthe function f:[a,b]\\to {\\mathbb R} is continuous\nf(a)\\cdot f(b)&lt;0\n\nf has different sign values at the endpoints of [a,b].\n\nit follows that the equation f(x)=0 has at least one root in (a,b).\n\n\n\n\n\n\n\nNonebisection algorithm\n\n\n\n\n\n% sample implementation of the bisection method\n\nf=@(x) cos(x)-x;\nassert(f(0)*f(1)&lt;0);\nz=fzero(f,0.5);\nx=bisection(f,0,1,1e-6);\ndisp(abs(z-x));\n\n\nfunction m=bisection(f,a,b,tol)\n  while (b-a)&gt;tol\n    m=(a+b)/2;\n    if f(a)*f(m)&lt;0\n      b=m;\n    else\n      a=m;\n    end\n  end\n  m=(a+b)/2;\nend"
+  },
+  {
+    "objectID": "topics/nonlin/concepts.html#properties",
+    "href": "topics/nonlin/concepts.html#properties",
+    "title": "nonlin/concepts",
+    "section": "properties",
+    "text": "properties\n\ninterval based iteration/bracketing method\nf:[a,b]\\to \\mathbb{R}\n[a_0,b_0]=[a,b]\nif one considers the midpoint x_k of the k-th interval as an estimator for the root \\hat{x} of f, then\n\n\n\\begin{gather*}\n|x_{k}-\\hat{x}|\\le \\frac{b_0-a_0}{2^{k+1}}\\\\\n\\end{gather*}\n\n\nif one considers the length of the k-th interval (\\text{error}_{k}) as an error/uncertainty of estimation for the root \\hat{x} of f, then\n\n\n\\begin{gather*}\n\\text{error}_{k} \\le \\frac{1}{2}\\ \\text{error}_{k-1}\n\\end{gather*}\n\n\nit is a 1-st order method.\n\n\n\n\n\n\n\nNonealgorithm\n\n\n\n\n\n% sample implementation of the bisection method\n\nf=@(x) cos(x)-x;\nassert(f(0)*f(1)&lt;0);\nz=fzero(f,0.5);\nx=bisection(f,0,1,1e-6);\ndisp(abs(z-x));\n\n\nfunction m=bisection(f,a,b,tol)\n  while (b-a)&gt;tol\n    m=(a+b)/2;\n    if f(a)*f(m)&lt;0\n      b=m;\n    else\n      a=m;\n    end\n  end\n  m=(a+b)/2;\nend"
+  },
+  {
+    "objectID": "topics/nonlin/concepts.html#description-1",
+    "href": "topics/nonlin/concepts.html#description-1",
+    "title": "nonlin/concepts",
+    "section": "description",
+    "text": "description\n\ns\n\n\n\n\n\n\n\nNoneassumptions\n\n\n\n\n\n\nthe function f:[a,b]\\to {\\mathbb R} is continuous\nf(a)\\cdot f(b)&lt;0 - f has different sign values at the endpoints of [a,b].\n\nit follows that the equation f(x)=0 has at least one solution in (a,b).\n\n\n\n\n\n\n\n\n\nNoneproperties\n\n\n\n\n\n\ninterval based iteration/bracketing method\nf:[a,b]\\to \\mathbb{R}\n[a_0,b_0]=[a,b]\nif one considers the midpoint x_k of the k-th interval as an estimator for the root \\hat{x} of f, then\n\n\n\n\n\n\n\nImportant\n\n\n\n\n\\begin{gather*}\n|x_{k}-\\hat{x}|\\le \\frac{b_0-a_0}{2^{k+1}}\\\\\n\\end{gather*}\n\n\n\n\nif one considers the length of the k-th interval (\\text{error}_{k}) as an error/uncertainty of estimation for the root \\hat{x} of f, then\n\n\n\n\n\n\n\nImportant\n\n\n\n\n\\begin{gather*}\n\\text{error}_{k} \\le \\frac{1}{2}\\ \\text{error}_{k-1}\n\\end{gather*}\n\n\n\n\nit is a 1-st order method.\n\n\n\n\n\n\n\n\n\n\nNonealgorithm\n\n\n\n\n\n% sample implementation of the bisection method\n\nf=@(x) cos(x)-x;\nassert(f(0)*f(1)&lt;0);\nz=fzero(f,0.5);\nx=bisection(f,0,1,1e-6);\ndisp(abs(z-x));\n\n\nfunction m=bisection(f,a,b,tol)\n  while (b-a)&gt;tol\n    m=(a+b)/2;\n    if f(a)*f(m)&lt;0\n      b=m;\n    else\n      a=m;\n    end\n  end\n  m=(a+b)/2;\nend"
+  },
+  {
+    "objectID": "topics/nonlin/concepts.html#the-problem",
+    "href": "topics/nonlin/concepts.html#the-problem",
+    "title": "nonlin/concepts",
+    "section": "",
+    "text": "we search for the solutions of the f(x)=0 equation, where f:{\\mathbb R}\\to {\\mathbb R} is a nonlinear function.\nthe solutions called roots or zeroes of f\nusually we are focusing to some [a,b]\\subset \\mathbb{R}\nexamples:"
+  },
+  {
+    "objectID": "topics/nonlin/concepts.html#example-functions",
+    "href": "topics/nonlin/concepts.html#example-functions",
+    "title": "nonlin/concepts",
+    "section": "",
+    "text": "\\begin{gather*}\n\\cos(x)-x=0\\\\\nx^5-3x^4+x^3-5x^2+3=0\\\\\ne^x-4x^2=0\\\\\n\\log(x)-x+2=0\\\\\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/nonlin/concepts.html#example-nonlinear-functions",
+    "href": "topics/nonlin/concepts.html#example-nonlinear-functions",
+    "title": "nonlin/concepts",
+    "section": "",
+    "text": "\\begin{gather*}\n\\cos(x)-x=0\\\\\nx^5-3x^4+x^3-5x^2+3=0\\\\\ne^x-4x^2=0\\\\\n\\log(x)-x+2=0\\\\\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/nonlin/Newton_details.html",
+    "href": "topics/nonlin/Newton_details.html",
+    "title": "nonlin/Newton_details",
+    "section": "",
+    "text": "(1)\n\n\\begin{gather*}\nf(x_k+\\hat{x}-x_k)=f(x_k)+f'(x_k)(\\hat{x}-x_k)+\\frac{f''(\\xi)}{2}(\\hat{x}-x_k)^2\\\\\nx_{k}-\\frac{f(x_k)}{f'(x_k)}-\\hat{x}=\\frac{f''(\\xi)}{2f'(x_k)}(\\hat{x}-x_k)^2\\\\\n\\left|\\hat{x}-x_{k+1}\\right|=\n\\left|\\frac{f''(\\xi)}{2f'(x_k)}\\right|(\\hat{x}-x_k)^2\\\\\n\\left|\\hat{x}-x_{k+1}\\right|\\le C(\\hat{x}-x_k)^2\\ \\checkmark\n\\end{gather*}\n\n\n\n(2)+(3)\n\nr_{k}=C|\\hat{x}-x_{k}|\\\\\nr_{0}=q&lt;1\\\\\n(1)\\ \\implies \\ r_{k}\\le r_{k-1}^2\\\\\n\\text{induction }\\ \\implies \\ r_{k}\\le r_{0}^{2^k}=q^{2^k}\\ \\checkmark"
+  },
+  {
+    "objectID": "topics/nonlin/notes.html",
+    "href": "topics/nonlin/notes.html",
+    "title": "nonlin/notes",
+    "section": "",
+    "text": "NoneNewton method\n\n\n\n\n\n\nTaylor expansion\n\n\n\n\n\\begin{gather*}\nf(x_k+\\hat{x}-x_k)=f(x_k)+f'(x_k)(\\hat{x}-x_k)+\\frac{f''(\\xi)}{2}(\\hat{x}-x_k)^2\\\\\nx_{k}-\\frac{f(x_k)}{f'(x_k)}-\\hat{x}=\\frac{f''(\\xi)}{2f'(x_k)}(\\hat{x}-x_k)^2\\\\\n\\left|\\hat{x}-x_{k+1}\\right|=\n\\left|\\frac{f''(\\xi)}{2f'(x_k)}\\right|(\\hat{x}-x_k)^2\\\\\n\\left|\\hat{x}-x_{k+1}\\right|\\le C(\\hat{x}-x_k)^2\\ \\checkmark\n\\end{gather*}\n\n\n\n\n\nr_{k}=C|\\hat{x}-x_{k}|\\\\\nr_{0}=q&lt;1\\\\\n(1)\\ \\implies \\ r_{k}\\le r_{k-1}^2\\\\\n\\text{induction }\\ \\implies \\ r_{k}\\le r_{0}^{2^k}=q^{2^k}\\ \\checkmark"
+  },
+  {
+    "objectID": "topics/nonlin/notes.html#section",
+    "href": "topics/nonlin/notes.html#section",
+    "title": "nonlin/notes",
+    "section": "",
+    "text": "\\begin{gather*}\nf(x_k+\\hat{x}-x_k)=f(x_k)+f'(x_k)(\\hat{x}-x_k)+\\frac{f''(\\xi)}{2}(\\hat{x}-x_k)^2\\\\\nx_{k}-\\frac{f(x_k)}{f'(x_k)}-\\hat{x}=\\frac{f''(\\xi)}{2f'(x_k)}(\\hat{x}-x_k)^2\\\\\n\\left|\\hat{x}-x_{k+1}\\right|=\n\\left|\\frac{f''(\\xi)}{2f'(x_k)}\\right|(\\hat{x}-x_k)^2\\\\\n\\left|\\hat{x}-x_{k+1}\\right|\\le C(\\hat{x}-x_k)^2\\ \\checkmark\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/nonlin/notes.html#section-1",
+    "href": "topics/nonlin/notes.html#section-1",
+    "title": "nonlin/notes",
+    "section": "",
+    "text": "r_{k}=C|\\hat{x}-x_{k}|\\\\\nr_{0}=q&lt;1\\\\\n(1)\\ \\implies \\ r_{k}\\le r_{k-1}^2\\\\\n\\text{induction }\\ \\implies \\ r_{k}\\le r_{0}^{2^k}=q^{2^k}\\ \\checkmark"
   }
 ]

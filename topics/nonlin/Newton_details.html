@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-04-05">
+<meta name="dcterms.date" content="2026-04-06">
 
-<title>method of least squares – eduhub</title>
+<title>nonlin/Newton_details – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +70,49 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -110,16 +153,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#pdf-versions" id="toc-pdf-versions" class="nav-link active" data-scroll-target="#pdf-versions">pdf versions</a>
-  <ul class="collapse">
-  <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts">concepts</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">exercises</a></li>
-  </ul></li>
-  <li><a href="#html-versions" id="toc-html-versions" class="nav-link" data-scroll-target="#html-versions">html versions</a>
-  <ul class="collapse">
-  <li><a href="#concepts-1" id="toc-concepts-1" class="nav-link" data-scroll-target="#concepts-1">concepts</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">exercises</a></li>
-  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">(1)</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">(2)+(3)</a></li>
   </ul>
 </nav>
     </div>
@@ -128,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">method of least squares</h1>
+<h1 class="title">nonlin/Newton_details</h1>
 </div>
 
 
@@ -139,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 5, 2026</p>
+      <p class="date">April 6, 2026</p>
     </div>
   </div>
   
@@ -151,26 +186,28 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="pdf-versions" class="level1">
-<h1>pdf versions</h1>
-<section id="concepts" class="level2">
-<h2 class="anchored" data-anchor-id="concepts"><a href="04_lsa_noQ.pdf">concepts</a></h2>
+<section id="section" class="level1">
+<h1>(1)</h1>
+<p><span class="math display">
+\begin{gather*}
+f(x_k+\hat{x}-x_k)=f(x_k)+f'(x_k)(\hat{x}-x_k)+\frac{f''(\xi)}{2}(\hat{x}-x_k)^2\\
+x_{k}-\frac{f(x_k)}{f'(x_k)}-\hat{x}=\frac{f''(\xi)}{2f'(x_k)}(\hat{x}-x_k)^2\\
+\left|\hat{x}-x_{k+1}\right|=
+\left|\frac{f''(\xi)}{2f'(x_k)}\right|(\hat{x}-x_k)^2\\
+\left|\hat{x}-x_{k+1}\right|\le C(\hat{x}-x_k)^2\ \checkmark
+\end{gather*}
+</span></p>
 </section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises"><a href="04_lsa_Q.pdf">exercises</a></h2>
-<hr>
-</section>
-</section>
-<section id="html-versions" class="level1">
-<h1>html versions</h1>
-<section id="concepts-1" class="level2">
-<h2 class="anchored" data-anchor-id="concepts-1"><a href="../../topics/leastsquares/concepts.html">concepts</a></h2>
-</section>
-<section id="exercises-1" class="level2">
-<h2 class="anchored" data-anchor-id="exercises-1"><a href="../../topics/leastsquares/exercises.html">exercises</a></h2>
+<section id="section-1" class="level1">
+<h1>(2)+(3)</h1>
+<p><span class="math display">
+r_{k}=C|\hat{x}-x_{k}|\\
+r_{0}=q&lt;1\\
+(1)\ \implies \ r_{k}\le r_{k-1}^2\\
+\text{induction }\ \implies \ r_{k}\le r_{0}^{2^k}=q^{2^k}\ \checkmark
+</span></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
