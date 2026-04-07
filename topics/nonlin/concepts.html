@@ -193,6 +193,7 @@ window.Quarto = {
   <li><a href="#newton-method" id="toc-newton-method" class="nav-link" data-scroll-target="#newton-method">Newton method</a></li>
   <li><a href="#secant-method" id="toc-secant-method" class="nav-link" data-scroll-target="#secant-method">secant method</a></li>
   <li><a href="#fixed-point-iteration" id="toc-fixed-point-iteration" class="nav-link" data-scroll-target="#fixed-point-iteration">fixed-point iteration</a></li>
+  <li><a href="#matlab" id="toc-matlab" class="nav-link" data-scroll-target="#matlab">matlab</a></li>
   </ul>
 </nav>
     </div>
@@ -1006,7 +1007,7 @@ x_k \to \hat{x}\ \tag{2}\\
 </div>
 </div>
 <ul>
-<li>slower than the Newton.</li>
+<li>the order of the convergence is between <span class="math inline">1</span> and <span class="math inline">2</span>, super-linear, but not quadratic.</li>
 </ul>
 </div>
 </div>
@@ -1054,6 +1055,18 @@ x_k \to \hat{x}\ \tag{2}\\
 </section>
 <section id="fixed-point-iteration" class="level1">
 <h1>fixed-point iteration</h1>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>intro
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
 <li>the problem is to find an <span class="math inline">x</span> for which <span class="math inline">f(x)=x</span>.</li>
 <li>there is strong relationship between root finding and fixed point problems:
@@ -1064,19 +1077,6 @@ x_k \to \hat{x}\ \tag{2}\\
 </ul></li>
 <li>for some functions the iteration <span class="math inline">x_0,\ x_{k+1}=f(x_k)</span> converges for a wide range of <span class="math inline">x_0</span>’s.</li>
 </ul>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>plot
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><img src="fixed_point_plot.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -1086,11 +1086,27 @@ x_k \to \hat{x}\ \tag{2}\\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>algorithm
+<span class="screen-reader-only">None</span>plot
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="fixed_point_plot.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>algorithm
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol start="0" type="1">
 <li>start with an initial guess <span class="math inline">x_0</span></li>
@@ -1101,7 +1117,7 @@ x_k \to \hat{x}\ \tag{2}\\
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1110,19 +1126,91 @@ x_k \to \hat{x}\ \tag{2}\\
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Suppose <span class="math inline">f \in C([a,b])</span> and <span class="math inline">f(x) \in [a, b]</span> for all <span class="math inline">x \in [a, b]</span>. Then</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose <span class="math inline">f \in C^{1}([a,b])</span> and <span class="math inline">f[a,b]\to [a,b]</span> and <span class="math inline">max_{x\in [a,b]}|f'(x)|=K&lt;1</span>. Then - there is exactly one fixed point for <span class="math inline">f</span> in <span class="math inline">[a, b]</span> - starting with an arbitrary <span class="math inline">x_0 \in [a,b]</span>, the sequence <span class="math inline">x_{k+1}=f(x_k)</span> will converge to the fixed point <span class="math inline">\hat{x}</span>.</p>
+</div>
+</div>
 <ul>
-<li>(existence) f has a fixed point in <span class="math inline">[a, b]</span></li>
-<li>(uniqueness) if, in addition, <span class="math inline">f'(x)</span> exists on <span class="math inline">(a, b)</span> and if there exists a constant <span class="math inline">0 &lt; K &lt; 1</span> such that <span class="math inline">|f'(x)| ≤ K</span>, for all <span class="math inline">x \in (a, b)</span>, then there is exactly one fixed point in <span class="math inline">[a, b]</span></li>
-<li>(computation) starting with an arbitrary <span class="math inline">x_0 \in [a,b]</span>, the sequence <span class="math inline">x_{k+1}=f(x_k)</span> will converge to the fixed point <span class="math inline">\hat{x}</span>.</li>
+<li>the convergence is at least <span class="math inline">1</span>-st order</li>
 </ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>implementation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">% sample implementation of the fixed-point method</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="va">f</span><span class="op">=@</span>(<span class="va">x</span>) <span class="fl">1</span><span class="op">+</span><span class="fl">2</span><span class="op">./</span>(<span class="fl">1</span><span class="op">+</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="va">z</span><span class="op">=</span><span class="va">fzero</span>(<span class="op">@</span>(<span class="va">x</span>)<span class="va">f</span>(<span class="va">x</span>)<span class="op">-</span><span class="va">x</span><span class="op">,</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="va">x</span><span class="op">=</span><span class="va">fixed_point</span>(<span class="va">f</span><span class="op">,</span><span class="fl">0.5</span><span class="op">,</span><span class="fl">1e-6</span><span class="op">,</span><span class="fl">100</span>)<span class="op">;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="va">disp</span>(<span class="st">"error: "</span><span class="op">+</span><span class="va">abs</span>(<span class="va">z</span><span class="op">-</span><span class="va">x</span>))<span class="op">;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="va">x</span><span class="op">=</span><span class="va">fixed_point</span>(<span class="va">f</span><span class="op">,</span><span class="va">x</span><span class="op">,</span><span class="va">tol</span><span class="op">,</span><span class="va">maxstep</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">for</span> <span class="va">s</span><span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="va">maxstep</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">xx</span><span class="op">=</span><span class="va">x</span><span class="op">;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="va">x</span><span class="op">=</span><span class="va">f</span>(<span class="va">x</span>)<span class="op">;</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="va">abs</span>(<span class="va">xx</span><span class="op">-</span><span class="va">x</span>)<span class="op">/</span>(<span class="fl">1</span><span class="op">+</span><span class="va">abs</span>(<span class="va">x</span>))<span class="op">&lt;</span><span class="va">tol</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>      <span class="kw">break</span><span class="op">;</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="va">disp</span>(<span class="va">string</span>(<span class="va">s</span>)<span class="op">+</span><span class="st">" steps"</span>)<span class="op">;</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="output-3" class="level3">
+<h3 class="anchored" data-anchor-id="output-3">output</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">fixed_point_algo</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fl">22</span> <span class="va">steps</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="va">error</span><span class="op">:</span> <span class="fl">7.4708e-07</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</div>
+</div>
+</div>
+</section>
+<section id="matlab" class="level1">
+<h1>matlab</h1>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>built-in functions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>fzero</code> <span class="math inline">1</span>-variable, sign changing</li>
+<li><code>fsolve</code> <span class="math inline">1</span> or multivarible</li>
+<li><code>roots</code> for polynomials</li>
+</ul>
+</div>
+</div>
+</div>
 
 
-</div>
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
