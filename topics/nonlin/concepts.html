@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-04-07">
+<meta name="dcterms.date" content="2026-04-08">
 
 <title>nonlin/concepts – eduhub</title>
 <style>
@@ -213,7 +213,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 7, 2026</p>
+      <p class="date">April 8, 2026</p>
     </div>
   </div>
   
@@ -504,7 +504,7 @@ x_k \to \hat{x}\ \tag{2}\\
 <ul>
 <li>(1): if the assumptions are fulfilled then it is a <span class="math inline">2</span>-nd order method</li>
 <li>in general it may fail to converge</li>
-<li>more details <a href="../../topics/nonlin/notes.html">here</a></li>
+<li>more details <a href="../../topics/nonlin/notes.html#Newton-method">here</a></li>
 </ul>
 </div>
 </div>
@@ -1138,11 +1138,18 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Suppose <span class="math inline">f \in C^{1}([a,b])</span> and <span class="math inline">f[a,b]\to [a,b]</span> and <span class="math inline">max_{x\in [a,b]}|f'(x)|=K&lt;1</span>. Then - there is exactly one fixed point for <span class="math inline">f</span> in <span class="math inline">[a, b]</span> - starting with an arbitrary <span class="math inline">x_0 \in [a,b]</span>, the sequence <span class="math inline">x_{k+1}=f(x_k)</span> will converge to the fixed point <span class="math inline">\hat{x}</span>.</p>
+<p>Suppose <span class="math inline">f \in C^{1}([a,b])</span> and <span class="math inline">f[a,b]\to [a,b]</span> and <span class="math inline">max_{x\in [a,b]}|f'(x)|=K&lt;1</span>. Then</p>
+<ul>
+<li>there is exactly one fixed point for <span class="math inline">f</span> in <span class="math inline">[a, b]</span></li>
+<li>starting with an arbitrary <span class="math inline">x_0 \in [a,b]</span>, the sequence <span class="math inline">x_{k+1}=f(x_k)</span> will converge to the fixed point <span class="math inline">\hat{x}</span>.</li>
+<li><span class="math inline">|x_{k+1}-\hat{x}|\le K |x_{k}-\hat{x}|</span></li>
+<li><span class="math inline">|x_{k}-\hat{x}|\le K^{k} |x_{0}-\hat{x}|</span></li>
+</ul>
 </div>
 </div>
 <ul>
 <li>the convergence is at least <span class="math inline">1</span>-st order</li>
+<li>more details are <a href="../../topics/nonlin/notes.html#fixed-point">here</a></li>
 </ul>
 </div>
 </div>

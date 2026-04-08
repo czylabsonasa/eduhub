@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-04-08">
 
-<title>nonlin/notes – eduhub</title>
+<title>notes/calculus – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-4d30a8617352e7c56af94a51842e2e47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -114,7 +114,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -124,7 +124,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">eduhub</span>
     </a>
   </div>
@@ -134,7 +134,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -148,15 +148,21 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#f-mean-value-lemmas" id="toc-f-mean-value-lemmas" class="nav-link active" data-scroll-target="#f-mean-value-lemmas"><span class="math inline">f'</span> mean-value lemmas</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">nonlin/notes</h1>
+<h1 class="title">notes/calculus</h1>
 </div>
 
 
@@ -179,90 +185,123 @@ window.Quarto = {
 </header>
 
 
-<div id="Newton-method" class="callout callout-style-simple callout-none no-icon callout-titled">
+<section id="f-mean-value-lemmas" class="level1">
+<h1><span class="math inline">f'</span> mean-value lemmas</h1>
+<ul>
+<li>assumptions: <span class="math display">
+\begin{gather*}
+f,g:[a,b]\to \mathbb{R}\\
+\exists f',g' \text{ on } (a,b)\\
+\end{gather*}
+</span></li>
+</ul>
+<div id="Rolle-mvt" class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Newton method
+<span class="screen-reader-only">None</span>Rolle
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>Taylor expansion</li>
-</ul>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">(1)</h2>
 <p><span class="math display">
 \begin{gather*}
-f(x_k+\hat{x}-x_k)=f(x_k)+f'(x_k)(\hat{x}-x_k)+\frac{f''(\xi)}{2}(\hat{x}-x_k)^2\\
-x_{k}-\frac{f(x_k)}{f'(x_k)}-\hat{x}=\frac{f''(\xi)}{2f'(x_k)}(\hat{x}-x_k)^2\\
-\left|\hat{x}-x_{k+1}\right|=
-\left|\frac{f''(\xi)}{2f'(x_k)}\right|(\hat{x}-x_k)^2\\
-\left|\hat{x}-x_{k+1}\right|\le C(\hat{x}-x_k)^2\ \checkmark
+f(a)=f(b)\ \stackrel{\exists\xi\in(a,b)}{\implies} \ f'(\xi)=0\
 \end{gather*}
 </span></p>
-</section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">(2)+(3)</h2>
+</div>
+</div>
+</div>
+<div id="Lagrange-mvt" class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Lagrange
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><span class="math display">
-r_{k}=C|\hat{x}-x_{k}|\\
-r_{0}=q&lt;1\\
-(1)\ \implies \ r_{k}\le r_{k-1}^2\\
-\text{induction }\ \implies \ r_{k}\le r_{0}^{2^k}=q^{2^k}\ \checkmark
+\begin{gather*}
+\stackrel{\exists\xi\in(a,b)}{\implies} \ \frac{f(b)-f(a)}{b-a}=f'(\xi)
+\end{gather*}
 </span></p>
-</section>
-</div>
-</div>
-</div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>fixed-point
+<span class="screen-reader-only">None</span>details
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">\rho(x,y)=|x-y|</span></li>
-<li><span class="math inline">f:[a,b]\to [a,b]</span></li>
-<li><span class="math inline">\rho(f(x),f(y))\le K \rho(x,y)\ \ 0&lt;K&lt;1</span></li>
-<li>then, the sequence <span class="math inline">x_0,\ x_{k+1}=f(x_k)</span> converges to the unique fixed point.</li>
+<li>apply Rolle for <span class="math inline">\varphi</span> <span class="math display">
+\begin{gather*}
+\varphi(x)=(b-a)(f(x)-f(a))-(f(b)-f(a))(x-a)
+\end{gather*}
+</span></li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="Cauchy-mvt" class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Cauchy
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><span class="math display">
 \begin{gather*}
-\rho(x,y)\le
-\rho(x,f(x))+\rho(f(x),y)\le\\
-\rho(x,f(x))+\rho(f(x),f(y))+\rho(y,f(y)) \implies \\
-\rho(x,y)\le \frac{\rho(x,f(x))+\rho(y,f(y))}{1-K} \ \ \tag{1}\\
-d=\rho(x_0,x_1)\\
-\text{induction: }\ \rho(x_{n+1},x_{n})\le K^n d\\
-\text{Cauchy: }\ \rho(x_m,x_n)\le d\frac{K^n + K^m}{1-K}\ \implies\\
-x_n \to \hat{x}\\
-\rho(\hat{x},f(\hat{x}))\le
-\rho(\hat{x},x_n)+\rho(f(\hat{x}),f(x_{n-1}))\le\\
-\rho(\hat{x},x_n)+K\rho(\hat{x},x_{n-1})\to 0\ \ \implies\\
-f(\hat{x})=\hat{x}\\
-\text{unique: }\ \rho(f(\hat{x}),f(\hat{y}))=\rho(\hat{x},\hat{y})\le K \rho(\hat{x},\hat{y})\ \implies \hat{x}=\hat{y}\\
-\rho(x_{k+1},\hat{x})\le K\rho(x_{k},\hat{x})\\
-\rho(x_{k},\hat{x})\le K^k\rho(x_{0},\hat{x})\\
+\stackrel{\exists\xi\in(a,b)}{\implies} \ (f(b)-f(a))g'(\xi)=(g(b)-g(a))f'(\xi)
 \end{gather*}
 </span></p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>details
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
-<li>to see the actual <span class="math inline">K</span> apply the <a href="../../notes/calculus.html#Lagrange-mvt">Lagrange mean value lemma</a></li>
+<li>apply Rolle for <span class="math inline">\varphi</span> <span class="math display">
+\begin{gather*}
+\varphi(x)=(f(b)-f(a))(g(x)-g(a))-(g(b)-g(a))(f(x)-f(a))
+\end{gather*}
+</span></li>
 </ul>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

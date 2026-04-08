@@ -130,7 +130,7 @@
     "href": "index.html",
     "title": "eduhub",
     "section": "",
-    "text": "numerical mathematics\n\n\napplied mathematics\n\n\nmatematika mérnököknek\n\n\noptalg\n\n\nalkmat/sajátérték\n\n\n\nliterature\n\nan online book by Tobin A. Driscoll and Richard J. Braun"
+    "text": "numerical mathematics\n\n\napplied mathematics\n\n\nmatematika mérnököknek\n\n\noptalg\n\n\nalkmat/sajátérték\n\n\nnotes\n\n\n\nliterature\n\nan online book by Tobin A. Driscoll and Richard J. Braun"
   },
   {
     "objectID": "topics/numint/etc.html",
@@ -1580,5 +1580,19 @@
     "title": "nonlin/notes",
     "section": "",
     "text": "r_{k}=C|\\hat{x}-x_{k}|\\\\\nr_{0}=q&lt;1\\\\\n(1)\\ \\implies \\ r_{k}\\le r_{k-1}^2\\\\\n\\text{induction }\\ \\implies \\ r_{k}\\le r_{0}^{2^k}=q^{2^k}\\ \\checkmark"
+  },
+  {
+    "objectID": "notes/index.html",
+    "href": "notes/index.html",
+    "title": "notes/index",
+    "section": "",
+    "text": "calculus\n\n\nlinear algebra"
+  },
+  {
+    "objectID": "notes/calculus.html",
+    "href": "notes/calculus.html",
+    "title": "notes/calculus",
+    "section": "",
+    "text": "f' mean-value lemmas\n\nassumptions: \n\\begin{gather*}\nf,g:[a,b]\\to \\mathbb{R}\\\\\n\\exists f',g' \\text{ on } (a,b)\\\\\n\\end{gather*}\n\n\n\n\n\n\n\n\nNoneRolle\n\n\n\n\n\n\n\\begin{gather*}\nf(a)=f(b)\\ \\stackrel{\\exists\\xi\\in(a,b)}{\\implies} \\ f'(\\xi)=0\\\n\\end{gather*}\n\n\n\n\n\n\n\n\n\n\nNoneLagrange\n\n\n\n\n\n\n\\begin{gather*}\n\\stackrel{\\exists\\xi\\in(a,b)}{\\implies} \\ \\frac{f(b)-f(a)}{b-a}=f'(\\xi)\n\\end{gather*}\n\n\n\n\n\n\n\nNonedetails\n\n\n\n\n\n\napply Rolle for \\varphi \n\\begin{gather*}\n\\varphi(x)=(b-a)(f(x)-f(a))-(f(b)-f(a))(x-a)\n\\end{gather*}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoneCauchy\n\n\n\n\n\n\n\\begin{gather*}\n\\stackrel{\\exists\\xi\\in(a,b)}{\\implies} \\ (f(b)-f(a))g'(\\xi)=(g(b)-g(a))f'(\\xi)\n\\end{gather*}\n\n\n\n\n\n\n\nNonedetails\n\n\n\n\n\n\napply Rolle for \\varphi \n\\begin{gather*}\n\\varphi(x)=(f(b)-f(a))(g(x)-g(a))-(g(b)-g(a))(f(x)-f(a))\n\\end{gather*}"
   }
 ]
