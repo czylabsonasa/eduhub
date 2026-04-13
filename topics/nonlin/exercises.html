@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-04-12">
+<meta name="dcterms.date" content="2026-04-13">
 
-<title>nonlinear equations – eduhub</title>
+<title>nonlin/exercises – eduhub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +70,49 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -110,15 +153,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#pdf-versions" id="toc-pdf-versions" class="nav-link active" data-scroll-target="#pdf-versions">pdf versions</a>
-  <ul class="collapse">
-  <li><a href="#conceptsexercises" id="toc-conceptsexercises" class="nav-link" data-scroll-target="#conceptsexercises">concepts+exercises</a></li>
-  </ul></li>
-  <li><a href="#html-versions" id="toc-html-versions" class="nav-link" data-scroll-target="#html-versions">html versions</a>
-  <ul class="collapse">
-  <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts">concepts</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">exercises</a></li>
-  </ul></li>
+  <li><a href="#bisection" id="toc-bisection" class="nav-link active" data-scroll-target="#bisection">bisection</a></li>
   </ul>
 </nav>
     </div>
@@ -127,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">nonlinear equations</h1>
+<h1 class="title">nonlin/exercises</h1>
 </div>
 
 
@@ -138,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 12, 2026</p>
+      <p class="date">April 13, 2026</p>
     </div>
   </div>
   
@@ -150,23 +185,80 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="pdf-versions" class="level1">
-<h1>pdf versions</h1>
-<section id="conceptsexercises" class="level2">
-<h2 class="anchored" data-anchor-id="conceptsexercises"><a href="08_nonlin.pdf">concepts+exercises</a></h2>
-<hr>
-</section>
-</section>
-<section id="html-versions" class="level1">
-<h1>html versions</h1>
-<section id="concepts" class="level2">
-<h2 class="anchored" data-anchor-id="concepts"><a href="../../topics/nonlin/concepts.html">concepts</a></h2>
-</section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises"><a href="../../topics/nonlin/exercises.html">exercises</a></h2>
+<section id="bisection" class="level1">
+<h1>bisection</h1>
+<p><strong>ex1</strong><br> apply the method of bisection for the problems below. check if the function is “sign-changing” on the initial interval. Always perform <span class="math inline">10</span> iterations. (the last interval is reported after question)</p>
+<ul>
+<li><span class="math inline">f(x)=(x+1)^{x+1}-2</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.559570312500000,0.560546875000000</code></li>
+</ul></li>
+<li><span class="math inline">f(x)=x^5-3x^4+x^3-5x^2+3</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.738281250000000,0.739257812500000</code></li>
+</ul></li>
+<li><span class="math inline">f(x)=e^x-4x^2</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.713867187500000,0.714843750000000</code></li>
+</ul></li>
+<li><span class="math inline">f(x)=\cos(x)-x</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.738281250000000,0.739257812500000</code></li>
+</ul></li>
+</ul>
+<p><strong>ex2</strong><br> apply Newton method for the problems below. always perform <span class="math inline">5</span> iterations, choose <span class="math inline">\frac{1}{2}</span> as the initial guess. (<span class="math inline">x_5</span> is reported after question)</p>
+<ul>
+<li><span class="math inline">f(x)=(x+1)^{x+1}-2</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.559610469462369</code></li>
+</ul></li>
+<li><span class="math inline">f(x)=x^5-3x^4+x^3-5x^2+3</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.738850513805608</code></li>
+</ul></li>
+<li><span class="math inline">f(x)=e^x-4x^2</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.714805912362778</code></li>
+</ul></li>
+<li><span class="math inline">f(x)=\cos(x)-x</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.739085133215161</code></li>
+</ul></li>
+</ul>
+<p><strong>ex3</strong><br> apply the secant method for the problems below. always perform <span class="math inline">5</span> iterations, choose <span class="math inline">x_0,x_1=\frac{1}{3},\frac{2}{3}</span> as initial guesses. (<span class="math inline">x_6</span> is reported after question)</p>
+<ul>
+<li><span class="math inline">f(x)=(x+1)^{x+1}-2</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.559610469456814</code></li>
+</ul></li>
+<li><span class="math inline">f(x)=x^5-3x^4+x^3-5x^2+3</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.738850513782320</code></li>
+</ul></li>
+<li><span class="math inline">f(x)=e^x-4x^2</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.714805912362552</code></li>
+</ul></li>
+<li><span class="math inline">f(x)=\cos(x)-x</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.739085133215161</code></li>
+</ul></li>
+</ul>
+<p><strong>ex4</strong><br> apply fixed-point iteration for the problems below. always perform <span class="math inline">10</span> iterations, choose the <span class="math inline">\frac{1}{2}</span> as initial guess. (<span class="math inline">x_5</span> is reported after question)</p>
+<ul>
+<li><span class="math inline">f(x)=\frac{e^{\frac{x}{2}}}{2}</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.714799177423760</code></li>
+</ul></li>
+<li><span class="math inline">f(x)=\cos(x)</span> on <span class="math inline">[0,1]</span>
+<ul>
+<li><code>0.735006309014843</code></li>
+</ul></li>
+</ul>
+<p><strong>ex5</strong><br> approximate the roots of the functions from <strong>ex1</strong> using <code>fzero</code> and <code>fsolve</code></p>
+<p><strong>ex6</strong><br> consider a unit radius circle. use a single straight cut to get two pieces w/ areas <span class="math inline">\frac{\pi}{3}</span> and <span class="math inline">\frac{2\pi}{3}</span>!</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

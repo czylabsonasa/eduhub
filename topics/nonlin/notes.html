@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-04-08">
+<meta name="dcterms.date" content="2026-04-13">
 
 <title>nonlin/notes – eduhub</title>
 <style>
@@ -167,7 +167,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 8, 2026</p>
+      <p class="date">April 13, 2026</p>
     </div>
   </div>
   
@@ -218,8 +218,44 @@ r_{0}=q&lt;1\\
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div id="secant-method" class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>secant method
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Taylor expansion+<a href="../../notes/calculus.html#Cauchy-mv">Cauchy mean value lemma</a></li>
+</ul>
+<p><span class="math display">
+\begin{gather*}
+x_{k+1}=x_k-\frac{f(x_k)}{\frac{f(x_k)-f(x_{k-1})}{x_k-x_{k-1}}} \ \implies\\
+e_{k+1}=x_{k+1}-\hat{x}=\frac{f(x_k)(x_{k-1}-\hat{x})-f(x_{k-1})(x_{k}-\hat{x})}{f(x_k)-f(x_{k-1})} = \\
+e_{k}e_{k-1}\frac{\frac{f(x_k)}{e_k}-\frac{f(x_{k-1})}{e_{k-1}}}{f(x_k)-f(x_{k-1})}=(1)\\
+\text{Cauchy: } \frac{f(x)}{x-\hat{x}}\ \ \text{ and } \ f(x)\ \ \implies\\
+(1)=e_{k}e_{k-1}\frac{f'(\xi)(\xi-\hat{x})-f(\xi)}{(\xi-\hat{x})^2 f'(\xi)}\\
+0=f(\hat{x})=f(\xi+(\hat{x}-\xi))=f(\xi)+f'(\xi)(\hat{x}-\xi)+\frac{f''(\eta)}{2}(\hat{x}-\xi)^2\\
+(1)=e_{k}e_{k-1}\frac{f''(\eta)}{2f'(\xi)}\\
+C=\frac{C_2}{2C_1}\\
+|e_{k+1}|\le C|e_{k}||e_{k-1}|\\
+C\max(|e_0|,|e_1|)=q&lt;1\ \ \ \ g_k=C|e_k|\\
+g_0\le q\ \ \ \ g_1\le q\ \ \ \ g_{k+1}\le g_{k}g_{k-1}\\
+g_k \le q^{h_k}\\
+h_0=h_1=1\ \ \ h_{k+1}=h_{k}+h_{k-1}\ \ \text{Fibonacci}\\
+|e_{k}|\le \frac{1}{C} q^{h_k}\ \checkmark
+\end{gather*}
+</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -228,12 +264,15 @@ r_{0}=q&lt;1\\
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><span class="math inline">\rho(x,y)=|x-y|</span></li>
 <li><span class="math inline">f:[a,b]\to [a,b]</span></li>
-<li><span class="math inline">\rho(f(x),f(y))\le K \rho(x,y)\ \ 0&lt;K&lt;1</span></li>
+<li><span class="math inline">\rho(f(x),f(y))\le C \rho(x,y)\ \ 0&lt;C&lt;1</span>
+<ul>
+<li>by applying the <a href="../../notes/calculus.html#Lagrange-mv">Lagrange mean value lemma</a></li>
+</ul></li>
 <li>then, the sequence <span class="math inline">x_0,\ x_{k+1}=f(x_k)</span> converges to the unique fixed point.</li>
 </ul>
 <p><span class="math display">
@@ -241,23 +280,20 @@ r_{0}=q&lt;1\\
 \rho(x,y)\le
 \rho(x,f(x))+\rho(f(x),y)\le\\
 \rho(x,f(x))+\rho(f(x),f(y))+\rho(y,f(y)) \implies \\
-\rho(x,y)\le \frac{\rho(x,f(x))+\rho(y,f(y))}{1-K} \ \ \tag{1}\\
+\rho(x,y)\le \frac{\rho(x,f(x))+\rho(y,f(y))}{1-C} \ \ \tag{1}\\
 d=\rho(x_0,x_1)\\
-\text{induction: }\ \rho(x_{n+1},x_{n})\le K^n d\\
-\text{Cauchy: }\ \rho(x_m,x_n)\le d\frac{K^n + K^m}{1-K}\ \implies\\
+\text{induction: }\ \rho(x_{n+1},x_{n})\le C^n d\\
+\text{Cauchy seq.: }\ \rho(x_m,x_n)\le d\frac{C^n + C^m}{1-C}\ \implies\\
 x_n \to \hat{x}\\
 \rho(\hat{x},f(\hat{x}))\le
 \rho(\hat{x},x_n)+\rho(f(\hat{x}),f(x_{n-1}))\le\\
 \rho(\hat{x},x_n)+K\rho(\hat{x},x_{n-1})\to 0\ \ \implies\\
 f(\hat{x})=\hat{x}\\
-\text{unique: }\ \rho(f(\hat{x}),f(\hat{y}))=\rho(\hat{x},\hat{y})\le K \rho(\hat{x},\hat{y})\ \implies \hat{x}=\hat{y}\\
-\rho(x_{k+1},\hat{x})\le K\rho(x_{k},\hat{x})\\
-\rho(x_{k},\hat{x})\le K^k\rho(x_{0},\hat{x})\\
+\text{unique: }\ \rho(f(\hat{x}),f(\hat{y}))=\rho(\hat{x},\hat{y})\le C\rho(\hat{x},\hat{y})\ \implies \hat{x}=\hat{y}\\
+\rho(x_{k+1},\hat{x})\le C\rho(x_{k},\hat{x})\\
+\rho(x_{k},\hat{x})\le C^k\rho(x_{0},\hat{x})\\
 \end{gather*}
 </span></p>
-<ul>
-<li>to see the actual <span class="math inline">K</span> apply the <a href="../../notes/calculus.html#Lagrange-mvt">Lagrange mean value lemma</a></li>
-</ul>
 </div>
 </div>
 </div>

@@ -1593,6 +1593,34 @@
     "href": "notes/calculus.html",
     "title": "notes/calculus",
     "section": "",
-    "text": "f' mean-value lemmas\n\nassumptions: \n\\begin{gather*}\nf,g:[a,b]\\to \\mathbb{R}\\\\\n\\exists f',g' \\text{ on } (a,b)\\\\\n\\end{gather*}\n\n\n\n\n\n\n\n\nNoneRolle\n\n\n\n\n\n\n\\begin{gather*}\nf(a)=f(b)\\ \\stackrel{\\exists\\xi\\in(a,b)}{\\implies} \\ f'(\\xi)=0\\\n\\end{gather*}\n\n\n\n\n\n\n\n\n\n\nNoneLagrange\n\n\n\n\n\n\n\\begin{gather*}\n\\stackrel{\\exists\\xi\\in(a,b)}{\\implies} \\ \\frac{f(b)-f(a)}{b-a}=f'(\\xi)\n\\end{gather*}\n\n\n\n\n\n\n\nNonedetails\n\n\n\n\n\n\napply Rolle for \\varphi \n\\begin{gather*}\n\\varphi(x)=(b-a)(f(x)-f(a))-(f(b)-f(a))(x-a)\n\\end{gather*}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoneCauchy\n\n\n\n\n\n\n\\begin{gather*}\n\\stackrel{\\exists\\xi\\in(a,b)}{\\implies} \\ (f(b)-f(a))g'(\\xi)=(g(b)-g(a))f'(\\xi)\n\\end{gather*}\n\n\n\n\n\n\n\nNonedetails\n\n\n\n\n\n\napply Rolle for \\varphi \n\\begin{gather*}\n\\varphi(x)=(f(b)-f(a))(g(x)-g(a))-(g(b)-g(a))(f(x)-f(a))\n\\end{gather*}"
+    "text": "f' mean-value lemmas\n\nassumptions: \n\\begin{gather*}\nf,g:[a,b]\\to \\mathbb{R}\\\\\n\\exists f',g' \\text{ on } (a,b)\\\\\n\\end{gather*}\n\n\n\n\n\n\n\n\nNoneRolle\n\n\n\n\n\n\n\\begin{gather*}\nf(a)=f(b)\\ \\stackrel{\\exists\\xi\\in(a,b)}{\\implies} \\ f'(\\xi)=0\\\n\\end{gather*}\n\n\n\n\n\n\n\n\n\n\nNoneLagrange\n\n\n\n\n\n\n\\begin{gather*}\n\\stackrel{\\exists\\xi\\in(a,b)}{\\implies} \\ \\frac{f(b)-f(a)}{b-a}=f'(\\xi)\n\\end{gather*}\n\n\n\n\n\n\n\nNonedetails\n\n\n\n\n\n\napply Rolle for \\varphi\n\n\n\\begin{gather*}\n\\varphi(x)=(b-a)(f(x)-f(a))-(f(b)-f(a))(x-a)\n\\end{gather*}\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoneCauchy\n\n\n\n\n\n\n\\begin{gather*}\n\\stackrel{\\exists\\xi\\in(a,b)}{\\implies} \\ (f(b)-f(a))g'(\\xi)=(g(b)-g(a))f'(\\xi)\n\\end{gather*}\n\n\n\n\n\n\n\nNonedetails\n\n\n\n\n\n\napply Rolle for \\varphi \n\\begin{gather*}\n\\varphi(x)=(f(b)-f(a))(g(x)-g(a))-(g(b)-g(a))(f(x)-f(a))\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/nonlin/notes.html#section-2",
+    "href": "topics/nonlin/notes.html#section-2",
+    "title": "nonlin/notes",
+    "section": "?",
+    "text": "?\n\n\\begin{gather*}\nx_{k+1}=x_k-\\frac{f(x_k)}{\\frac{f(x_k)-f(x_{k-1})}{x_k-x_{k-1}}} \\ \\implies\\\\\ne_{k+1}=x_{k+1}-\\hat{x}=\\frac{f(x_k)(x_{k-1}-\\hat{x})-f(x_{k-1})(x_{k}-\\hat{x})}{f(x_k)-f(x_{k-1})} = \\\\\ne_{k}e_{k-1}\\frac{\\frac{f(x_k)}{e_k}-\\frac{f(x_{k-1})}{e_{k-1}}}{f(x_k)-f(x_{k-1})}\\\\\n\\text{Cauchy: } \\frac{f(x)}{x-\\hat{x}}\\ \\ \\text{ and } \\ f(x)\\ \\ \\implies\\\\\n\\end{gather*}"
+  },
+  {
+    "objectID": "topics/nonlin/notes.html#section-3",
+    "href": "topics/nonlin/notes.html#section-3",
+    "title": "nonlin/notes",
+    "section": "(2)+(3)",
+    "text": "(2)+(3)\n\nr_{k}=C|\\hat{x}-x_{k}|\\\\\nr_{0}=q&lt;1\\\\\n(1)\\ \\implies \\ r_{k}\\le r_{k-1}^2\\\\\n\\text{induction }\\ \\implies \\ r_{k}\\le r_{0}^{2^k}=q^{2^k}\\ \\checkmark"
+  },
+  {
+    "objectID": "topics/nonlin/index.html#exercises",
+    "href": "topics/nonlin/index.html#exercises",
+    "title": "nonlinear equations",
+    "section": "exercises",
+    "text": "exercises"
+  },
+  {
+    "objectID": "topics/nonlin/exercises.html",
+    "href": "topics/nonlin/exercises.html",
+    "title": "nonlin/exercises",
+    "section": "",
+    "text": "bisection\nex1 apply the method of bisection for the problems below. check if the function is “sign-changing” on the initial interval. Always perform 10 iterations. (the last interval is reported after question)\n\nf(x)=(x+1)^{x+1}-2 on [0,1]\n\n0.559570312500000,0.560546875000000\n\nf(x)=x^5-3x^4+x^3-5x^2+3 on [0,1]\n\n0.738281250000000,0.739257812500000\n\nf(x)=e^x-4x^2 on [0,1]\n\n0.713867187500000,0.714843750000000\n\nf(x)=\\cos(x)-x on [0,1]\n\n0.738281250000000,0.739257812500000\n\n\nex2 apply Newton method for the problems below. always perform 5 iterations, choose \\frac{1}{2} as the initial guess. (x_5 is reported after question)\n\nf(x)=(x+1)^{x+1}-2 on [0,1]\n\n0.559610469462369\n\nf(x)=x^5-3x^4+x^3-5x^2+3 on [0,1]\n\n0.738850513805608\n\nf(x)=e^x-4x^2 on [0,1]\n\n0.714805912362778\n\nf(x)=\\cos(x)-x on [0,1]\n\n0.739085133215161\n\n\nex3 apply the secant method for the problems below. always perform 5 iterations, choose x_0,x_1=\\frac{1}{3},\\frac{2}{3} as initial guesses. (x_6 is reported after question)\n\nf(x)=(x+1)^{x+1}-2 on [0,1]\n\n0.559610469456814\n\nf(x)=x^5-3x^4+x^3-5x^2+3 on [0,1]\n\n0.738850513782320\n\nf(x)=e^x-4x^2 on [0,1]\n\n0.714805912362552\n\nf(x)=\\cos(x)-x on [0,1]\n\n0.739085133215161\n\n\nex4 apply fixed-point iteration for the problems below. always perform 10 iterations, choose the \\frac{1}{2} as initial guess. (x_5 is reported after question)\n\nf(x)=\\frac{e^{\\frac{x}{2}}}{2} on [0,1]\n\n0.714799177423760\n\nf(x)=\\cos(x) on [0,1]\n\n0.735006309014843\n\n\nex5 approximate the roots of the functions from ex1 using fzero and fsolve\nex6 consider a unit radius circle. use a single straight cut to get two pieces w/ areas \\frac{\\pi}{3} and \\frac{2\\pi}{3}!"
   }
 ]
