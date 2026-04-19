@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-04-14">
+<meta name="dcterms.date" content="2026-04-19">
 
 <title>eigen/concepts – eduhub</title>
 <style>
@@ -202,7 +202,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 14, 2026</p>
+      <p class="date">April 19, 2026</p>
     </div>
   </div>
   
@@ -227,9 +227,9 @@ window.Quarto = {
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>In a rabbit population (considering only females) we have <span class="math inline">3</span> age categories. We know the survival rates <span class="math inline">s=(0.8,0.25,0)</span>, that is <span class="math inline">80\%</span> of the newborn rabbits survive the first year, <span class="math inline">25\%</span> of the one-year old rabbits survive to the second year, and <span class="math inline">0\%</span> of the 2-years old rabbits survive to the third year ( it is the end of their biological life cycle). In addition the average reproduction rates are also known: <span class="math inline">r=(0,1,1)</span>, which means that a <span class="math inline">i</span> years old rabbit reproduce <span class="math inline">m_i</span> rabbits.</p>
-<p><strong>Q</strong><br></p>
+<p><strong>Q1</strong><br></p>
 <p>Starting from a <span class="math inline">(10,10,30)</span> population, what is the <strong>expected</strong> distribution (for the age categories) after 1,2,4, <span class="math inline">N</span> years?</p>
-<p><strong>A</strong><br></p>
+<p><strong>A1</strong><br></p>
 <ul>
 <li>It turns out that the evolution of the model can be described by a matrix:</li>
 </ul>
@@ -353,8 +353,6 @@ A=\left(\begin{array}{rrrr}
 </div>
 </div>
 </div>
-<p><strong>Q2</strong><br> Are there any starting distribution that will not change (as a distribution, not as a raw vector) during the years?</p>
-<p><strong>A2</strong> <br> We are searching for such an <span class="math inline">x</span> for which <span class="math inline">Lx=\lambda x</span> with a <span class="math inline">\lambda&gt;0</span> real number.</p>
 </div>
 </div>
 </div>
@@ -370,7 +368,7 @@ A=\left(\begin{array}{rrrr}
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>For <span class="math inline">A\in {\mathbb R}^{n\times n}</span> the value <span class="math inline">\lambda \in \mathbb{C}</span> is an eigenvalue and the vector <span class="math inline">v\ne 0</span> is the eigenvector belonging to <span class="math inline">\lambda</span></p>
+<p>For <span class="math inline">A\in {\mathbb R}^{n\times n}</span> the value <span class="math inline">\lambda \in \mathbb{C}</span> is an eigenvalue and the vector <span class="math inline">v\ne 0</span> is the eigenvector belonging to <span class="math inline">\lambda</span> <em>iff</em>:</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -533,7 +531,7 @@ A=\left( \begin{array}{rr}
 <ul>
 <li><code>eig</code> builtin function</li>
 <li><code>val=eig(A)</code> will return a vector of eigenvalues</li>
-<li><code>[vec,val]=eig(A)</code> will return two matrices: the <code>vec</code> is a matrix of eigenvectors (they have unit euclidean lengths) the <code>val</code></li>
+<li><code>[vec,val]=eig(A)</code> will return two matrices: the <code>vec</code> is a matrix of eigenvectors (they have unit euclidean lengths) the <code>val</code> is a matrix with the eigenvalues in its (main) diagonal.</li>
 </ul>
 </div>
 </div>
@@ -563,8 +561,8 @@ A=\left( \begin{array}{rr}
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">\lambda</span> is <strong>dominant</strong> eigenvalue <span class="math inline">iff</span> <span class="math inline">|\lambda|&gt;|\mu|</span> for each eigenvalue <span class="math inline">\mu\neq\lambda</span></li>
-<li>a method for approximating the dominant eigenvalue and the corresponding eigenvector.</li>
+<li><span class="math inline">\lambda</span> is a <strong>dominant</strong> eigenvalue <span class="math inline">iff</span> <span class="math inline">|\lambda|&gt;|\mu|</span> for each eigenvalue <span class="math inline">\mu\neq\lambda</span></li>
+<li><strong>power iteration</strong> is a method for approximating the dominant eigenvalue and the corresponding eigenvector.</li>
 </ul>
 <p>Given the matrix <span class="math inline">A\in{\mathbb R}^{n\times n}</span> and a starting vector <span class="math inline">x^{(0)}\in {\mathbb R}^n</span>, <span class="math inline">x^{(0)}\ne 0</span>. The iteration:</p>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -599,10 +597,14 @@ x^{(k+1)}:=Ax^{(k)},\ \ x^{(k+1)}=\frac{x^{(k+1)}}{||x^{(k+1)}||} \ \ \ \  k=0,1
 <div class="callout-body-container callout-body">
 <ul>
 <li>the matrix <span class="math inline">A</span> has <span class="math inline">n</span> different eigenvalues</li>
-<li><span class="math inline">A</span> has a dominant eigenvalue, say <span class="math inline">\lambda_n</span></li>
-<li><span class="math inline">(x^{(0)},v_n)\ne 0</span> for the eigenvector <span class="math inline">v_n</span> belonging to the eigenvalue <span class="math inline">\lambda_n</span>,\</li>
+<li><span class="math inline">A</span> has a (real) dominant eigenvalue, say <span class="math inline">\lambda_n</span></li>
+<li><span class="math inline">||x_0||=1</span></li>
+<li><span class="math inline">(x^{(0)},v_n)\ne 0</span> for the eigenvector <span class="math inline">v_n</span> belonging to the eigenvalue <span class="math inline">\lambda_n</span></li>
 </ul>
-<p>Then the sequence ${ x^{(k)}} $ defined by the power iteration converges to <strong>an</strong> eigenvector belonging to the dominant eigenvalue <span class="math inline">\lambda_n</span></p>
+<p>Then the sequence <span class="math inline">{ x^{(2k)}}</span> defined by the power iteration converges to <strong>an</strong> eigenvector belonging to the dominant eigenvalue <span class="math inline">\lambda_n</span></p>
+<ul>
+<li>the <span class="math inline">2k</span> “hack” with the index is for cover the negativ dominant eigenvalue case.</li>
+</ul>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -615,14 +617,31 @@ x^{(k+1)}:=Ax^{(k)},\ \ x^{(k+1)}=\frac{x^{(k+1)}}{||x^{(k+1)}||} \ \ \ \  k=0,1
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<ul>
+<li>suppose that the <span class="math inline">||v_k||=1</span></li>
+<li>verify, that</li>
+</ul>
+<p><span class="math display">
+\begin{gather*}
+||x_0||=1\\
+x_m=\frac{A^m x^{(0)}}{||A^m x^{(0)}||} \\
+y_0=x_0 \ \ \ \ y^{(m+1)}=\frac{Ay^{(m)}}{||Ay^{(m)}||} \\
+\implies\ \ x_m = y_m
+\end{gather*}
+</span></p>
 <p><span class="math display">
 \begin{gather*}
 x^{(0)}=\sum \alpha_k v_k\ \ \ \alpha_n\neq 0\\
 A^{m}x^{(0)}=\sum_{k&lt;n} \alpha_k \lambda_k^m v_k + \alpha_n \lambda_n^m v_n\\
-C_m=|\alpha_n \lambda_n^m|\\
-q=\max_{k&lt;n} \left| \frac{\lambda_k}{\lambda_n}\right|&lt;1\\
-V=\sum_{k&lt;n} \left|\frac{\alpha_k}{\alpha_n}\right| ||v_k||\\
-||\frac{A^{m}x^{(0)}}{C_m}-v_n||\le q^{m} V \to 0
+\frac{A^{m}x^{(0)}}{\alpha_n \lambda_n^m}=v_n+\sum_{k&lt;n} \frac{\alpha_k}{\alpha_n} \left(\frac{\lambda_k}{\lambda_n}\right)^m v_k \\
+\frac{A^{m}x^{(0)}}{\alpha_n \lambda_n^m}=v_n+e_m\ \ \ \ e_m\to 0\\
+\text{because, with }\ \ q=\max_{k&lt;n} \left| \frac{\lambda_k}{\lambda_n}\right|&lt;1\\
+\left\Vert e_m \right\Vert\le
+\left\Vert\sum_{k&lt;n} \frac{\alpha_k}{\alpha_n} \left(\frac{\lambda_k}{\lambda_n}\right)^m v_k\right\Vert &lt;
+\sum_{k&lt;n} \left\vert\frac{\alpha_k}{\alpha_n}\right\vert q^m \to 0 \\
+\frac{A^{2m}x^{(0)}}{||A^{2m}x^{(0)}||}=\frac{A^{2m}x^{(0)}}{\alpha_n \lambda_n^{2m}} \frac{\alpha_n \lambda_n^{2m}}{||A^{2m}x^{(0)}||}\stackrel{=}{\text{2m hack}}\\
+\frac{A^{2m}x^{(0)}}{\alpha_n \lambda_n^{2m}} \frac{1}{||v_n+e_{2m}||}=
+\frac{v_n + e_{2m}}{||v_n+e_{2m}||} \to v_n
 \end{gather*}
 </span></p>
 </div>
@@ -723,7 +742,7 @@ V=\sum_{k&lt;n} \left|\frac{\alpha_k}{\alpha_n}\right| ||v_k||\\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>programming
+<span class="screen-reader-only">None</span>root-finding / programming / contest problem
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
