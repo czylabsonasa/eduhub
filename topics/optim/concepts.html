@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-04-22">
+<meta name="dcterms.date" content="2026-04-23">
 
 <title>optim/concepts – eduhub</title>
 <style>
@@ -209,7 +209,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 22, 2026</p>
+      <p class="date">April 23, 2026</p>
     </div>
   </div>
   
@@ -580,7 +580,7 @@ f''(4) &lt; 0 \ \ \checkmark
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>using the AM-GM inequality for positive numbers</li>
+<li>using the <a href="../../notes/calculus.html#inequalities">AM-GM-2</a></li>
 </ul>
 <p><span class="math display">
 ab\le \left( \frac{a+b}{2}\right)^2
@@ -692,13 +692,7 @@ f''(4) &gt; 0 \ \ \checkmark
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>using the AM-GM inequality for positive numbers</li>
-</ul>
-<p><span class="math display">
-ab\le \left( \frac{a+b}{2}\right)^2
-</span></p>
-<ul>
-<li>equality holds <em>iff</em> <span class="math inline">a=b</span></li>
+<li>using the [AM-GM-2][/notes/calculus.qmd#inequalities]</li>
 </ul>
 <p><span class="math display">
 \begin{gather*}
@@ -1182,13 +1176,13 @@ D(x,y)=36xy\\
 <div id="callout-34" class="callout-34-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>AM-GM for 3 positive numbers</li>
+<li><a href="../../notes/calculus.html#inequalities">AM-GM</a></li>
 </ul>
 <p>Denote the lengths of the sides by <span class="math inline">a,b,c</span>. Then we have</p>
 <p><span class="math display">
 \begin{gather*}
 V^2 = (ab)(ac)(bc)\le \left(\frac{ab+ac+bc}{3}\right)^3=1\\
-\text{LHS=RHF}\ \ iff\ \ a=b=c=1
+\text{LHS=RHS}\ \ iff\ \ a=b=c=1
 \end{gather*}
 </span></p>
 <ul>
@@ -1210,31 +1204,9 @@ V^2 = (ab)(ac)(bc)\le \left(\frac{ab+ac+bc}{3}\right)^3=1\\
 </div>
 <div id="callout-35" class="callout-35-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">f</span><span class="op">=@</span>(<span class="va">x</span>) (<span class="op">-</span><span class="fl">1</span>)<span class="op">*</span><span class="va">x</span><span class="op">*</span>(<span class="fl">8</span><span class="op">-</span><span class="va">x</span>)<span class="op">;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">fminbnd</span>(<span class="va">f</span><span class="op">,</span> <span class="fl">0</span><span class="op">,</span><span class="fl">8</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="va">ans</span> <span class="op">=</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>     <span class="fl">4</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">fminunc</span>(<span class="va">f</span><span class="op">,</span><span class="fl">1</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="va">Local</span> <span class="va">minimum</span> <span class="va">found</span>.</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="va">Optimization</span> <span class="va">completed</span> <span class="va">because</span> <span class="va">the</span> <span class="va">size</span> <span class="va">of</span> <span class="va">the</span> <span class="va">gradient</span> <span class="va">is</span> <span class="va">less</span> <span class="va">than</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="va">the</span> <span class="va">value</span> <span class="va">of</span> <span class="va">the</span> <span class="va">optimality</span> <span class="va">tolerance</span>.</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span><span class="va">stopping</span> <span class="va">criteria</span> <span class="va">details</span><span class="op">&gt;</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="va">ans</span> <span class="op">=</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>     <span class="fl">4</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="va">fminsearch</span>(<span class="va">f</span><span class="op">,</span><span class="fl">1</span>)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="va">ans</span> <span class="op">=</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.0000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>left it as exercise</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1247,11 +1219,45 @@ V^2 = (ab)(ac)(bc)\le \left(\frac{ab+ac+bc}{3}\right)^3=1\\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>matlab workflow
+<span class="screen-reader-only">None</span>example-rectangle-3d-minSA
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Of all 3d-rectangles (rectangular cuboid) with 8 unit volume, find that whose surface area is the smallest.</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>solution by computer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>left it as exercise</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>matlab workflow
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>plot the contour lines: <code>contour</code></li>
@@ -1261,8 +1267,9 @@ V^2 = (ab)(ac)(bc)\le \left(\frac{ab+ac+bc}{3}\right)^3=1\\
 <li><code>fminsearch</code> and <code>fminunc</code></li>
 </ul></li>
 </ul>
+<!--  -->
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1271,20 +1278,20 @@ V^2 = (ab)(ac)(bc)\le \left(\frac{ab+ac+bc}{3}\right)^3=1\\
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>without the optimization steps</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="fl">30</span>)<span class="op">;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>[<span class="va">X</span><span class="op">,</span><span class="va">Y</span>]<span class="op">=</span><span class="va">meshgrid</span>(<span class="va">xx</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="va">f</span><span class="op">=@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) (<span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">-</span><span class="fl">11</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">+</span>(<span class="va">x</span><span class="op">+</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="fl">7</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="va">Z</span><span class="op">=</span><span class="va">f</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="va">contour</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">Z</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>[<span class="va">dX</span><span class="op">,</span><span class="va">dY</span>]<span class="op">=</span><span class="va">gradient</span>(<span class="va">Z</span>)<span class="op">;</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="va">L</span><span class="op">=</span><span class="va">sqrt</span>(<span class="va">dX</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">dY</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="va">quiver</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">dX</span><span class="op">./</span><span class="va">L</span><span class="op">,</span><span class="va">dY</span><span class="op">./</span><span class="va">L</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="fl">30</span>)<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>[<span class="va">X</span><span class="op">,</span><span class="va">Y</span>]<span class="op">=</span><span class="va">meshgrid</span>(<span class="va">xx</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">f</span><span class="op">=@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) (<span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">-</span><span class="fl">11</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">+</span>(<span class="va">x</span><span class="op">+</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="fl">7</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="va">Z</span><span class="op">=</span><span class="va">f</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="va">contour</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">Z</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>[<span class="va">dX</span><span class="op">,</span><span class="va">dY</span>]<span class="op">=</span><span class="va">gradient</span>(<span class="va">Z</span>)<span class="op">;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="va">L</span><span class="op">=</span><span class="va">sqrt</span>(<span class="va">dX</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">dY</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="va">quiver</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">dX</span><span class="op">./</span><span class="va">L</span><span class="op">,</span><span class="va">dY</span><span class="op">./</span><span class="va">L</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1292,7 +1299,7 @@ V^2 = (ab)(ac)(bc)\le \left(\frac{ab+ac+bc}{3}\right)^3=1\\
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1301,7 +1308,7 @@ V^2 = (ab)(ac)(bc)\le \left(\frac{ab+ac+bc}{3}\right)^3=1\\
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>find the stationary points/local extremizers for</li>
@@ -1317,7 +1324,7 @@ f(x,y)=(x^2+y-11)^2+(x+y^2-7)^2
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1326,7 +1333,7 @@ f(x,y)=(x^2+y-11)^2+(x+y^2-7)^2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>find the stationary points/local extremizers for</li>
@@ -1341,7 +1348,7 @@ f(x,y)=100(y-x^2)^2 + (1-x)^2
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1350,7 +1357,7 @@ f(x,y)=100(y-x^2)^2 + (1-x)^2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div id="callout-44" class="callout-44-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">
 \begin{gather*}
@@ -1362,7 +1369,7 @@ h=\alpha \nabla f(x)\\
 \end{gather*}
 </span></p>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1371,79 +1378,79 @@ h=\alpha \nabla f(x)\\
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="va">doit</span><span class="op">=</span><span class="va">make_grad</span>(<span class="va">f0</span><span class="op">,</span><span class="va">df0</span><span class="op">,</span><span class="va">dom</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="va">f</span><span class="op">=@</span>(<span class="va">v</span>) <span class="va">f0</span>(<span class="va">v</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">v</span>(<span class="fl">2</span>))<span class="op">;</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">df</span><span class="op">=@</span>(<span class="va">v</span>) <span class="va">df0</span>(<span class="va">v</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">v</span>(<span class="fl">2</span>))<span class="op">;</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">tol</span> <span class="op">=</span> <span class="fl">1e-4</span><span class="op">;</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="va">maxstep</span> <span class="op">=</span> <span class="fl">50</span><span class="op">;</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="va">outdom</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">v</span>) <span class="va">v</span>(<span class="fl">1</span>)<span class="op">&lt;</span><span class="va">dom</span>(<span class="fl">1</span>)<span class="op">||</span><span class="va">v</span>(<span class="fl">1</span>)<span class="op">&gt;</span><span class="va">dom</span>(<span class="fl">2</span>)<span class="op">||</span><span class="va">v</span>(<span class="fl">2</span>)<span class="op">&lt;</span><span class="va">dom</span>(<span class="fl">3</span>)<span class="op">||</span><span class="va">v</span>(<span class="fl">2</span>)<span class="op">&gt;</span><span class="va">dom</span>(<span class="fl">4</span>)<span class="op">;</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> [<span class="va">path</span><span class="op">,</span><span class="va">status</span>]<span class="op">=</span><span class="va">grad</span>(<span class="va">x</span><span class="op">,</span><span class="va">a</span>)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">status</span><span class="op">=</span><span class="st">""</span><span class="op">;</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="va">path</span><span class="op">=</span>[<span class="va">x</span>]<span class="op">;</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">for</span> <span class="va">it</span><span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="va">maxstep</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>      <span class="va">x_old</span><span class="op">=</span><span class="va">x</span><span class="op">;</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>      <span class="va">g</span><span class="op">=</span><span class="va">df</span>(<span class="va">x</span>)<span class="op">;</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> <span class="va">norm</span>(<span class="va">g</span>)<span class="op">&lt;</span><span class="va">tol</span><span class="op">,</span> <span class="va">status</span><span class="op">=</span><span class="st">"dftol"</span><span class="op">;</span> <span class="kw">break</span><span class="op">;</span> <span class="kw">end</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>      <span class="va">x</span><span class="op">=</span><span class="va">x</span><span class="op">+</span><span class="va">a</span><span class="op">*</span><span class="va">g</span><span class="op">;</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> <span class="va">outdom</span>(<span class="va">x</span>)<span class="op">,</span> <span class="va">status</span><span class="op">=</span><span class="st">"outdom"</span><span class="op">;</span> <span class="kw">break</span><span class="op">;</span> <span class="kw">end</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>      <span class="va">path</span><span class="op">=</span>[<span class="va">path</span><span class="op">,</span><span class="va">x</span>]<span class="op">;</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> <span class="va">norm</span>(<span class="va">x</span><span class="op">-</span><span class="va">x_old</span>)<span class="op">&lt;</span><span class="va">tol</span><span class="op">;</span> <span class="va">status</span><span class="op">=</span><span class="st">"xtol"</span><span class="op">;</span> <span class="kw">break</span><span class="op">;</span> <span class="kw">end</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="va">status</span><span class="op">==</span><span class="st">""</span><span class="op">,</span> <span class="va">status</span><span class="op">=</span><span class="st">"maxstep"</span><span class="op">;</span> <span class="kw">end</span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  <span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="va">dom</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">dom</span>(<span class="fl">2</span>))<span class="op">;</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="va">yy</span><span class="op">=</span><span class="va">linspace</span>(<span class="va">dom</span>(<span class="fl">3</span>)<span class="op">,</span><span class="va">dom</span>(<span class="fl">4</span>))<span class="op">;</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  [<span class="va">X</span><span class="op">,</span><span class="va">Y</span>]<span class="op">=</span><span class="va">meshgrid</span>(<span class="va">xx</span><span class="op">,</span><span class="va">yy</span>)<span class="op">;</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  <span class="va">Z</span><span class="op">=</span><span class="va">f0</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="va">doit0</span>(<span class="va">x</span><span class="op">,</span><span class="va">a</span>)</span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>    [<span class="va">path</span><span class="op">,</span><span class="va">status</span>] <span class="op">=</span> <span class="va">grad</span>(<span class="va">x</span><span class="op">,</span><span class="va">a</span>)<span class="op">;</span></span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    <span class="va">clf</span><span class="op">;</span></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>    <span class="va">contour</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">Z</span><span class="op">,</span><span class="fl">66</span>)<span class="op">;</span></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>    <span class="va">plot</span>(<span class="va">path</span>(<span class="fl">1</span><span class="op">,:</span>)<span class="op">,</span><span class="va">path</span>(<span class="fl">2</span><span class="op">,:</span>)<span class="op">,</span><span class="st">"mo-"</span><span class="op">,</span><span class="st">"MarkerSize"</span><span class="op">,</span><span class="fl">2</span>)<span class="op">;</span></span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>    <span class="va">plot</span>(<span class="va">path</span>(<span class="fl">1</span><span class="op">,</span><span class="fl">1</span>)<span class="op">,</span><span class="va">path</span>(<span class="fl">2</span><span class="op">,</span><span class="fl">1</span>)<span class="op">,</span><span class="st">"kx"</span>)<span class="op">;</span></span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>    <span class="va">x</span><span class="op">=</span><span class="va">path</span>(<span class="op">:,</span><span class="kw">end</span>)<span class="op">;</span></span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>    <span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"%s | (%.2f,%.2f) | %.2e"</span><span class="op">,</span><span class="va">status</span><span class="op">,</span><span class="va">x</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">x</span>(<span class="fl">2</span>)<span class="op">,</span><span class="va">norm</span>(<span class="va">df</span>(<span class="va">x</span>))))<span class="op">;</span></span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    <span class="va">axis</span> <span class="va">square</span><span class="op">;</span></span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>    <span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  <span class="va">doit</span><span class="op">=@</span><span class="va">doit0</span><span class="op">;</span></span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a><span class="co">% problem definition</span></span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="co">% f0 = @(x,y) x.^3 + y.^3 -3*x -3*y;</span></span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a><span class="co">% df0 = @(x,y) [3*x.^2-3;3*y.^2-3];</span></span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="co">% dom = [-3,3,-3,3] ;</span></span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="va">f0</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) (<span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">-</span><span class="fl">11</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">+</span>(<span class="va">x</span><span class="op">+</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="fl">7</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="va">df0</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) [<span class="fl">2</span><span class="op">*</span><span class="va">x</span><span class="op">+</span><span class="fl">4</span><span class="op">*</span><span class="va">x</span><span class="op">.*</span>(<span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">-</span><span class="fl">11</span>)<span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="fl">14</span><span class="op">;</span> <span class="fl">2</span><span class="op">*</span><span class="va">y</span><span class="op">+</span><span class="fl">4</span><span class="op">*</span><span class="va">y</span><span class="op">.*</span>(<span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">x</span><span class="op">-</span><span class="fl">7</span>)<span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="fl">22</span>]<span class="op">;</span></span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="va">dom</span> <span class="op">=</span> [<span class="op">-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span><span class="op">,-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span>] <span class="op">;</span></span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a><span class="va">doit</span> <span class="op">=</span> <span class="va">make_grad</span>(<span class="va">f0</span><span class="op">,</span><span class="va">df0</span><span class="op">,</span><span class="va">dom</span>)<span class="op">;</span></span>
-<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="va">doit</span><span class="op">=</span><span class="va">make_grad</span>(<span class="va">f0</span><span class="op">,</span><span class="va">df0</span><span class="op">,</span><span class="va">dom</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="va">f</span><span class="op">=@</span>(<span class="va">v</span>) <span class="va">f0</span>(<span class="va">v</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">v</span>(<span class="fl">2</span>))<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">df</span><span class="op">=@</span>(<span class="va">v</span>) <span class="va">df0</span>(<span class="va">v</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">v</span>(<span class="fl">2</span>))<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">tol</span> <span class="op">=</span> <span class="fl">1e-4</span><span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="va">maxstep</span> <span class="op">=</span> <span class="fl">50</span><span class="op">;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="va">outdom</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">v</span>) <span class="va">v</span>(<span class="fl">1</span>)<span class="op">&lt;</span><span class="va">dom</span>(<span class="fl">1</span>)<span class="op">||</span><span class="va">v</span>(<span class="fl">1</span>)<span class="op">&gt;</span><span class="va">dom</span>(<span class="fl">2</span>)<span class="op">||</span><span class="va">v</span>(<span class="fl">2</span>)<span class="op">&lt;</span><span class="va">dom</span>(<span class="fl">3</span>)<span class="op">||</span><span class="va">v</span>(<span class="fl">2</span>)<span class="op">&gt;</span><span class="va">dom</span>(<span class="fl">4</span>)<span class="op">;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> [<span class="va">path</span><span class="op">,</span><span class="va">status</span>]<span class="op">=</span><span class="va">grad</span>(<span class="va">x</span><span class="op">,</span><span class="va">a</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">status</span><span class="op">=</span><span class="st">""</span><span class="op">;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="va">path</span><span class="op">=</span>[<span class="va">x</span>]<span class="op">;</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">for</span> <span class="va">it</span><span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="va">maxstep</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>      <span class="va">x_old</span><span class="op">=</span><span class="va">x</span><span class="op">;</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>      <span class="va">g</span><span class="op">=</span><span class="va">df</span>(<span class="va">x</span>)<span class="op">;</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> <span class="va">norm</span>(<span class="va">g</span>)<span class="op">&lt;</span><span class="va">tol</span><span class="op">,</span> <span class="va">status</span><span class="op">=</span><span class="st">"dftol"</span><span class="op">;</span> <span class="kw">break</span><span class="op">;</span> <span class="kw">end</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>      <span class="va">x</span><span class="op">=</span><span class="va">x</span><span class="op">+</span><span class="va">a</span><span class="op">*</span><span class="va">g</span><span class="op">;</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> <span class="va">outdom</span>(<span class="va">x</span>)<span class="op">,</span> <span class="va">status</span><span class="op">=</span><span class="st">"outdom"</span><span class="op">;</span> <span class="kw">break</span><span class="op">;</span> <span class="kw">end</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>      <span class="va">path</span><span class="op">=</span>[<span class="va">path</span><span class="op">,</span><span class="va">x</span>]<span class="op">;</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> <span class="va">norm</span>(<span class="va">x</span><span class="op">-</span><span class="va">x_old</span>)<span class="op">&lt;</span><span class="va">tol</span><span class="op">;</span> <span class="va">status</span><span class="op">=</span><span class="st">"xtol"</span><span class="op">;</span> <span class="kw">break</span><span class="op">;</span> <span class="kw">end</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="va">status</span><span class="op">==</span><span class="st">""</span><span class="op">,</span> <span class="va">status</span><span class="op">=</span><span class="st">"maxstep"</span><span class="op">;</span> <span class="kw">end</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="va">dom</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">dom</span>(<span class="fl">2</span>))<span class="op">;</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="va">yy</span><span class="op">=</span><span class="va">linspace</span>(<span class="va">dom</span>(<span class="fl">3</span>)<span class="op">,</span><span class="va">dom</span>(<span class="fl">4</span>))<span class="op">;</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  [<span class="va">X</span><span class="op">,</span><span class="va">Y</span>]<span class="op">=</span><span class="va">meshgrid</span>(<span class="va">xx</span><span class="op">,</span><span class="va">yy</span>)<span class="op">;</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  <span class="va">Z</span><span class="op">=</span><span class="va">f0</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="va">doit0</span>(<span class="va">x</span><span class="op">,</span><span class="va">a</span>)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    [<span class="va">path</span><span class="op">,</span><span class="va">status</span>] <span class="op">=</span> <span class="va">grad</span>(<span class="va">x</span><span class="op">,</span><span class="va">a</span>)<span class="op">;</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    <span class="va">clf</span><span class="op">;</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>    <span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>    <span class="va">contour</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">Z</span><span class="op">,</span><span class="fl">66</span>)<span class="op">;</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>    <span class="va">plot</span>(<span class="va">path</span>(<span class="fl">1</span><span class="op">,:</span>)<span class="op">,</span><span class="va">path</span>(<span class="fl">2</span><span class="op">,:</span>)<span class="op">,</span><span class="st">"mo-"</span><span class="op">,</span><span class="st">"MarkerSize"</span><span class="op">,</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>    <span class="va">plot</span>(<span class="va">path</span>(<span class="fl">1</span><span class="op">,</span><span class="fl">1</span>)<span class="op">,</span><span class="va">path</span>(<span class="fl">2</span><span class="op">,</span><span class="fl">1</span>)<span class="op">,</span><span class="st">"kx"</span>)<span class="op">;</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>    <span class="va">x</span><span class="op">=</span><span class="va">path</span>(<span class="op">:,</span><span class="kw">end</span>)<span class="op">;</span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>    <span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"%s | (%.2f,%.2f) | %.2e"</span><span class="op">,</span><span class="va">status</span><span class="op">,</span><span class="va">x</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">x</span>(<span class="fl">2</span>)<span class="op">,</span><span class="va">norm</span>(<span class="va">df</span>(<span class="va">x</span>))))<span class="op">;</span></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>    <span class="va">axis</span> <span class="va">square</span><span class="op">;</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>    <span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>  <span class="va">doit</span><span class="op">=@</span><span class="va">doit0</span><span class="op">;</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="co">% problem definition</span></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="co">% f0 = @(x,y) x.^3 + y.^3 -3*x -3*y;</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a><span class="co">% df0 = @(x,y) [3*x.^2-3;3*y.^2-3];</span></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="co">% dom = [-3,3,-3,3] ;</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="va">f0</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) (<span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">-</span><span class="fl">11</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">+</span>(<span class="va">x</span><span class="op">+</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="fl">7</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="va">df0</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) [<span class="fl">2</span><span class="op">*</span><span class="va">x</span><span class="op">+</span><span class="fl">4</span><span class="op">*</span><span class="va">x</span><span class="op">.*</span>(<span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">-</span><span class="fl">11</span>)<span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="fl">14</span><span class="op">;</span> <span class="fl">2</span><span class="op">*</span><span class="va">y</span><span class="op">+</span><span class="fl">4</span><span class="op">*</span><span class="va">y</span><span class="op">.*</span>(<span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">x</span><span class="op">-</span><span class="fl">7</span>)<span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="fl">22</span>]<span class="op">;</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a><span class="va">dom</span> <span class="op">=</span> [<span class="op">-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span><span class="op">,-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span>] <span class="op">;</span></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a><span class="va">doit</span> <span class="op">=</span> <span class="va">make_grad</span>(<span class="va">f0</span><span class="op">,</span><span class="va">df0</span><span class="op">,</span><span class="va">dom</span>)<span class="op">;</span></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1451,7 +1458,7 @@ h=\alpha \nabla f(x)\\
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-48-contents" aria-controls="callout-48" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-51-contents" aria-controls="callout-51" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1460,10 +1467,10 @@ h=\alpha \nabla f(x)\\
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-48" class="callout-48-contents callout-collapse collapse">
+<div id="callout-51" class="callout-51-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-45-contents" aria-controls="callout-45" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1472,119 +1479,43 @@ h=\alpha \nabla f(x)\\
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-43" class="callout-43-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span><span class="va">clf</span><span class="op">;</span><span class="va">clear</span><span class="op">;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="va">fig</span><span class="op">=</span><span class="va">figure</span>(<span class="fl">1</span>)<span class="op">;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="va">f_str</span> <span class="op">=</span> <span class="st">"$f(x)=x^5-\cos(x)-e^x$"</span><span class="op">;</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="va">f</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span>) <span class="va">x</span><span class="op">.^</span><span class="fl">5</span><span class="op">-</span><span class="va">cos</span>(<span class="va">x</span>)<span class="op">-</span><span class="va">exp</span>(<span class="va">x</span>)<span class="op">;</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="va">df_str</span> <span class="op">=</span> <span class="st">"$f'(x)=5x^4+\sin(x)-e^x$"</span><span class="op">;</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="va">df</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span>) <span class="fl">5</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">4</span><span class="op">+</span><span class="va">sin</span>(<span class="va">x</span>)<span class="op">-</span><span class="va">exp</span>(<span class="va">x</span>)<span class="op">;</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="va">ddf</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span>) <span class="fl">20</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">3</span><span class="op">+</span><span class="va">cos</span>(<span class="va">x</span>)<span class="op">-</span><span class="va">exp</span>(<span class="va">x</span>)<span class="op">;</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span> <span class="op">=</span> <span class="va">linspace</span>(<span class="fl">0</span><span class="op">,</span><span class="fl">1</span>)<span class="op">;</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>[<span class="va">x0</span><span class="op">,</span> <span class="va">dfx0</span>] <span class="op">=</span> <span class="va">fzero</span>(<span class="va">df</span><span class="op">,</span><span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="va">fx0</span> <span class="op">=</span> <span class="va">f</span>(<span class="va">x0</span>)<span class="op">;</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="va">subplot</span>(<span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span>)<span class="op">;</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">f</span>(<span class="va">xx</span>))</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="va">x0</span><span class="op">,</span><span class="va">x0</span>]<span class="op">,</span>[<span class="va">fx0</span><span class="op">-</span><span class="fl">0.2</span><span class="op">,</span><span class="va">f</span>(<span class="fl">0</span>)]<span class="op">,</span><span class="st">"g"</span>)<span class="op">;</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="va">ylim</span>([<span class="va">fx0</span><span class="op">-</span><span class="fl">0.2</span><span class="op">,</span><span class="va">inf</span>])<span class="op">;</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>([<span class="va">f_str</span>]<span class="op">,</span><span class="st">"Interpreter"</span><span class="op">,</span><span class="st">"latex"</span>)<span class="op">;</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="va">subplot</span>(<span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">2</span>)<span class="op">;</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">df</span>(<span class="va">xx</span>))</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="fl">0</span><span class="op">,</span><span class="fl">1</span>]<span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span>]<span class="op">,</span><span class="st">"k"</span>)</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="va">x0</span><span class="op">,</span><span class="va">x0</span>]<span class="op">,</span>[<span class="op">-</span><span class="fl">2</span><span class="op">,</span><span class="fl">4</span>]<span class="op">,</span><span class="st">"g"</span>)<span class="op">;</span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="va">df_str</span><span class="op">,</span><span class="st">"Interpreter"</span><span class="op">,</span><span class="st">"latex"</span>)<span class="op">;</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="va">exportgraphics</span>(<span class="va">fig</span><span class="op">,</span> <span class="st">"egy.png"</span><span class="op">,</span> <span class="ss">'Resolution'</span><span class="op">,</span> <span class="fl">300</span>)<span class="op">;</span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>ketto.m
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-44" class="callout-44-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">% 2 var example</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span><span class="va">clc</span><span class="op">;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">3</span><span class="op">,</span><span class="fl">3</span><span class="op">,</span><span class="fl">30</span>)<span class="op">;</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>[<span class="va">X</span><span class="op">,</span><span class="va">Y</span>]<span class="op">=</span><span class="va">meshgrid</span>(<span class="va">xx</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="va">f</span><span class="op">=@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) <span class="va">x</span><span class="op">.^</span><span class="fl">3</span><span class="op">+</span><span class="va">y</span><span class="op">.^</span><span class="fl">3</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="va">x</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="va">y</span><span class="op">;</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="va">Z</span><span class="op">=</span><span class="va">f</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="va">figure</span>(<span class="fl">1</span>)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="va">contour</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">Z</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>[<span class="va">dX</span><span class="op">,</span><span class="va">dY</span>]<span class="op">=</span><span class="va">gradient</span>(<span class="va">Z</span>)<span class="op">;</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="va">L</span><span class="op">=</span><span class="va">sqrt</span>(<span class="va">dX</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">dY</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="va">quiver</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">dX</span><span class="op">./</span><span class="va">L</span><span class="op">,</span><span class="va">dY</span><span class="op">./</span><span class="va">L</span>)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="st">"$f(x,y)=x^3+y^3-3x-3y$"</span><span class="op">,</span><span class="st">"Interpreter"</span><span class="op">,</span><span class="st">"latex"</span>)<span class="op">;</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="va">exportgraphics</span>(<span class="va">fig</span><span class="op">,</span> <span class="st">"ketto.png"</span><span class="op">,</span> <span class="ss">'Resolution'</span><span class="op">,</span> <span class="fl">300</span>)<span class="op">;</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-45-contents" aria-controls="callout-45" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>trapesoid.m
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
 <div id="callout-45" class="callout-45-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">% trapesiod</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span> <span class="va">clc</span><span class="op">;</span> <span class="va">close</span> <span class="va">all</span><span class="op">;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="va">fig</span><span class="op">=</span><span class="va">figure</span>(<span class="fl">1</span>)<span class="op">;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="va">axis</span> <span class="va">off</span><span class="op">;</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="va">axis</span> <span class="va">equal</span><span class="op">;</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="va">u</span><span class="op">=</span><span class="fl">1</span><span class="op">/</span><span class="va">sqrt</span>(<span class="fl">2</span>)<span class="op">;</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="op">-</span><span class="va">u</span><span class="op">,</span><span class="fl">1</span><span class="op">+</span><span class="va">u</span>]<span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span>]<span class="op">,</span><span class="st">"LineWidth"</span><span class="op">,</span><span class="fl">0.1</span><span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">0</span>])</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="op">-</span><span class="va">u</span><span class="op">,</span><span class="fl">0</span>]<span class="op">,</span>[<span class="va">u</span><span class="op">,</span><span class="fl">0</span>]<span class="op">,</span><span class="st">"LineWidth"</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">1</span>])</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="fl">0</span><span class="op">,</span><span class="fl">1</span>]<span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span>]<span class="op">,</span><span class="st">"LineWidth"</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">1</span>])</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="fl">1</span><span class="op">,</span><span class="fl">1</span><span class="op">+</span><span class="va">u</span>]<span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="va">u</span>]<span class="op">,</span><span class="st">"LineWidth"</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">1</span>])</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="op">-</span><span class="va">u</span><span class="op">,</span><span class="fl">1</span><span class="op">+</span><span class="va">u</span>]<span class="op">,</span>[<span class="va">u</span><span class="op">,</span><span class="va">u</span>]<span class="op">,</span><span class="st">"LineWidth"</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0.4</span><span class="op">,</span><span class="fl">0.4</span><span class="op">,</span><span class="fl">0.4</span>])</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="va">text</span>(<span class="op">-</span><span class="fl">0.2</span><span class="op">,</span><span class="fl">0.08</span><span class="op">,</span><span class="st">"\alpha"</span>)</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="va">text</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">0.15</span><span class="op">,</span><span class="fl">0.08</span><span class="op">,</span><span class="st">"\alpha"</span>)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="va">text</span>(<span class="fl">0.5</span><span class="op">,-</span><span class="fl">0.1</span><span class="op">,</span><span class="st">"1"</span>)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="va">text</span>(<span class="op">-</span><span class="va">u</span><span class="op">/</span><span class="fl">2</span><span class="op">,</span><span class="va">u</span><span class="op">/</span><span class="fl">2</span><span class="op">+</span><span class="fl">0.1</span><span class="op">,</span><span class="st">"1"</span>)</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="va">text</span>(<span class="fl">1</span><span class="op">+</span><span class="va">u</span><span class="op">/</span><span class="fl">2</span><span class="op">-</span><span class="fl">0.05</span><span class="op">,</span><span class="va">u</span><span class="op">/</span><span class="fl">2</span><span class="op">+</span><span class="fl">0.1</span><span class="op">,</span><span class="st">"1"</span>)</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="st">"trapesoid"</span>)<span class="op">;</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="va">exportgraphics</span>(<span class="va">fig</span><span class="op">,</span> <span class="st">"trapesoid.png"</span><span class="op">,</span> <span class="ss">'Resolution'</span><span class="op">,</span> <span class="fl">300</span>)<span class="op">;</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span><span class="va">clf</span><span class="op">;</span><span class="va">clear</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="va">fig</span><span class="op">=</span><span class="va">figure</span>(<span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="va">f_str</span> <span class="op">=</span> <span class="st">"$f(x)=x^5-\cos(x)-e^x$"</span><span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="va">f</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span>) <span class="va">x</span><span class="op">.^</span><span class="fl">5</span><span class="op">-</span><span class="va">cos</span>(<span class="va">x</span>)<span class="op">-</span><span class="va">exp</span>(<span class="va">x</span>)<span class="op">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="va">df_str</span> <span class="op">=</span> <span class="st">"$f'(x)=5x^4+\sin(x)-e^x$"</span><span class="op">;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="va">df</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span>) <span class="fl">5</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">4</span><span class="op">+</span><span class="va">sin</span>(<span class="va">x</span>)<span class="op">-</span><span class="va">exp</span>(<span class="va">x</span>)<span class="op">;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="va">ddf</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span>) <span class="fl">20</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">3</span><span class="op">+</span><span class="va">cos</span>(<span class="va">x</span>)<span class="op">-</span><span class="va">exp</span>(<span class="va">x</span>)<span class="op">;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span> <span class="op">=</span> <span class="va">linspace</span>(<span class="fl">0</span><span class="op">,</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>[<span class="va">x0</span><span class="op">,</span> <span class="va">dfx0</span>] <span class="op">=</span> <span class="va">fzero</span>(<span class="va">df</span><span class="op">,</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="va">fx0</span> <span class="op">=</span> <span class="va">f</span>(<span class="va">x0</span>)<span class="op">;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="va">subplot</span>(<span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">f</span>(<span class="va">xx</span>))</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="va">x0</span><span class="op">,</span><span class="va">x0</span>]<span class="op">,</span>[<span class="va">fx0</span><span class="op">-</span><span class="fl">0.2</span><span class="op">,</span><span class="va">f</span>(<span class="fl">0</span>)]<span class="op">,</span><span class="st">"g"</span>)<span class="op">;</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="va">ylim</span>([<span class="va">fx0</span><span class="op">-</span><span class="fl">0.2</span><span class="op">,</span><span class="va">inf</span>])<span class="op">;</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>([<span class="va">f_str</span>]<span class="op">,</span><span class="st">"Interpreter"</span><span class="op">,</span><span class="st">"latex"</span>)<span class="op">;</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="va">subplot</span>(<span class="fl">2</span><span class="op">,</span><span class="fl">1</span><span class="op">,</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>(<span class="va">xx</span><span class="op">,</span><span class="va">df</span>(<span class="va">xx</span>))</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="fl">0</span><span class="op">,</span><span class="fl">1</span>]<span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span>]<span class="op">,</span><span class="st">"k"</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="va">x0</span><span class="op">,</span><span class="va">x0</span>]<span class="op">,</span>[<span class="op">-</span><span class="fl">2</span><span class="op">,</span><span class="fl">4</span>]<span class="op">,</span><span class="st">"g"</span>)<span class="op">;</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="va">df_str</span><span class="op">,</span><span class="st">"Interpreter"</span><span class="op">,</span><span class="st">"latex"</span>)<span class="op">;</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="va">exportgraphics</span>(<span class="va">fig</span><span class="op">,</span> <span class="st">"egy.png"</span><span class="op">,</span> <span class="ss">'Resolution'</span><span class="op">,</span> <span class="fl">300</span>)<span class="op">;</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1594,21 +1525,33 @@ h=\alpha \nabla f(x)\\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>paraboloid.m
+<span class="screen-reader-only">None</span>ketto.m
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-46" class="callout-46-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">% paraboloid</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="fl">30</span>)<span class="op">;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>[<span class="va">X</span><span class="op">,</span><span class="va">Y</span>]<span class="op">=</span><span class="va">meshgrid</span>(<span class="va">xx</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="va">f</span><span class="op">=@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) <span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="va">Z</span><span class="op">=</span><span class="va">f</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="va">mesh</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">Z</span>)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">% 2 var example</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span><span class="va">clc</span><span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">3</span><span class="op">,</span><span class="fl">3</span><span class="op">,</span><span class="fl">30</span>)<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>[<span class="va">X</span><span class="op">,</span><span class="va">Y</span>]<span class="op">=</span><span class="va">meshgrid</span>(<span class="va">xx</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="va">f</span><span class="op">=@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) <span class="va">x</span><span class="op">.^</span><span class="fl">3</span><span class="op">+</span><span class="va">y</span><span class="op">.^</span><span class="fl">3</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="va">x</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="va">y</span><span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="va">Z</span><span class="op">=</span><span class="va">f</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="va">figure</span>(<span class="fl">1</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="va">contour</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">Z</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>[<span class="va">dX</span><span class="op">,</span><span class="va">dY</span>]<span class="op">=</span><span class="va">gradient</span>(<span class="va">Z</span>)<span class="op">;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="va">L</span><span class="op">=</span><span class="va">sqrt</span>(<span class="va">dX</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">dY</span><span class="op">.^</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="va">quiver</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">dX</span><span class="op">./</span><span class="va">L</span><span class="op">,</span><span class="va">dY</span><span class="op">./</span><span class="va">L</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="st">"$f(x,y)=x^3+y^3-3x-3y$"</span><span class="op">,</span><span class="st">"Interpreter"</span><span class="op">,</span><span class="st">"latex"</span>)<span class="op">;</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="va">exportgraphics</span>(<span class="va">fig</span><span class="op">,</span> <span class="st">"ketto.png"</span><span class="op">,</span> <span class="ss">'Resolution'</span><span class="op">,</span> <span class="fl">300</span>)<span class="op">;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1618,21 +1561,171 @@ h=\alpha \nabla f(x)\\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>hyperboloid.m
+<span class="screen-reader-only">None</span>trapesoid.m
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-47" class="callout-47-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">% trapesiod</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="va">clf</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span> <span class="va">clc</span><span class="op">;</span> <span class="va">close</span> <span class="va">all</span><span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="va">fig</span><span class="op">=</span><span class="va">figure</span>(<span class="fl">1</span>)<span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="va">axis</span> <span class="va">off</span><span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="va">axis</span> <span class="va">equal</span><span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="va">u</span><span class="op">=</span><span class="fl">1</span><span class="op">/</span><span class="va">sqrt</span>(<span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="op">-</span><span class="va">u</span><span class="op">,</span><span class="fl">1</span><span class="op">+</span><span class="va">u</span>]<span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span>]<span class="op">,</span><span class="st">"LineWidth"</span><span class="op">,</span><span class="fl">0.1</span><span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">0</span>])</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="op">-</span><span class="va">u</span><span class="op">,</span><span class="fl">0</span>]<span class="op">,</span>[<span class="va">u</span><span class="op">,</span><span class="fl">0</span>]<span class="op">,</span><span class="st">"LineWidth"</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">1</span>])</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="fl">0</span><span class="op">,</span><span class="fl">1</span>]<span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span>]<span class="op">,</span><span class="st">"LineWidth"</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">1</span>])</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="fl">1</span><span class="op">,</span><span class="fl">1</span><span class="op">+</span><span class="va">u</span>]<span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="va">u</span>]<span class="op">,</span><span class="st">"LineWidth"</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0</span><span class="op">,</span><span class="fl">0</span><span class="op">,</span><span class="fl">1</span>])</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="va">plot</span>([<span class="op">-</span><span class="va">u</span><span class="op">,</span><span class="fl">1</span><span class="op">+</span><span class="va">u</span>]<span class="op">,</span>[<span class="va">u</span><span class="op">,</span><span class="va">u</span>]<span class="op">,</span><span class="st">"LineWidth"</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="st">"Color"</span><span class="op">,</span>[<span class="fl">0.4</span><span class="op">,</span><span class="fl">0.4</span><span class="op">,</span><span class="fl">0.4</span>])</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="va">text</span>(<span class="op">-</span><span class="fl">0.2</span><span class="op">,</span><span class="fl">0.08</span><span class="op">,</span><span class="st">"\alpha"</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="va">text</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">0.15</span><span class="op">,</span><span class="fl">0.08</span><span class="op">,</span><span class="st">"\alpha"</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="va">text</span>(<span class="fl">0.5</span><span class="op">,-</span><span class="fl">0.1</span><span class="op">,</span><span class="st">"1"</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="va">text</span>(<span class="op">-</span><span class="va">u</span><span class="op">/</span><span class="fl">2</span><span class="op">,</span><span class="va">u</span><span class="op">/</span><span class="fl">2</span><span class="op">+</span><span class="fl">0.1</span><span class="op">,</span><span class="st">"1"</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="va">text</span>(<span class="fl">1</span><span class="op">+</span><span class="va">u</span><span class="op">/</span><span class="fl">2</span><span class="op">-</span><span class="fl">0.05</span><span class="op">,</span><span class="va">u</span><span class="op">/</span><span class="fl">2</span><span class="op">+</span><span class="fl">0.1</span><span class="op">,</span><span class="st">"1"</span>)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="va">title</span>(<span class="st">"trapesoid"</span>)<span class="op">;</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="va">exportgraphics</span>(<span class="va">fig</span><span class="op">,</span> <span class="st">"trapesoid.png"</span><span class="op">,</span> <span class="ss">'Resolution'</span><span class="op">,</span> <span class="fl">300</span>)<span class="op">;</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-48-contents" aria-controls="callout-48" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>paraboloid.m
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-48" class="callout-48-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">% paraboloid</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="fl">30</span>)<span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>[<span class="va">X</span><span class="op">,</span><span class="va">Y</span>]<span class="op">=</span><span class="va">meshgrid</span>(<span class="va">xx</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="va">f</span><span class="op">=@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) <span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="va">Z</span><span class="op">=</span><span class="va">f</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="va">mesh</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">Z</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-49-contents" aria-controls="callout-49" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>hyperboloid.m
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-49" class="callout-49-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">% hyper</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="fl">30</span>)<span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>[<span class="va">X</span><span class="op">,</span><span class="va">Y</span>]<span class="op">=</span><span class="va">meshgrid</span>(<span class="va">xx</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="va">f</span><span class="op">=@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) <span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="va">Z</span><span class="op">=</span><span class="va">f</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="va">mesh</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">Z</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-50-contents" aria-controls="callout-50" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>gradient_template.m
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-50" class="callout-50-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">% hyper</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="op">-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span><span class="op">,</span><span class="fl">30</span>)<span class="op">;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>[<span class="va">X</span><span class="op">,</span><span class="va">Y</span>]<span class="op">=</span><span class="va">meshgrid</span>(<span class="va">xx</span><span class="op">,</span><span class="va">xx</span>)<span class="op">;</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="va">f</span><span class="op">=@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) <span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="va">Z</span><span class="op">=</span><span class="va">f</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="va">mesh</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">Z</span>)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="va">hold</span> <span class="va">on</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="va">clc</span><span class="op">;</span> <span class="va">clear</span><span class="op">;</span> <span class="va">clf</span><span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="va">doit</span><span class="op">=</span><span class="va">make_grad</span>(<span class="va">f0</span><span class="op">,</span><span class="va">df0</span><span class="op">,</span><span class="va">dom</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="va">f</span><span class="op">=@</span>(<span class="va">v</span>) <span class="va">f0</span>(<span class="va">v</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">v</span>(<span class="fl">2</span>))<span class="op">;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">df</span><span class="op">=@</span>(<span class="va">v</span>) <span class="va">df0</span>(<span class="va">v</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">v</span>(<span class="fl">2</span>))<span class="op">;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">tol</span> <span class="op">=</span> <span class="fl">1e-4</span><span class="op">;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="va">maxstep</span> <span class="op">=</span> <span class="fl">50</span><span class="op">;</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="va">outdom</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">v</span>) <span class="va">v</span>(<span class="fl">1</span>)<span class="op">&lt;</span><span class="va">dom</span>(<span class="fl">1</span>)<span class="op">||</span><span class="va">v</span>(<span class="fl">1</span>)<span class="op">&gt;</span><span class="va">dom</span>(<span class="fl">2</span>)<span class="op">||</span><span class="va">v</span>(<span class="fl">2</span>)<span class="op">&lt;</span><span class="va">dom</span>(<span class="fl">3</span>)<span class="op">||</span><span class="va">v</span>(<span class="fl">2</span>)<span class="op">&gt;</span><span class="va">dom</span>(<span class="fl">4</span>)<span class="op">;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> [<span class="va">path</span><span class="op">,</span><span class="va">status</span>]<span class="op">=</span><span class="va">grad</span>(<span class="va">x</span><span class="op">,</span><span class="va">a</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">status</span><span class="op">=</span><span class="st">""</span><span class="op">;</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="va">path</span><span class="op">=</span>[<span class="va">x</span>]<span class="op">;</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">for</span> <span class="va">it</span><span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="va">maxstep</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>      <span class="va">x_old</span><span class="op">=</span><span class="va">x</span><span class="op">;</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>      <span class="va">g</span><span class="op">=</span><span class="va">df</span>(<span class="va">x</span>)<span class="op">;</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> <span class="va">norm</span>(<span class="va">g</span>)<span class="op">&lt;</span><span class="va">tol</span><span class="op">,</span> <span class="va">status</span><span class="op">=</span><span class="st">"dftol"</span><span class="op">;</span> <span class="kw">break</span><span class="op">;</span> <span class="kw">end</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>      <span class="va">x</span><span class="op">=</span><span class="va">x</span><span class="op">+</span><span class="va">a</span><span class="op">*</span><span class="va">g</span><span class="op">;</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> <span class="va">outdom</span>(<span class="va">x</span>)<span class="op">,</span> <span class="va">status</span><span class="op">=</span><span class="st">"outdom"</span><span class="op">;</span> <span class="kw">break</span><span class="op">;</span> <span class="kw">end</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>      <span class="va">path</span><span class="op">=</span>[<span class="va">path</span><span class="op">,</span><span class="va">x</span>]<span class="op">;</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> <span class="va">norm</span>(<span class="va">x</span><span class="op">-</span><span class="va">x_old</span>)<span class="op">&lt;</span><span class="va">tol</span><span class="op">;</span> <span class="va">status</span><span class="op">=</span><span class="st">"xtol"</span><span class="op">;</span> <span class="kw">break</span><span class="op">;</span> <span class="kw">end</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="va">status</span><span class="op">==</span><span class="st">""</span><span class="op">,</span> <span class="va">status</span><span class="op">=</span><span class="st">"maxstep"</span><span class="op">;</span> <span class="kw">end</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  <span class="va">xx</span><span class="op">=</span><span class="va">linspace</span>(<span class="va">dom</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">dom</span>(<span class="fl">2</span>))<span class="op">;</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>  <span class="va">yy</span><span class="op">=</span><span class="va">linspace</span>(<span class="va">dom</span>(<span class="fl">3</span>)<span class="op">,</span><span class="va">dom</span>(<span class="fl">4</span>))<span class="op">;</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>  [<span class="va">X</span><span class="op">,</span><span class="va">Y</span>]<span class="op">=</span><span class="va">meshgrid</span>(<span class="va">xx</span><span class="op">,</span><span class="va">yy</span>)<span class="op">;</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>  <span class="va">Z</span><span class="op">=</span><span class="va">f0</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span>)<span class="op">;</span></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="va">doit0</span>(<span class="va">x</span><span class="op">,</span><span class="va">a</span>)</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    [<span class="va">path</span><span class="op">,</span><span class="va">status</span>] <span class="op">=</span> <span class="va">grad</span>(<span class="va">x</span><span class="op">,</span><span class="va">a</span>)<span class="op">;</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>    <span class="va">clf</span><span class="op">;</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>    <span class="va">hold</span> <span class="va">on</span><span class="op">;</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>    <span class="va">contour</span>(<span class="va">X</span><span class="op">,</span><span class="va">Y</span><span class="op">,</span><span class="va">Z</span><span class="op">,</span><span class="fl">66</span>)<span class="op">;</span></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    <span class="va">plot</span>(<span class="va">path</span>(<span class="fl">1</span><span class="op">,:</span>)<span class="op">,</span><span class="va">path</span>(<span class="fl">2</span><span class="op">,:</span>)<span class="op">,</span><span class="st">"mo-"</span><span class="op">,</span><span class="st">"MarkerSize"</span><span class="op">,</span><span class="fl">2</span>)<span class="op">;</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>    <span class="va">plot</span>(<span class="va">path</span>(<span class="fl">1</span><span class="op">,</span><span class="fl">1</span>)<span class="op">,</span><span class="va">path</span>(<span class="fl">2</span><span class="op">,</span><span class="fl">1</span>)<span class="op">,</span><span class="st">"kx"</span>)<span class="op">;</span></span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>    <span class="va">x</span><span class="op">=</span><span class="va">path</span>(<span class="op">:,</span><span class="kw">end</span>)<span class="op">;</span></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>    <span class="va">title</span>(<span class="va">sprintf</span>(<span class="st">"%s | (%.2f,%.2f) | %.2e"</span><span class="op">,</span><span class="va">status</span><span class="op">,</span><span class="va">x</span>(<span class="fl">1</span>)<span class="op">,</span><span class="va">x</span>(<span class="fl">2</span>)<span class="op">,</span><span class="va">norm</span>(<span class="va">df</span>(<span class="va">x</span>))))<span class="op">;</span></span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>    <span class="va">axis</span> <span class="va">square</span><span class="op">;</span></span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>    <span class="va">hold</span> <span class="va">off</span><span class="op">;</span></span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">end</span></span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>  <span class="va">doit</span><span class="op">=@</span><span class="va">doit0</span><span class="op">;</span></span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a><span class="co">% problem definition</span></span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a><span class="co">% f0 = @(x,y) x.^3 + y.^3 -3*x -3*y;</span></span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a><span class="co">% df0 = @(x,y) [3*x.^2-3;3*y.^2-3];</span></span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a><span class="co">% dom = [-3,3,-3,3] ;</span></span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a><span class="va">f0</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) (<span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">-</span><span class="fl">11</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">+</span>(<span class="va">x</span><span class="op">+</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="fl">7</span>)<span class="op">.^</span><span class="fl">2</span><span class="op">;</span></span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a><span class="va">df0</span> <span class="op">=</span> <span class="op">@</span>(<span class="va">x</span><span class="op">,</span><span class="va">y</span>) [<span class="fl">2</span><span class="op">*</span><span class="va">x</span><span class="op">+</span><span class="fl">4</span><span class="op">*</span><span class="va">x</span><span class="op">.*</span>(<span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">-</span><span class="fl">11</span>)<span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="fl">14</span><span class="op">;</span> <span class="fl">2</span><span class="op">*</span><span class="va">y</span><span class="op">+</span><span class="fl">4</span><span class="op">*</span><span class="va">y</span><span class="op">.*</span>(<span class="va">y</span><span class="op">.^</span><span class="fl">2</span><span class="op">+</span><span class="va">x</span><span class="op">-</span><span class="fl">7</span>)<span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="va">x</span><span class="op">.^</span><span class="fl">2</span><span class="op">-</span><span class="fl">22</span>]<span class="op">;</span></span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a><span class="va">dom</span> <span class="op">=</span> [<span class="op">-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span><span class="op">,-</span><span class="fl">5</span><span class="op">,</span><span class="fl">5</span>] <span class="op">;</span></span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a><span class="va">doit</span> <span class="op">=</span> <span class="va">make_grad</span>(<span class="va">f0</span><span class="op">,</span><span class="va">df0</span><span class="op">,</span><span class="va">dom</span>)<span class="op">;</span></span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
